@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="David Jones — product thinker and practitioner. A personal site in the making."
+    />
+    <meta name="theme-color" content="#e7d6bb" />
+    <meta property="og:title" content="David Jones" />
+    <meta
+      property="og:description"
+      content="Product thinker and practitioner. A personal site in the making."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dejones.io" />
+    <title>David Jones</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem("theme");
+        const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+        document.documentElement.dataset.theme = savedTheme || preferredTheme;
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="site-frame">
+      <header class="site-header">
+        <a class="identity" href="/" aria-label="David Jones, home">
+          <span class="monogram" aria-hidden="true">DJ</span>
+          <span class="identity-copy">
+            <strong>David Jones</strong>
+            <small>Product Thinking, Product Practice</small>
+          </span>
+        </a>
+
+        <div class="header-actions">
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch colour theme"
+            aria-pressed="false"
+          >
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="3.5"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.4 15.2A8.5 8.5 0 0 1 8.8 3.6a8.5 8.5 0 1 0 11.6 11.6Z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="landscape" aria-label="A quiet landscape at the edge of evening">
+        <svg
+          class="scene"
+          viewBox="0 0 1600 900"
+          preserveAspectRatio="xMidYMid slice"
+          role="img"
+          aria-labelledby="scene-title scene-description"
+        >
+          <title id="scene-title">A small studio among rolling hills</title>
+          <desc id="scene-description">
+            A winding path moves through layered fields towards a warmly lit studio beneath an old tree.
+          </desc>
+
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" class="sky-top" />
+              <stop offset="1" class="sky-bottom" />
+            </linearGradient>
+            <radialGradient id="sunGlow">
+              <stop offset="0" class="sun-glow-start" />
+              <stop offset="0.48" class="sun-glow-mid" />
+              <stop offset="1" class="sun-glow-end" />
+            </radialGradient>
+            <linearGradient id="fieldLight" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" class="field-light-start" />
+              <stop offset="1" class="field-light-end" />
+            </linearGradient>
+            <linearGradient id="fieldDark" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" class="field-dark-start" />
+              <stop offset="1" class="field-dark-end" />
+            </linearGradient>
+            <linearGradient id="pathLight" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" class="path-start" />
+              <stop offset="1" class="path-end" />
+            </linearGradient>
+            <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur stdDeviation="18" />
+            </filter>
+            <filter id="windowGlow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur stdDeviation="7" />
+            </filter>
+            <filter id="grain" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch" />
+              <feColorMatrix type="saturate" values="0" />
+              <feComponentTransfer>
+                <feFuncA type="table" tableValues="0 .1" />
+              </feComponentTransfer>
+            </filter>
+            <clipPath id="sceneClip">
+              <rect width="1600" height="900" />
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#sceneClip)">
+            <rect class="sky" width="1600" height="900" fill="url(#sky)" />
+
+            <g class="stars" aria-hidden="true">
+              <circle cx="152" cy="128" r="1.4" />
+              <circle cx="286" cy="196" r="1" />
+              <circle cx="432" cy="104" r="1.5" />
+              <circle cx="572" cy="177" r="1" />
+              <circle cx="711" cy="92" r="1.2" />
+              <circle cx="838" cy="154" r="1.4" />
+              <circle cx="988" cy="90" r="1" />
+              <circle cx="1091" cy="184" r="1.3" />
+              <circle cx="1428" cy="126" r="1.2" />
+              <circle cx="1510" cy="220" r="1" />
+            </g>
+
+            <g class="shooting-star" aria-hidden="true">
+              <path d="M342 142 241 203" />
+              <circle cx="342" cy="142" r="2.3" />
+            </g>
+
+            <g class="sun-wrap parallax" data-depth="0.25" aria-hidden="true">
+              <circle class="sun-halo" cx="1276" cy="220" r="128" fill="url(#sunGlow)" />
+              <circle class="sun" cx="1276" cy="220" r="52" />
+              <circle class="moon-cutout" cx="1297" cy="201" r="49" />
+            </g>
+
+            <g class="cloud cloud-one parallax" data-depth="0.18" aria-hidden="true">
+              <path d="M148 242c42-23 98-20 134 5 22-15 59-14 78 5 22-4 50 5 64 22H116c5-14 16-25 32-32Z" />
+            </g>
+            <g class="cloud cloud-two parallax" data-depth="0.12" aria-hidden="true">
+              <path d="M918 316c32-18 74-15 101 3 17-11 44-10 59 4 17-2 36 5 47 18H893c4-10 12-19 25-25Z" />
+            </g>
+
+            <g class="birds parallax" data-depth="0.35" aria-hidden="true">
+              <path d="M1034 212q12-11 24 0 12-11 24 0" />
+              <path d="M1091 242q8-8 17 0 8-8 17 0" />
+              <path d="M996 258q6-6 13 0 6-6 13 0" />
+            </g>
+
+            <g class="hill-far parallax" data-depth="0.1" aria-hidden="true">
+              <path d="M-80 536C116 405 292 420 457 505c175-120 381-129 568-24 190-120 418-119 655 42v164H-80Z" />
+            </g>
+
+            <g class="hill-middle parallax" data-depth="0.22" aria-hidden="true">
+              <path d="M-100 630C115 513 310 489 505 587c171-106 370-92 520 13 184-118 398-127 675-11v201H-100Z" fill="url(#fieldLight)" />
+              <path class="hill-stroke" d="M-80 626C137 508 316 499 507 588" />
+            </g>
+
+            <g class="studio-group parallax" data-depth="0.48">
+              <ellipse class="studio-shadow" cx="972" cy="548" rx="108" ry="18" />
+              <path class="studio-wall" d="M895 483h135v72H895z" />
+              <path class="studio-side" d="m1030 483 35 21v51h-35z" />
+              <path class="studio-roof" d="m881 486 82-49 82 49Z" />
+              <path class="studio-roof-edge" d="m881 486 82-49 82 49" />
+              <rect class="window-glow" x="920" y="499" width="47" height="38" rx="2" filter="url(#windowGlow)" />
+              <rect class="studio-window" x="920" y="499" width="47" height="38" rx="2" />
+              <path class="window-frame" d="M943.5 499v38M920 518h47" />
+              <rect class="studio-door" x="986" y="505" width="23" height="50" rx="1" />
+              <circle class="door-handle" cx="1003" cy="531" r="1.5" />
+              <path class="chimney" d="M1001 450h13v25l-13-8z" />
+              <g class="smoke" aria-hidden="true">
+                <path d="M1010 449c-10-18 12-25 1-42-8-12 2-20 9-27" />
+              </g>
+            </g>
+
+            <g class="tree parallax" data-depth="0.56" aria-hidden="true">
+              <path class="tree-trunk" d="M807 561c15-54 13-102 2-145 22 31 30 61 30 91 16-26 25-50 26-76 8 45-2 89-27 132Z" />
+              <path class="tree-branch" d="M821 474c-30-43-59-62-93-75M831 490c35-42 71-60 108-57M816 446c18-39 43-65 75-80" />
+              <path
+                class="tree-crown"
+                d="M697 412c-18-27-8-60 19-76-3-37 35-66 70-52 22-33 75-35 98-2 39-10 77 20 74 59 28 12 38 51 17 74-19 21-51 24-77 17-19 34-66 44-97 20-27 24-72 16-87-17-8-5-13-13-17-23Z"
+              />
+              <g class="tree-highlights">
+                <ellipse cx="758" cy="349" rx="20" ry="15" transform="rotate(-18 758 349)" />
+                <ellipse cx="818" cy="324" rx="25" ry="18" transform="rotate(11 818 324)" />
+                <ellipse cx="883" cy="359" rx="18" ry="14" transform="rotate(24 883 359)" />
+              </g>
+            </g>
+
+            <g class="foreground parallax" data-depth="0.68" aria-hidden="true">
+              <path d="M-120 727C111 619 342 631 548 723c179-111 403-127 606-31 192-78 367-58 566 25v233H-120Z" fill="url(#fieldDark)" />
+              <path class="foreground-line" d="M-63 727c212-91 407-93 610-4" />
+            </g>
+
+            <path
+              class="path"
+              d="M984 554C935 585 740 595 668 640c-78 48-68 101-18 155 49 53 20 105-30 155h240c40-61 10-106-30-144-45-42-60-86-8-129 48-39 150-66 188-123Z"
+              fill="url(#pathLight)"
+              aria-hidden="true"
+            />
+            <path
+              class="path-edge"
+              d="M997 557c-42 48-207 53-255 111-52 62-11 102 32 148 43 44 46 89 4 134"
+              aria-hidden="true"
+            />
+
+            <g class="fence parallax" data-depth="0.8" aria-hidden="true">
+              <path d="M1128 705v84M1254 682v83M1384 678v75" />
+              <path d="m1108 729 308-28M1113 756l303-27" />
+            </g>
+
+            <g class="fox-route" aria-hidden="true">
+              <g class="fox">
+                <path class="fox-tail" d="M7 18C-22-1-42 8-31 26c7 11 24 10 42-1" />
+                <ellipse class="fox-body" cx="38" cy="20" rx="28" ry="14" />
+                <path class="fox-chest" d="M52 18c7 7 9 18 3 28H44c5-9 4-18-2-26Z" />
+                <path class="fox-head" d="m57 13 15-10 16 6-3 22-21 3-11-10Z" />
+                <path class="fox-ear" d="m64 8 3-15 10 12M78 7l10-11-1 16" />
+                <circle class="fox-eye" cx="77" cy="15" r="1.7" />
+                <circle class="fox-nose" cx="88" cy="20" r="2" />
+                <path class="fox-legs" d="M22 29 18 47M44 31l-2 16" />
+              </g>
+            </g>
+
+            <g class="rabbits" aria-hidden="true">
+              <g class="rabbit rabbit-one" transform="translate(1305 650)">
+                <ellipse class="rabbit-body" cx="13" cy="22" rx="14" ry="11" />
+                <circle class="rabbit-head" cx="25" cy="13" r="9" />
+                <ellipse class="rabbit-ear" cx="24" cy="-1" rx="3.2" ry="12" transform="rotate(-8 24 -1)" />
+                <ellipse class="rabbit-ear" cx="31" cy="1" rx="3" ry="11" transform="rotate(12 31 1)" />
+                <circle class="rabbit-tail" cx="-1" cy="18" r="5" />
+              </g>
+              <g class="rabbit rabbit-two" transform="translate(1362 664) scale(.78)">
+                <ellipse class="rabbit-body" cx="13" cy="22" rx="14" ry="11" />
+                <circle class="rabbit-head" cx="25" cy="13" r="9" />
+                <ellipse class="rabbit-ear" cx="24" cy="-1" rx="3.2" ry="12" transform="rotate(-8 24 -1)" />
+                <ellipse class="rabbit-ear" cx="31" cy="1" rx="3" ry="11" transform="rotate(12 31 1)" />
+                <circle class="rabbit-tail" cx="-1" cy="18" r="5" />
+              </g>
+            </g>
+
+            <g class="falling-leaves" aria-hidden="true">
+              <path class="falling-leaf leaf-one" d="M853 420c12-5 20 1 18 13-11 4-18-1-18-13Z" />
+              <path class="falling-leaf leaf-two" d="M791 403c11-7 20-2 20 10-10 6-18 2-20-10Z" />
+              <path class="falling-leaf leaf-three" d="M910 411c10-5 18 1 15 12-10 3-16-2-15-12Z" />
+            </g>
+
+            <g class="fireflies" aria-hidden="true">
+              <circle class="firefly firefly-one" cx="748" cy="510" r="3" />
+              <circle class="firefly firefly-two" cx="870" cy="478" r="2.4" />
+              <circle class="firefly firefly-three" cx="1072" cy="533" r="2.7" />
+              <circle class="firefly firefly-four" cx="1168" cy="584" r="2.1" />
+              <circle class="firefly firefly-five" cx="660" cy="574" r="2.2" />
+            </g>
+
+            <g class="wildflowers parallax" data-depth="1.05" aria-hidden="true">
+              <g transform="translate(188 743)">
+                <path d="M0 88C3 52 9 25 24 0M6 62c-16-7-25-18-29-31M12 49c13-6 23-16 28-29" />
+                <circle cx="24" cy="0" r="7" />
+                <circle cx="-23" cy="31" r="5" />
+                <circle cx="40" cy="20" r="4" />
+              </g>
+              <g transform="translate(1438 729)">
+                <path d="M0 117c0-53-8-87-27-116M-2 69c19-8 31-21 37-39M-10 49c-16-3-29-12-39-26" />
+                <circle cx="-27" cy="1" r="7" />
+                <circle cx="35" cy="30" r="5" />
+                <circle cx="-49" cy="23" r="4" />
+              </g>
+              <g transform="translate(327 803)">
+                <path d="M0 70C5 37 13 15 26 0M9 39c-14-4-23-11-30-22" />
+                <circle cx="26" cy="0" r="5" />
+                <circle cx="-21" cy="17" r="4" />
+              </g>
+            </g>
+
+            <g class="grass grass-left parallax" data-depth="1.2" aria-hidden="true">
+              <path d="M-24 907Q21 802 41 700M18 907q48-123 92-194M72 907q39-96 122-166M139 907q24-111 19-182M207 907q-3-87-28-143M245 907q20-69 74-125" />
+            </g>
+            <g class="grass grass-right parallax" data-depth="1.3" aria-hidden="true">
+              <path d="M1622 913q-41-114-62-213M1591 910q-54-131-105-193M1537 908q-34-92-115-162M1471 910q-20-105-12-182M1412 906q4-79 31-142M1371 910q-18-70-71-124" />
+            </g>
+
+            <rect class="paper-grain" width="1600" height="900" filter="url(#grain)" />
+          </g>
+        </svg>
+
+        <p class="scene-coordinate" aria-hidden="true">51.5° N · 0.1° W</p>
+      </main>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
