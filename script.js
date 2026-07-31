@@ -1,6 +1,7 @@
 const root = document.documentElement;
 const landscape = document.querySelector(".landscape");
 const themeToggle = document.querySelector("#theme-toggle");
+const sceneToggle = document.querySelector("#scene-toggle");
 const parallaxLayers = document.querySelectorAll(".parallax");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -20,6 +21,27 @@ themeToggle?.addEventListener("click", () => {
   root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
   localStorage.setItem("theme", root.dataset.theme);
   updateThemeButton();
+});
+
+function updateSceneButton() {
+  const isOcean = root.dataset.scene === "ocean";
+  sceneToggle.setAttribute("aria-pressed", String(isOcean));
+  sceneToggle.setAttribute(
+    "aria-label",
+    isOcean ? "Switch to meadow scene" : "Switch to ocean scene",
+  );
+  landscape?.setAttribute(
+    "aria-label",
+    isOcean
+      ? "A quiet sea with a sailing boat at the edge of evening"
+      : "A quiet landscape at the edge of evening",
+  );
+}
+
+sceneToggle?.addEventListener("click", () => {
+  root.dataset.scene = root.dataset.scene === "ocean" ? "meadow" : "ocean";
+  localStorage.setItem("scene", root.dataset.scene);
+  updateSceneButton();
 });
 
 function moveScene(event) {
@@ -48,3 +70,4 @@ landscape?.addEventListener("pointermove", moveScene);
 landscape?.addEventListener("pointerleave", resetScene);
 
 updateThemeButton();
+updateSceneButton();
