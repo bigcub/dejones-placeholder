@@ -14,7 +14,7 @@ function updateThemeButton() {
   );
   document
     .querySelector('meta[name="theme-color"]')
-    ?.setAttribute("content", isDark ? "#17211e" : "#e7d6bb");
+    ?.setAttribute("content", isDark ? "#171d38" : "#a96670");
 }
 
 themeToggle?.addEventListener("click", () => {

@@ -1,38 +1,42 @@
 :root {
   color-scheme: light;
-  --page: #e7d6bb;
-  --ink: #2d3229;
-  --ink-muted: #667061;
-  --line: rgba(45, 50, 41, 0.17);
-  --glass: rgba(239, 229, 209, 0.72);
-  --sky-top: #dcc9a7;
-  --sky-bottom: #e8c6a9;
-  --sun: #d9855d;
-  --sun-glow: #e89d72;
-  --cloud: #f2e5ce;
-  --far: #aab09a;
-  --field-a: #87947b;
-  --field-b: #6f8069;
-  --field-c: #596a54;
-  --field-d: #3d5040;
-  --path-a: #ccb68f;
-  --path-b: #a98d68;
-  --tree: #324438;
-  --tree-hi: #52634f;
-  --trunk: #544d3c;
-  --studio: #b4aa8d;
-  --studio-side: #8e886f;
-  --roof: #584f43;
+  --sky-mid: #d68a88;
+  --horizon: #ffe7b0;
+  --ridge-light: #dcc6ab;
+  --tree-shadow: #233d3b;
+  --page: #a96670;
+  --ink: #fff4df;
+  --ink-muted: #f4dfd7;
+  --line: rgba(255, 237, 217, 0.22);
+  --glass: rgba(91, 49, 76, 0.24);
+  --sky-top: #664268;
+  --sky-bottom: #f9dda0;
+  --sun: #fff2bf;
+  --sun-glow: #ffe5ad;
+  --cloud: #ffd9c4;
+  --far: #9c9b86;
+  --field-a: #c3bc83;
+  --field-b: #7d936f;
+  --field-c: #6f8c64;
+  --field-d: #274e46;
+  --path-a: #efcb92;
+  --path-b: #bd865f;
+  --tree: #36594c;
+  --tree-hi: #839668;
+  --trunk: #58513b;
+  --studio: #d7b58a;
+  --studio-side: #a47d60;
+  --roof: #594a4d;
   --window: #efc36f;
   --fence: #5f644f;
   --flower: #d88a69;
   --scene-caption: rgba(243, 231, 208, 0.82);
-  --sea-a: #8fa79a;
-  --sea-b: #74948a;
-  --sea-c: #5d7f76;
-  --sea-d: #476660;
-  --sand-a: #dcc79e;
-  --sand-b: #b69c73;
+  --sea-a: #abbeb6;
+  --sea-b: #689e9c;
+  --sea-c: #427d83;
+  --sea-d: #254d67;
+  --sand-a: #f0c897;
+  --sand-b: #b88168;
   --boat-hull: #7c4a35;
   --boat-sail: #f3ead6;
   --dolphin: #3e5a54;
@@ -40,39 +44,43 @@
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --page: #17211e;
-  --ink: #ece6d7;
-  --ink-muted: #b5b8a9;
-  --line: rgba(236, 230, 215, 0.15);
-  --glass: rgba(23, 33, 30, 0.72);
-  --sky-top: #17211f;
-  --sky-bottom: #35443d;
-  --sun: #e4dfc9;
-  --sun-glow: #c9c6ad;
-  --cloud: #718078;
-  --far: #52635a;
-  --field-a: #4c6154;
-  --field-b: #354c40;
-  --field-c: #30483b;
-  --field-d: #20362e;
-  --path-a: #7d765f;
-  --path-b: #555344;
-  --tree: #172b23;
-  --tree-hi: #31493c;
-  --trunk: #3f3c32;
-  --studio: #777763;
-  --studio-side: #525b4d;
-  --roof: #2f332d;
+  --sky-mid: #4d486f;
+  --horizon: #d7a4b2;
+  --ridge-light: #a59ab0;
+  --tree-shadow: #142937;
+  --page: #171d38;
+  --ink: #f0e8e3;
+  --ink-muted: #c0bdd1;
+  --line: rgba(211, 212, 244, 0.18);
+  --glass: rgba(19, 25, 52, 0.24);
+  --sky-top: #121b38;
+  --sky-bottom: #b391a7;
+  --sun: #fff1d5;
+  --sun-glow: #e1cbec;
+  --cloud: #b7a9c8;
+  --far: #676e8c;
+  --field-a: #737e91;
+  --field-b: #435e74;
+  --field-c: #425c70;
+  --field-d: #182f43;
+  --path-a: #b6a8a7;
+  --path-b: #5b647b;
+  --tree: #1c3544;
+  --tree-hi: #506979;
+  --trunk: #39434b;
+  --studio: #7c8191;
+  --studio-side: #505e74;
+  --roof: #30354d;
   --window: #e4b85d;
-  --fence: #3d4a3f;
+  --fence: #526174;
   --flower: #bd765e;
   --scene-caption: rgba(236, 230, 215, 0.78);
-  --sea-a: #31504c;
-  --sea-b: #284440;
-  --sea-c: #1e3733;
-  --sea-d: #152a27;
-  --sand-a: #3f4739;
-  --sand-b: #2d352c;
+  --sea-a: #737f9f;
+  --sea-b: #465d86;
+  --sea-c: #2b456c;
+  --sea-d: #172e50;
+  --sand-a: #72758a;
+  --sand-b: #42485e;
   --boat-hull: #4a382c;
   --boat-sail: #d8d2ba;
   --dolphin: #223c38;
@@ -128,7 +136,7 @@ button:focus-visible {
   padding: 0 clamp(24px, 4vw, 64px);
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid transparent;
   background: linear-gradient(180deg, var(--glass), transparent);
   backdrop-filter: blur(3px);
 }
@@ -263,7 +271,7 @@ button:focus-visible {
   position: relative;
   width: 100%;
   height: 100svh;
-  min-height: 600px;
+  min-height: 420px;
   overflow: hidden;
   background: var(--page);
 }
@@ -325,6 +333,10 @@ button:focus-visible {
   stop-color: var(--sky-top);
 }
 
+.sky-mid {
+  stop-color: var(--sky-mid);
+}
+
 .sky-bottom {
   stop-color: var(--sky-bottom);
 }
@@ -378,16 +390,12 @@ button:focus-visible {
   animation: halo-breathe 9s ease-in-out infinite alternate;
 }
 
-.moon-cutout {
-  fill: var(--sky-top);
+.moon-mask {
   opacity: 0;
-  transform: translate(26px, -9px);
-  transition: opacity 0.6s ease, transform 0.8s ease, fill 0.65s ease;
 }
 
-[data-theme="dark"] .moon-cutout {
+[data-theme="dark"] .moon-mask {
   opacity: 1;
-  transform: translate(0, 0);
 }
 
 .stars {
@@ -432,7 +440,7 @@ button:focus-visible {
 
 .cloud {
   fill: var(--cloud);
-  opacity: 0.42;
+  opacity: 0.16;
 }
 
 .cloud-one {
@@ -440,7 +448,7 @@ button:focus-visible {
 }
 
 .cloud-two {
-  opacity: 0.27;
+  opacity: 0.12;
   animation: drift-small 28s ease-in-out infinite alternate;
 }
 
@@ -456,7 +464,7 @@ button:focus-visible {
 }
 
 .hill-far {
-  fill: var(--far);
+  fill: url(#distantSlope);
 }
 
 .mist {
@@ -552,7 +560,7 @@ button:focus-visible {
 }
 
 .tree-crown {
-  fill: var(--tree);
+  fill: url(#canopy);
 }
 
 .tree-highlights {
@@ -569,7 +577,8 @@ button:focus-visible {
 .path-edge {
   fill: none;
   stroke: color-mix(in srgb, var(--field-d) 38%, transparent);
-  stroke-dasharray: 2 10;
+  stroke-dasharray: 1 19;
+  opacity: 0.25;
   stroke-linecap: round;
   stroke-width: 2;
 }
@@ -831,7 +840,7 @@ button:focus-visible {
 }
 
 .headland-mass {
-  fill: var(--far);
+  fill: url(#distantSlope);
 }
 
 .lighthouse-body {
@@ -877,15 +886,15 @@ button:focus-visible {
 }
 
 .wave-far {
-  fill: var(--sea-b);
+  fill: url(#waveFar);
 }
 
 .wave-mid {
-  fill: var(--sea-c);
+  fill: url(#waveMid);
 }
 
 .wave-near {
-  fill: var(--sea-d);
+  fill: url(#waveNear);
 }
 
 .wave-band {
@@ -1067,7 +1076,7 @@ button:focus-visible {
   bottom: clamp(30px, 5vw, 68px);
   z-index: 5;
   margin: 0;
-  color: color-mix(in srgb, var(--scene-caption) 64%, transparent);
+  color: var(--scene-caption);
   font-family: "Lora", serif;
   font-size: 0.66rem;
   font-style: italic;
@@ -1603,4 +1612,30 @@ button:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Light follows the upper-right sun across the folds and water. */
+.canopy-detail { opacity: .65; }
+.slope-shadow { opacity: .46; }
+.water-ripples { stroke-width: 1.3; opacity: .19; }
+.scene stop { transition: stop-color .65s ease; }
+.studio-roof-edge { stroke: color-mix(in srgb, var(--path-a) 60%, var(--roof)); stroke-width: 2; }
+.hill-middle .hill-stroke, .foreground-line { stroke: var(--path-a); opacity: .23; stroke-width: 1; }
+.tree-crown { stroke: color-mix(in srgb, var(--tree-hi) 50%, transparent); stroke-width: 1; }
+.scene-coordinate { text-shadow: 0 1px 8px rgba(10, 24, 37, .5); }
+@media (max-width: 700px) {
+  .identity { gap: 9px; }
+  .monogram { width: 34px; height: 34px; flex-shrink: 0; }
+  .identity-copy small { max-width: 160px; font-size: .5rem; letter-spacing: .035em; }
+  .identity-copy strong { font-size: .94rem; }
+  .header-actions { gap: 6px; margin-left: 8px; }
+  .theme-toggle, .scene-toggle, .linkedin-link { width: 34px; height: 34px; flex-shrink: 0; }
+  .scene { width: 100%; transform: none; }
+  .scene-meadow { width: 140%; transform: translateX(-28%); }
+  .sun-wrap { translate: -360px 0; }
+  .water-reflection, .sea-glint { translate: -360px 0; }
+}
+@media (max-width: 380px) {
+  .site-header { padding: 0 12px; }
+  .monogram { display: none; }
 }

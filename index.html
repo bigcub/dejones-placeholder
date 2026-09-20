@@ -7,7 +7,7 @@
       name="description"
       content="David Jones — product thinker and practitioner in Manchester, UK. A personal site in the making."
     />
-    <meta name="theme-color" content="#e7d6bb" />
+    <meta name="theme-color" content="#a96670" />
     <meta property="og:title" content="David Jones — Product Thinking, Product Practice" />
     <meta
       property="og:description"
@@ -110,7 +110,8 @@
           <defs>
             <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" class="sky-top" />
-              <stop offset="1" class="sky-bottom" />
+              <stop offset="0.38" class="sky-mid" />
+              <stop offset="0.72" class="sky-bottom" />
             </linearGradient>
             <radialGradient id="sunGlow">
               <stop offset="0" class="sun-glow-start" />
@@ -142,6 +143,45 @@
                 <feFuncA type="table" tableValues="0 .1" />
               </feComponentTransfer>
             </filter>
+
+            <radialGradient id="horizonGlow" cx="78%" cy="53%" r="64%">
+              <stop offset="0" stop-color="var(--horizon)" stop-opacity=".65" />
+              <stop offset=".5" stop-color="var(--horizon)" stop-opacity=".15" />
+              <stop offset="1" stop-color="var(--horizon)" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="distantSlope" x2=".2" y2="1">
+              <stop stop-color="var(--ridge-light)" />
+              <stop offset="1" stop-color="var(--far)" />
+            </linearGradient>
+            <linearGradient id="canopy" x1="1" y1="0" x2=".1" y2="1">
+              <stop stop-color="var(--tree-hi)" />
+              <stop offset=".45" stop-color="var(--tree)" />
+              <stop offset="1" stop-color="var(--tree-shadow)" />
+            </linearGradient>
+            <linearGradient id="slopeShade" x1="1" y1="0" x2="0" y2="1">
+              <stop stop-color="var(--field-b)" />
+              <stop offset="1" stop-color="var(--field-d)" />
+            </linearGradient>
+            <linearGradient id="waveFar" x2="0" y2="1">
+              <stop stop-color="var(--sea-a)" />
+              <stop offset="1" stop-color="var(--sea-b)" />
+            </linearGradient>
+            <linearGradient id="waveMid" x2="0" y2="1">
+              <stop stop-color="var(--sea-b)" />
+              <stop offset="1" stop-color="var(--sea-c)" />
+            </linearGradient>
+            <linearGradient id="waveNear" x2="0" y2="1">
+              <stop stop-color="var(--sea-c)" />
+              <stop offset="1" stop-color="var(--sea-d)" />
+            </linearGradient>
+            <linearGradient id="waterLight" x2="0" y2="1">
+              <stop stop-color="var(--sun)" stop-opacity=".3" />
+              <stop offset="1" stop-color="var(--sun)" stop-opacity="0" />
+            </linearGradient>
+            <mask id="crescent" maskUnits="userSpaceOnUse" x="1180" y="120" width="200" height="200">
+              <rect x="1180" y="120" width="200" height="200" fill="white" />
+              <circle class="moon-mask" cx="1301" cy="196" r="55" fill="black" />
+            </mask>
             <clipPath id="sceneClip">
               <rect width="1600" height="900" />
             </clipPath>
@@ -149,6 +189,7 @@
 
           <g clip-path="url(#sceneClip)">
             <rect class="sky" width="1600" height="900" fill="url(#sky)" />
+            <rect width="1600" height="900" fill="url(#horizonGlow)" aria-hidden="true" />
 
             <g class="stars" aria-hidden="true">
               <circle cx="152" cy="128" r="1.4" />
@@ -179,9 +220,8 @@
             </g>
 
             <g class="sun-wrap parallax" data-depth="0.25" aria-hidden="true">
-              <circle class="sun-halo" cx="1276" cy="220" r="128" fill="url(#sunGlow)" />
-              <circle class="sun" cx="1276" cy="220" r="52" />
-              <circle class="moon-cutout" cx="1297" cy="201" r="49" />
+              <circle class="sun-halo" cx="1276" cy="220" r="240" fill="url(#sunGlow)" />
+              <circle class="sun" cx="1276" cy="220" r="58" mask="url(#crescent)" />
             </g>
 
             <g class="cloud cloud-one parallax" data-depth="0.18" aria-hidden="true">
@@ -212,6 +252,7 @@
 
             <g class="hill-middle parallax" data-depth="0.22" aria-hidden="true">
               <path d="M-100 630C115 513 310 489 505 587c171-106 370-92 520 13 184-118 398-127 675-11v201H-100Z" fill="url(#fieldLight)" />
+              <path class="slope-shadow" fill="url(#slopeShade)" d="M505 587c171-106 370-92 520 13-184-60-292 58-447 81 69-44 54-70-73-94Z" />
               <path class="hill-stroke" d="M-80 626C137 508 316 499 507 588" />
             </g>
 
@@ -239,15 +280,16 @@
                 class="tree-crown"
                 d="M697 412c-18-27-8-60 19-76-3-37 35-66 70-52 22-33 75-35 98-2 39-10 77 20 74 59 28 12 38 51 17 74-19 21-51 24-77 17-19 34-66 44-97 20-27 24-72 16-87-17-8-5-13-13-17-23Z"
               />
-              <g class="tree-highlights">
-                <ellipse cx="758" cy="349" rx="20" ry="15" transform="rotate(-18 758 349)" />
-                <ellipse cx="818" cy="324" rx="25" ry="18" transform="rotate(11 818 324)" />
-                <ellipse cx="883" cy="359" rx="18" ry="14" transform="rotate(24 883 359)" />
+              <g class="canopy-detail" fill="url(#canopy)">
+                <path d="M735 343c-5-31 26-58 58-43 25-30 62-23 73 8-26-8-41 7-44 26-30-19-57-12-70 12Z" />
+                <path d="M833 370c-8-36 26-63 54-48 29-13 58 8 53 36 28 15 25 43 5 55-7-26-36-31-53-17-4-24-31-38-59-26Z" />
+                <path d="M713 388c9-28 43-35 64-17 23-10 46 10 40 35-26-19-48-7-58 13-26 3-44-8-46-31Z" />
               </g>
             </g>
 
             <g class="foreground parallax" data-depth="0.68" aria-hidden="true">
               <path d="M-120 727C111 619 342 631 548 723c179-111 403-127 606-31 192-78 367-58 566 25v233H-120Z" fill="url(#fieldDark)" />
+              <path class="slope-shadow" fill="url(#slopeShade)" d="M548 723c179-111 403-127 606-31-171-30-275 55-369 117-69 46-86 80-72 141H529c105-122 164-186 19-227Z" />
               <path class="foreground-line" d="M-63 727c212-91 407-93 610-4" />
             </g>
 
@@ -387,6 +429,10 @@
           </desc>
 
           <defs>
+            <mask id="oceanCrescent" maskUnits="userSpaceOnUse" x="1180" y="120" width="200" height="200">
+              <rect x="1180" y="120" width="200" height="200" fill="white" />
+              <circle class="moon-mask" cx="1301" cy="196" r="55" fill="black" />
+            </mask>
             <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" class="sea-grad-start" />
               <stop offset="1" class="sea-grad-end" />
@@ -402,6 +448,7 @@
 
           <g clip-path="url(#oceanClip)">
             <rect class="sky" width="1600" height="900" fill="url(#sky)" />
+            <rect width="1600" height="900" fill="url(#horizonGlow)" aria-hidden="true" />
 
             <g class="stars" aria-hidden="true">
               <circle cx="132" cy="118" r="1.4" />
@@ -430,9 +477,8 @@
             </g>
 
             <g class="sun-wrap parallax" data-depth="0.25" aria-hidden="true">
-              <circle class="sun-halo" cx="1276" cy="220" r="128" fill="url(#sunGlow)" />
-              <circle class="sun" cx="1276" cy="220" r="52" />
-              <circle class="moon-cutout" cx="1297" cy="201" r="49" />
+              <circle class="sun-halo" cx="1276" cy="220" r="240" fill="url(#sunGlow)" />
+              <circle class="sun" cx="1276" cy="220" r="58" mask="url(#oceanCrescent)" />
             </g>
 
             <g class="cloud cloud-one parallax" data-depth="0.18" aria-hidden="true">
@@ -511,6 +557,11 @@
                 <path class="wave wave-near" d="M-200 764C0 744 200 780 400 762S800 744 1000 762s400 20 800 0v150H-200Z" />
               </g>
 
+              <ellipse class="water-reflection" cx="1276" cy="663" rx="74" ry="125" fill="url(#waterLight)" filter="url(#softGlow)" />
+              <g class="water-ripples" fill="none" stroke="var(--sun)" stroke-linecap="round">
+                <path d="M1102 595h69m167 8h55m-291 49h45m200 24h84m-390 59h113m205 38h83" />
+                <path d="M536 619h65m-279 45h92m186 42h50m-465 75h151m443-46h83" />
+              </g>
               <g class="sea-glint">
                 <ellipse cx="1276" cy="588" rx="26" ry="2.4" />
                 <ellipse cx="1258" cy="610" rx="40" ry="2.8" />
