@@ -599,48 +599,32 @@ button:focus-visible {
   animation: fox-step 0.72s ease-in-out infinite alternate;
 }
 
-.fox-body,
-.fox-head,
-.fox-chest {
-  fill: #a95f43;
+.fox-body, .fox-head, .fox-tail { fill: url(#foxCoat); }
+.fox-cream { fill: #f5dfb6; }
+.fox-rust { fill: #b76236; }
+.fox-haunch { fill: #dc8c4b; opacity: .55; }
+.fox-ear { fill: #a35132; }
+.fox-inner-ear { fill: #492e2c; }
+.fox-leg-far { fill: #88432f; }
+.fox-sock, .fox-eye, .fox-nose { fill: #392d2d; }
+.fox-leg {
+  transform-box: view-box;
+  transform-origin: 40px 25px;
+  animation: fox-stride .72s ease-in-out infinite alternate;
 }
-
-.fox-tail {
-  fill: none;
-  stroke: #a95f43;
-  stroke-linecap: round;
-  stroke-width: 11;
+.fox-leg-hind, .fox-leg-front-far { animation-direction: alternate-reverse; }
+.fox-tail-sway {
+  transform-box: view-box;
+  transform-origin: 15px 21px;
+  animation: fox-tail-sway 1.44s ease-in-out infinite alternate;
 }
-
-.fox-tail-tip {
-  fill: none;
-  stroke: #d5b18d;
-  stroke-linecap: round;
-  stroke-width: 11;
+@keyframes fox-stride {
+  from { transform: rotate(-10deg); }
+  to { transform: rotate(10deg); }
 }
-
-.fox-ear {
-  fill: #743f32;
-}
-
-.fox-legs {
-  fill: none;
-  stroke: #743f32;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 4;
-}
-
-.fox-legs-far {
-  fill: none;
-  stroke: #5d3226;
-  stroke-linecap: round;
-  stroke-width: 4;
-}
-
-.fox-eye,
-.fox-nose {
-  fill: #2d3029;
+@keyframes fox-tail-sway {
+  from { transform: rotate(-4deg); }
+  to { transform: rotate(5deg); }
 }
 
 .rabbit {

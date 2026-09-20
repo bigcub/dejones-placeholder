@@ -312,17 +312,43 @@
 
             <g class="fox-route" aria-hidden="true">
               <g class="fox">
-                <path class="fox-tail" d="M12 18C-2 13-14 12-24 15" />
-                <path class="fox-tail-tip" d="M-24 15c-5 1-9 0-12-3" />
-                <path class="fox-legs-far" d="M28 30l-3 16M50 31l-1 15" />
-                <ellipse class="fox-body" cx="38" cy="20" rx="28" ry="14" />
-                <path class="fox-chest" d="M52 18c7 7 9 18 3 28H44c5-9 4-18-2-26Z" />
-                <path class="fox-ear" d="M63 9 67-6 76 6Z" />
-                <path class="fox-ear" d="M79 5 87-7 92 7Z" />
-                <path class="fox-head" d="m57 13 15-10 16 6-3 22-21 3-11-10Z" />
-                <circle class="fox-eye" cx="77" cy="15" r="1.7" />
-                <circle class="fox-nose" cx="88" cy="20" r="2" />
-                <path class="fox-legs" d="M22 29 18 47M44 31l-2 16" />
+                <defs>
+                  <linearGradient id="foxCoat" x1="0" y1="0" x2=".4" y2="1">
+                    <stop stop-color="#e7a05c" />
+                    <stop offset=".5" stop-color="#c7753e" />
+                    <stop offset="1" stop-color="#93472f" />
+                  </linearGradient>
+                </defs>
+                <g class="fox-tail-sway">
+                  <path class="fox-tail" d="M20 17C0 7-10-7-29-5c-12 1-21 8-31 9 10 5 12 18 28 23 17 6 36 1 52-1Z" />
+                  <path class="fox-cream" d="M-60 4c10-1 19-8 31-9l-5 8 10 1-8 6 9 4-11 4 5 8C-47 20-50 9-60 4Z" />
+                </g>
+                <g class="fox-leg fox-leg-back">
+                  <path class="fox-leg-far" d="M27 24 36 35 29 48h-9l9-16-12-5Z" />
+                  <path class="fox-sock" d="m26 39 6 3-3 6H19l2-4 3-1Z" />
+                </g>
+                <g class="fox-leg fox-leg-front-far">
+                  <path class="fox-leg-far" d="M56 24h8l3 21 6 3H61l-4-14Z" />
+                  <path class="fox-sock" d="m60 39 7-1v7l6 3H61Z" />
+                </g>
+                <path class="fox-body" d="M7 24C4 10 16 3 31 5c13 1 22 6 31 1l10 15-9 13c-14 1-21-7-33-4L13 34Z" />
+                <path class="fox-haunch" d="M12 14c10-8 24-2 23 8-1 8-10 10-18 10l-6-6Z" />
+                <g class="fox-leg fox-leg-hind">
+                  <path class="fox-rust" d="M17 24c9-1 13 4 10 10l-9 8-1 7H7l3-13Z" />
+                  <path class="fox-sock" d="m11 39 8 1-2 9H6l1-4 3-1Z" />
+                </g>
+                <path class="fox-cream" d="m59 9 14 8-4 14-8 7-1-9-6 1 3-8-5-1Z" />
+                <g class="fox-leg fox-leg-front">
+                  <path class="fox-rust" d="m63 25 8-3-3 16 1 11H58l1-4 3-1-1-9Z" />
+                  <path class="fox-sock" d="m62 38 6-1 1 12H58l1-4 3-1Z" />
+                </g>
+                <path class="fox-ear" d="m67 4-3-21c11 4 16 12 17 17Z" />
+                <path class="fox-head" d="m58 9 9-12 15-2 10 12 17 6-12 9-17 3-10-5-12 2 4-7-8-1Z" />
+                <path class="fox-ear" d="m79 1 5-22c10 6 12 16 9 27Z" />
+                <path class="fox-inner-ear" d="m84-2 2-12 5 16Z" />
+                <path class="fox-cream" d="m78 14 11 1 15-2-7 9-17 3-10-5Z" />
+                <path class="fox-eye" d="m87 8 5 1-3 2-3-1Z" />
+                <path class="fox-nose" d="m103 11 7 2-5 4-3-2Z" />
               </g>
             </g>
 
