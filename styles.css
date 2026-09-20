@@ -196,7 +196,8 @@ button:focus-visible {
 
 .theme-toggle,
 .scene-toggle,
-.linkedin-link {
+.linkedin-link,
+.nav-link {
   position: relative;
   display: grid;
   width: 40px;
@@ -214,7 +215,8 @@ button:focus-visible {
 
 .theme-toggle:hover,
 .scene-toggle:hover,
-.linkedin-link:hover {
+.linkedin-link:hover,
+.nav-link:hover {
   background: var(--glass);
   transform: translateY(-1px);
 }
@@ -226,7 +228,8 @@ button:focus-visible {
 }
 
 .theme-toggle svg,
-.scene-toggle svg {
+.scene-toggle svg,
+.nav-link svg {
   position: absolute;
   width: 17px;
   fill: none;
@@ -235,6 +238,14 @@ button:focus-visible {
   stroke-linejoin: round;
   stroke-width: 1.4;
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
+}
+
+.header-nav { display: flex; align-items: center; gap: 10px; }
+/* The current page keeps a filled button so the location is visible without
+   relying on the icon alone. */
+.nav-link[aria-current] {
+  background: var(--glass);
+  border-color: color-mix(in srgb, var(--ink) 32%, var(--line));
 }
 
 .moon-icon {
@@ -1593,7 +1604,8 @@ button:focus-visible {
   .identity-copy small { max-width: 160px; font-size: .5rem; letter-spacing: .035em; }
   .identity-copy strong { font-size: .94rem; }
   .header-actions { gap: 6px; margin-left: 8px; }
-  .theme-toggle, .scene-toggle, .linkedin-link { width: 34px; height: 34px; flex-shrink: 0; }
+  .theme-toggle, .scene-toggle, .linkedin-link, .nav-link { width: 34px; height: 34px; flex-shrink: 0; }
+  .header-nav { gap: 6px; }
   .scene { width: 100%; transform: none; }
   .scene-meadow { width: 140%; transform: translateX(-28%); }
   .sun-wrap { translate: -360px 0; }

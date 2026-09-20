@@ -5,9 +5,6 @@ html:has(.notes-page), body.notes-page { overflow: auto; background: var(--paper
 .notes-page { --ink: var(--reading-ink); --ink-muted: var(--reading-muted); --line: var(--reading-rule); --glass: var(--paper); }
 .notes-page .site-header { position: relative; border-bottom: 1px solid var(--reading-rule); background: var(--paper); }
 .notes-page .header-actions { gap: 16px; }
-.notes-nav { display: flex; gap: 24px; align-items: center; }
-.notes-nav a { padding: 12px 0; color: var(--reading-muted); font-size: .82rem; text-decoration: none; }
-.notes-nav a[aria-current] { color: var(--reading-ink); text-decoration: underline; text-underline-offset: 7px; }
 .notes-page a:focus-visible { outline: 2px solid var(--reading-muted); outline-offset: 5px; }
 .skip-link { position: absolute; top: -100px; z-index: 30; background: var(--paper); padding: 12px; color: inherit; }
 .skip-link:focus { top: 8px; }
@@ -42,7 +39,6 @@ html:has(.notes-page), body.notes-page { overflow: auto; background: var(--paper
  .notes-page .identity { width: 100%; }
  .notes-page .identity-copy small { max-width: none; }
  .notes-page .header-actions { width: 100%; margin: 0; gap: 14px; }
- .notes-nav { margin-right: auto; }
  .notes-landscape { height: 42px; }
  .notes-index, .note-reader { width: calc(100% - 40px); padding: 38px 0 50px; }
  .note-index-link { grid-template-columns: 22px 1fr 14px; gap: 10px; padding: 24px 0; }
