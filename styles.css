@@ -1710,11 +1710,26 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 .tarn-smoke { animation: smoke 6s ease-in-out infinite alternate; }
 @keyframes tarn-ripple { from { opacity: .16; transform: translateX(-6px); } to { opacity: .34; transform: translateX(6px); } }
 @media (max-aspect-ratio: 6/5) {
-  .scene-tarn .tarn-bothy, .scene-tarn .tarn-shore { translate: 245px 0; }
+  .scene-tarn .tarn-bothy, .scene-tarn .tarn-shore { translate: 330px 0; }
+  /* The shore sits further right in the phone crop, so the ducks need their own
+     shorter course through the open water beside the bothy rather than the wide
+     desktop one, which would carry them over the bank and the roof. */
+  .scene-tarn .tarn-ducks { animation-name: tarn-swim-phone; }
   .tarn-mountain-mass { transform-origin: 800px 560px; transform: scaleX(.55); }
 }
 @media (max-aspect-ratio: 1/2) {
   .tarn-mountain-mass { transform: scaleX(.4); }
+}
+
+/* The ducks and birds are placed entirely by their keyframes, so when reduced
+   motion cuts the animation short they revert to the canvas origin and leave
+   the frame. Give them a resting position instead. */
+@media (prefers-reduced-motion: reduce) {
+  .tarn-ducks { transform: translate(846px,674px); }
+  .tarn-birds { transform: translate(700px,300px); opacity: .8; }
+}
+@media (prefers-reduced-motion: reduce) and (max-aspect-ratio: 6/5) {
+  .scene-tarn .tarn-ducks { transform: translate(930px,652px) scale(.8); }
 }
 
 .mountain-icon { opacity: 0; transform: translateY(18px); }
@@ -1727,6 +1742,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 .tarn-ducks { animation: tarn-swim 32s ease-in-out infinite alternate; }
 .tarn-fish-ring { fill: none; stroke: var(--tarn-haze); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; animation: tarn-ring 13s ease-out infinite; }
 @keyframes tarn-swim { from { transform: translate(790px,670px); } to { transform: translate(910px,682px); } }
+@keyframes tarn-swim-phone { from { transform: translate(905px,646px) scale(.8); } to { transform: translate(962px,660px) scale(.8); } }
 @keyframes tarn-birds { 0% { transform: translate(380px,330px); opacity: 0; } 8%,85% { opacity: .8; } 100% { transform: translate(1250px,240px); opacity: 0; } }
 @keyframes tarn-ring { 0%,65% { opacity: 0; transform: scale(.3); } 70% { opacity: .5; transform: scale(.5); } 100% { opacity: 0; transform: scale(2.5); } }
 
