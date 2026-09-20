@@ -1660,8 +1660,8 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 .archive-list h2 { font: 400 1.5rem/1.3 "Lora",serif; }
 @media (max-width: 700px) {
   html, body { overflow: auto; }
-  .landscape { min-height: 850px; height: max(100svh,850px); }
-  .article-shelf { right: 16px; bottom: 72px; width: calc(100% - 32px); padding: 16px; }
+  .landscape { min-height: 760px; height: max(100svh,760px); }
+  .article-shelf { right: 16px; bottom: 104px; width: calc(100% - 32px); padding: 16px; }
   .article-feature { padding: 18px 14px; }
   .article-list { gap: 14px; margin-top: 18px; }
   .article-list strong { font-size: .9rem; }
@@ -1715,8 +1715,8 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
   .scene-actions { left: 16px; bottom: 16px; }
   /* Two labelled pills will not fit beside the coordinate on a phone, so the
      scene button keeps its icon and hands its label to assistive technology. */
-  #scene-next { min-width: 44px; padding: 8px; justify-content: center; }
-  #scene-next .pill-label {
+  .pill-button { min-width: 44px; padding: 8px; justify-content: center; }
+  .pill-button .pill-label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1726,7 +1726,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
     clip-path: inset(50%);
     white-space: nowrap;
   }
-  .scene-coordinate { right: 16px; bottom: 31px; max-width: calc(100% - 164px); font-size: .56rem; }
+  .scene-coordinate { right: 16px; bottom: 31px; max-width: calc(100% - 130px); font-size: .56rem; }
   [data-articles-hidden="true"] .landscape { min-height: 420px; height: 100svh; }
 }
 
