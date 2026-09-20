@@ -23,4 +23,4 @@ PATH="/opt/homebrew/bin:$PATH" firebase deploy --only hosting
 `notes/index.html` is the index. Each note lives at `notes/<slug>/index.html`.
 `notes.css` styles the reading pages; `styles.css` and `script.js` provide the shared identity and theme control.
 
-The current notes are explicitly labelled sample copy and have `noindex` metadata. When publishing real writing, replace the samples, remove the preview notices and `noindex`, and update the matching homepage shelf and index entries. `articles.html` redirects old index and sample-fragment links.
+The three notes are titled placeholders whose bodies read "Currently drafting." They keep `noindex` metadata until the writing is real; remove it when publishing, and update the matching homepage shelf and index entries. `articles.html` redirects old index and note-fragment links, so its slug list must track the note directories.

@@ -14,7 +14,6 @@ html:has(.notes-page), body.notes-page { overflow: auto; background: var(--paper
 .note-category { display: block; margin: 0; font-size: .64rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--reading-muted); }
 .notes-page h1 { margin: 18px 0 20px; font: 400 clamp(2.5rem,5vw,4.2rem)/1.13 "Lora",serif; letter-spacing: -.045em; text-wrap: balance; }
 .notes-deck { color: var(--reading-muted); font-size: 1.08rem; line-height: 1.75; max-width: 680px; }
-.prototype-notice { margin: 32px 0 12px; color: var(--reading-muted); padding: 12px 0; border-top: 1px solid var(--reading-rule); font-size: .75rem; line-height: 1.6; }
 .note-index-list { list-style: none; margin: 0; padding: 0; }
 .note-index-link { display: grid; grid-template-columns: 40px 1fr 24px; gap: 20px; border-top: 1px solid var(--reading-rule); padding: 30px 0; text-decoration: none; color: inherit; }
 .note-number, .note-arrow { color: var(--reading-muted); font-size: .8rem; padding-top: 2px; }
@@ -27,7 +26,6 @@ html:has(.notes-page), body.notes-page { overflow: auto; background: var(--paper
 .all-notes { display: inline-block; margin-bottom: 38px; padding: 10px 0; color: var(--reading-muted); font-size: .82rem; }
 .note-reader { max-width: 720px; }
 .note-title { margin-bottom: 32px; }
-.sample-disclosure { margin: 0; color: var(--reading-muted); font-size: .75rem; line-height: 1.6; }
 .note-title h1 { font-size: clamp(2.15rem,4.5vw,3.6rem); }
 .note-prose { max-width: 65ch; font: 1.06rem/1.85 "Lora",serif; }
 .note-prose [id] { scroll-margin-top: 32px; }
