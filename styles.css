@@ -1622,7 +1622,7 @@ button:focus-visible {
 .article-shelf {
   position: absolute;
   right: clamp(24px, 4vw, 64px);
-  bottom: clamp(80px, 10vh, 120px);
+  bottom: clamp(104px, 12vh, 132px);
   z-index: 6;
   width: min(530px, calc(100% - 48px));
   padding: 22px;
@@ -1648,7 +1648,6 @@ button:focus-visible {
 .article-list a > span:last-child { margin-top: auto; }
 .article-shelf a:hover strong, .article-shelf-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .article-shelf a:focus-visible { outline: 2px solid var(--article-ink); outline-offset: 4px; }
-.sample-note { margin: 16px 0 0; color: var(--article-muted); font-size: .65rem; }
 .articles-page { overflow: auto; background: var(--article-glass); color: var(--article-ink); }
 html:has(.articles-page) { overflow: auto; background: var(--page); }
 .articles-archive { width: min(760px,calc(100% - 48px)); margin: auto; padding: 48px 0 80px; }
