@@ -243,7 +243,7 @@ button:focus-visible {
 .header-nav { display: flex; align-items: center; gap: inherit; }
 /* The scene control holds its place on pages without a landscape so the
    header does not reflow as you move between them. */
-.scene-toggle[disabled] { cursor: default; }
+.scene-toggle[disabled] { cursor: not-allowed; opacity: .42; }
 /* The current page keeps a filled button so the location is visible without
    relying on the icon alone. */
 .nav-link[aria-current] {
