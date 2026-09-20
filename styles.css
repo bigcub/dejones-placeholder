@@ -1699,6 +1699,16 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
   cursor: pointer;
 }
 .pill-button svg { width: 16px; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.pill-icon { position: relative; display: block; flex: none; width: 16px; height: 16px; }
+.pill-icon svg {
+  position: absolute;
+  inset: 0;
+  width: 16px;
+  height: 16px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
+}
 .pill-button:hover { background: rgba(18,32,38,.7); }
 .pill-button:focus-visible { outline: 2px solid #fff3df; outline-offset: 4px; }
 @media (max-width: 700px) {
@@ -1706,7 +1716,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
   /* Two labelled pills will not fit beside the coordinate on a phone, so the
      scene button keeps its icon and hands its label to assistive technology. */
   #scene-next { min-width: 44px; padding: 8px; justify-content: center; }
-  #scene-next span {
+  #scene-next .pill-label {
     position: absolute;
     width: 1px;
     height: 1px;
