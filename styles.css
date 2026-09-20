@@ -214,7 +214,7 @@ button:focus-visible {
 }
 
 .theme-toggle:hover,
-.scene-toggle:hover,
+.scene-toggle:not([disabled]):hover,
 .linkedin-link:hover,
 .nav-link:hover {
   background: var(--glass);
@@ -240,7 +240,10 @@ button:focus-visible {
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
 }
 
-.header-nav { display: flex; align-items: center; gap: 10px; }
+.header-nav { display: flex; align-items: center; gap: inherit; }
+/* The scene control holds its place on pages without a landscape so the
+   header does not reflow as you move between them. */
+.scene-toggle[disabled] { cursor: default; }
 /* The current page keeps a filled button so the location is visible without
    relying on the icon alone. */
 .nav-link[aria-current] {
@@ -1605,7 +1608,6 @@ button:focus-visible {
   .identity-copy strong { font-size: .94rem; }
   .header-actions { gap: 6px; margin-left: 8px; }
   .theme-toggle, .scene-toggle, .linkedin-link, .nav-link { width: 34px; height: 34px; flex-shrink: 0; }
-  .header-nav { gap: 6px; }
   .scene { width: 100%; transform: none; }
   .scene-meadow { width: 140%; transform: translateX(-28%); }
   .sun-wrap { translate: -360px 0; }

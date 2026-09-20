@@ -27,7 +27,9 @@ themeToggle?.addEventListener("click", () => {
 });
 
 function updateSceneButton() {
-  if (!sceneToggle) return;
+  // Notes pages carry the control so the header keeps its shape, but there is
+  // no landscape there to change; the markup already explains why it is off.
+  if (!sceneToggle || sceneToggle.disabled) return;
   const nextScene = { meadow: "coast", ocean: "Blea Tarn", tarn: "Kielder Forest", forest: "meadow" }[root.dataset.scene];
   sceneToggle.setAttribute("aria-label", `Switch to ${nextScene} scene`);
   sceneToggle.title = `Switch to ${nextScene} scene`;
