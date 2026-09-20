@@ -1673,11 +1673,18 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 }
 
 .article-shelf[hidden] { display: none; }
-.articles-toggle {
+.scene-actions {
   position: absolute;
   bottom: 25px;
   left: clamp(24px, 4vw, 64px);
   z-index: 7;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.pill-button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1691,11 +1698,24 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
   font: .73rem "DM Sans",sans-serif;
   cursor: pointer;
 }
-.articles-toggle svg { width: 16px; fill: none; stroke: currentColor; stroke-width: 1.4; }
-.articles-toggle:hover { background: rgba(18,32,38,.7); }
-.articles-toggle:focus-visible { outline: 2px solid #fff3df; outline-offset: 4px; }
+.pill-button svg { width: 16px; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.pill-button:hover { background: rgba(18,32,38,.7); }
+.pill-button:focus-visible { outline: 2px solid #fff3df; outline-offset: 4px; }
 @media (max-width: 700px) {
-  .articles-toggle { left: 16px; bottom: 16px; }
+  .scene-actions { left: 16px; bottom: 16px; }
+  /* Two labelled pills will not fit beside the coordinate on a phone, so the
+     scene button keeps its icon and hands its label to assistive technology. */
+  #scene-next { min-width: 44px; padding: 8px; justify-content: center; }
+  #scene-next span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
   .scene-coordinate { right: 16px; bottom: 31px; max-width: calc(100% - 164px); font-size: .56rem; }
   [data-articles-hidden="true"] .landscape { min-height: 420px; height: 100svh; }
 }

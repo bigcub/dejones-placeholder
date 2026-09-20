@@ -2,6 +2,7 @@ const root = document.documentElement;
 const landscape = document.querySelector(".landscape");
 const themeToggle = document.querySelector("#theme-toggle");
 const sceneToggle = document.querySelector("#scene-toggle");
+const sceneNext = document.querySelector("#scene-next");
 const parallaxLayers = document.querySelectorAll(".parallax");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -27,10 +28,13 @@ themeToggle?.addEventListener("click", () => {
 });
 
 function updateSceneButton() {
-  // Notes pages carry the control so the header keeps its shape, but there is
-  // no landscape there to change; the markup already explains why it is off.
-  if (!sceneToggle || sceneToggle.disabled) return;
   const nextScene = { meadow: "coast", ocean: "Blea Tarn", tarn: "Kielder Forest", forest: "meadow" }[root.dataset.scene];
+  // The pill carries its own visible label, so name the destination in the
+  // tooltip rather than overriding what the button says.
+  if (sceneNext) sceneNext.title = `Switch to the ${nextScene} scene`;
+  // Notes pages carry the header control so the header keeps its shape, but
+  // there is no landscape there to change; the markup explains why it is off.
+  if (!sceneToggle || sceneToggle.disabled) return;
   sceneToggle.setAttribute("aria-label", `Switch to ${nextScene} scene`);
   sceneToggle.title = `Switch to ${nextScene} scene`;
   const descriptions = {
@@ -42,13 +46,16 @@ function updateSceneButton() {
   landscape?.setAttribute("aria-label", descriptions[root.dataset.scene]);
 }
 
-sceneToggle?.addEventListener("click", () => {
+function cycleScene() {
   const scenes = ["meadow", "ocean", "tarn", "forest"];
   root.dataset.scene = scenes[(scenes.indexOf(root.dataset.scene) + 1) % scenes.length];
   localStorage.setItem("scene", root.dataset.scene);
   resetScene();
   updateSceneButton();
-});
+}
+
+sceneToggle?.addEventListener("click", cycleScene);
+sceneNext?.addEventListener("click", cycleScene);
 
 function moveScene(event) {
   if (reduceMotion.matches || !landscape) return;

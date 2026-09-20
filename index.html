@@ -818,10 +818,16 @@
           </div>
           <p class="sample-note">Layout preview · Illustrative note titles</p>
         </section>
-        <button class="articles-toggle" id="articles-toggle" type="button" aria-controls="article-shelf" aria-expanded="true">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
-          <span>Hide notes</span>
-        </button>
+        <div class="scene-actions">
+          <button class="pill-button articles-toggle" id="articles-toggle" type="button" aria-controls="article-shelf" aria-expanded="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>Hide notes</span>
+          </button>
+          <button class="pill-button" id="scene-next" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 12a8.4 8.4 0 1 1-2.7-6.2"/><path d="M20.6 4.3v5.1h-5.1"/></svg>
+            <span>Next scene</span>
+          </button>
+        </div>
       </main>
     </div>
     <script src="./script.js"></script>
