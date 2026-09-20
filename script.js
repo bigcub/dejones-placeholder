@@ -6,6 +6,7 @@ const parallaxLayers = document.querySelectorAll(".parallax");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function updateThemeButton() {
+  if (!themeToggle) return;
   const isDark = root.dataset.theme === "dark";
   themeToggle.setAttribute("aria-pressed", String(isDark));
   themeToggle.setAttribute(
@@ -14,7 +15,9 @@ function updateThemeButton() {
   );
   document
     .querySelector('meta[name="theme-color"]')
-    ?.setAttribute("content", isDark ? "#171d38" : "#a96670");
+    ?.setAttribute("content", document.body.classList.contains("notes-page")
+      ? (isDark ? "#1c282c" : "#f5f1e8")
+      : (isDark ? "#171d38" : "#a96670"));
 }
 
 themeToggle?.addEventListener("click", () => {
@@ -24,23 +27,24 @@ themeToggle?.addEventListener("click", () => {
 });
 
 function updateSceneButton() {
-  const isOcean = root.dataset.scene === "ocean";
-  sceneToggle.setAttribute("aria-pressed", String(isOcean));
-  sceneToggle.setAttribute(
-    "aria-label",
-    isOcean ? "Switch to meadow scene" : "Switch to ocean scene",
-  );
-  landscape?.setAttribute(
-    "aria-label",
-    isOcean
-      ? "A quiet sea with a sailing boat at the edge of evening"
-      : "A quiet landscape at the edge of evening",
-  );
+  if (!sceneToggle) return;
+  const nextScene = { meadow: "coast", ocean: "Blea Tarn", tarn: "Kielder Forest", forest: "meadow" }[root.dataset.scene];
+  sceneToggle.setAttribute("aria-label", `Switch to ${nextScene} scene`);
+  sceneToggle.title = `Switch to ${nextScene} scene`;
+  const descriptions = {
+    meadow: "A quiet landscape at the edge of evening",
+    ocean: "A quiet sea with a sailing boat at the edge of evening",
+    tarn: "A stone bothy beside a still mountain tarn",
+    forest: "A timber lookout among the pines of Kielder Forest",
+  };
+  landscape?.setAttribute("aria-label", descriptions[root.dataset.scene]);
 }
 
 sceneToggle?.addEventListener("click", () => {
-  root.dataset.scene = root.dataset.scene === "ocean" ? "meadow" : "ocean";
+  const scenes = ["meadow", "ocean", "tarn", "forest"];
+  root.dataset.scene = scenes[(scenes.indexOf(root.dataset.scene) + 1) % scenes.length];
   localStorage.setItem("scene", root.dataset.scene);
+  resetScene();
   updateSceneButton();
 });
 
@@ -71,3 +75,13 @@ landscape?.addEventListener("pointerleave", resetScene);
 
 updateThemeButton();
 updateSceneButton();
+
+// Always show the writing on arrival; hiding it is a temporary viewing choice.
+const articlesToggle = document.querySelector("#articles-toggle");
+const articleShelf = document.querySelector("#article-shelf");
+articlesToggle?.addEventListener("click", () => {
+  articleShelf.hidden = !articleShelf.hidden;
+  articlesToggle.setAttribute("aria-expanded", String(!articleShelf.hidden));
+  articlesToggle.querySelector("span").textContent = articleShelf.hidden ? "Show notes" : "Hide notes";
+  root.dataset.articlesHidden = String(articleShelf.hidden);
+});

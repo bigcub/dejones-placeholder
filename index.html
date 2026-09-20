@@ -23,7 +23,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=2" />
     <script>
       (() => {
         const savedTheme = localStorage.getItem("theme");
@@ -31,7 +31,8 @@
           ? "dark"
           : "light";
         document.documentElement.dataset.theme = savedTheme || preferredTheme;
-        document.documentElement.dataset.scene = localStorage.getItem("scene") || "meadow";
+        const savedScene = localStorage.getItem("scene");
+        document.documentElement.dataset.scene = ["meadow", "ocean", "tarn", "forest"].includes(savedScene) ? savedScene : "forest";
       })();
     </script>
   </head>
@@ -63,7 +64,7 @@
             id="scene-toggle"
             type="button"
             aria-label="Switch scene"
-            aria-pressed="false"
+            title="Change landscape"
           >
             <svg class="hills-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M2 18c3.2-6.4 5.8-9.6 8.6-9.6 2 0 3.8 1.6 5.6 4.4"></path>
@@ -75,6 +76,8 @@
               <path d="M2 13.5c2.4-2.4 4.8-2.4 7.2 0s4.8 2.4 7.2 0 3.4-2 5.6-.4"></path>
               <path d="M2 18.5c2.4-2.4 4.8-2.4 7.2 0s4.8 2.4 7.2 0 3.4-2 5.6-.4"></path>
             </svg>
+            <svg class="forest-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2-5 8h3l-5 7h5v5m4 0v-5h5l-5-7h3Z"/></svg>
+            <svg class="mountain-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m2 19 7-13 5 9 3-6 5 10ZM6 12l3 2 3-2M3 22h18"/></svg>
           </button>
           <button
             class="theme-toggle"
@@ -544,16 +547,21 @@
                 <path class="wave wave-far" d="M-200 614C0 602 200 624 400 614S800 602 1000 614s400 12 800 2v294H-200Z" />
               </g>
 
-              <g class="dolphin">
-                <path class="dolphin-body" d="M-2 4C12-16 38-22 54-8l9 6c-5 0-9 1-13 4C36-8 16-4 2 10Z" />
-                <path class="dolphin-body" d="M22-16c2-9 8-12 13-9l-7 11Z" />
-                <path class="dolphin-body" d="M1 3c-5-6-11-8-16-6l8 8-8 4c6 3 12 2 16-4Z" />
-              </g>
-              <path class="dolphin-splash" d="M486 706q8-16 20-4M508 708q6-12 16-3" />
-
               <g class="wave-band wave-band-mid">
                 <path class="wave wave-mid" d="M-200 674C0 658 200 688 400 672S800 658 1000 672s400 16 800 0v240H-200Z" />
               </g>
+
+              <g class="dolphin-stage" aria-hidden="true"><g class="dolphin">
+                <defs><linearGradient id="dolphinCoat" x1="0" y1="0" x2=".3" y2="1"><stop stop-color="var(--dolphin-back)"/><stop offset=".55" stop-color="var(--dolphin-side)"/><stop offset="1" stop-color="var(--dolphin-belly)"/></linearGradient></defs>
+                <path class="dolphin-fin" d="M28-12c0-14 7-23 17-25-4 10-3 15 7 24Z"/>
+                <path class="dolphin-fin" d="m-16 9-14-12-15 2 16 13-15 13 19-3 15-10Z"/>
+                <path fill="url(#dolphinCoat)" d="M-23 10C-7 8-4-11 18-17 41-24 64-17 72-5l17 7c6 2 6 6 0 7L73 8C60 27 28 25 9 17-4 12-12 15-23 14Z"/>
+                <path fill="var(--dolphin-belly)" d="M-14 12C7 8 18 23 48 13 60 9 64 4 72 3l14 3-14 2C58 25 29 23 9 17-2 13-7 13-14 14Z" opacity=".8"/>
+                <path class="dolphin-fin" d="M37 9c-1 15 9 25 21 26-8-10-8-17-6-25Z"/>
+                <path d="M3-5c17-15 42-15 55-8" fill="none" stroke="var(--dolphin-highlight)" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+                <path d="m69 8 12-1" fill="none" stroke="var(--dolphin-fin)" stroke-width="1.2" stroke-linecap="round"/>
+                <circle cx="66" cy="-3" r="2" fill="#203139"/><circle cx="66.5" cy="-3.6" r=".6" fill="#e8f3ed"/>
+              </g></g>
 
               <g class="boat-anchor parallax" data-depth="0.42">
                 <g class="boat-drift">
@@ -583,6 +591,13 @@
                 <path class="wave wave-near" d="M-200 764C0 744 200 780 400 762S800 744 1000 762s400 20 800 0v150H-200Z" />
               </g>
 
+              <g class="dolphin-water" aria-hidden="true">
+                <g class="dolphin-splash" transform="translate(684 765)">
+                  <path d="M-34 0q13-22 30 0M4 0q14-27 31-3M-15-2l-8-15M15-5l9-18"/>
+                  <circle cx="-27" cy="-24" r="2"/><circle cx="31" cy="-30" r="2.2"/><circle cx="4" cy="-23" r="1.5"/>
+                </g>
+                <ellipse class="dolphin-wake" cx="684" cy="769" rx="38" ry="6"/>
+              </g>
               <ellipse class="water-reflection" cx="1276" cy="663" rx="74" ry="125" fill="url(#waterLight)" filter="url(#softGlow)" />
               <g class="water-ripples" fill="none" stroke="var(--sun)" stroke-linecap="round">
                 <path d="M1102 595h69m167 8h55m-291 49h45m200 24h84m-390 59h113m205 38h83" />
@@ -620,11 +635,194 @@
           </g>
         </svg>
 
+
+        <svg class="scene scene-tarn" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="tarn-title tarn-description">
+          <title id="tarn-title">Evening at Blea Tarn</title>
+          <desc id="tarn-description">An imagined stone bothy looks over still water beneath steep mountain ridges. Warm windows glow as mist drifts across the lake.</desc>
+          <defs>
+            <linearGradient id="tarnSky" x2="0" y2="1"><stop stop-color="var(--tarn-sky)"/><stop offset=".65" stop-color="var(--tarn-horizon)"/><stop offset="1" stop-color="var(--tarn-haze)"/></linearGradient>
+            <linearGradient id="tarnRock" x1="1" y1="0" x2=".15" y2="1"><stop stop-color="var(--tarn-lit)"/><stop offset="1" stop-color="var(--tarn-rock)"/></linearGradient>
+            <linearGradient id="tarnShadow" x2=".6" y2="1"><stop stop-color="var(--tarn-rock)"/><stop offset="1" stop-color="var(--tarn-deep)"/></linearGradient>
+            <linearGradient id="tarnWater" x2="0" y2="1"><stop stop-color="var(--tarn-haze)"/><stop offset=".35" stop-color="var(--tarn-water)"/><stop offset="1" stop-color="var(--tarn-deep)"/></linearGradient>
+            <linearGradient id="tarnReflection" x2="0" y2="1"><stop stop-color="var(--tarn-rock)" stop-opacity=".48"/><stop offset="1" stop-color="var(--tarn-rock)" stop-opacity="0"/></linearGradient>
+            <radialGradient id="tarnLight"><stop stop-color="var(--sun)" stop-opacity=".38"/><stop offset="1" stop-color="var(--sun)" stop-opacity="0"/></radialGradient>
+            <filter id="tarnBlur"><feGaussianBlur stdDeviation="12"/></filter>
+            <clipPath id="tarnLakeClip"><path d="M0 558H1600V900H0Z"/></clipPath>
+            <mask id="tarnMoon" maskUnits="userSpaceOnUse" x="790" y="90" width="180" height="180"><rect x="790" y="90" width="180" height="180" fill="white"/><circle class="moon-mask" cx="898" cy="149" r="43" fill="black"/></mask>
+            <g id="tarnPeaks">
+              <path d="M-100 570 87 406 212 451 409 230 474 310 562 350 643 453 743 520 864 478 1052 285 1130 382 1200 347 1450 533 1700 400V590H-100Z" fill="var(--tarn-distant)"/>
+              <path d="M-100 587 55 473 147 491 370 177 431 270 508 293 701 565 751 590Z" fill="url(#tarnRock)"/>
+              <path d="m370 177-46 173 52 44-21 91 139 103h257L508 293l-77-23Z" fill="url(#tarnShadow)"/>
+              <path d="m370 177-79 112 52-28 15 13 17-42 23 30 33 8Z" fill="var(--tarn-snow)" opacity=".85"/>
+              <path d="m324 350-75 50-91 115 145-120-30 57 82-58Z" fill="var(--tarn-lit)" opacity=".35"/>
+              <path d="M719 592 883 445 939 388 1100 165 1165 254 1242 280 1457 505 1700 466V593Z" fill="url(#tarnRock)"/>
+              <path d="m1100 165-18 149 57 53-47 52 149 172h459V466l-243 39-215-225-77-26Z" fill="url(#tarnShadow)"/>
+              <path d="m1100 165-75 104 40-19 18 23 16-57 29 46 37-8Z" fill="var(--tarn-snow)" opacity=".9"/>
+              <path d="m1082 314-113 115-38 80 102-106 14 24 47-51 45-9Z" fill="var(--tarn-lit)" opacity=".3"/>
+            </g>
+          </defs>
+          <rect width="1600" height="900" fill="url(#tarnSky)"/>
+          <g class="stars" aria-hidden="true"><circle cx="260" cy="106" r="1.2"/><circle cx="513" cy="158" r="1.5"/><circle cx="717" cy="94" r="1"/><circle cx="984" cy="66" r="1.4"/><circle cx="1310" cy="132" r="1.3"/><circle cx="1484" cy="276" r="1"/><circle cx="592" cy="258" r="1"/><circle cx="771" cy="295" r="1.4"/></g>
+          <g class="parallax" data-depth=".2"><circle cx="877" cy="169" r="180" fill="url(#tarnLight)"/>
+          <circle cx="877" cy="169" r="44" fill="var(--sun)" mask="url(#tarnMoon)"/></g>
+          <g class="parallax" data-depth=".3"><use class="tarn-mountain-mass" href="#tarnPeaks"/></g>
+          <rect y="558" width="1600" height="342" fill="url(#tarnWater)"/>
+          <g class="parallax" data-depth=".3"><g class="tarn-mountain-mass" clip-path="url(#tarnLakeClip)" opacity=".28"><use href="#tarnPeaks" transform="translate(0 1120) scale(1 -1)"/></g></g>
+          <path d="M0 560h1600" stroke="var(--tarn-haze)" stroke-width="3" opacity=".7"/>
+          <g class="tarn-mist" fill="var(--tarn-haze)" opacity=".27" filter="url(#tarnBlur)"><ellipse cx="740" cy="552" rx="370" ry="15"/><ellipse cx="1100" cy="580" rx="300" ry="12"/></g>
+          <g class="tarn-ripples" fill="none" stroke="var(--tarn-haze)" stroke-linecap="round"><path d="M660 600h117m83 18h149m-588 21h154m372 10h205m-520 38h107m-610 15h103m670 26h157m-95 36h223M533 779h180m140 43h94"/></g>
+          <g class="parallax" data-depth=".65"><g class="tarn-shore">
+          <path d="M-80 632c179-41 348-38 500 9l166 87-187 36-202 92H-80Z" fill="var(--tarn-bank)"/>
+          <path d="M-80 632c179-41 348-38 500 9l166 87-160-19-123-46-180-15Z" fill="var(--tarn-moss)"/>
+          <path d="m374 681 120 23 92 24-187 36" fill="none" stroke="var(--tarn-lit)" opacity=".42" stroke-width="2"/>
+          </g>
+          <g class="tarn-bothy">
+            <path d="m365 611 63-37 65 37v65H365Z" fill="var(--tarn-stone)"/>
+            <path d="m493 611 36 17v48h-36Z" fill="var(--tarn-rock)"/>
+            <path d="m352 614 76-48 80 48h-17l-63-35-58 35Z" fill="var(--tarn-deep)"/>
+            <path d="m428 566 36 10 78 53-34-15Z" fill="var(--tarn-bank)"/>
+            <path d="M473 579v-24h12v34" fill="var(--tarn-stone)"/>
+            <path d="M376 631h19m41-12h18m-67 37h28m51-18h17m-6 21h14" stroke="var(--tarn-rock)" opacity=".45" stroke-width="2"/>
+            <rect x="382" y="626" width="27" height="25" fill="var(--window)"/>
+            <rect x="381" y="625" width="29" height="27" fill="var(--window)" opacity=".4" filter="url(#tarnBlur)"/>
+            <path d="M395 626v25m-13-12h27" stroke="var(--tarn-bank)" stroke-width="2"/>
+            <path d="M449 676v-43h22v43" fill="var(--tarn-deep)"/>
+            <path d="m458 677 3 10 52 16" fill="none" stroke="var(--tarn-stone)" stroke-width="7" opacity=".6"/>
+            <path class="tarn-smoke" d="M479 552c-13-17 10-25 0-42s4-22 8-28" fill="none" stroke="var(--tarn-haze)" stroke-width="5" stroke-linecap="round" opacity=".4"/>
+          </g>
+          </g>
+          <g class="parallax" data-depth="1.15"><path d="M-60 867c149-78 251-72 362-29 139 55 246 29 361 8 281-54 499-5 997-25v120H-60Z" fill="var(--tarn-bank)"/>
+          <g fill="var(--tarn-deep)"><path d="m66 842 39-41 60 9 34 45Z"/><path d="m279 865 21-26 36-3 29 28Z"/><path d="m1296 846 32-32 72 12 22 26Z"/></g>
+          <g fill="none" stroke="var(--tarn-moss)" stroke-width="3" stroke-linecap="round"><path d="M180 872q-4-40-21-65m32 69q2-49 16-66m-8 65 26-33M1467 880q-7-52-31-79m39 77 9-60"/></g>
+          </g>
+          <g class="tarn-birds" aria-hidden="true"><g class="tarn-bird-wings"><path d="M-24 0q12-12 24 0 12-12 24 0"/><path d="M-62 21q9-9 18 0 9-9 18 0"/></g></g>
+          <g class="parallax" data-depth=".5" aria-hidden="true"><g class="tarn-ducks">
+            <path class="tarn-wake" d="M-47 9q23 5 54 0m-39 7h45"/>
+            <path class="tarn-duck" d="M-20 0q12-5 21 0l4-9q1-7 7-6 8 2 5 9l-6 5q-3 13-19 11-12-1-17-8Z"/>
+            <path d="m16-10 8 3-8 2Z" fill="var(--path-a)"/>
+            <g transform="translate(-44 24) scale(.7)"><path class="tarn-wake" d="M-47 9q23 5 54 0"/><path class="tarn-duck" d="M-20 0q12-5 21 0l4-9q1-7 7-6 8 2 5 9l-6 5q-3 13-19 11-12-1-17-8Z"/></g>
+          </g></g>
+          <g class="tarn-fish-ring" aria-hidden="true"><ellipse cx="930" cy="740" rx="16" ry="4"/><ellipse cx="930" cy="740" rx="27" ry="7"/></g>
+          <rect class="paper-grain" width="1600" height="900" filter="url(#grain)"/>
+        </svg>
+
+
+        <svg class="scene scene-forest" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="forest-title forest-desc">
+          <title id="forest-title">A woodland lookout in Kielder Forest</title>
+          <desc id="forest-desc">An imagined timber lookout above a fern-covered clearing, framed by layered pines. A small bird flits between the trees by day; an owl glides through at night. Mist moves through the valley.</desc>
+          <defs>
+            <linearGradient id="woodSky" x2="0" y2="1"><stop stop-color="var(--wood-sky)"/><stop offset=".7" stop-color="var(--wood-horizon)"/><stop offset="1" stop-color="var(--wood-mist)"/></linearGradient>
+            <linearGradient id="woodFloor" x1="1" y1="0" x2="0" y2="1"><stop stop-color="var(--wood-moss)"/><stop offset="1" stop-color="var(--wood-deep)"/></linearGradient>
+            <linearGradient id="woodNeedles" x1="1" y1="0" x2="0" y2=".8"><stop stop-color="var(--wood-lit)"/><stop offset=".55" stop-color="var(--wood-pine)"/><stop offset="1" stop-color="var(--wood-deep)"/></linearGradient>
+            <linearGradient id="woodRay" x2="0" y2="1"><stop stop-color="var(--wood-gold)" stop-opacity=".18"/><stop offset="1" stop-color="var(--wood-gold)" stop-opacity="0"/></linearGradient>
+            <radialGradient id="woodHalo"><stop stop-color="var(--wood-gold)" stop-opacity=".5"/><stop offset="1" stop-color="var(--wood-gold)" stop-opacity="0"/></radialGradient>
+            <filter id="woodBlur"><feGaussianBlur stdDeviation="16"/></filter>
+            <mask id="woodMoon" maskUnits="userSpaceOnUse" x="890" y="85" width="170" height="170"><rect x="890" y="85" width="170" height="170" fill="white"/><circle class="moon-mask" cx="990" cy="132" r="46" fill="black"/></mask>
+            <g id="woodPine">
+              <path d="M-5 3 0-250 5 3Z" fill="var(--wood-trunk)"/>
+              <path d="m0-265-16 39 8-3-30 44 17-5-39 53 24-7-46 59 31-8-53 62 42-6L-5-9 0-28 9-7l-2-37 61 10-23-20 44 4-46-52 21 4-38-51 17 3-29-44 11 2-25-48 8 2Z" fill="var(--wood-fill, currentColor)"/>
+              <path d="m0-248 6 31-6-4 18 34-14-5 26 41-25-12 34 52-33-17 39 53-41-16 1 39-8-11Z" fill="var(--wood-lit)" opacity=".16"/>
+            </g>
+          </defs>
+          <rect width="1600" height="900" fill="url(#woodSky)"/>
+          <g class="stars"><circle cx="612" cy="119" r="1.4"/><circle cx="820" cy="76" r="1.1"/><circle cx="1130" cy="158" r="1.5"/><circle cx="723" cy="250" r="1"/><circle cx="1410" cy="92" r="1.3"/><circle cx="341" cy="96" r="1"/></g>
+          <g class="parallax" data-depth=".18"><circle cx="967" cy="158" r="215" fill="url(#woodHalo)"/><circle cx="967" cy="158" r="46" fill="var(--wood-gold)" mask="url(#woodMoon)"/></g>
+          <g class="parallax" data-depth=".18" fill="var(--wood-far)"><path d="M-40 560c230-153 388-155 616-42 249-177 487-150 1064-41v220H-40Z"/></g>
+          <g class="parallax wood-far-trees" data-depth=".28" color="var(--wood-far)">
+            <use href="#woodPine" transform="translate(-40 580) scale(0.42)"/><use href="#woodPine" transform="translate(30 596) scale(0.485)"/><use href="#woodPine" transform="translate(100 612) scale(0.55)"/><use href="#woodPine" transform="translate(170 580) scale(0.615)"/><use href="#woodPine" transform="translate(240 596) scale(0.6799999999999999)"/><use href="#woodPine" transform="translate(310 612) scale(0.42)"/><use href="#woodPine" transform="translate(380 580) scale(0.485)"/><use href="#woodPine" transform="translate(450 596) scale(0.55)"/><use href="#woodPine" transform="translate(520 612) scale(0.615)"/><use href="#woodPine" transform="translate(590 580) scale(0.6799999999999999)"/><use href="#woodPine" transform="translate(660 596) scale(0.42)"/><use href="#woodPine" transform="translate(730 612) scale(0.485)"/><use href="#woodPine" transform="translate(800 580) scale(0.55)"/><use href="#woodPine" transform="translate(870 596) scale(0.615)"/><use href="#woodPine" transform="translate(940 612) scale(0.6799999999999999)"/><use href="#woodPine" transform="translate(1010 580) scale(0.42)"/><use href="#woodPine" transform="translate(1080 596) scale(0.485)"/><use href="#woodPine" transform="translate(1150 612) scale(0.55)"/><use href="#woodPine" transform="translate(1220 580) scale(0.615)"/><use href="#woodPine" transform="translate(1290 596) scale(0.6799999999999999)"/><use href="#woodPine" transform="translate(1360 612) scale(0.42)"/><use href="#woodPine" transform="translate(1430 580) scale(0.485)"/><use href="#woodPine" transform="translate(1500 596) scale(0.55)"/><use href="#woodPine" transform="translate(1570 612) scale(0.615)"/><use href="#woodPine" transform="translate(1640 580) scale(0.6799999999999999)"/>
+          </g>
+          <g class="wood-valley-mist" fill="var(--wood-mist)" opacity=".38" filter="url(#woodBlur)"><ellipse cx="590" cy="571" rx="520" ry="29"/><ellipse cx="1150" cy="603" rx="410" ry="25"/></g>
+          <g class="parallax" data-depth=".48" color="var(--wood-mid)"><use href="#woodPine" transform="translate(20 677) scale(0.75)"/><use href="#woodPine" transform="translate(120 689) scale(0.87)"/><use href="#woodPine" transform="translate(230 701) scale(0.99)"/><use href="#woodPine" transform="translate(330 677) scale(1.1099999999999999)"/><use href="#woodPine" transform="translate(440 689) scale(0.75)"/><use href="#woodPine" transform="translate(535 701) scale(0.87)"/><use href="#woodPine" transform="translate(1050 677) scale(0.99)"/><use href="#woodPine" transform="translate(1160 689) scale(1.1099999999999999)"/><use href="#woodPine" transform="translate(1270 701) scale(0.75)"/><use href="#woodPine" transform="translate(1380 677) scale(0.87)"/><use href="#woodPine" transform="translate(1500 689) scale(0.99)"/><use href="#woodPine" transform="translate(1620 701) scale(1.1099999999999999)"/></g>
+          <path d="M-60 744c330-156 548-64 752-91 346-47 546-76 968 44v240H-60Z" fill="url(#woodFloor)"/>
+          <path d="M744 683c-62 33-160 74-143 119s89 76 68 128h160c2-56-108-77-99-126s59-83 40-121Z" fill="var(--wood-path)" opacity=".38"/>
+          <g class="wood-rays" fill="url(#woodRay)"><path d="m951 180-478 642h190l310-642Z"/><path d="m977 180-182 660h149l53-660Z"/></g>
+          <g class="parallax" data-depth=".7"><g class="wood-tower">
+            <ellipse cx="755" cy="724" rx="124" ry="17" fill="var(--wood-deep)" opacity=".3"/>
+            <g fill="none" stroke="var(--wood-timber)" stroke-width="10"><path d="m705 549-26 176m121-176 29 176"/><path d="m703 579 115 121m-10-115-117 111" stroke-width="5"/></g>
+            <path d="M675 531h146v20H675Z" fill="var(--wood-timber)"/>
+            <path d="M689 438h120v94H689Z" fill="var(--wood-wall)"/>
+            <path d="m809 438 31 16v77h-31Z" fill="var(--wood-timber)"/>
+            <path d="m674 442 76-40 76 40Z" fill="var(--wood-deep)"/>
+            <path d="m750 402 32 9 63 45-19-14Z" fill="var(--wood-pine)"/>
+            <path d="M700 462h96v41h-96Z" fill="var(--window)"/>
+            <path d="M700 462h96v41h-96Z" fill="var(--window)" filter="url(#woodBlur)" opacity=".36"/>
+            <path d="M724 462v41m24-41v41m24-41v41M700 483h96" stroke="var(--wood-timber)" stroke-width="4"/>
+            <path d="M693 514h111m-111 9h111" stroke="var(--wood-timber)" opacity=".5" stroke-width="2"/>
+            <g fill="none" stroke="var(--wood-timber)" stroke-width="4"><path d="M665 518h185M671 502v30 M841 502v30 M691 508v24m132-24v24"/><path d="m783 550-19 167m38-167-17 167"/><path d="m780 580h19m-22 18h20m-22 18h20m-22 18h20m-22 18h20m-22 18h20m-22 18h20m-22 18h20" stroke-width="3"/></g>
+          </g></g>
+          <g class="parallax wood-near-trees" data-depth="1" color="var(--wood-pine)"><use href="#woodPine" transform="translate(-15 910) scale(2.5)"/><use href="#woodPine" transform="translate(160 873) scale(2.6)"/><use href="#woodPine" transform="translate(330 817) scale(1.55)"/><use href="#woodPine" transform="translate(1295 840) scale(1.7)"/><use href="#woodPine" transform="translate(1480 900) scale(2.65)"/><use href="#woodPine" transform="translate(1640 920) scale(2.1)"/></g>
+          <g class="wood-daybird-route" aria-hidden="true">
+            <g class="wood-daybird">
+              <path d="m-10 4-18-7 7 12 15 2Z" fill="#685447"/>
+              <ellipse cx="0" cy="5" rx="14" ry="9" fill="#8a7260"/>
+              <path d="M0 0c13-5 21 2 14 10-7 8-18 3-19-2Z" fill="#ce784a"/>
+              <circle cx="12" cy="-2" r="8" fill="#8a7260"/>
+              <path d="M10-5c8-3 12 8 3 12L7 3Z" fill="#ce784a"/>
+              <path d="m19-3 8 3-8 2Z" fill="#3e3934"/>
+              <circle cx="15" cy="-4" r="1.5" fill="#252f2c"/>
+              <path class="wood-daybird-wing" d="M3 4C-3-14-16-25-28-21l9 9-7-1C-18 1-10 8 3 4Z" fill="#635749"/>
+            </g>
+          </g>
+          <g class="wood-owl-route" aria-hidden="true"><g class="wood-owl">
+            <defs>
+              <linearGradient id="owlFeathers" x2="0" y2="1"><stop stop-color="#c4ac88"/><stop offset=".55" stop-color="#96795e"/><stop offset="1" stop-color="#645344"/></linearGradient>
+              <linearGradient id="owlBreast" x2="0" y2="1"><stop stop-color="#f2dfba"/><stop offset="1" stop-color="#ba9d77"/></linearGradient>
+              <g id="owlWing">
+                <path d="M9-3C28-29 52-34 82-21c7 3 13 7 17 12L79-12l14 9-24-4 15 12-24-7 11 12-24-8 8 11C32 11 20 8 9 7Z" fill="url(#owlFeathers)"/>
+                <path d="M15-4c25-18 46-19 66-12M24 2c19-9 34-10 48-6" fill="none" stroke="#e2c99d" stroke-width="3" opacity=".6"/>
+                <path d="m45-19 4 12m11-14 5 12m10-10 6 8M35-9l4 13m14-12 5 14" fill="none" stroke="#665345" stroke-width="3" opacity=".65"/>
+              </g>
+            </defs>
+            <path d="m-9 18-5 19 9-2 5 4 5-4 9 2-5-19Z" fill="#7d654f"/>
+            <g class="wood-owl-wings"><use href="#owlWing"/><use href="#owlWing" transform="scale(-1 1)"/></g>
+            <path d="M-14-5c-7 14-2 30 14 37 16-7 21-23 14-37Z" fill="url(#owlBreast)"/>
+            <path d="m-7 9 2 4m10-4-2 4m-5 4 1 4m-8-2 3 4m9-4-3 4" stroke="#8b7054" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M-19-9c-2-13 9-22 19-18 10-4 21 5 19 18C18 6 7 12 0 13-7 12-18 6-19-9Z" fill="#8d7157"/>
+            <path d="M0-17c-15-15-25 12 0 26 25-14 15-41 0-26Z" fill="#f1dfba"/>
+            <path d="M0-17v17" stroke="#c6aa81" stroke-width="2"/>
+            <ellipse cx="-8" cy="-8" rx="4" ry="5" fill="#302d29"/><ellipse cx="8" cy="-8" rx="4" ry="5" fill="#302d29"/>
+            <circle cx="-9" cy="-10" r="1.2" fill="#fff7de"/><circle cx="7" cy="-10" r="1.2" fill="#fff7de"/>
+            <path d="m-3-1 3 8 3-8-3-2Z" fill="#796047"/>
+          </g></g>
+          <g class="pollen"><circle class="pollen-mote mote-one" cx="651" cy="650" r="2"/><circle class="pollen-mote mote-two" cx="869" cy="611" r="2"/><circle class="pollen-mote mote-three" cx="745" cy="758" r="1.5"/></g>
+          <g class="parallax" data-depth="1.25"><path d="M-80 878c260-88 365-64 545-13 280 77 470-32 1215-42v115H-80Z" fill="var(--wood-deep)"/><g class="wood-ferns" fill="none" stroke="var(--wood-lit)" stroke-width="3"><path d="M468 936q-16-102-71-148m56 101-53-20m45-5-58-24m43 1-44-29m491 122q3-98 47-150m-44 106 51-31m-43 9 56-31m-48 11 41-36"/></g></g>
+          <rect class="paper-grain" width="1600" height="900" filter="url(#grain)"/>
+        </svg>
+
+        <p class="scene-coordinate coordinate-forest" aria-hidden="true">Kielder Forest, UK · 55.2° N · 2.5° W</p>
+        <p class="scene-coordinate coordinate-tarn" aria-hidden="true">Blea Tarn, UK · 54.4° N · 3.1° W</p>
         <p class="scene-coordinate coordinate-meadow" aria-hidden="true">Manchester, UK · 53.5° N · 2.2° W</p>
         <p class="scene-coordinate coordinate-ocean" aria-hidden="true">Prestatyn, UK · 53.3° N · 3.4° W</p>
+        <section class="article-shelf" id="article-shelf" aria-labelledby="articles-heading">
+          <div class="article-shelf-heading">
+            <p class="eyebrow" id="articles-heading">Selected notes</p>
+            <a class="article-shelf-link" href="./notes/">View all notes <span aria-hidden="true">↗</span></a>
+          </div>
+          <a class="article-feature" href="./notes/designing-for-uncertainty/">
+            <span class="article-meta">Product practice</span>
+            <strong>Designing for uncertainty, without making it feel uncertain</strong>
+            <span class="article-cta">Read note <span aria-hidden="true">→</span></span>
+          </a>
+          <div class="article-list">
+            <a href="./notes/working-in-public/">
+              <span class="article-meta">Working notes</span>
+              <strong>What becomes clearer when you work in public</strong>
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="./notes/useful-constraints/">
+              <span class="article-meta">Product thinking</span>
+              <strong>Useful constraints are kinder than endless possibility</strong>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <p class="sample-note">Layout preview · Illustrative note titles</p>
+        </section>
+        <button class="articles-toggle" id="articles-toggle" type="button" aria-controls="article-shelf" aria-expanded="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Hide notes</span>
+        </button>
       </main>
     </div>
-
     <script src="./script.js"></script>
   </body>
 </html>
