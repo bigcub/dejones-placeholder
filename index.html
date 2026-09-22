@@ -32,7 +32,7 @@
           : "light";
         document.documentElement.dataset.theme = savedTheme || preferredTheme;
         const savedScene = localStorage.getItem("scene");
-        document.documentElement.dataset.scene = ["meadow", "ocean", "tarn", "forest"].includes(savedScene) ? savedScene : "forest";
+        document.documentElement.dataset.scene = ["meadow", "ocean", "tarn", "forest", "desert"].includes(savedScene) ? savedScene : "forest";
       })();
     </script>
   </head>
@@ -78,7 +78,7 @@
               <path d="M2 18.5c2.4-2.4 4.8-2.4 7.2 0s4.8 2.4 7.2 0 3.4-2 5.6-.4"></path>
             </svg>
             <svg class="forest-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2-5 8h3l-5 7h5v5m4 0v-5h5l-5-7h3Z"/></svg>
-            <svg class="mountain-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m2 19 7-13 5 9 3-6 5 10ZM6 12l3 2 3-2M3 22h18"/></svg>
+            <svg class="mountain-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m2 19 7-13 5 9 3-6 5 10ZM6 12l3 2 3-2M3 22h18"/></svg><svg class="desert-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21h20M5.5 21v-6h13v6M5.5 15a6.5 6.5 0 0 1 13 0M13.5 10.5 17 5M10 21v-3h3v3"/></svg>
           </button>
           <button
             class="theme-toggle"
@@ -786,6 +786,126 @@
           <rect class="paper-grain" width="1600" height="900" filter="url(#grain)"/>
         </svg>
 
+        <svg class="scene scene-desert" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A small observatory among the Merthyr Mawr dunes" aria-describedby="desert-desc">
+          <desc id="desert-desc">An imagined domed observatory on a sand dune crest beneath a wide rose-to-violet sky. The dome turns slowly, sand lifts from the ridges, and meteors cross the sky at night.</desc>
+          <defs>
+            <linearGradient id="desertSky" x2="0" y2="1"><stop stop-color="var(--desert-sky)"/><stop offset=".48" stop-color="var(--desert-rose)"/><stop offset=".7" stop-color="var(--desert-horizon)"/></linearGradient>
+            <radialGradient id="desertHalo"><stop stop-color="var(--desert-sun)" stop-opacity=".55"/><stop offset=".4" stop-color="var(--desert-sun)" stop-opacity=".16"/><stop offset="1" stop-color="var(--desert-sun)" stop-opacity="0"/></radialGradient>
+            <linearGradient id="desertLit" x1="1" y1="0" x2=".3" y2="1"><stop stop-color="var(--desert-sand-lit)"/><stop offset="1" stop-color="var(--desert-sand)"/></linearGradient>
+            <linearGradient id="desertShade" x1="1" y1="0" x2="0" y2="1"><stop stop-color="var(--desert-sand-shade)"/><stop offset="1" stop-color="var(--desert-sand-deep)"/></linearGradient>
+            <linearGradient id="desertDome" x1="1" y1=".2" x2="0" y2=".8"><stop stop-color="var(--desert-dome)"/><stop offset=".42" stop-color="var(--desert-dome)"/><stop offset="1" stop-color="var(--desert-dome-shade)"/></linearGradient>
+            <linearGradient id="desertDrum" x1="1" x2="0"><stop stop-color="var(--desert-wall)"/><stop offset=".35" stop-color="var(--desert-wall)"/><stop offset="1" stop-color="var(--desert-dome-shade)"/></linearGradient>
+            <linearGradient id="desertTube" x2="0" y2="1"><stop stop-color="var(--desert-dome)"/><stop offset="1" stop-color="var(--desert-dome-shade)"/></linearGradient>
+            <linearGradient id="meteorTail" x1="1" y1="0" x2="0" y2="1"><stop stop-color="#fff6e2"/><stop offset="1" stop-color="#fff6e2" stop-opacity="0"/></linearGradient>
+            <filter id="desertBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+            <filter id="desertSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+            <mask id="desertMoon" maskUnits="userSpaceOnUse" x="840" y="140" width="180" height="180"><rect x="840" y="140" width="180" height="180" fill="white"/><circle class="moon-mask" cx="952" cy="212" r="44" fill="black"/></mask>
+            <clipPath id="desertFarClip"><path id="desertFarBody" d="M-60 592C40 572 130 553 180 548c40 8 100 18 150 18 80-6 140-26 190-36 50 10 140 28 200 28 80-6 160-18 210-22 50 10 130 24 190 24 80-8 150-26 200-32 60 12 130 28 180 28 60-4 120-10 160-12V720H-60Z"/></clipPath>
+            <clipPath id="desertMidClip"><path id="desertMidBody" d="M-60 664C60 642 190 614 262 606c58 10 138 26 218 34 70-16 120-76 164-106 26-12 96-16 146-16 54 20 150 88 240 114 100-6 200-26 270-34 70 12 180 34 260 38 40-2 80-6 120-8V940H-60Z"/></clipPath>
+            <clipPath id="desertNearClip"><path id="desertNearBody" d="M-60 770c180-40 360-68 480-74 100 18 220 56 340 74 140-18 320-58 440-70 100 16 280 48 460 60V920H-60Z"/></clipPath>
+            <clipPath id="desertDomeClip"><path d="M-56 2a56 56 0 0 1 112 0Z"/></clipPath>
+          </defs>
+
+          <rect width="1600" height="900" fill="url(#desertSky)"/>
+          <ellipse class="desert-milky-way" cx="560" cy="200" rx="620" ry="46" transform="rotate(-18 560 200)" fill="#efe3f4" filter="url(#desertBlur)"/>
+          <g class="stars" aria-hidden="true"><circle cx="118" cy="96" r="1.3"/><circle cx="236" cy="188" r="1"/><circle cx="352" cy="74" r="1.5"/><circle cx="438" cy="236" r="1"/><circle cx="516" cy="132" r="1.2"/><circle cx="628" cy="58" r="1.4"/><circle cx="702" cy="198" r="1"/><circle cx="788" cy="112" r="1.3"/><circle cx="864" cy="286" r="1"/><circle cx="1064" cy="82" r="1.5"/><circle cx="1138" cy="214" r="1.1"/><circle cx="1236" cy="128" r="1.3"/><circle cx="1330" cy="246" r="1"/><circle cx="1422" cy="92" r="1.2"/><circle cx="1528" cy="180" r="1.4"/><circle cx="178" cy="300" r="0.9"/><circle cx="574" cy="318" r="0.9"/><circle cx="1196" cy="332" r="0.9"/><circle cx="1474" cy="318" r="1"/><circle cx="300" cy="148" r="0.8"/><circle cx="668" cy="150" r="0.8"/><circle cx="742" cy="262" r="0.9"/><circle cx="1004" cy="360" r="0.8"/><circle cx="1290" cy="54" r="1"/></g>
+
+          <g class="desert-meteors" aria-hidden="true" fill="none" stroke="url(#meteorTail)" stroke-linecap="round">
+            <path class="desert-meteor meteor-one" d="M512 108 404 156" stroke-width="2"/>
+            <path class="desert-meteor meteor-two" d="M1296 86 1178 146" stroke-width="1.6"/>
+            <path class="desert-meteor meteor-three" d="M842 60 760 94" stroke-width="1.3"/>
+          </g>
+
+          <g class="parallax" data-depth=".18" aria-hidden="true">
+            <circle cx="930" cy="236" r="210" fill="url(#desertHalo)"/>
+            <circle cx="930" cy="236" r="46" fill="var(--desert-sun)" mask="url(#desertMoon)"/>
+          </g>
+
+          <g class="parallax" data-depth=".08" aria-hidden="true">
+            <path d="M-60 538c180-40 320-52 470-30 150-44 300-50 460-12 160-34 330-34 440-8 120-18 240-14 350 2V640H-60Z" fill="var(--desert-far)"/>
+          </g>
+
+          <g class="desert-haze" fill="var(--desert-haze)" opacity=".4" filter="url(#desertBlur)" aria-hidden="true"><ellipse cx="420" cy="552" rx="420" ry="20"/><ellipse cx="1180" cy="546" rx="460" ry="18"/></g>
+
+          <g class="parallax" data-depth=".2" aria-hidden="true">
+            <use href="#desertFarBody" fill="var(--desert-far-sand)"/>
+            <g clip-path="url(#desertFarClip)" fill="var(--desert-far-shade)">
+              <path d="M180 520v28c-6 36-24 110-58 172H-80V520Z"/>
+              <path d="M520 500v30c-8 36-26 110-58 190H410c-20-60-50-114-80-154v-66Z"/>
+              <path d="M930 506v30c-8 38-24 112-54 184H806c-22-66-52-122-86-162v-52Z"/>
+              <path d="M1320 498v30c-8 40-26 118-54 192H1204c-22-66-52-120-84-160v-62Z"/>
+            </g>
+            <path d="M180 548c-8 22-22 48-38 70M520 530c-10 26-24 56-40 82M930 536c-9 26-22 58-38 86M1320 528c-9 26-22 60-38 92" fill="none" stroke="var(--desert-sand-lit)" stroke-width="1.4" opacity=".35"/>
+            <ellipse class="desert-spindrift drift-far" cx="1300" cy="524" rx="42" ry="4" fill="var(--desert-sand-lit)" filter="url(#desertSoft)"/>
+          </g>
+
+          <g class="parallax" data-depth=".38" aria-hidden="true">
+            <g class="desert-station">
+              <use href="#desertMidBody" fill="url(#desertLit)"/>
+              <g clip-path="url(#desertMidClip)" fill="url(#desertShade)">
+                <path d="M262 580v26c-10 50-34 160-70 314H-80V580Z"/>
+                <path d="M650 500v30c-38 30-72 90-98 150-20 50-38 140-50 240H330c80-70 130-160 150-280l40-80 60-60Z"/>
+                <path d="M1300 570v28c-10 60-32 180-62 322H1130c-30-110-60-210-100-288l20-30Z"/>
+              </g>
+              <path d="M262 606c-10 30-26 62-46 94M1300 598c-10 34-26 72-46 110" fill="none" stroke="var(--desert-sand-lit)" stroke-width="1.6" opacity=".4"/>
+              <path d="M656 530c-24 26-48 68-66 110" fill="none" stroke="var(--desert-sand-lit)" stroke-width="1.6" opacity=".35"/>
+              <path d="M820 546c40 20 90 30 140 34m-120-6c40 24 80 40 130 50m-110-14c30 22 60 38 100 50" fill="none" stroke="var(--desert-sand-shade)" stroke-width="1.4" opacity=".28"/>
+
+              <g class="desert-observatory" transform="translate(716 466)">
+                <ellipse cx="-58" cy="58" rx="92" ry="9" fill="var(--desert-sand-deep)" opacity=".28"/>
+                <path d="M-62 56h118v8H-62Z" fill="var(--desert-dome-shade)"/>
+                <path d="M-50 2h100v56H-50Z" fill="url(#desertDrum)"/>
+                <path d="M-50 12h100M-50 34h100" stroke="var(--desert-dome-shade)" stroke-width="1" opacity=".4"/>
+                <path d="M14 26h16v32H14Z" fill="var(--desert-slit)"/>
+                <path class="desert-door-glow" d="M14 26h16v32H14Z" fill="var(--window)" filter="url(#desertSoft)"/>
+                <path class="desert-door-light" d="M16 28h12v30H16Z" fill="var(--window)"/>
+                <path d="M-36 20h14v10h-14Z" fill="var(--desert-slit)" opacity=".75"/>
+                <path d="M-56 2a56 56 0 0 1 112 0Z" fill="url(#desertDome)"/>
+                <g clip-path="url(#desertDomeClip)">
+                  <g class="desert-dome-turn">
+                    <path d="M-10-60h20V4h-20Z" fill="var(--desert-slit)"/>
+                    <path class="desert-slit-glow" d="M-10-60h20V4h-20Z" fill="var(--desert-red-light)"/>
+                    <path d="M-12-60h2V4h-2Zm22 0h2V4h-2Z" fill="var(--desert-dome-shade)" opacity=".7"/>
+                  </g>
+                </g>
+                <g class="desert-dome-turn">
+                  <g class="desert-telescope">
+                    <path d="M-5-12 11-66l10 3-16 54Z" fill="url(#desertTube)"/>
+                    <path d="m9-72 15 4-3 9-15-4Z" fill="var(--desert-dome-shade)"/>
+                    <path d="M-4-16 3-40" stroke="var(--desert-dome)" stroke-width="1.2" opacity=".6"/>
+                  </g>
+                </g>
+                <path d="M-58 0h116v5H-58Z" fill="var(--desert-dome-shade)"/>
+                <path d="M-40-38c14-12 32-17 48-16" fill="none" stroke="var(--desert-dome)" stroke-width="2" opacity=".5"/>
+              </g>
+              <path d="M620 530c30-6 70-6 100-4s70 4 100 0c-10 8-40 12-100 12s-80-2-100-8Z" fill="var(--desert-sand)"/>
+              <path d="M740 534c14 22 34 36 60 52s40 30 52 50" fill="none" stroke="var(--desert-sand-deep)" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round" opacity=".45"/>
+              <ellipse class="desert-spindrift drift-mid" cx="796" cy="516" rx="46" ry="5" fill="var(--desert-sand-lit)" filter="url(#desertSoft)"/>
+            </g>
+          </g>
+
+          <g class="parallax" data-depth=".75" aria-hidden="true">
+            <use href="#desertNearBody" fill="url(#desertLit)"/>
+            <g clip-path="url(#desertNearClip)" fill="url(#desertShade)">
+              <path d="M420 660v36c-20 50-50 120-90 224H-80V660Z"/>
+              <path d="M1200 660v40c-14 60-36 140-66 220H900c90-50 160-120 230-200Z"/>
+            </g>
+            <path d="M420 696c-14 34-34 70-58 108M1200 700c-12 36-30 76-50 116" fill="none" stroke="var(--desert-sand-lit)" stroke-width="1.8" opacity=".4"/>
+            <g class="desert-ripples" fill="none" stroke="var(--desert-sand-deep)" stroke-width="1.4" stroke-linecap="round"><path d="M520 746c60 10 120 22 200 30m-170-4c60 12 120 22 190 30m-160-2c50 10 100 18 150 22M1260 734c60 12 140 24 220 30m-190 0c60 12 130 20 200 24"/></g>
+          </g>
+
+          <g class="parallax" data-depth="1.15" aria-hidden="true">
+            <path d="M-80 852c200-50 400-66 600-40 160 22 280 40 440 26 220-20 460-58 720-26V940H-80Z" fill="var(--desert-sand-deep)"/>
+            <path d="M-80 852c200-50 400-66 600-40 160 22 280 40 440 26" fill="none" stroke="var(--desert-sand)" stroke-width="2" opacity=".5"/>
+            <g class="desert-marram" fill="none" stroke="var(--desert-grass)" stroke-width="3" stroke-linecap="round">
+              <path d="M150 846q-6-60-40-104m50 104q4-70 34-116m-22 118q18-42 58-70m-80 66q-20-40-62-58"/>
+              <path d="M1400 832q-4-54-34-92m44 92q6-60 36-96m-24 98q22-36 54-52"/>
+            </g>
+          </g>
+          <rect class="paper-grain" width="1600" height="900" filter="url(#grain)"/>
+        </svg>
+
+        <p class="scene-coordinate coordinate-desert" aria-hidden="true">Merthyr Mawr, UK · 51.5° N · 3.6° W</p>
         <p class="scene-coordinate coordinate-forest" aria-hidden="true">Kielder Forest, UK · 55.2° N · 2.5° W</p>
         <p class="scene-coordinate coordinate-tarn" aria-hidden="true">Blea Tarn, UK · 54.4° N · 3.1° W</p>
         <p class="scene-coordinate coordinate-meadow" aria-hidden="true">Manchester, UK · 53.5° N · 2.2° W</p>
@@ -831,7 +951,7 @@
               <path d="M2 18.5c2.4-2.4 4.8-2.4 7.2 0s4.8 2.4 7.2 0 3.4-2 5.6-.4"></path>
             </svg>
               <svg class="forest-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2-5 8h3l-5 7h5v5m4 0v-5h5l-5-7h3Z"/></svg>
-              <svg class="mountain-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m2 19 7-13 5 9 3-6 5 10ZM6 12l3 2 3-2M3 22h18"/></svg>
+              <svg class="mountain-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m2 19 7-13 5 9 3-6 5 10ZM6 12l3 2 3-2M3 22h18"/></svg><svg class="desert-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21h20M5.5 21v-6h13v6M5.5 15a6.5 6.5 0 0 1 13 0M13.5 10.5 17 5M10 21v-3h3v3"/></svg>
             </span>
             <span class="pill-label">Next scene</span>
           </button>
