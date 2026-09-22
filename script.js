@@ -47,16 +47,26 @@ function updateSceneButton() {
   landscape?.setAttribute("aria-label", descriptions[root.dataset.scene]);
 }
 
-function cycleScene() {
+function cycleScene(step = 1) {
   const scenes = ["meadow", "ocean", "tarn", "forest", "desert"];
-  root.dataset.scene = scenes[(scenes.indexOf(root.dataset.scene) + 1) % scenes.length];
+  const index = scenes.indexOf(root.dataset.scene);
+  root.dataset.scene = scenes[(index + step + scenes.length) % scenes.length];
   localStorage.setItem("scene", root.dataset.scene);
   resetScene();
   updateSceneButton();
 }
 
-sceneToggle?.addEventListener("click", cycleScene);
-sceneNext?.addEventListener("click", cycleScene);
+sceneToggle?.addEventListener("click", () => cycleScene());
+sceneNext?.addEventListener("click", () => cycleScene());
+
+// Left and right arrows step through the scenes on the homepage.
+document.addEventListener("keydown", (event) => {
+  if (!landscape || (sceneToggle && sceneToggle.disabled)) return;
+  if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+  if (event.target.closest?.("input, textarea, select, [contenteditable]")) return;
+  if (event.key === "ArrowRight") cycleScene(1);
+  else if (event.key === "ArrowLeft") cycleScene(-1);
+});
 
 function moveScene(event) {
   if (reduceMotion.matches || !landscape) return;
