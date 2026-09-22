@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-90 -40 180 100" width="540" height="300">
+  <!-- The detailed, front-on hovering kestrel drawn for the Merthyr Mawr scene
+       and set aside in favour of the simpler side-on pose. Kept for reference;
+       in the scene it sat at translate(630px, 340px) scale(.58). -->
+  <style>
+    .desert-kestrel-wing { transform-origin: 6px -5px; animation: desert-kestrel-flap .13s ease-in-out infinite alternate; }
+    .desert-kestrel-tail { transform-origin: 0 15px; animation: desert-kestrel-trim 1.7s ease-in-out infinite alternate; }
+    @keyframes desert-kestrel-flap { from { transform: rotate(-12deg); } to { transform: rotate(14deg); } }
+    @keyframes desert-kestrel-trim { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+    @media (prefers-reduced-motion: reduce) { .desert-kestrel-wing, .desert-kestrel-tail { animation: none; } }
+  </style>
+  <rect x="-90" y="-40" width="180" height="100" fill="#cf97a4"/>
+  <g class="desert-kestrel">
+    <defs>
+      <linearGradient id="kestrelWingFill" x2="1"><stop stop-color="#b8663f"/><stop offset=".5" stop-color="#9f5536"/><stop offset=".74" stop-color="#4c3b3b"/><stop offset="1" stop-color="#2f282e"/></linearGradient>
+      <linearGradient id="kestrelBreast" x2="0" y2="1"><stop stop-color="#f1d6ab"/><stop offset="1" stop-color="#c98f5f"/></linearGradient>
+      <linearGradient id="kestrelTailFill" x2="0" y2="1"><stop stop-color="#8f8a99"/><stop offset="1" stop-color="#a7a1ad"/></linearGradient>
+      <g id="kestrelWing">
+        <path d="M6-6C16-14 26-20 36-22 48-24 60-22 74-17l-8 4 5 3-10 2 4 3-11 1C40 0 24 5 8 8Z" fill="url(#kestrelWingFill)"/>
+        <path d="M8-7C18-15 28-20 38-22" fill="none" stroke="#d99466" stroke-width="2" opacity=".55"/>
+        <path d="M52-3 58-19M58-5 64-19M63-7 68-17" fill="none" stroke="#6e5a58" stroke-width="1.1" opacity=".55"/>
+        <g fill="#3b2a2a" opacity=".7"><circle cx="19" cy="-8" r="1.3"/><circle cx="27" cy="-11" r="1.3"/><circle cx="35" cy="-13" r="1.2"/><circle cx="24" cy="-2" r="1.2"/><circle cx="32" cy="-5" r="1.2"/><circle cx="41" cy="-7" r="1.1"/><circle cx="16" cy="2" r="1.1"/></g>
+      </g>
+    </defs>
+    <g class="desert-kestrel-tail">
+      <path d="M-4 15-14 44Q0 50 14 44L4 15Z" fill="url(#kestrelTailFill)"/>
+      <path d="M0 18v28M-2 18-8 45M2 18 8 45" fill="none" stroke="#716a78" stroke-width=".8" opacity=".6"/>
+      <path d="M-13.2 41Q0 47 13.2 41l.8 2.6Q0 49.6-14 43.6Z" fill="#2e2830"/>
+      <path d="M-14 44Q0 50 14 44" fill="none" stroke="#f1e4d2" stroke-width="1.4"/>
+    </g>
+    <g transform="scale(-1 1)"><g class="desert-kestrel-wing"><use href="#kestrelWing" transform="rotate(-8)"/></g></g>
+    <g class="desert-kestrel-wing"><use href="#kestrelWing" transform="rotate(-8)"/></g>
+    <ellipse cx="0" cy="5" rx="8.5" ry="13" fill="url(#kestrelBreast)"/>
+    <path d="M-8 10c2 7 5 10 8 10s6-3 8-10c-3 4-5 5-8 5s-5-1-8-5Z" fill="#b27a4f"/>
+    <g fill="#7a4d3a" opacity=".75"><path d="M-3 2c1 0 1 2 0 3-1-1-1-3 0-3ZM3 3c1 0 1 2 0 3-1-1-1-3 0-3ZM0 7c1 0 1 2 0 3-1-1-1-3 0-3ZM-4 9c1 0 1 2 0 3-1-1-1-3 0-3ZM4 10c1 0 1 2 0 3-1-1-1-3 0-3ZM0 13c1 0 1 2 0 3-1-1-1-3 0-3Z"/></g>
+    <circle cx="0" cy="-10" r="7.6" fill="#9b98aa"/>
+    <path d="M-7-9c1 6 4 9 8 9s6-2 6-6c-3 2-6 2-9 0-2-1-4-2-5-3Z" fill="#f2e5cf"/>
+    <path d="M-3.4-9.6c-1 2-1.2 4.4-.6 6.4l1.6-.2c-.3-2-.1-4 .5-5.8Z" fill="#3a3036"/>
+    <circle cx="-3" cy="-11.6" r="2.2" fill="#262126"/>
+    <circle cx="-3.6" cy="-12.3" r=".7" fill="#fff7de"/>
+    <path d="M-6.4-10.4-8.6-11-9.6-9.4-7-8.6Z" fill="#e5b84a"/>
+    <path d="M-9.4-9.8-11.4-8.2-10-6.4-8.8-8.2Z" fill="#3a3036"/>
+  </g>
+</svg>
