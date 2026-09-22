@@ -1847,3 +1847,112 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 .dolphin-splash circle { fill: var(--cloud); stroke: none; }
 .dolphin-wake { fill: none; stroke: var(--cloud); stroke-width: 1.6; opacity: 0; transform-box: fill-box; transform-origin: center; animation: dolphin-wake 26s ease-out infinite; }
 @media (max-width: 700px) { .dolphin-stage, .dolphin-water { translate: 180px 0; } }
+
+/* Merthyr Mawr dunes: sculpted sand under a wide rose-to-violet sky, with an
+   imagined observatory on the highest crest. */
+:root {
+  --desert-sky: #8a78a8; --desert-rose: #dfa3a4; --desert-horizon: #f5d0a9; --desert-sun: #fff2d2;
+  --desert-far: #b596a8; --desert-haze: #f3d9c4; --desert-far-sand: #e2b394; --desert-far-shade: #bf8d88;
+  --desert-sand-lit: #f3cb97; --desert-sand: #dea070; --desert-sand-shade: #b27469; --desert-sand-deep: #85566a;
+  --desert-dome: #f6efe4; --desert-dome-shade: #a898a8; --desert-wall: #e0d2c0; --desert-slit: #3d3248;
+  --desert-red-light: #d4604a; --desert-grass: #8e865a;
+  --desert-sea: #bfa2b4; --desert-sea-far: #d8b4b6; --desert-cloud: #fbe3cf; --desert-post: #7b5a58;
+}
+[data-theme="dark"] {
+  --desert-sky: #110f2c; --desert-rose: #33285a; --desert-horizon: #7b5379; --desert-sun: #efe6d6;
+  --desert-far: #3a3259; --desert-haze: #8d6f93; --desert-far-sand: #50446d; --desert-far-shade: #3a3158;
+  --desert-sand-lit: #8e7ea6; --desert-sand: #62557f; --desert-sand-shade: #3b3259; --desert-sand-deep: #231d3d;
+  --desert-dome: #c3bfd4; --desert-dome-shade: #4f4a6b; --desert-wall: #837e9c; --desert-slit: #2a1f2c;
+  --desert-red-light: #d4604a; --desert-grass: #4c4966;
+  --desert-sea: #2f2854; --desert-sea-far: #4d3f6c; --desert-cloud: #4a3e6e; --desert-post: #1f1936;
+}
+.scene-desert, .desert-icon { visibility: hidden; opacity: 0; }
+.desert-icon { transform: translateY(18px); }
+.coordinate-desert { display: none; }
+[data-scene="desert"] .scene-meadow, [data-scene="desert"] .scene-ocean, [data-scene="desert"] .scene-tarn, [data-scene="desert"] .scene-forest { visibility: hidden; opacity: 0; }
+[data-scene="desert"] .scene-desert { visibility: visible; opacity: 1; }
+[data-scene="desert"] .hills-icon, [data-scene="desert"] .waves-icon, [data-scene="desert"] .mountain-icon, [data-scene="desert"] .forest-icon { opacity: 0; transform: translateY(-18px); }
+[data-scene="desert"] .desert-icon { visibility: visible; opacity: 1; transform: translateY(0); }
+[data-scene="desert"] .coordinate-meadow, [data-scene="desert"] .coordinate-ocean, [data-scene="desert"] .coordinate-tarn, [data-scene="desert"] .coordinate-forest { display: none; }
+[data-scene="desert"] .coordinate-desert { display: block; }
+
+.desert-milky-way { opacity: 0; transition: opacity .8s ease; }
+[data-theme="dark"] .desert-milky-way { opacity: .16; }
+.desert-haze { animation: mist-drift 34s ease-in-out infinite alternate; }
+
+/* Long streaks of cloud catch the low light; at night they barely show. */
+.desert-cloud { opacity: .55; transition: opacity .8s ease; }
+.desert-cloud.faint { opacity: .3; }
+[data-theme="dark"] .desert-cloud { opacity: .22; }
+.cloud-a { animation: drift 40s ease-in-out infinite alternate; }
+.cloud-b { animation: drift-small 52s ease-in-out infinite alternate; }
+
+/* The Bristol Channel shows between the far dunes, glinting under the sun. */
+.desert-glints { opacity: .5; animation: shimmer 6s ease-in-out infinite; }
+
+/* A kestrel hangs over the dunes by day: head still, wings working and tail
+   trimming against the wind. Now and then it slips along to a new spot. */
+.desert-kestrel { transform: translate(630px, 340px) scale(.5); animation: desert-kestrel-hover 24s ease-in-out infinite alternate; }
+.desert-kestrel-wing { transform-box: fill-box; animation: desert-kestrel-flap .18s ease-in-out infinite alternate; }
+.wing-far { transform-origin: 100% 100%; }
+.wing-near { transform-origin: 0% 100%; }
+.desert-kestrel-tail { transform-origin: 10px 5px; animation: desert-kestrel-trim 1.7s ease-in-out infinite alternate; }
+[data-theme="dark"] .desert-kestrel { display: none; }
+@keyframes desert-kestrel-hover {
+  0% { transform: translate(630px, 340px) scale(.5); }
+  18% { transform: translate(633px, 337px) scale(.5); }
+  36% { transform: translate(628px, 341px) scale(.5); }
+  50% { transform: translate(592px, 351px) scale(.5); }
+  64% { transform: translate(566px, 358px) scale(.5); }
+  82% { transform: translate(569px, 355px) scale(.5); }
+  100% { transform: translate(564px, 359px) scale(.5); }
+}
+@keyframes desert-kestrel-flap { from { transform: scaleY(1); } to { transform: scaleY(.5); } }
+@keyframes desert-kestrel-trim { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+
+/* The dome turns slowly: the shutter and telescope travel across it together. */
+.desert-dome-turn { animation: desert-dome-turn 46s ease-in-out infinite alternate; }
+.desert-telescope { transform-box: fill-box; transform-origin: 0% 100%; animation: desert-telescope 46s ease-in-out infinite alternate; }
+@keyframes desert-dome-turn { 0%, 12% { transform: translateX(-16px); } 88%, 100% { transform: translateX(18px); } }
+@keyframes desert-telescope { 0%, 12% { transform: rotate(-14deg); } 88%, 100% { transform: rotate(8deg); } }
+
+/* By night the shutter glows with a red working light and the door is lit. */
+.desert-slit-glow, .desert-door-glow, .desert-door-light { opacity: 0; transition: opacity .8s ease; }
+[data-theme="dark"] .desert-slit-glow { opacity: .42; }
+[data-theme="dark"] .desert-door-light { opacity: .9; }
+[data-theme="dark"] .desert-door-glow { opacity: .55; animation: window-flicker 7s ease-in-out infinite; }
+
+/* Sand lifts off the crests in a light wind. */
+.desert-spindrift { opacity: 0; animation: desert-spindrift 14s ease-out infinite; }
+.drift-far { animation-delay: 6s; animation-duration: 19s; }
+@keyframes desert-spindrift {
+  0%, 55% { opacity: 0; transform: translate(0, 0) scaleX(.5); }
+  65% { opacity: .5; }
+  100% { opacity: 0; transform: translate(-70px, -6px) scaleX(1.3); }
+}
+.desert-ripples { opacity: .24; }
+.desert-marram { transform-box: fill-box; transform-origin: bottom; animation: sway 6s ease-in-out infinite alternate; }
+
+/* Meteors are rare and only cross the night sky. */
+.desert-meteor { opacity: 0; }
+[data-theme="dark"] .desert-meteor { animation: desert-meteor 29s ease-in infinite; }
+[data-theme="dark"] .meteor-two { animation-duration: 41s; animation-delay: 11s; }
+[data-theme="dark"] .meteor-three { animation-duration: 53s; animation-delay: 23s; }
+@keyframes desert-meteor {
+  0%, 90% { opacity: 0; transform: translate(0, 0); }
+  91% { opacity: 1; }
+  94%, 100% { opacity: 0; transform: translate(-150px, 68px); }
+}
+
+/* On a phone the crop keeps the centre of the canvas and the notes cover its
+   lower half, so bring the observatory dune in from the left and raise it to
+   stand clear of the shelf. The other ridges stay put behind it. */
+@media (max-aspect-ratio: 6/5) {
+  .scene-desert .desert-station { translate: 96px -96px; }
+  .scene-desert .desert-kestrel { translate: 70px 0; }
+}
+
+/* Hold the kestrel with its wings open rather than mid-beat. */
+@media (prefers-reduced-motion: reduce) {
+  .desert-kestrel-wing, .desert-kestrel-tail { animation: none; }
+}
