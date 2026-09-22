@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Land-based casino systems: a primer — David Jones</title>
-<meta name="description" content="Currently drafting."><meta name="robots" content="noindex"><meta name="theme-color" content="#f5f1e8">
+<title>Example note — David Jones</title>
+<meta name="description" content="An example note showing the reading layout and an inline scene drawing."><meta name="robots" content="noindex"><meta name="theme-color" content="#f5f1e8">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -65,10 +65,59 @@
   <a class="all-notes" href="/notes/">← All notes</a>
   <article>
     <header class="note-title">
-      <h1>Land-based casino systems: a primer</h1>
+      <h1>Keeping strategy in use</h1>
     </header>
     <div class="note-prose">
-      <p>Currently drafting.</p>
+      <p>Most product strategies fail quietly. Nobody argues with them; they simply stop being used. The document is approved, the roadmap is drawn from it once, and within a quarter the team is making decisions the way it always did: by whoever asks loudest, or by whatever shipped last.</p>
+      <p>A practical strategy is one that keeps getting used. It helps someone decide what to do on an ordinary Tuesday, not just what to say at the offsite.</p>
+      <h2>Start with the choice, not the vision</h2>
+      <p>A vision describes where you want to be. A strategy describes what you will give up to get there. If a plan does not make at least one reasonable request harder to say yes to, it is not yet a strategy.</p>
+      <figure class="note-figure">
+        <svg viewBox="0 0 720 190" role="img" aria-label="A small sailing boat moored to a buoy on calm water">
+          <defs>
+            <linearGradient id="figFadeX"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#fff"/><stop offset=".8" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <mask id="figFade" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="190"><rect width="720" height="190" fill="url(#figFadeX)"/></mask>
+            <radialGradient id="figWash"><stop stop-color="var(--sea-a)" stop-opacity=".32"/><stop offset="1" stop-color="var(--sea-a)" stop-opacity="0"/></radialGradient>
+            <linearGradient id="figWater" x2="0" y2="1"><stop stop-color="var(--sea-a)" stop-opacity=".55"/><stop offset="1" stop-color="var(--sea-a)" stop-opacity="0"/></linearGradient>
+          </defs>
+          <ellipse cx="380" cy="110" rx="230" ry="96" fill="url(#figWash)"/>
+          <g mask="url(#figFade)">
+            <rect y="136" width="720" height="54" fill="url(#figWater)"/>
+            <path d="M0 136H720" stroke="var(--sea-b)" stroke-width="1" opacity=".35"/>
+            <g class="note-figure-waves" fill="none" stroke="var(--sea-c)" stroke-width="1.4" stroke-linecap="round" opacity=".35">
+              <path d="M90 152c14-4 28-4 42 0M240 164c18-5 36-5 54 0M470 150c16-4 32-4 48 0M560 170c20-5 40-5 60 0M130 178c16-4 32-4 48 0M380 180c14-4 28-4 42 0"/>
+            </g>
+          </g>
+          <g class="buoy">
+            <path class="buoy-pole" d="M212 132v-16"/>
+            <circle class="buoy-ball" cx="212" cy="140" r="10"/>
+            <path class="buoy-stripe" d="M203 137h18"/>
+          </g>
+          <ellipse class="boat-reflection" cx="400" cy="154" rx="54" ry="5"/>
+          <g transform="translate(-360 -516)"><g class="boat">
+            <path d="M706 652C688 690 626 692 582 660" fill="none" stroke="var(--reading-muted)" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+            <path class="boat-sail" d="M766 560c22 18 32 48 34 86h-34Z"/>
+            <path class="boat-sail boat-jib" d="M754 566c-20 20-28 46-30 78h30Z"/>
+            <path class="boat-mast" d="M760 652V556"/>
+            <path class="boat-boom" d="M764 648h38"/>
+            <path class="boat-pennant" d="M760 556l-14 4 14 5Z"/>
+            <path class="boat-hull" d="M706 652h108c-12 24-94 24-108 0Z"/>
+          </g></g>
+        </svg>
+        <figcaption>A mooring doesn’t stop the boat moving. It stops it drifting.</figcaption>
+      </figure>
+      <p>The useful test is simple. Take the last five things the team was asked to build and hold each one up against the strategy. If the strategy cannot tell you which to decline, it needs sharpening.</p>
+      <ul>
+        <li>Name the customer you are choosing to serve first.</li>
+        <li>Name the problem you will solve better than anyone.</li>
+        <li>Name the work you will stop, even though it is valuable.</li>
+      </ul>
+      <h2>Make it small enough to remember</h2>
+      <p>If people have to open a document to recall the strategy, it will not shape their decisions. The best versions fit in a paragraph and survive being repeated badly in a corridor.</p>
+      <blockquote><p>Strategy is the set of choices you would still defend when the easy option is sitting in front of you.</p></blockquote>
+      <p>Write it down, then say it until you are tired of hearing it. That is usually about the point where the rest of the organisation starts to hear it for the first time.</p>
+      <h2>Review it against reality</h2>
+      <p>Every few months, look at what actually shipped and ask whether it followed from the strategy or happened in spite of it. The gap between the two is the most honest measure of whether the strategy is working, and it is often the best place to find the next version.</p>
     </div>
   </article>
 </main>

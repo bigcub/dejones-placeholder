@@ -9,7 +9,7 @@ html:has(.notes-page), body.notes-page { overflow: auto; background: var(--paper
 .skip-link:focus { top: 8px; }
 .notes-landscape { height: 64px; background: linear-gradient(var(--paper),color-mix(in srgb,var(--wood-mist) 28%,var(--paper))); overflow: hidden; }
 .notes-landscape svg { width: 100%; height: 100%; opacity: .5; }
-.notes-index, .note-reader { max-width: 1000px; width: calc(100% - 80px); margin: 0 auto; padding: 64px 0 80px; }
+.notes-index, .note-reader { max-width: 720px; width: calc(100% - 80px); margin: 0 auto; padding: 64px 0 80px; }
 .notes-intro { max-width: 620px; }
 .note-category { display: block; margin: 0; font-size: .64rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--reading-muted); }
 .notes-page h1 { margin: 18px 0 20px; font: 400 clamp(2.5rem,5vw,4.2rem)/1.13 "Lora",serif; letter-spacing: -.045em; text-wrap: balance; }
@@ -20,17 +20,22 @@ html:has(.notes-page), body.notes-page { overflow: auto; background: var(--paper
 .note-index-link h2 { font: 400 1.55rem/1.35 "Lora",serif; letter-spacing: -.025em; max-width: 710px; margin: 10px 0; }
 .note-index-link p { color: var(--reading-muted); line-height: 1.7; max-width: 620px; font-size: .9rem; margin: 0; }
 .note-index-link:hover h2 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
-.notes-footer { border-top: 1px solid var(--reading-rule); padding: 28px max(24px,calc((100% - 1000px)/2)); display: flex; justify-content: space-between; gap: 20px; color: var(--reading-muted); font-size: .73rem; }
+.notes-footer { border-top: 1px solid var(--reading-rule); padding: 28px max(40px,calc((100% - 720px)/2)); display: flex; justify-content: space-between; gap: 20px; color: var(--reading-muted); font-size: .73rem; }
 .notes-footer a, .all-notes { color: inherit; text-decoration: none; }
 .notes-footer a:hover, .all-notes:hover { text-decoration: underline; text-underline-offset: 4px; }
 .all-notes { display: inline-block; margin-bottom: 38px; padding: 10px 0; color: var(--reading-muted); font-size: .82rem; }
-.note-reader { max-width: 720px; }
 .note-title { margin-bottom: 32px; }
 .note-title h1 { font-size: clamp(2.15rem,4.5vw,3.6rem); }
 .note-prose { max-width: 65ch; font: 1.06rem/1.85 "Lora",serif; }
 .note-prose [id] { scroll-margin-top: 32px; }
 .note-prose h2 { margin: 0 0 16px; font-weight: 400; font-size: 1.55rem; line-height: 1.35; letter-spacing: -.02em; }
 .note-prose p { margin: 0 0 22px; }
+/* Small drawings borrowed from the scenes can sit in the prose to carry a point. */
+.note-figure { margin: 34px 0 36px; }
+.note-figure svg { display: block; width: 100%; height: auto; overflow: visible; }
+.note-figure figcaption { margin-top: 4px; text-align: center; color: var(--reading-muted); font: italic .88rem/1.6 "Lora",serif; }
+.note-figure .boat-sail { stroke: color-mix(in srgb, var(--boat-hull) 40%, transparent); stroke-width: 1.2; stroke-linejoin: round; }
+.note-figure-waves { animation: wave-drift 9s ease-in-out infinite alternate; }
 @media (max-width: 700px) {
  .notes-landscape { height: 42px; }
  .notes-index, .note-reader { width: calc(100% - 40px); padding: 38px 0 50px; }
@@ -38,5 +43,5 @@ html:has(.notes-page), body.notes-page { overflow: auto; background: var(--paper
  .note-index-link h2 { font-size: 1.25rem; }
  .notes-deck { font-size: .96rem; }
  .note-prose { font-size: 1rem; }
- .notes-footer { flex-direction: column; }
+ .notes-footer { flex-direction: column; padding-inline: 20px; }
 }
