@@ -2281,7 +2281,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 :root {
   --w-sky-top: #95abc4; --w-sky-mid: #cdd9e4; --w-sky-low: #efe9e1; --w-sun: #fff6e6;
   --w-mountain: #b7c4d3; --w-mountain-shade: #8e9fb6; --w-snowcap: #f4f6f8;
-  --w-pine-far: #5d7079; --w-snow: #f3f5f7; --w-snow-shade: #c5d2e1; --w-snow-deep: #a7b8cd;
+  --w-pine-far: #7a9186; --w-pine-near: #3f5f50; --w-snow: #f3f5f7; --w-snow-shade: #c5d2e1; --w-snow-deep: #a7b8cd;
   --w-log: #7a5238; --w-log-dark: #5a3a28; --w-roof-snow: #fbfcfd; --w-stone: #8a8583;
   --w-birch: #e9e4da; --w-birch-mark: #3b3634; --w-birch-branch: #6b5552; --w-fence: #6b513d;
   --w-wood-end: #c1946a; --w-wood-ring: #6d4a32;
@@ -2289,7 +2289,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 [data-theme="dark"] {
   --w-sky-top: #0b1530; --w-sky-mid: #1b2c55; --w-sky-low: #3c5480; --w-sun: #eef0f6;
   --w-mountain: #2b4068; --w-mountain-shade: #1c2c4d; --w-snowcap: #8ea3c8;
-  --w-pine-far: #13223d; --w-snow: #9fb4d6; --w-snow-shade: #6c84ad; --w-snow-deep: #4d6591;
+  --w-pine-far: #1d3044; --w-pine-near: #10213a; --w-snow: #9fb4d6; --w-snow-shade: #6c84ad; --w-snow-deep: #4d6591;
   --w-log: #3b2c33; --w-log-dark: #261d25; --w-roof-snow: #b3c4e0; --w-stone: #343648;
   --w-birch: #8e9cb8; --w-birch-mark: #1d2233; --w-birch-branch: #1e2438; --w-fence: #2d2831;
   --w-wood-end: #4a3d44; --w-wood-ring: #261d25;
@@ -2313,8 +2313,13 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 .winter-ridge-shade { fill: var(--w-mountain-shade); opacity: .45; }
 .winter-hill { fill: color-mix(in srgb, var(--w-snow-shade) 70%, var(--w-mountain)); }
 .winter-hill-shade { fill: var(--w-snow-deep); opacity: .35; }
-.winter-pines { fill: var(--w-pine-far); }
-.winter-pine-snow { fill: var(--w-snowcap); stroke: var(--w-snowcap); stroke-width: 2; stroke-linecap: round; }
+/* Two rows of tiered pines, the far row softened by distance, each tier
+   carrying a line of snow. */
+.winter-pines.far { fill: var(--w-pine-far); }
+.winter-pines.near { fill: var(--w-pine-near); }
+.winter-pine-snow { fill: var(--w-snowcap); }
+.winter-pines.far .winter-pine-snow { opacity: .85; }
+.winter-trunks { fill: var(--w-log-dark); opacity: .7; }
 .winter-footprints { fill: var(--w-snow-deep); opacity: .55; }
 
 /* The cabin: logs, a thick overhang of roof snow, and warm windows. */
@@ -2362,17 +2367,20 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 .winter-sparkles path:nth-child(3n+1) { animation-delay: 3.1s; }
 @keyframes winter-sparkle { 0%, 70%, 100% { opacity: 0; } 82% { opacity: .9; } }
 
-/* Snow showers drift in now and then: two layers of flakes fall on a loop
-   inside a group that fades the shower in and out. */
-.winter-snowfall { opacity: 0; animation: winter-shower 60s ease-in-out infinite; }
+/* It snows all the time: fine flakes fall steadily, and every so often the
+   fall thickens as mid-sized and near flakes drift in, then eases again. */
 .winter-flakes { fill: #fff; animation: winter-sway 6s ease-in-out infinite alternate; }
 [data-theme="dark"] .winter-flakes { fill: #dfe8f7; }
-.winter-flakes.far { opacity: .75; }
+.winter-flakes.far { opacity: .9; }
+.winter-flakes.mid, .winter-flakes.near { opacity: 0; animation: winter-sway 6s ease-in-out infinite alternate, winter-thicken 50s ease-in-out infinite; }
+.winter-flakes.mid { animation-name: winter-sway, winter-thicken-mid; animation-duration: 7.5s, 50s; }
 .winter-flakes > g { animation: winter-fall 26s linear infinite; }
+.winter-flakes.mid > g { animation-duration: 20s; }
 .winter-flakes.near > g { animation-duration: 15s; }
 @keyframes winter-fall { from { transform: translateY(0); } to { transform: translateY(900px); } }
 @keyframes winter-sway { from { transform: translateX(-18px); } to { transform: translateX(18px); } }
-@keyframes winter-shower { 0%, 30% { opacity: 0; } 38%, 82% { opacity: 1; } 90%, 100% { opacity: 0; } }
+@keyframes winter-thicken { 0%, 30% { opacity: 0; } 42%, 78% { opacity: 1; } 90%, 100% { opacity: 0; } }
+@keyframes winter-thicken-mid { 0%, 30% { opacity: .45; } 42%, 78% { opacity: 1; } 90%, 100% { opacity: .45; } }
 
 @media (max-aspect-ratio: 6/5) {
   .scene-winter .winter-world { translate: 370px -230px; }
