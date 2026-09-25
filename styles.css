@@ -2148,7 +2148,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
    arm, a moored narrowboat, and a viaduct with a tram. After dark the
    windows, lamp and boats light up and glow on the water. */
 :root {
-  --canal-sky-top: #5c4a7a; --canal-sky-mid: #d68c86; --canal-sky-low: #f6c690; --canal-sun: #ffe7b4;
+  --canal-sky-top: #5c4a7a; --canal-sky-mid: #d68c86; --canal-sky-low: #f6c690; --canal-sun: #ffc27e;
   --canal-far: #c49a9f; --canal-brick-lit: #b8664c; --canal-brick: #94503f; --canal-brick-shade: #6a3a33;
   --canal-stone: #dcc6a6; --canal-roof: #5a4a54; --canal-window: #43333b; --canal-iron: #2c2b30;
   --canal-water-top: #d9a492; --canal-water-deep: #4f6070; --canal-towpath: #bba68c; --canal-verge: #6d7a5c;
@@ -2173,9 +2173,10 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 [data-scene="canal"] .coordinate-meadow, [data-scene="canal"] .coordinate-ocean, [data-scene="canal"] .coordinate-tarn, [data-scene="canal"] .coordinate-forest, [data-scene="canal"] .coordinate-desert { display: none; }
 [data-scene="canal"] .coordinate-canal { display: block; }
 
-/* The low sun sets behind the viaduct; by night it becomes a higher moon. */
+/* The low sun hangs in the gap between the warehouses; by night the moon
+   rides higher in the same gap. */
 .canal-sun { transition: translate .8s ease; }
-[data-theme="dark"] .canal-sun { translate: 0 -190px; }
+[data-theme="dark"] .canal-sun { translate: 0 -150px; }
 
 .canal-far { fill: var(--canal-far); }
 .canal-city-lights, .canal-beacon { opacity: 0; transition: opacity .8s ease; }
@@ -2228,16 +2229,27 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 @keyframes canal-shimmer { from { transform: translateX(-2px); } to { transform: translateX(2px); } }
 .canal-ripples { fill: none; stroke: var(--canal-sky-low); stroke-width: 1.4; stroke-linecap: round; opacity: .35; animation: wave-drift 12s ease-in-out infinite alternate; }
 .canal-lamp-pool { fill: var(--window); opacity: 0; transition: opacity .8s ease; }
+/* Lit windows and the low sun break into shimmering streaks on the water. */
+.canal-window-streaks { fill: none; stroke: #f5edc9; stroke-width: 1.8; stroke-linecap: round; opacity: 0; transition: opacity .8s ease; }
+[data-theme="dark"] .canal-window-streaks { opacity: .26; animation: canal-streaks 4.8s ease-in-out infinite alternate; }
+@keyframes canal-streaks { from { opacity: .22; transform: translateX(-1px); } to { opacity: .3; transform: translateX(1px); } }
+.canal-sun-glitter { fill: none; stroke: var(--canal-sun); stroke-width: 3; stroke-linecap: round; opacity: .55; animation: shimmer 5s ease-in-out infinite; transition: opacity .8s ease; }
+[data-theme="dark"] .canal-sun-glitter { opacity: 0; animation: none; }
+/* By night the crescent moon is mirrored in the canal, sliced by ripples. */
+.canal-moon-reflection { opacity: 0; transition: opacity .8s ease; }
+[data-theme="dark"] .canal-moon-reflection { opacity: .42; }
+.canal-moon-waver { animation: canal-moon-waver 5s ease-in-out infinite alternate; }
+@keyframes canal-moon-waver { from { transform: translateX(-2px); } to { transform: translateX(2px); } }
 [data-theme="dark"] .canal-lamp-pool { opacity: .3; }
 
-/* A tram crosses the viaduct and slips behind the warehouse. */
+/* A tram crosses the whole viaduct, passing behind both warehouses. */
 .canal-tram { transform: translate(1760px, 452px); animation: canal-tram 36s linear infinite; }
 .tram-body { fill: var(--tram-yellow); }
 .tram-band { fill: none; stroke: var(--tram-grey); stroke-width: 4; }
 .tram-windows { fill: #394049; transition: fill .8s ease; }
 [data-theme="dark"] .tram-windows { fill: var(--window); }
 .tram-pole { fill: none; stroke: var(--canal-iron); stroke-width: 1.5; stroke-linecap: round; }
-@keyframes canal-tram { 0%, 55% { transform: translate(1760px, 452px); } 88%, 100% { transform: translate(660px, 452px); } }
+@keyframes canal-tram { 0%, 35% { transform: translate(1760px, 452px); } 94%, 100% { transform: translate(-220px, 452px); } }
 
 /* Another narrowboat slowly passes along the canal. */
 .canal-passing { transform: translate(-420px, 700px); animation: canal-pass 96s linear infinite; }
@@ -2259,8 +2271,8 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
    bridge and moored boat into the centre crop, with the sun or moon above. */
 @media (max-aspect-ratio: 6/5) {
   .scene-canal .canal-world { translate: 340px -230px; }
-  .scene-canal .canal-sun { translate: -180px -150px; }
-  [data-theme="dark"] .scene-canal .canal-sun { translate: -180px -300px; }
+  .scene-canal .canal-sun { translate: 340px -180px; }
+  [data-theme="dark"] .scene-canal .canal-sun { translate: 340px -200px; }
 }
 
 /* Braemar in winter: a snowbound cabin between bare birches, snowy pines and
