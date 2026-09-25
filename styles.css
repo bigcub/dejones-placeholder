@@ -601,8 +601,11 @@ button:focus-visible {
   fill: none;
   stroke: var(--fence);
   stroke-linecap: round;
-  stroke-width: 8;
 }
+
+.fence-post { stroke-width: 6.5; }
+.fence-post-lit { stroke: color-mix(in srgb, var(--path-a) 45%, var(--fence)); stroke-width: 1.6; opacity: .7; }
+.fence-rail { stroke-width: 3.6; }
 
 .fox-route {
   animation: fox-cross 38s linear infinite;
@@ -635,6 +638,53 @@ button:focus-visible {
   transform-origin: 12px 18px;
   animation: fox-tail-sway 1.44s ease-in-out infinite alternate;
 }
+/* A roe buck shares the fox's 38s cycle. He walks in from the left once the
+   fox has gone, grazes, looks up as the fox is due, and bounds away over the
+   rise just before it trots through. Three leg poses swap on the same clock. */
+.deer-route { opacity: 0; animation: deer-route 38s linear infinite; }
+.deer-coat { fill: url(#deerCoat); }
+.deer-belly { fill: #d2a57a; opacity: .8; }
+.deer-rump { fill: #f2e8d6; }
+.deer-leg-near { fill: #8a5738; }
+.deer-leg-far { fill: #6c432d; }
+.deer-hoof, .deer-muzzle, .deer-eye { fill: #2a221f; }
+.deer-ear { fill: #9a5f3b; }
+.deer-inner-ear { fill: #5a3a2c; }
+.deer-antler { fill: none; stroke: #d8c7a2; stroke-width: 1.6; stroke-linecap: round; }
+.deer-head { transform-box: view-box; transform-origin: 56px 8px; animation: deer-head 38s ease-in-out infinite; }
+.deer-hind { transform-origin: 12px 16px; }
+.deer-front { transform-origin: 53px 16px; }
+.deer-stride { transform-box: view-box; animation: deer-stride .55s ease-in-out infinite alternate; }
+.deer-stride.reverse { animation-direction: alternate-reverse; }
+.deer-legs-walk { animation: deer-legs-walk 38s linear infinite; }
+.deer-legs-stand { animation: deer-legs-stand 38s linear infinite; }
+.deer-legs-bound { animation: deer-legs-bound 38s linear infinite; }
+@keyframes deer-route {
+  0%, 10% { opacity: 1; transform: translate(170px, 590px) scale(.9); }
+  11.5% { transform: translate(215px, 566px) scale(.9); }
+  13% { transform: translate(262px, 588px) scale(.9); }
+  14.5% { transform: translate(310px, 564px) scale(.9); }
+  16% { transform: translate(358px, 584px) scale(.88); }
+  17% { opacity: 1; transform: translate(390px, 568px) scale(.86); }
+  18.5% { opacity: 0; transform: translate(425px, 576px) scale(.84); }
+  19%, 81% { opacity: 0; transform: translate(-90px, 592px) scale(.9); }
+  82% { opacity: 1; transform: translate(-70px, 592px) scale(.9); }
+  90%, 100% { opacity: 1; transform: translate(170px, 590px) scale(.9); }
+}
+@keyframes deer-head {
+  0%, 5% { transform: rotate(112deg); }
+  6.5%, 10% { transform: rotate(0deg); }
+  11%, 81% { transform: rotate(-6deg); }
+  82%, 90% { transform: rotate(14deg); }
+  92.5%, 95% { transform: rotate(112deg); }
+  96.5%, 98% { transform: rotate(28deg); }
+  99.5%, 100% { transform: rotate(112deg); }
+}
+@keyframes deer-stride { from { transform: rotate(-14deg); } to { transform: rotate(14deg); } }
+@keyframes deer-legs-walk { 0%, 80.9% { opacity: 0; } 81%, 89.9% { opacity: 1; } 90%, 100% { opacity: 0; } }
+@keyframes deer-legs-stand { 0%, 9.9% { opacity: 1; } 10%, 89.9% { opacity: 0; } 90%, 100% { opacity: 1; } }
+@keyframes deer-legs-bound { 0%, 9.9% { opacity: 0; } 10%, 18.5% { opacity: 1; } 18.6%, 100% { opacity: 0; } }
+
 @keyframes fox-stride {
   from { transform: rotate(-10deg); }
   to { transform: rotate(10deg); }
@@ -745,6 +795,14 @@ button:focus-visible {
   stroke: none;
 }
 
+.wildflowers use { stroke: none; }
+.wildflowers path { fill: none; stroke-width: 2.2; }
+.bloom-eye { fill: color-mix(in srgb, var(--sun) 70%, var(--flower)); }
+
+.rabbit-inner-ear { fill: color-mix(in srgb, var(--flower) 50%, var(--path-a)); opacity: .7; }
+.rabbit-haunch { fill: none; stroke: color-mix(in srgb, var(--field-d) 45%, transparent); stroke-width: 1.2; stroke-linecap: round; }
+.rabbit-eye { fill: var(--field-d); }
+
 .flower-sway {
   transform-box: fill-box;
   transform-origin: 50% 100%;
@@ -767,6 +825,11 @@ button:focus-visible {
 
 :root:not([data-theme="dark"]) .bee-route {
   animation: bee-route 28s ease-in-out infinite;
+}
+
+/* A second bee works the flowers on the left, on its own cycle. */
+:root:not([data-theme="dark"]) .bee-route-two {
+  animation: bee-route-two 34s ease-in-out 9s infinite;
 }
 
 .bee {
@@ -819,6 +882,12 @@ button:focus-visible {
   animation-duration: 7.6s;
   animation-delay: 1.1s;
 }
+
+/* The meadow's grass is drawn as tapered blades rather than stroked lines. */
+.meadow-grass { fill: color-mix(in srgb, var(--field-d) 90%, transparent); }
+.meadow-grass .thin { fill: color-mix(in srgb, var(--field-d) 70%, var(--field-b)); }
+.meadow-grass path { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 6.6s ease-in-out infinite alternate; }
+.meadow-grass-right path { animation-duration: 7.6s; animation-delay: 1.1s; }
 
 .scene-ocean .grass {
   stroke: color-mix(in srgb, var(--sand-b) 45%, var(--field-d));
@@ -1405,6 +1474,45 @@ button:focus-visible {
   }
 }
 
+@keyframes bee-route-two {
+  0%,
+  8% {
+    opacity: 0;
+    transform: translate(-60px, 640px) scale(1, 1);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(70px, 692px) scale(1, 1);
+  }
+  22% {
+    transform: translate(200px, 730px) scale(1, 1);
+  }
+  30% {
+    transform: translate(204px, 727px) scale(1, 1);
+  }
+  38% {
+    transform: translate(156px, 762px) scale(-1, 1);
+  }
+  46% {
+    transform: translate(160px, 758px) scale(-1, 1);
+  }
+  56% {
+    transform: translate(338px, 790px) scale(1, 1);
+  }
+  64% {
+    transform: translate(342px, 786px) scale(-1, 1);
+  }
+  78% {
+    opacity: 1;
+    transform: translate(190px, 690px) scale(-1, 1);
+  }
+  90%,
+  100% {
+    opacity: 0;
+    transform: translate(-80px, 620px) scale(-1, 1);
+  }
+}
+
 @keyframes bee-bob {
   from {
     transform: translateY(-2.5px);
@@ -1613,6 +1721,8 @@ button:focus-visible {
   .theme-toggle, .scene-toggle, .linkedin-link, .nav-link { width: 34px; height: 34px; flex-shrink: 0; }
   .scene { width: 100%; transform: none; }
   .scene-meadow { width: 140%; transform: translateX(-28%); }
+  /* The phone crop is tight on the left, so the tree keeps its old place. */
+  .scene-meadow .tree > g { translate: 44px 0; }
   .sun-wrap { translate: -360px 0; }
   .water-reflection, .sea-glint { translate: -360px 0; }
 }
