@@ -32,7 +32,7 @@
           : "light";
         document.documentElement.dataset.theme = savedTheme || preferredTheme;
         const savedScene = localStorage.getItem("scene");
-        document.documentElement.dataset.scene = ["meadow", "ocean", "tarn", "forest", "desert"].includes(savedScene) ? savedScene : "forest";
+        document.documentElement.dataset.scene = ["meadow", "ocean", "tarn", "forest", "desert", "canal"].includes(savedScene) ? savedScene : "forest";
       })();
     </script>
   </head>
@@ -78,7 +78,7 @@
               <path d="M2 18.5c2.4-2.4 4.8-2.4 7.2 0s4.8 2.4 7.2 0 3.4-2 5.6-.4"></path>
             </svg>
             <svg class="forest-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2-5 8h3l-5 7h5v5m4 0v-5h5l-5-7h3Z"/></svg>
-            <svg class="mountain-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m2 19 7-13 5 9 3-6 5 10ZM6 12l3 2 3-2M3 22h18"/></svg><svg class="desert-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21h20M5.5 21v-6h13v6M5.5 15a6.5 6.5 0 0 1 13 0M13.5 10.5 17 5M10 21v-3h3v3"/></svg>
+            <svg class="mountain-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m2 19 7-13 5 9 3-6 5 10ZM6 12l3 2 3-2M3 22h18"/></svg><svg class="desert-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21h20M5.5 21v-6h13v6M5.5 15a6.5 6.5 0 0 1 13 0M13.5 10.5 17 5M10 21v-3h3v3"/></svg><svg class="canal-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 16h20M4 16c0-4.4 3.6-8 8-8s8 3.6 8 8M8 16a4 4 0 0 1 8 0M3 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/></svg>
           </button>
           <button
             class="theme-toggle"
@@ -1081,6 +1081,169 @@
           <rect class="paper-grain" width="1600" height="900" filter="url(#grain)"/>
         </svg>
 
+        <svg class="scene scene-canal" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="A narrowboat moored on a Manchester canal at dusk" aria-describedby="canal-desc">
+          <desc id="canal-desc">An imagined corner of Manchester's canals at dusk. Brick warehouses stand along a canal, a humped brick bridge carries the towpath over the mouth of a canal arm, and a narrowboat is moored along the quay. A railway viaduct runs behind with a tram crossing it. Another narrowboat slowly passes, and after dark the windows, the lamp and the boats glow on the water.</desc>
+          <defs>
+            <linearGradient id="canalSky" x2="0" y2="1"><stop stop-color="var(--canal-sky-top)"/><stop offset=".45" stop-color="var(--canal-sky-mid)"/><stop offset=".66" stop-color="var(--canal-sky-low)"/></linearGradient>
+            <radialGradient id="canalHalo"><stop stop-color="var(--canal-sun)" stop-opacity=".55"/><stop offset=".4" stop-color="var(--canal-sun)" stop-opacity=".16"/><stop offset="1" stop-color="var(--canal-sun)" stop-opacity="0"/></radialGradient>
+            <linearGradient id="canalWater" x2="0" y2="1"><stop stop-color="var(--canal-water-top)"/><stop offset="1" stop-color="var(--canal-water-deep)"/></linearGradient>
+            <linearGradient id="canalBrick" x2="0" y2="1"><stop stop-color="var(--canal-brick-lit)"/><stop offset="1" stop-color="var(--canal-brick)"/></linearGradient>
+            <linearGradient id="canalArm" x2="0" y2="1"><stop stop-color="var(--canal-brick-shade)"/><stop offset="1" stop-color="var(--canal-water-deep)"/></linearGradient>
+            <linearGradient id="canalTowpath" x2="0" y2="1"><stop stop-color="var(--canal-towpath)"/><stop offset="1" stop-color="var(--canal-verge)"/></linearGradient>
+            <filter id="canalSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+            <filter id="canalGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="14"/></filter>
+            <filter id="canalReflect" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="1.4"/></filter>
+            <mask id="canalMoon" maskUnits="userSpaceOnUse" x="1040" y="340" width="180" height="180"><rect x="1040" y="340" width="180" height="180" fill="white"/><circle class="moon-mask" cx="1142" cy="410" r="40" fill="black"/></mask>
+            <clipPath id="canalWaterClip"><rect x="-80" y="612" width="1760" height="172"/></clipPath>
+          </defs>
+
+          <rect width="1600" height="900" fill="url(#canalSky)"/>
+          <g class="stars" aria-hidden="true"><circle cx="140" cy="90" r="1.2"/><circle cx="320" cy="170" r="1"/><circle cx="520" cy="80" r="1.3"/><circle cx="700" cy="150" r="1"/><circle cx="860" cy="70" r="1.2"/><circle cx="1010" cy="130" r="1"/><circle cx="1390" cy="100" r="1.2"/><circle cx="1520" cy="190" r="1"/></g>
+
+          <g class="parallax" data-depth=".15" aria-hidden="true">
+            <g class="canal-sun">
+              <circle cx="1120" cy="430" r="190" fill="url(#canalHalo)"/>
+              <circle cx="1120" cy="430" r="40" fill="var(--canal-sun)" mask="url(#canalMoon)"/>
+            </g>
+          </g>
+
+          <g class="canal-world">
+            <g class="parallax" data-depth=".05" aria-hidden="true">
+              <path class="canal-far" d="M1250 600V300h-4v-140h44v140h-8V600Z"/>
+              <path class="canal-far" d="M900 600V528h46v-14h30v14h40v-30h34v30h52v-18h40v18H1240V600ZM1296 600V512h38v-20h44v20h36v-12h40v12h52v-26h38v26h56V600Z"/>
+              <g class="canal-city-lights"><circle cx="924" cy="540" r="1.1" /><circle cx="956" cy="546" r="1.1" /><circle cx="1004" cy="536" r="1.1" /><circle cx="1046" cy="514" r="1.1" /><circle cx="1092" cy="532" r="1.1" /><circle cx="1150" cy="540" r="1.1" /><circle cx="1190" cy="546" r="1.1" /><circle cx="1318" cy="528" r="1.1" /><circle cx="1352" cy="508" r="1.1" /><circle cx="1396" cy="522" r="1.1" /><circle cx="1446" cy="514" r="1.1" /><circle cx="1500" cy="530" r="1.1" /><circle cx="1540" cy="502" r="1.1" /><circle cx="1580" cy="522" r="1.1" /><circle cx="1258" cy="200" r="1" /><circle cx="1272" cy="236" r="1" /><circle cx="1262" cy="284" r="1" /><circle cx="1270" cy="330" r="1" /><circle cx="1258" cy="372" r="1" /><circle cx="1276" cy="420" r="1" /><circle cx="1264" cy="462" r="1" /></g>
+              <circle class="canal-beacon" cx="1268" cy="156" r="2"/>
+            </g>
+
+            <g class="parallax" data-depth=".1" aria-hidden="true">
+              <g class="canal-tram">
+                <path class="tram-body" d="M0 0V-22C0-25 3-27 6-27H144C147-27 150-25 150-22V0Z"/>
+                <path class="tram-band" d="M0-6H150"/>
+                <path class="tram-windows" d="M10-22h18v9H10ZM34-22h18v9H34ZM58-22h14v9H58ZM78-22h14v9H78ZM98-22h18v9H98ZM122-22h18v9h-18Z"/>
+                <path class="tram-pole" d="M66-27 80-38H96"/>
+              </g>
+              <path class="canal-viaduct" fill-rule="evenodd" d="M640 452H1700V600H640ZM650 600V532a32 32 0 0 1 64 0V600ZM734 600V532a32 32 0 0 1 64 0V600ZM818 600V532a32 32 0 0 1 64 0V600ZM902 600V532a32 32 0 0 1 64 0V600ZM986 600V532a32 32 0 0 1 64 0V600ZM1070 600V532a32 32 0 0 1 64 0V600ZM1154 600V532a32 32 0 0 1 64 0V600ZM1238 600V532a32 32 0 0 1 64 0V600ZM1322 600V532a32 32 0 0 1 64 0V600ZM1406 600V532a32 32 0 0 1 64 0V600ZM1490 600V532a32 32 0 0 1 64 0V600ZM1574 600V532a32 32 0 0 1 64 0V600ZM1658 600V532a32 32 0 0 1 64 0V600Z"/>
+              <path class="canal-viaduct-deck" d="M640 452H1700"/>
+            </g>
+
+            <g class="parallax" data-depth=".15" aria-hidden="true">
+              <g id="canalMills">
+                <path class="canal-roof" d="M34 300 58 272H452L476 300Z"/>
+                <path class="canal-brick" d="M40 300H470V600H40Z"/>
+                <path class="canal-courses" d="M40 356H470M40 404H470M40 452H470M40 500H470M40 548H470"/>
+                <path class="canal-hoist" d="M230 300V262H282V300M226 266 256 250 286 266"/>
+                <path class="canal-doors" d="M240 316h32v30h-32ZM240 364h32v30h-32ZM240 412h32v30h-32ZM240 460h32v30h-32Z"/>
+                <path class="canal-window" d="M70 352V331a9 9 0 0 1 18 0V352Z" /><path class="canal-window" d="M114 352V331a9 9 0 0 1 18 0V352Z" /><path class="canal-window" d="M158 352V331a9 9 0 0 1 18 0V352Z" /><path class="canal-window" d="M202 352V331a9 9 0 0 1 18 0V352Z" /><path class="canal-window" d="M290 352V331a9 9 0 0 1 18 0V352Z" /><path class="canal-window" d="M334 352V331a9 9 0 0 1 18 0V352Z" /><path class="canal-window lit" d="M378 352V331a9 9 0 0 1 18 0V352Z" /><path class="canal-window" d="M422 352V331a9 9 0 0 1 18 0V352Z" /><path class="canal-window" d="M466 352V331a9 9 0 0 1 18 0V352Z" /><path class="canal-window lit" d="M70 400V379a9 9 0 0 1 18 0V400Z" /><path class="canal-window lit" d="M114 400V379a9 9 0 0 1 18 0V400Z" /><path class="canal-window" d="M158 400V379a9 9 0 0 1 18 0V400Z" /><path class="canal-window lit" d="M202 400V379a9 9 0 0 1 18 0V400Z" /><path class="canal-window" d="M290 400V379a9 9 0 0 1 18 0V400Z" /><path class="canal-window" d="M334 400V379a9 9 0 0 1 18 0V400Z" /><path class="canal-window" d="M378 400V379a9 9 0 0 1 18 0V400Z" /><path class="canal-window lit flicker" d="M422 400V379a9 9 0 0 1 18 0V400Z" /><path class="canal-window" d="M466 400V379a9 9 0 0 1 18 0V400Z" /><path class="canal-window lit flicker" d="M70 448V427a9 9 0 0 1 18 0V448Z" /><path class="canal-window lit flicker" d="M114 448V427a9 9 0 0 1 18 0V448Z" /><path class="canal-window" d="M158 448V427a9 9 0 0 1 18 0V448Z" /><path class="canal-window lit" d="M202 448V427a9 9 0 0 1 18 0V448Z" /><path class="canal-window" d="M290 448V427a9 9 0 0 1 18 0V448Z" /><path class="canal-window" d="M334 448V427a9 9 0 0 1 18 0V448Z" /><path class="canal-window" d="M378 448V427a9 9 0 0 1 18 0V448Z" /><path class="canal-window" d="M422 448V427a9 9 0 0 1 18 0V448Z" /><path class="canal-window" d="M466 448V427a9 9 0 0 1 18 0V448Z" /><path class="canal-window lit" d="M70 496V475a9 9 0 0 1 18 0V496Z" /><path class="canal-window" d="M114 496V475a9 9 0 0 1 18 0V496Z" /><path class="canal-window" d="M158 496V475a9 9 0 0 1 18 0V496Z" /><path class="canal-window" d="M202 496V475a9 9 0 0 1 18 0V496Z" /><path class="canal-window lit flicker" d="M290 496V475a9 9 0 0 1 18 0V496Z" /><path class="canal-window lit flicker" d="M334 496V475a9 9 0 0 1 18 0V496Z" /><path class="canal-window" d="M378 496V475a9 9 0 0 1 18 0V496Z" /><path class="canal-window lit" d="M422 496V475a9 9 0 0 1 18 0V496Z" /><path class="canal-window lit" d="M466 496V475a9 9 0 0 1 18 0V496Z" /><path class="canal-window" d="M70 544V523a9 9 0 0 1 18 0V544Z" /><path class="canal-window lit flicker" d="M114 544V523a9 9 0 0 1 18 0V544Z" /><path class="canal-window" d="M158 544V523a9 9 0 0 1 18 0V544Z" /><path class="canal-window" d="M202 544V523a9 9 0 0 1 18 0V544Z" /><path class="canal-window" d="M290 544V523a9 9 0 0 1 18 0V544Z" /><path class="canal-window lit flicker" d="M334 544V523a9 9 0 0 1 18 0V544Z" /><path class="canal-window" d="M378 544V523a9 9 0 0 1 18 0V544Z" /><path class="canal-window" d="M422 544V523a9 9 0 0 1 18 0V544Z" /><path class="canal-window lit flicker" d="M466 544V523a9 9 0 0 1 18 0V544Z" />
+                <path class="canal-brick" d="M640 400H900V600H640Z"/>
+                <path class="canal-parapet" d="M636 400H904V392H636Z"/>
+                <path class="canal-courses" d="M640 456H900M640 500H900M640 544H900"/>
+                <path class="canal-window lit" d="M664 454V435a9 9 0 0 1 18 0V454Z" /><path class="canal-window" d="M704 454V435a9 9 0 0 1 18 0V454Z" /><path class="canal-window lit flicker" d="M744 454V435a9 9 0 0 1 18 0V454Z" /><path class="canal-window lit flicker" d="M784 454V435a9 9 0 0 1 18 0V454Z" /><path class="canal-window" d="M824 454V435a9 9 0 0 1 18 0V454Z" /><path class="canal-window lit" d="M864 454V435a9 9 0 0 1 18 0V454Z" /><path class="canal-window lit flicker" d="M664 498V479a9 9 0 0 1 18 0V498Z" /><path class="canal-window" d="M704 498V479a9 9 0 0 1 18 0V498Z" /><path class="canal-window lit" d="M744 498V479a9 9 0 0 1 18 0V498Z" /><path class="canal-window lit" d="M784 498V479a9 9 0 0 1 18 0V498Z" /><path class="canal-window lit" d="M824 498V479a9 9 0 0 1 18 0V498Z" /><path class="canal-window" d="M864 498V479a9 9 0 0 1 18 0V498Z" /><path class="canal-window" d="M664 542V523a9 9 0 0 1 18 0V542Z" /><path class="canal-window lit" d="M704 542V523a9 9 0 0 1 18 0V542Z" /><path class="canal-window lit" d="M744 542V523a9 9 0 0 1 18 0V542Z" /><path class="canal-window" d="M784 542V523a9 9 0 0 1 18 0V542Z" /><path class="canal-window" d="M824 542V523a9 9 0 0 1 18 0V542Z" /><path class="canal-window lit" d="M864 542V523a9 9 0 0 1 18 0V542Z" />
+              </g>
+            </g>
+
+            <g class="parallax" data-depth=".22" aria-hidden="true">
+              <g id="canalBridge">
+                <path d="M460 612V600Q520 552 580 600V612Z" fill="url(#canalArm)"/>
+                <path class="canal-arm-light" d="M512 596h16v10h-16Z"/>
+                <path class="canal-quay" d="M-60 596H462V612H-60ZM578 596H1660V612H578Z"/>
+                <path class="canal-coping" d="M-60 596H462M578 596H1660"/>
+                <path class="canal-brick" fill-rule="evenodd" d="M400 612V590C440 575 480 552 520 548 560 552 600 575 640 590V612ZM460 612V600Q520 552 580 600V612Z"/>
+                <path class="canal-voussoirs" d="M460 600Q520 552 580 600"/>
+                <path class="canal-coping bridge" d="M398 590C440 575 480 552 520 548 560 552 600 575 642 590"/>
+                <path class="canal-courses" d="M408 600H452M588 600H632M420 588H468M572 588H620"/>
+              </g>
+            </g>
+
+            <g class="parallax" data-depth=".25" aria-hidden="true">
+              <g id="canalMoored" transform="translate(90 628)">
+                <g class="narrowboat moored">
+                <path class="nb-rail" d="M0-20V-30H26V-20M6-28-14-36" />
+                <path class="nb-chimney" d="M58-46V-60" />
+                <path class="nb-brass" d="M58-55V-53M58-49V-47" />
+                <path class="nb-cabin" d="M30-20V-40C30-44 32-46 36-46H226C230-46 232-44 232-40V-20Z" />
+                <path class="nb-panel" d="M40-24V-40H222V-24Z" />
+                <rect class="nb-window" x="56" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="84" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="112" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="140" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="168" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="196" y="-38" width="14" height="8" rx="2.5" />
+                <path class="nb-cratch" d="M232-20H262L240-40Z" />
+                <path class="nb-hull" d="M0-20H270C280-20 286-14 288-8L284 0H6C2-4 0-12 0-20Z" />
+                <path class="nb-strake" d="M2-17H276" />
+                <path class="nb-pots" d="M150-46c2-6 8-6 10 0M166-46c1-4 6-5 8 0" />
+                <circle class="nb-lamp" cx="284" cy="-14" r="2.2" />
+              </g>
+              </g>
+              <g class="canal-smoke" transform="translate(148 568)"><path d="M0 0c-8-12 8-18 0-30-6-9 2-15 7-20"/></g>
+              <path class="canal-rope" d="M376 616C384 614 392 606 398 598"/>
+            </g>
+
+            <g class="canal-water" aria-hidden="true">
+              <rect x="-80" y="612" width="1760" height="172" fill="url(#canalWater)"/>
+              <g clip-path="url(#canalWaterClip)">
+                <g class="parallax" data-depth=".15"><g class="canal-reflection"><use href="#canalMills" transform="translate(0 1224) scale(1 -1)"/></g></g>
+                <g class="parallax" data-depth=".22"><g class="canal-reflection"><use href="#canalBridge" transform="translate(0 1224) scale(1 -1)"/></g></g>
+                <g class="parallax" data-depth=".25"><g class="canal-reflection"><use href="#canalMoored" transform="translate(0 1256) scale(1 -1)"/></g></g>
+                <ellipse class="canal-lamp-pool" cx="760" cy="770" rx="130" ry="14" filter="url(#canalGlow)"/>
+                <g class="canal-ripples">
+                  <path d="M40 640h120M260 652h90M520 636h70M700 660h140M980 646h110M1240 658h150M1480 640h90M120 690h160M420 700h120M660 720h90M900 700h160M1180 716h120M1420 696h140M60 740h110M320 752h150M600 766h120M860 748h140M1120 762h100M1360 744h160"/>
+                </g>
+              </g>
+            </g>
+
+            <g class="parallax" data-depth=".45" aria-hidden="true">
+              <g class="canal-passing">
+                <g transform="scale(1.2)">
+                  <g class="canal-wake"><path d="M-12 2H-70M-16 5H-100M-10 8H-54"/></g>
+                  <g class="canal-passing-reflection" transform="scale(1 -1)"><g class="narrowboat passing">
+                <path class="nb-rail" d="M0-20V-30H26V-20M6-28-14-36" />
+                <path class="nb-chimney" d="M58-46V-60" />
+                <path class="nb-brass" d="M58-55V-53M58-49V-47" />
+                <path class="nb-cabin" d="M30-20V-40C30-44 32-46 36-46H226C230-46 232-44 232-40V-20Z" />
+                <path class="nb-panel" d="M40-24V-40H222V-24Z" />
+                <rect class="nb-window" x="56" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="84" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="112" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="140" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="168" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="196" y="-38" width="14" height="8" rx="2.5" />
+                <path class="nb-cratch" d="M232-20H262L240-40Z" />
+                <path class="nb-hull" d="M0-20H270C280-20 286-14 288-8L284 0H6C2-4 0-12 0-20Z" />
+                <path class="nb-strake" d="M2-17H276" />
+                <path class="nb-pots" d="M150-46c2-6 8-6 10 0M166-46c1-4 6-5 8 0" />
+                <circle class="nb-lamp" cx="284" cy="-14" r="2.2" />
+              </g></g>
+                  <g class="narrowboat passing">
+                <path class="nb-rail" d="M0-20V-30H26V-20M6-28-14-36" />
+                <path class="nb-chimney" d="M58-46V-60" />
+                <path class="nb-brass" d="M58-55V-53M58-49V-47" />
+                <path class="nb-cabin" d="M30-20V-40C30-44 32-46 36-46H226C230-46 232-44 232-40V-20Z" />
+                <path class="nb-panel" d="M40-24V-40H222V-24Z" />
+                <rect class="nb-window" x="56" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="84" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="112" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="140" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="168" y="-38" width="14" height="8" rx="2.5" /><rect class="nb-window" x="196" y="-38" width="14" height="8" rx="2.5" />
+                <path class="nb-cratch" d="M232-20H262L240-40Z" />
+                <path class="nb-hull" d="M0-20H270C280-20 286-14 288-8L284 0H6C2-4 0-12 0-20Z" />
+                <path class="nb-strake" d="M2-17H276" />
+                <path class="nb-pots" d="M150-46c2-6 8-6 10 0M166-46c1-4 6-5 8 0" />
+                <circle class="nb-lamp" cx="284" cy="-14" r="2.2" />
+              </g>
+                  <circle class="nb-headlamp" cx="288" cy="-12" r="10" filter="url(#canalSoft)"/>
+                </g>
+              </g>
+            </g>
+
+            <g class="parallax" data-depth=".7" aria-hidden="true">
+              <path class="canal-coping near" d="M-80 782H1680V792H-80Z"/>
+              <path class="canal-quay near" d="M-80 792H1680V802H-80Z"/>
+              <path d="M-80 802H1680V1400H-80Z" fill="url(#canalTowpath)"/>
+              <path class="canal-pebbles" d="M120 830h3M260 846h2M410 824h3M540 858h2M690 838h3M880 852h2M1040 830h3M1210 848h2M1380 834h3M1530 856h2"/>
+              <path class="canal-bollard" d="M318 812H342V796C342 790 318 790 318 796Z"/>
+              <path class="canal-bollard" d="M314 796H346V790H314Z"/>
+              <g class="canal-lamp">
+                <circle class="canal-lamp-glow" cx="760" cy="676" r="46" filter="url(#canalGlow)"/>
+                <path class="canal-lamp-post" d="M760 846V690"/>
+                <path class="canal-lamp-base" d="M750 848H770L766 826H754Z"/>
+                <path class="canal-lamp-glass" d="M748 690H772L768 668H752Z"/>
+                <path class="canal-lamp-base" d="M744 668H776L760 656Z"/>
+                <path class="canal-lamp-post" d="M745 690H775"/>
+              </g>
+              <g class="canal-weeds"><path d="M40 900q-4-40-26-70m34 70q6-46 30-76m-14 76q16-30 44-44M1500 900q4-42 28-72m-18 72q-10-40-36-60m50 60q10-34 34-50"/></g>
+            </g>
+          </g>
+          <rect class="paper-grain" width="1600" height="900" filter="url(#grain)"/>
+        </svg>
+
+        <p class="scene-coordinate coordinate-canal" aria-hidden="true">Manchester, UK · 53.5° N · 2.3° W</p>
         <p class="scene-coordinate coordinate-desert" aria-hidden="true">Merthyr Mawr, UK · 51.5° N · 3.6° W</p>
         <p class="scene-coordinate coordinate-forest" aria-hidden="true">Kielder Forest, UK · 55.2° N · 2.5° W</p>
         <p class="scene-coordinate coordinate-tarn" aria-hidden="true">Blea Tarn, UK · 54.4° N · 3.1° W</p>
@@ -1127,7 +1290,7 @@
               <path d="M2 18.5c2.4-2.4 4.8-2.4 7.2 0s4.8 2.4 7.2 0 3.4-2 5.6-.4"></path>
             </svg>
               <svg class="forest-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2-5 8h3l-5 7h5v5m4 0v-5h5l-5-7h3Z"/></svg>
-              <svg class="mountain-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m2 19 7-13 5 9 3-6 5 10ZM6 12l3 2 3-2M3 22h18"/></svg><svg class="desert-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21h20M5.5 21v-6h13v6M5.5 15a6.5 6.5 0 0 1 13 0M13.5 10.5 17 5M10 21v-3h3v3"/></svg>
+              <svg class="mountain-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m2 19 7-13 5 9 3-6 5 10ZM6 12l3 2 3-2M3 22h18"/></svg><svg class="desert-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21h20M5.5 21v-6h13v6M5.5 15a6.5 6.5 0 0 1 13 0M13.5 10.5 17 5M10 21v-3h3v3"/></svg><svg class="canal-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 16h20M4 16c0-4.4 3.6-8 8-8s8 3.6 8 8M8 16a4 4 0 0 1 8 0M3 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/></svg>
             </span>
             <span class="pill-label">Next scene</span>
           </button>

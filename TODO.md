@@ -7,7 +7,7 @@
 ## Remaining scenes
 
 - [x] Desert observatory: sculpted dunes, a small observatory dome, and a rose-to-violet sky. Add slow dome movement and occasional nighttime meteors; refine the Copilot concept to match the current artwork.
-- [ ] Canal at dusk: a narrowboat, brick bridge, towpath, and reflected window lights. Add gentle reflections and a slow passing boat.
+- [x] Canal at dusk: a narrowboat, brick bridge, towpath, and reflected window lights. Add gentle reflections and a slow passing boat.
 - [ ] Winter cabin: snow banks, bare branches, and a warmly lit cabin. Add occasional snowflakes and chimney smoke, with pale daylight and blue moonlit snow.
 
 For each scene, include light and dark themes, layered mouse parallax, a deliberate mobile composition, reduced-motion support, a named location with verified coordinates, and its own icon in the existing cycle. Preserve the saved scene preference in localStorage.

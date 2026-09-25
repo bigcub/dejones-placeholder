@@ -2143,3 +2143,122 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 @media (prefers-reduced-motion: reduce) {
   .desert-kestrel-wing, .desert-kestrel-tail { animation: none; }
 }
+
+/* Castlefield canal at dusk: brick warehouses, a humped bridge over a canal
+   arm, a moored narrowboat, and a viaduct with a tram. After dark the
+   windows, lamp and boats light up and glow on the water. */
+:root {
+  --canal-sky-top: #5c4a7a; --canal-sky-mid: #d68c86; --canal-sky-low: #f6c690; --canal-sun: #ffe7b4;
+  --canal-far: #c49a9f; --canal-brick-lit: #b8664c; --canal-brick: #94503f; --canal-brick-shade: #6a3a33;
+  --canal-stone: #dcc6a6; --canal-roof: #5a4a54; --canal-window: #43333b; --canal-iron: #2c2b30;
+  --canal-water-top: #d9a492; --canal-water-deep: #4f6070; --canal-towpath: #bba68c; --canal-verge: #6d7a5c;
+  --nb-green: #2f5e4f; --nb-red: #a8352f; --nb-cream: #efe1c2; --nb-black: #211f20; --nb-blue: #2f5579;
+  --tram-yellow: #e9bc2c; --tram-grey: #c9cdd2;
+}
+[data-theme="dark"] {
+  --canal-sky-top: #0e1530; --canal-sky-mid: #29295a; --canal-sky-low: #6b4f72; --canal-sun: #efe6d6;
+  --canal-far: #2a2d50; --canal-brick-lit: #4d3d52; --canal-brick: #3a2f45; --canal-brick-shade: #241d31;
+  --canal-stone: #7b7a93; --canal-roof: #1e1d30; --canal-window: #221c2b; --canal-iron: #14151c;
+  --canal-water-top: #3a3564; --canal-water-deep: #10172f; --canal-towpath: #4c4d66; --canal-verge: #23303d;
+  --nb-green: #20403f; --nb-red: #5f2a33; --nb-cream: #a8a497; --nb-black: #111217; --nb-blue: #223a55;
+  --tram-yellow: #b89530; --tram-grey: #6f7486;
+}
+.scene-canal, .canal-icon { visibility: hidden; opacity: 0; }
+.canal-icon { transform: translateY(18px); }
+.coordinate-canal { display: none; }
+[data-scene="canal"] .scene-meadow, [data-scene="canal"] .scene-ocean, [data-scene="canal"] .scene-tarn, [data-scene="canal"] .scene-forest, [data-scene="canal"] .scene-desert { visibility: hidden; opacity: 0; }
+[data-scene="canal"] .scene-canal { visibility: visible; opacity: 1; }
+[data-scene="canal"] .hills-icon, [data-scene="canal"] .waves-icon, [data-scene="canal"] .mountain-icon, [data-scene="canal"] .forest-icon, [data-scene="canal"] .desert-icon { opacity: 0; transform: translateY(-18px); }
+[data-scene="canal"] .canal-icon { visibility: visible; opacity: 1; transform: translateY(0); }
+[data-scene="canal"] .coordinate-meadow, [data-scene="canal"] .coordinate-ocean, [data-scene="canal"] .coordinate-tarn, [data-scene="canal"] .coordinate-forest, [data-scene="canal"] .coordinate-desert { display: none; }
+[data-scene="canal"] .coordinate-canal { display: block; }
+
+/* The low sun sets behind the viaduct; by night it becomes a higher moon. */
+.canal-sun { transition: translate .8s ease; }
+[data-theme="dark"] .canal-sun { translate: 0 -190px; }
+
+.canal-far { fill: var(--canal-far); }
+.canal-city-lights, .canal-beacon { opacity: 0; transition: opacity .8s ease; }
+.canal-city-lights { fill: var(--window); }
+.canal-beacon { fill: #e0584a; }
+[data-theme="dark"] .canal-city-lights { opacity: .75; }
+[data-theme="dark"] .canal-city-lights circle:nth-child(4n) { animation: twinkle 6s ease-in-out infinite; }
+[data-theme="dark"] .canal-beacon { opacity: 1; animation: beacon-blink 2.6s ease-in-out infinite; }
+
+.canal-viaduct { fill: color-mix(in srgb, var(--canal-brick) 72%, var(--canal-far)); }
+.canal-viaduct-deck { fill: none; stroke: var(--canal-stone); stroke-width: 3; opacity: .7; }
+.canal-roof { fill: var(--canal-roof); }
+.canal-brick { fill: url(#canalBrick); }
+.canal-courses { fill: none; stroke: var(--canal-stone); stroke-width: 1.4; opacity: .32; }
+.canal-hoist { fill: var(--canal-roof); }
+.canal-doors { fill: color-mix(in srgb, var(--canal-roof) 70%, var(--canal-brick-shade)); }
+.canal-parapet { fill: var(--canal-stone); opacity: .8; }
+.canal-window, .canal-arm-light { fill: var(--canal-window); transition: fill .8s ease; }
+[data-theme="dark"] .canal-window.lit, [data-theme="dark"] .canal-arm-light { fill: var(--window); }
+[data-theme="dark"] .canal-window.flicker { animation: window-flicker 7s ease-in-out infinite; }
+.canal-quay { fill: color-mix(in srgb, var(--canal-stone) 65%, var(--canal-brick-shade)); }
+.canal-coping { fill: none; stroke: var(--canal-stone); stroke-width: 3; }
+.canal-coping.bridge { stroke-width: 5; }
+.canal-coping.near { fill: var(--canal-stone); stroke: none; }
+.canal-quay.near { fill: color-mix(in srgb, var(--canal-stone) 40%, var(--canal-brick-shade)); }
+.canal-voussoirs { fill: none; stroke: var(--canal-stone); stroke-width: 6; stroke-dasharray: 5 2.5; opacity: .75; }
+
+/* Narrowboats: green and red for the moored boat, blue for the one passing. */
+.nb-hull { fill: var(--nb-black); }
+.nb-strake { fill: none; stroke: var(--nb-red); stroke-width: 2.5; }
+.nb-cabin { fill: var(--nb-green); }
+.passing .nb-cabin { fill: var(--nb-blue); }
+.passing .nb-strake { stroke: var(--nb-cream); }
+.nb-panel { fill: none; stroke: var(--nb-cream); stroke-width: 1.2; opacity: .75; }
+.nb-window { fill: #2a2528; transition: fill .8s ease; }
+[data-theme="dark"] .nb-window { fill: var(--window); }
+.nb-cratch { fill: var(--nb-cream); }
+.nb-rail { fill: none; stroke: var(--nb-black); stroke-width: 2; stroke-linecap: round; }
+.nb-chimney { fill: none; stroke: #1c1a1b; stroke-width: 4; }
+.nb-brass { fill: none; stroke: #d5a84a; stroke-width: 4; }
+.nb-pots { fill: #5f8a55; }
+.nb-lamp { fill: var(--nb-cream); }
+.nb-headlamp { fill: var(--window); opacity: 0; transition: opacity .8s ease; }
+[data-theme="dark"] .nb-headlamp { opacity: .7; }
+.canal-rope { fill: none; stroke: #c9b58f; stroke-width: 1.4; }
+.canal-smoke path { fill: none; stroke: color-mix(in srgb, var(--canal-stone) 60%, transparent); stroke-width: 5; stroke-linecap: round; opacity: .5; animation: smoke 5s ease-in-out infinite alternate; }
+
+/* The water mirrors the quay in soft, shimmering bands. */
+.canal-reflection { opacity: .34; filter: url(#canalReflect); animation: canal-shimmer 7s ease-in-out infinite alternate; }
+@keyframes canal-shimmer { from { transform: translateX(-2px); } to { transform: translateX(2px); } }
+.canal-ripples { fill: none; stroke: var(--canal-sky-low); stroke-width: 1.4; stroke-linecap: round; opacity: .35; animation: wave-drift 12s ease-in-out infinite alternate; }
+.canal-lamp-pool { fill: var(--window); opacity: 0; transition: opacity .8s ease; }
+[data-theme="dark"] .canal-lamp-pool { opacity: .3; }
+
+/* A tram crosses the viaduct and slips behind the warehouse. */
+.canal-tram { transform: translate(1760px, 452px); animation: canal-tram 36s linear infinite; }
+.tram-body { fill: var(--tram-yellow); }
+.tram-band { fill: none; stroke: var(--tram-grey); stroke-width: 4; }
+.tram-windows { fill: #394049; transition: fill .8s ease; }
+[data-theme="dark"] .tram-windows { fill: var(--window); }
+.tram-pole { fill: none; stroke: var(--canal-iron); stroke-width: 1.5; stroke-linecap: round; }
+@keyframes canal-tram { 0%, 55% { transform: translate(1760px, 452px); } 88%, 100% { transform: translate(660px, 452px); } }
+
+/* Another narrowboat slowly passes along the canal. */
+.canal-passing { transform: translate(-420px, 700px); animation: canal-pass 96s linear infinite; }
+.canal-passing-reflection { opacity: .28; filter: url(#canalReflect); }
+.canal-wake { fill: none; stroke: var(--canal-sky-low); stroke-width: 1.4; stroke-linecap: round; opacity: .5; }
+@keyframes canal-pass { 0% { transform: translate(-420px, 700px); } 80%, 100% { transform: translate(1760px, 700px); } }
+
+.canal-lamp-post { fill: none; stroke: var(--canal-iron); stroke-width: 5; stroke-linecap: round; }
+.canal-lamp-base { fill: var(--canal-iron); }
+.canal-lamp-glass { fill: #f3e3c0; opacity: .85; transition: fill .8s ease; }
+[data-theme="dark"] .canal-lamp-glass { fill: var(--window); opacity: 1; }
+.canal-lamp-glow { fill: var(--window); opacity: 0; transition: opacity .8s ease; }
+[data-theme="dark"] .canal-lamp-glow { opacity: .55; }
+.canal-bollard { fill: var(--canal-iron); }
+.canal-pebbles { fill: none; stroke: color-mix(in srgb, var(--canal-stone) 70%, var(--canal-verge)); stroke-width: 2.5; stroke-linecap: round; opacity: .5; }
+.canal-weeds { fill: none; stroke: var(--canal-verge); stroke-width: 3; stroke-linecap: round; }
+
+/* On a phone the notes cover the lower half, so lift the canal and bring the
+   bridge and moored boat into the centre crop, with the sun or moon above. */
+@media (max-aspect-ratio: 6/5) {
+  .scene-canal .canal-world { translate: 340px -230px; }
+  .scene-canal .canal-sun { translate: -180px -150px; }
+  [data-theme="dark"] .scene-canal .canal-sun { translate: -180px -300px; }
+}
