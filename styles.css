@@ -2011,6 +2011,14 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 .wing-near { transform-origin: 0% 100%; }
 .desert-kestrel-tail { transform-origin: 10px 5px; animation: desert-kestrel-trim 1.7s ease-in-out infinite alternate; }
 [data-theme="dark"] .desert-kestrel { display: none; }
+
+/* Glow-worms glow and fade at the foot of the marram grass after dark. */
+.glow-worm { opacity: 0; fill: #c9f5a0; transition: opacity .8s ease; }
+.glow-worm circle:first-child { fill: #9fe870; opacity: .55; }
+[data-theme="dark"] .glow-worm { opacity: .9; animation: glow-worm 7s ease-in-out infinite; }
+[data-theme="dark"] .glow-worm:nth-child(2) { animation-duration: 8.6s; animation-delay: -2.4s; }
+[data-theme="dark"] .glow-worm:nth-child(3) { animation-duration: 6.2s; animation-delay: -4.7s; }
+@keyframes glow-worm { 0%, 100% { opacity: .9; } 45%, 60% { opacity: .12; } }
 @keyframes desert-kestrel-hover {
   0% { transform: translate(630px, 340px) scale(.5); }
   18% { transform: translate(633px, 337px) scale(.5); }
