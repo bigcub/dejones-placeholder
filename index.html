@@ -608,18 +608,6 @@
                 <path class="wave wave-mid" d="M-200 674C0 658 200 688 400 672S800 658 1000 672s400 16 800 0v240H-200Z" />
               </g>
 
-              <g class="dolphin-stage" aria-hidden="true"><g class="dolphin">
-                <defs><linearGradient id="dolphinCoat" x1="0" y1="0" x2=".3" y2="1"><stop stop-color="var(--dolphin-back)"/><stop offset=".55" stop-color="var(--dolphin-side)"/><stop offset="1" stop-color="var(--dolphin-belly)"/></linearGradient></defs>
-                <path class="dolphin-fin" d="M28-12c0-14 7-23 17-25-4 10-3 15 7 24Z"/>
-                <path class="dolphin-fin" d="m-16 9-14-12-15 2 16 13-15 13 19-3 15-10Z"/>
-                <path fill="url(#dolphinCoat)" d="M-23 10C-7 8-4-11 18-17 41-24 64-17 72-5l17 7c6 2 6 6 0 7L73 8C60 27 28 25 9 17-4 12-12 15-23 14Z"/>
-                <path fill="var(--dolphin-belly)" d="M-14 12C7 8 18 23 48 13 60 9 64 4 72 3l14 3-14 2C58 25 29 23 9 17-2 13-7 13-14 14Z" opacity=".8"/>
-                <path class="dolphin-fin" d="M37 9c-1 15 9 25 21 26-8-10-8-17-6-25Z"/>
-                <path d="M3-5c17-15 42-15 55-8" fill="none" stroke="var(--dolphin-highlight)" stroke-width="2" stroke-linecap="round" opacity=".55"/>
-                <path d="m69 8 12-1" fill="none" stroke="var(--dolphin-fin)" stroke-width="1.2" stroke-linecap="round"/>
-                <circle cx="66" cy="-3" r="2" fill="#203139"/><circle cx="66.5" cy="-3.6" r=".6" fill="#e8f3ed"/>
-              </g></g>
-
               <g class="boat-anchor parallax" data-depth="0.42">
                 <g class="boat-drift">
                   <g class="boat">
@@ -644,6 +632,44 @@
                 </g>
               </g>
 
+              <g class="parallax" data-depth="0.48">
+                <g transform="translate(360 736)">
+                  <clipPath id="sealWaterline"><rect x="-40" y="-60" width="80" height="60" /></clipPath>
+                  <ellipse class="seal-ring" cx="0" cy="0" rx="16" ry="3" />
+                  <g clip-path="url(#sealWaterline)">
+                    <g class="seal">
+                      <g class="seal-head"><g transform="scale(.62)">
+                        <path class="seal-coat" d="M-6 24C-8 10-6-4 0-10 6-14 14-12 17-4 19 2 19 12 18 24Z" />
+                        <path class="seal-coat" d="M-1-10C-7-11-13-9-16-5-17-1-15 2-11 2-6 2-2 0 1-3Z" />
+                        <path class="seal-light" d="M-14-2C-11 0-6 1-1-1-3 2-8 4-12 3-14 2-15 0-14-2Z" />
+                        <path class="seal-sheen" d="M2-11C7-13 12-11 15-6" />
+                        <circle class="seal-eye" cx="-3" cy="-7.5" r="1.7" /><circle class="seal-eye-shine" cx="-3.5" cy="-8.1" r=".5" />
+                        <path class="seal-eye" d="M-15.4-4.6-14-3.4" />
+                        <path class="seal-whiskers" d="M-12-1-19 1M-12 0-18 3M-11 1-16 5" />
+                      </g></g>
+                    </g>
+                  </g>
+                  <ellipse class="seal-wash" cx="0" cy="0" rx="12" ry="2.2" />
+                </g>
+              </g>
+
+              <g class="water-ripples" fill="none" stroke="var(--sun)" stroke-linecap="round">
+                <path d="M1102 595h69M1338 603h55M1157 652h45M1402 676h84M1096 735h113" />
+                <path d="M536 619h65M322 664h92M600 706h50M779 735h83" />
+              </g>
+
+              <g class="dolphin-stage" aria-hidden="true"><g class="dolphin">
+                <defs><linearGradient id="dolphinCoat" x1="0" y1="0" x2=".3" y2="1"><stop stop-color="var(--dolphin-back)"/><stop offset=".55" stop-color="var(--dolphin-side)"/><stop offset="1" stop-color="var(--dolphin-belly)"/></linearGradient></defs>
+                <path class="dolphin-fin" d="M28-12c0-14 7-23 17-25-4 10-3 15 7 24Z"/>
+                <path class="dolphin-fin" d="m-16 9-14-12-15 2 16 13-15 13 19-3 15-10Z"/>
+                <path fill="url(#dolphinCoat)" d="M-23 10C-7 8-4-11 18-17 41-24 64-17 72-5l17 7c6 2 6 6 0 7L73 8C60 27 28 25 9 17-4 12-12 15-23 14Z"/>
+                <path fill="var(--dolphin-belly)" d="M-14 12C7 8 18 23 48 13 60 9 64 4 72 3l14 3-14 2C58 25 29 23 9 17-2 13-7 13-14 14Z" opacity=".8"/>
+                <path class="dolphin-fin" d="M37 9c-1 15 9 25 21 26-8-10-8-17-6-25Z"/>
+                <path d="M3-5c17-15 42-15 55-8" fill="none" stroke="var(--dolphin-highlight)" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+                <path d="m69 8 12-1" fill="none" stroke="var(--dolphin-fin)" stroke-width="1.2" stroke-linecap="round"/>
+                <circle cx="66" cy="-3" r="2" fill="#203139"/><circle cx="66.5" cy="-3.6" r=".6" fill="#e8f3ed"/>
+              </g></g>
+
               <g class="wave-band wave-band-near">
                 <path class="wave wave-near" d="M-200 764C0 744 200 780 400 762S800 744 1000 762s400 20 800 0v150H-200Z" />
               </g>
@@ -655,11 +681,10 @@
                 </g>
                 <ellipse class="dolphin-wake" cx="684" cy="769" rx="38" ry="6"/>
               </g>
-              <ellipse class="water-reflection" cx="1276" cy="663" rx="74" ry="125" fill="url(#waterLight)" filter="url(#softGlow)" />
               <g class="water-ripples" fill="none" stroke="var(--sun)" stroke-linecap="round">
-                <path d="M1102 595h69m167 8h55m-291 49h45m200 24h84m-390 59h113m205 38h83" />
-                <path d="M536 619h65m-279 45h92m186 42h50m-465 75h151m443-46h83" />
+                <path d="M1414 773h83M185 781h151" />
               </g>
+              <ellipse class="water-reflection" cx="1276" cy="663" rx="74" ry="125" fill="url(#waterLight)" filter="url(#softGlow)" />
               <g class="sea-glint">
                 <ellipse cx="1276" cy="588" rx="26" ry="2.4" />
                 <ellipse cx="1258" cy="610" rx="40" ry="2.8" />
