@@ -627,9 +627,12 @@ button:focus-visible {
   animation: fox-stride .72s ease-in-out infinite alternate;
 }
 .fox-leg-hind, .fox-leg-front-far { animation-direction: alternate-reverse; }
+/* Each leg swings from its own hip or shoulder. */
+.fox-leg-hind, .fox-leg-back { transform-origin: 16px 20px; }
+.fox-leg-front, .fox-leg-front-far { transform-origin: 62px 20px; }
 .fox-tail-sway {
   transform-box: view-box;
-  transform-origin: 15px 21px;
+  transform-origin: 12px 18px;
   animation: fox-tail-sway 1.44s ease-in-out infinite alternate;
 }
 @keyframes fox-stride {
