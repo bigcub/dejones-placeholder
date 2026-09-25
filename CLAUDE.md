@@ -62,6 +62,14 @@ theme and inherits the scene's animation. Then:
 - Fade the edges into the page with a mask rather than drawing a box.
 - Check both themes, a phone width, and reduced motion.
 
+## Analytics
+
+Google Analytics (GA4, `G-NBVH23JQKN`) is included in the `<head>` of the
+homepage and every note page. The snippet loads the tag only when the page is
+served from `dejones.io`, so local development never reaches the reports. A new
+page that copies an existing note keeps the snippet; a page written from
+scratch needs it added.
+
 ## Working locally
 
 Run a static server from the repository root:

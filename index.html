@@ -3,6 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Analytics (GA4). Loads only on the live domain, so local development stays out of the reports. -->
+    <script>
+      if (location.hostname === "dejones.io" || location.hostname === "www.dejones.io") {
+        const ga = document.createElement("script");
+        ga.async = true;
+        ga.src = "https://www.googletagmanager.com/gtag/js?id=G-NBVH23JQKN";
+        document.head.appendChild(ga);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag("js", new Date());
+        gtag("config", "G-NBVH23JQKN");
+      }
+    </script>
     <meta
       name="description"
       content="David Jones — product thinker and practitioner in Manchester, UK. A personal site in the making."
