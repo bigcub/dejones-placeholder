@@ -28,7 +28,7 @@ themeToggle?.addEventListener("click", () => {
 });
 
 function updateSceneButton() {
-  const nextScene = { meadow: "coast", ocean: "Blea Tarn", tarn: "Kielder Forest", forest: "Merthyr Mawr", desert: "Manchester canal", canal: "meadow" }[root.dataset.scene];
+  const nextScene = { meadow: "coast", ocean: "Blea Tarn", tarn: "Kielder Forest", forest: "Merthyr Mawr", desert: "Manchester canal", canal: "Braemar", winter: "meadow" }[root.dataset.scene];
   // The pill carries its own visible label, so name the destination in the
   // tooltip rather than overriding what the button says.
   if (sceneNext) sceneNext.title = `Switch to the ${nextScene} scene`;
@@ -44,12 +44,13 @@ function updateSceneButton() {
     forest: "A timber lookout among the pines of Kielder Forest",
     desert: "A small observatory among the Merthyr Mawr dunes",
     canal: "A narrowboat moored on a Manchester canal at dusk",
+    winter: "A snowbound cabin below the Cairngorms near Braemar",
   };
   landscape?.setAttribute("aria-label", descriptions[root.dataset.scene]);
 }
 
 function cycleScene(step = 1) {
-  const scenes = ["meadow", "ocean", "tarn", "forest", "desert", "canal"];
+  const scenes = ["meadow", "ocean", "tarn", "forest", "desert", "canal", "winter"];
   const index = scenes.indexOf(root.dataset.scene);
   root.dataset.scene = scenes[(index + step + scenes.length) % scenes.length];
   localStorage.setItem("scene", root.dataset.scene);
