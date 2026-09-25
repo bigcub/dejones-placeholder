@@ -883,6 +883,23 @@ button:focus-visible {
   animation-delay: 1.1s;
 }
 
+/* Meadow light: the sun sits upper right, so crests carry a bright rim, the
+   slopes turned away from it fall into shade, and faint contours follow the
+   ground. The tree and path take the same light. */
+.meadow-rim { fill: none; stroke: var(--horizon); stroke-width: 2.4; stroke-linecap: round; opacity: .42; }
+.meadow-rim.far { stroke-width: 1.5; opacity: .3; }
+.meadow-rim.near { stroke-width: 2; opacity: .26; }
+[data-theme="dark"] .meadow-rim { opacity: .24; }
+.meadow-shade { fill: var(--field-d); opacity: .17; }
+.meadow-shade.far { fill: color-mix(in srgb, var(--far) 60%, var(--field-d)); opacity: .2; }
+.meadow-contours { fill: none; stroke: var(--field-d); stroke-width: 1.3; stroke-linecap: round; stroke-dasharray: 38 12; opacity: .13; }
+.meadow-contours.near { stroke: color-mix(in srgb, var(--field-a) 60%, var(--field-d)); stroke-width: 1.6; opacity: .16; }
+.crown-underside { fill: var(--tree-shadow); opacity: .42; }
+.crown-lit { fill: var(--tree-hi); opacity: .5; }
+.crown-pockets { fill: var(--tree-shadow); opacity: .4; }
+.path-lit { fill: none; stroke: var(--sun); stroke-width: 2.4; stroke-linecap: round; opacity: .38; }
+.path-shade { fill: none; stroke: var(--field-d); stroke-width: 4; stroke-linecap: round; opacity: .14; }
+
 /* The meadow's grass is drawn as tapered blades rather than stroked lines. */
 .meadow-grass { fill: color-mix(in srgb, var(--field-d) 90%, transparent); }
 .meadow-grass .thin { fill: color-mix(in srgb, var(--field-d) 70%, var(--field-b)); }
@@ -1730,9 +1747,9 @@ button:focus-visible {
   .header-actions { gap: 6px; margin-left: 8px; }
   .theme-toggle, .scene-toggle, .linkedin-link, .nav-link { width: 34px; height: 34px; flex-shrink: 0; }
   .scene { width: 100%; transform: none; }
-  .scene-meadow { width: 140%; transform: translateX(-28%); }
-  /* The phone crop is tight on the left, so the tree keeps its old place. */
-  .scene-meadow .tree > g { translate: 44px 0; }
+  /* A wider crop keeps the tree, studio and sun framed together on phones. */
+  .scene-meadow { width: 170%; transform: none; }
+  .scene-meadow .sun-wrap { translate: -500px 0; }
   .sun-wrap { translate: -360px 0; }
   .water-reflection, .sea-glint { translate: -360px 0; }
 }
