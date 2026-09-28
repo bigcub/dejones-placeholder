@@ -10,8 +10,10 @@ static site rather than a framework application.
 - `styles.css` contains the complete visual system, responsive layout, light and
   dark themes, and scene animations.
 - `script.js` handles the saved colour theme and subtle pointer parallax.
-- `notes/` holds the writing: `notes/index.html` lists the notes and each note
-  lives at `notes/<slug>/index.html`. `notes.css` styles these reading pages.
+- `notes/index.html` lists the notes. Each note lives off the root at
+  `<slug>/index.html`, so its address is `dejones.io/<slug>/`. The old
+  `notes/<slug>/` paths are redirects to those addresses. `notes.css` styles
+  these reading pages.
 - `favicon.svg` is the site icon.
 - `firebase.json` configures Firebase Hosting. The root-relative static assets
   also work when the repository is served by GitHub Pages.
@@ -29,6 +31,12 @@ reduced motion as requirements: retain semantic labels, keyboard focus styles,
 and the `prefers-reduced-motion` behaviour. Check narrow mobile layouts as well as
 desktop layouts.
 
+For now the reduced-motion rules are turned off at David's request, so the
+animations play on his phone, which has reduced motion switched on. Each one is
+commented out and marked `REDUCED-MOTION-OFF` in `styles.css` and `script.js`.
+Leave them off until he asks for them back, but still write reduced-motion rules
+for new animation and comment them out with the same marker.
+
 ## Notes and articles
 
 The notes index and every note share one page shell: the site header, the
@@ -37,9 +45,14 @@ footer. A note's prose sits inside that column at about 65 characters a line.
 Keep the index and the notes identical in these respects, so that moving between
 them does not shift the layout. There is no templating, so a new note starts as a
 copy of an existing note page, and is then added to the list in
-`notes/index.html` and, if it should be featured, to the shelf on the homepage.
+`notes/index.html`, to the slug list in `articles.html`, and, if it should be
+featured, to the shelf on the homepage.
 
-`notes/example/` is an unlisted reference note with sample text. It shows the
+A note that is published but still being refined carries a `note-draft` tag above
+its title, and "· Draft" after its category in the notes list and on the
+homepage shelf. Remove all three when the note is final.
+
+`example/` is an unlisted reference note with sample text. It shows the
 reading layout at full length and the inline-drawing pattern below. Leave it
 out of the notes list, and keep invented text out of David's real notes.
 
@@ -88,7 +101,8 @@ Then open `http://localhost:5050`. Before handing off a visual change, check:
 
 ## Deployment
 
-Firebase Hosting is configured to publish the repository root. Once
+The live site is served by GitHub Pages, so publishing means committing and
+pushing to GitHub. Firebase Hosting is configured to publish the repository root. Once
 `.firebaserc` contains the intended Firebase project ID, deploy with:
 
 ```sh

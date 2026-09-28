@@ -26,10 +26,26 @@ html:has(.notes-page), body.notes-page { overflow: auto; background: var(--paper
 .all-notes { display: inline-block; margin-bottom: 38px; padding: 10px 0; color: var(--reading-muted); font-size: .82rem; }
 .note-title { margin-bottom: 32px; }
 .note-title h1 { font-size: clamp(2.15rem,4.5vw,3.6rem); }
+/* A published note that is still being refined. Remove the tag when it settles. */
+.note-draft { display: inline-block; margin: 0; padding: 4px 10px 3px; border: 1px solid color-mix(in srgb, var(--reading-muted) 45%, transparent); border-radius: 999px; font-size: .64rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--reading-muted); }
 .note-prose { max-width: 65ch; font: 1.06rem/1.85 "Lora",serif; }
 .note-prose [id] { scroll-margin-top: 32px; }
 .note-prose h2 { margin: 0 0 16px; font-weight: 400; font-size: 1.55rem; line-height: 1.35; letter-spacing: -.02em; }
 .note-prose p { margin: 0 0 22px; }
+.note-prose * + h2 { margin-top: 44px; }
+.note-prose h3 { margin: 32px 0 10px; font-weight: 500; font-size: 1.12rem; line-height: 1.4; letter-spacing: -.01em; }
+.note-prose a { color: inherit; text-decoration-color: color-mix(in srgb, var(--reading-muted) 60%, transparent); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.note-prose a:hover { text-decoration-color: currentColor; }
+/* A worked example traced through the tiers of a model, top to bottom. */
+.note-chain { margin: 30px 0 34px; padding: 22px 24px 24px; border-radius: 10px; background: color-mix(in srgb, var(--reading-ink) 4.5%, transparent); font-size: .96rem; line-height: 1.6; }
+.note-chain .note-chain-heading { margin: 0 0 16px; font: 500 .64rem/1.4 "DM Sans",sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--reading-muted); }
+.note-chain ol { list-style: none; margin: 0; padding: 0 0 0 20px; border-left: 1px solid var(--reading-rule); }
+.note-chain li { position: relative; margin: 0 0 18px; }
+.note-chain li:last-child { margin-bottom: 0; }
+.note-chain li::before { content: ""; position: absolute; left: -24.5px; top: .5em; width: 8px; height: 8px; border-radius: 50%; background: var(--reading-muted); }
+.note-chain-tier { display: block; margin-bottom: 2px; font: 500 .64rem/1.6 "DM Sans",sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--reading-muted); }
+.note-chain-item { display: block; }
+.note-chain-item + .note-chain-item { margin-top: 6px; }
 /* Small drawings borrowed from the scenes can sit in the prose to carry a point. */
 .note-figure { margin: 34px 0 36px; }
 .note-figure svg { display: block; width: 100%; height: auto; overflow: visible; }
@@ -43,5 +59,6 @@ html:has(.notes-page), body.notes-page { overflow: auto; background: var(--paper
  .note-index-link h2 { font-size: 1.25rem; }
  .notes-deck { font-size: .96rem; }
  .note-prose { font-size: 1rem; }
+ .note-chain { padding: 18px 18px 20px; font-size: .92rem; }
  .notes-footer { flex-direction: column; padding-inline: 20px; }
 }
