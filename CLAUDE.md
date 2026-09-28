@@ -14,6 +14,14 @@ static site rather than a framework application.
   `<slug>/index.html`, so its address is `dejones.io/<slug>/`. The old
   `notes/<slug>/` paths are redirects to those addresses. `notes.css` styles
   these reading pages.
+- `projects/index.html` lists David's tools and experiments. It uses the
+  notes index's page shell and list styles, with each project's domain as its
+  label. A project without an address yet is listed without a link.
+- `about/index.html` is the About page, in the note layout, with a drawing of a
+  window sill holding a candle and a potted plant. It is a focused still life
+  with no location, deliberately not a scene or an element borrowed from one.
+  The light follows the theme: the sun is in the window by day, and at night
+  the moon is out and the candle is lit. Its text is still to be written.
 - `favicon.svg` is the site icon.
 - `firebase.json` configures Firebase Hosting. The root-relative static assets
   also work when the repository is served by GitHub Pages.
@@ -36,6 +44,14 @@ animations play on his phone, which has reduced motion switched on. Each one is
 commented out and marked `REDUCED-MOTION-OFF` in `styles.css` and `script.js`.
 Leave them off until he asks for them back, but still write reduced-motion rules
 for new animation and comment them out with the same marker.
+
+## Header
+
+Every page shares one header. Places (Notes, Projects, About) are text links in
+`.site-nav`, with `aria-current` marking the current section; a note marks Notes.
+The round buttons are kept for LinkedIn and the scene and theme controls, so add
+new sections as words rather than more circles. On phones the section links take
+the tagline's place beneath the name.
 
 ## Notes and articles
 
@@ -108,6 +124,10 @@ pushing to GitHub. Firebase Hosting is configured to publish the repository root
 ```sh
 PATH="/opt/homebrew/bin:$PATH" firebase deploy --only hosting
 ```
+
+Stylesheets are linked with a version query (`styles.css?v=3`,
+`notes.css?v=2`). Bump it on every page when a change to the CSS must reach
+visitors together with new HTML, so a cached stylesheet cannot break the page.
 
 Do not commit Firebase caches, debug logs, or local machine files. Do not put
 secrets or environment-specific project IDs in this document.

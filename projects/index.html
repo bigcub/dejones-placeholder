@@ -16,8 +16,8 @@
   }
 </script>
 
-<title>Example note — David Jones</title>
-<meta name="description" content="An example note showing the reading layout and an inline scene drawing."><meta name="robots" content="noindex"><meta name="theme-color" content="#f5f1e8">
+<title>Tools and experiments — David Jones</title>
+<meta name="description" content="Tools and experiments built by David Jones."><meta name="theme-color" content="#f5f1e8">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -35,7 +35,7 @@
           </span>
         </a>
 
-        <nav class="site-nav" aria-label="Main navigation"><a href="/notes/" aria-current="true">Notes</a><a href="/projects/">Projects</a><a href="/about/">About</a></nav>
+        <nav class="site-nav" aria-label="Main navigation"><a href="/notes/">Notes</a><a href="/projects/" aria-current="page">Projects</a><a href="/about/">About</a></nav>
 
         <div class="header-actions">
           <a
@@ -49,7 +49,6 @@
               <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57v11.45Z" />
             </svg>
           </a>
-
           <button class="scene-toggle" id="scene-toggle" type="button" disabled aria-label="Scene selection is available on the home page" title="Scene selection is available on the home page"><svg class="hills-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M2 18c3.2-6.4 5.8-9.6 8.6-9.6 2 0 3.8 1.6 5.6 4.4"></path>
               <path d="M11.5 18c1.9-3.7 3.6-5.6 5.2-5.6 1.7 0 3.5 1.9 5.3 5.6"></path>
@@ -77,66 +76,7 @@
         </div>
       </header>
 <div class="notes-landscape" aria-hidden="true"><svg viewBox="0 0 1600 100" preserveAspectRatio="none"><path d="M0 60Q220 0 480 65T1000 40T1600 55V100H0Z" fill="var(--wood-far)"/><path d="M0 85Q300 20 650 85T1300 65T1600 80V100H0Z" fill="var(--wood-pine)"/><path d="m95 100 22-76 22 76m8 0 17-54 17 54m1220 0 24-82 24 82m-77 0 19-60 19 60" fill="var(--wood-deep)"/></svg></div>
-<main class="note-reader" id="content">
-  <a class="all-notes" href="/notes/">← All notes</a>
-  <article>
-    <header class="note-title">
-      <h1>Keeping strategy in use</h1>
-    </header>
-    <div class="note-prose">
-      <p>Most product strategies fail quietly. Nobody argues with them; they simply stop being used. The document is approved, the roadmap is drawn from it once, and within a quarter the team is making decisions the way it always did: by whoever asks loudest, or by whatever shipped last.</p>
-      <p>A practical strategy is one that keeps getting used. It helps someone decide what to do on an ordinary Tuesday, not just what to say at the offsite.</p>
-      <h2>Start with the choice, not the vision</h2>
-      <p>A vision describes where you want to be. A strategy describes what you will give up to get there. If a plan does not make at least one reasonable request harder to say yes to, it is not yet a strategy.</p>
-      <figure class="note-figure">
-        <svg viewBox="0 0 720 190" role="img" aria-label="A small sailing boat moored to a buoy on calm water">
-          <defs>
-            <linearGradient id="figFadeX"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#fff"/><stop offset=".8" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-            <mask id="figFade" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="190"><rect width="720" height="190" fill="url(#figFadeX)"/></mask>
-            <radialGradient id="figWash"><stop stop-color="var(--sea-a)" stop-opacity=".32"/><stop offset="1" stop-color="var(--sea-a)" stop-opacity="0"/></radialGradient>
-            <linearGradient id="figWater" x2="0" y2="1"><stop stop-color="var(--sea-a)" stop-opacity=".55"/><stop offset="1" stop-color="var(--sea-a)" stop-opacity="0"/></linearGradient>
-          </defs>
-          <ellipse cx="380" cy="110" rx="230" ry="96" fill="url(#figWash)"/>
-          <g mask="url(#figFade)">
-            <rect y="136" width="720" height="54" fill="url(#figWater)"/>
-            <path d="M0 136H720" stroke="var(--sea-b)" stroke-width="1" opacity=".35"/>
-            <g class="note-figure-waves" fill="none" stroke="var(--sea-c)" stroke-width="1.4" stroke-linecap="round" opacity=".35">
-              <path d="M90 152c14-4 28-4 42 0M240 164c18-5 36-5 54 0M470 150c16-4 32-4 48 0M560 170c20-5 40-5 60 0M130 178c16-4 32-4 48 0M380 180c14-4 28-4 42 0"/>
-            </g>
-          </g>
-          <g class="buoy">
-            <path class="buoy-pole" d="M212 132v-16"/>
-            <circle class="buoy-ball" cx="212" cy="140" r="10"/>
-            <path class="buoy-stripe" d="M203 137h18"/>
-          </g>
-          <ellipse class="boat-reflection" cx="400" cy="154" rx="54" ry="5"/>
-          <g transform="translate(-360 -516)"><g class="boat">
-            <path d="M706 652C688 690 626 692 582 660" fill="none" stroke="var(--reading-muted)" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-            <path class="boat-sail" d="M766 560c22 18 32 48 34 86h-34Z"/>
-            <path class="boat-sail boat-jib" d="M754 566c-20 20-28 46-30 78h30Z"/>
-            <path class="boat-mast" d="M760 652V556"/>
-            <path class="boat-boom" d="M764 648h38"/>
-            <path class="boat-pennant" d="M760 556l-14 4 14 5Z"/>
-            <path class="boat-hull" d="M706 652h108c-12 24-94 24-108 0Z"/>
-          </g></g>
-        </svg>
-        <figcaption>A mooring doesn’t stop the boat moving. It stops it drifting.</figcaption>
-      </figure>
-      <p>The useful test is simple. Take the last five things the team was asked to build and hold each one up against the strategy. If the strategy cannot tell you which to decline, it needs sharpening.</p>
-      <ul>
-        <li>Name the customer you are choosing to serve first.</li>
-        <li>Name the problem you will solve better than anyone.</li>
-        <li>Name the work you will stop, even though it is valuable.</li>
-      </ul>
-      <h2>Make it small enough to remember</h2>
-      <p>If people have to open a document to recall the strategy, it will not shape their decisions. The best versions fit in a paragraph and survive being repeated badly in a corridor.</p>
-      <blockquote><p>Strategy is the set of choices you would still defend when the easy option is sitting in front of you.</p></blockquote>
-      <p>Write it down, then say it until you are tired of hearing it. That is usually about the point where the rest of the organisation starts to hear it for the first time.</p>
-      <h2>Review it against reality</h2>
-      <p>Every few months, look at what actually shipped and ask whether it followed from the strategy or happened in spite of it. The gap between the two is the most honest measure of whether the strategy is working, and it is often the best place to find the next version.</p>
-    </div>
-  </article>
-</main>
+<main class="notes-index" id="content"><div class="notes-intro"><p class="note-category">Projects</p><h1>Tools and experiments</h1></div><ol class="note-index-list"><li><a class="note-index-link" href="https://daymeadow.com/"><span class="note-number">01</span><div><span class="note-category">daymeadow.com · Opus 4.7</span><h2>Daymeadow</h2><p>My preferred way for visualising upcoming events.</p></div><span class="note-arrow" aria-hidden="true">↗</span></a></li><li><a class="note-index-link" href="https://m60motorway.com/"><span class="note-number">02</span><div><span class="note-category">m60motorway.com · Opus 5.5</span><h2>M60 Motorway</h2><p>Motorway junction map.</p></div><span class="note-arrow" aria-hidden="true">↗</span></a></li><li><a class="note-index-link" href="https://room.dej.app/"><span class="note-number">03</span><div><span class="note-category">room.dej.app · Opus 5.5</span><h2>Dressing Room Model</h2><p>Interactive planning model for our dressing room.</p></div><span class="note-arrow" aria-hidden="true">↗</span></a></li><li><a class="note-index-link" href="https://duotoner.com/"><span class="note-number">04</span><div><span class="note-category">duotoner.com · GPT-4o</span><h2>Duotoner</h2><p>Simple duotone image transformation.</p></div><span class="note-arrow" aria-hidden="true">↗</span></a></li><li><a class="note-index-link" href="https://eagleyvalley.com/"><span class="note-number">05</span><div><span class="note-category">eagleyvalley.com · Astra 6, now Opus 5.5</span><h2>Eagley Valley Explorer</h2><p>Long-term project building an explorable model of Eagley Valley by land and air.</p></div><span class="note-arrow" aria-hidden="true">↗</span></a></li><li><a class="note-index-link" href="https://hyroxdates.com/"><span class="note-number">06</span><div><span class="note-category">hyroxdates.com</span><h2>HYROX Dates</h2><p>Rich list of upcoming events.</p></div><span class="note-arrow" aria-hidden="true">↗</span></a></li></ol></main>
 <footer class="notes-footer"><span>David Jones · Product thinking &amp; practice</span><a href="/">Back to the landscape ↗</a></footer>
 <script src="/script.js"></script>
 </body></html>

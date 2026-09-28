@@ -62,3 +62,29 @@ html:has(.notes-page), body.notes-page { overflow: auto; background: var(--paper
  .note-chain { padding: 18px 18px 20px; font-size: .92rem; }
  .notes-footer { flex-direction: column; padding-inline: 20px; }
 }
+/* The About page's window sill. By day the sun is in the window; at night the
+   moon is out and the candle is lit. */
+.sill-sky-top { stop-color: var(--sea-a); }
+.sill-sky-bottom { stop-color: var(--horizon); }
+[data-theme="dark"] .sill-sky-top { stop-color: var(--sky-top); }
+[data-theme="dark"] .sill-sky-bottom { stop-color: var(--sky-mid); }
+.sill-sky-top, .sill-sky-bottom { transition: stop-color .65s ease; }
+.sill-day, .sill-night { transition: opacity .65s ease; }
+.sill-night, [data-theme="dark"] .sill-day { opacity: 0; }
+[data-theme="dark"] .sill-night { opacity: 1; }
+.sill-candle { fill: var(--boat-sail); stroke: color-mix(in srgb, var(--reading-muted) 40%, transparent); stroke-width: 1; }
+.sill-leaves { fill: var(--tree-hi); }
+.sill-leaves-back { fill: var(--field-b); }
+.sill-flame { transform-box: fill-box; transform-origin: 50% 100%; animation: candle-flicker 2.6s ease-in-out infinite; }
+@keyframes candle-flicker {
+  0%, 100% { transform: scale(1, 1) rotate(0deg); }
+  30% { transform: scale(.94, 1.06) rotate(-2deg); }
+  55% { transform: scale(1.03, .96) rotate(1.5deg); }
+  80% { transform: scale(.97, 1.03) rotate(-1deg); }
+}
+/* Hold the flame still. */
+/* REDUCED-MOTION-OFF: turned off for now. Uncomment this block to restore it.
+@media (prefers-reduced-motion: reduce) {
+  .sill-flame { animation: none; }
+}
+*/

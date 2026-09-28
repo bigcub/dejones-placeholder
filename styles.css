@@ -196,8 +196,7 @@ button:focus-visible {
 
 .theme-toggle,
 .scene-toggle,
-.linkedin-link,
-.nav-link {
+.linkedin-link {
   position: relative;
   display: grid;
   width: 40px;
@@ -215,8 +214,7 @@ button:focus-visible {
 
 .theme-toggle:hover,
 .scene-toggle:not([disabled]):hover,
-.linkedin-link:hover,
-.nav-link:hover {
+.linkedin-link:hover {
   background: var(--glass);
   transform: translateY(-1px);
 }
@@ -228,8 +226,7 @@ button:focus-visible {
 }
 
 .theme-toggle svg,
-.scene-toggle svg,
-.nav-link svg {
+.scene-toggle svg {
   position: absolute;
   width: 17px;
   fill: none;
@@ -240,16 +237,51 @@ button:focus-visible {
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
 }
 
-.header-nav { display: flex; align-items: center; gap: inherit; }
+/* Places are words; the round buttons are kept for controls that change the view. */
+.site-nav {
+  display: flex;
+  margin: 0 30px 0 auto;
+  gap: 30px;
+}
+
+.site-nav a {
+  position: relative;
+  padding: 8px 0;
+  color: var(--ink-muted);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.site-nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current] {
+  color: var(--ink);
+}
+
+.site-nav a:hover::after,
+.site-nav a[aria-current]::after {
+  transform: scaleX(1);
+}
+
 /* The scene control holds its place on pages without a landscape so the
    header does not reflow as you move between them. */
 .scene-toggle[disabled] { cursor: not-allowed; opacity: .42; }
-/* The current page keeps a filled button so the location is visible without
-   relying on the icon alone. */
-.nav-link[aria-current] {
-  background: var(--glass);
-  border-color: color-mix(in srgb, var(--ink) 32%, var(--line));
-}
 
 .moon-icon {
   opacity: 0;
@@ -1748,13 +1780,21 @@ button:focus-visible {
   .identity-copy small { max-width: 160px; font-size: .5rem; letter-spacing: .035em; }
   .identity-copy strong { font-size: .94rem; }
   .header-actions { gap: 6px; margin-left: 8px; }
-  .theme-toggle, .scene-toggle, .linkedin-link, .nav-link { width: 34px; height: 34px; flex-shrink: 0; }
+  .theme-toggle, .scene-toggle, .linkedin-link { width: 34px; height: 34px; flex-shrink: 0; }
   .scene { width: 100%; transform: none; }
   /* A wider crop keeps the tree, studio and sun framed together on phones. */
   .scene-meadow { width: 170%; transform: none; }
   .scene-meadow .sun-wrap { translate: -500px 0; }
   .sun-wrap { translate: -360px 0; }
   .water-reflection, .sea-glint { translate: -360px 0; }
+}
+/* On phones the section links take the tagline's place beneath the name. */
+@media (max-width: 700px) {
+  .site-header { display: grid; grid-template-columns: 1fr auto; align-content: center; column-gap: 12px; row-gap: 3px; }
+  .monogram, .identity-copy small { display: none; }
+  .site-nav { grid-row: 2; margin: 0; gap: 20px; }
+  .site-nav a { padding: 5px 0; font-size: 0.6rem; }
+  .header-actions { grid-column: 2; grid-row: 1 / span 2; }
 }
 @media (max-width: 380px) {
   .site-header { padding: 0 12px; }
