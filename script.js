@@ -71,7 +71,9 @@ document.addEventListener("keydown", (event) => {
 });
 
 function moveScene(event) {
-  if (reduceMotion.matches || !landscape) return;
+  // REDUCED-MOTION-OFF: parallax runs even with reduced motion on, for now.
+  // To restore, add `reduceMotion.matches ||` back to the start of this check.
+  if (!landscape) return;
 
   const bounds = landscape.getBoundingClientRect();
   const x = (event.clientX - bounds.left) / bounds.width - 0.5;

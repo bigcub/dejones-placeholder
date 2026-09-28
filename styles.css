@@ -1720,6 +1720,8 @@ button:focus-visible {
   }
 }
 
+/* REDUCED-MOTION-OFF: turned off for now so the animations play on devices
+   with reduced motion switched on. Uncomment this block to restore it.
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1729,6 +1731,7 @@ button:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+*/
 
 /* Light follows the upper-right sun across the folds and water. */
 .canopy-detail { opacity: .65; }
@@ -1907,6 +1910,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 /* The ducks and birds are placed entirely by their keyframes, so when reduced
    motion cuts the animation short they revert to the canvas origin and leave
    the frame. Give them a resting position instead. */
+/* REDUCED-MOTION-OFF: turned off for now. Uncomment this block to restore it.
 @media (prefers-reduced-motion: reduce) {
   .tarn-ducks { transform: translate(846px,674px); }
   .tarn-birds { transform: translate(700px,300px); opacity: .8; }
@@ -1914,6 +1918,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 @media (prefers-reduced-motion: reduce) and (max-aspect-ratio: 6/5) {
   .scene-tarn .tarn-ducks { transform: translate(930px,652px) scale(.8); }
 }
+*/
 
 .mountain-icon { opacity: 0; transform: translateY(18px); }
 [data-scene="tarn"] .hills-icon, [data-scene="tarn"] .waves-icon { opacity: 0; transform: translateY(-18px); }
@@ -2140,9 +2145,11 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 }
 
 /* Hold the kestrel with its wings open rather than mid-beat. */
+/* REDUCED-MOTION-OFF: turned off for now. Uncomment this block to restore it.
 @media (prefers-reduced-motion: reduce) {
   .desert-kestrel-wing, .desert-kestrel-tail { animation: none; }
 }
+*/
 
 /* Castlefield canal at dusk: brick warehouses, a humped bridge over a canal
    arm, a moored narrowboat, and a viaduct with a tram. After dark the
