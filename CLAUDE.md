@@ -21,8 +21,8 @@ static site rather than a framework application.
   window sill holding a candle and a potted plant. It is a focused still life
   with no location, deliberately not a scene or an element borrowed from one.
   The light follows the theme: the sun is in the window by day, and at night
-  the moon is out and the candle is lit. The sill's lines run out to the
-  margins and fade into the page. The text is David's own; limit edits to
+  the moon is out and the candle is lit. The sill is a shelf that runs to the
+  margins and fades into the page. The text is David's own; limit edits to
   grammar and cohesion.
 - `favicon.svg` is the site icon.
 - `firebase.json` configures Firebase Hosting. The root-relative static assets
