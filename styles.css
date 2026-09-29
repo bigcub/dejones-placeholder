@@ -389,12 +389,12 @@ button:focus-visible {
 
 .sun-glow-start {
   stop-color: var(--sun-glow);
-  stop-opacity: 0.42;
+  stop-opacity: 0.55;
 }
 
 .sun-glow-mid {
   stop-color: var(--sun-glow);
-  stop-opacity: 0.12;
+  stop-opacity: 0.18;
 }
 
 .sun-glow-end {
@@ -497,6 +497,38 @@ button:focus-visible {
   opacity: 0.12;
   animation: drift-small 28s ease-in-out infinite alternate;
 }
+
+/* The meadow and coast skies: soft cloud banks lit from the sun's side and
+   shaded beneath, thin high streaks, and a corona around the sun and moon. */
+.sun-corona { fill: var(--sun-glow); opacity: .55; transition: opacity .8s ease; }
+[data-theme="dark"] .sun-corona { opacity: .3; }
+.cloud-lit { stop-color: var(--sun); }
+.cloud-body { stop-color: var(--cloud); }
+.cloud-shade { stop-color: color-mix(in srgb, var(--cloud) 40%, var(--sky-mid)); }
+[data-theme="dark"] .cloud-shade { stop-color: color-mix(in srgb, var(--cloud) 35%, var(--sky-top)); }
+.sky-cloud { opacity: .62; transition: opacity .8s ease; }
+.sky-cloud use { fill: url(#cloudLight); }
+.sky-cloud .cloud-base { fill: color-mix(in srgb, var(--cloud) 40%, var(--sky-mid)); opacity: .8; }
+.sky-cloud .cloud-rim { fill: var(--sun); opacity: .75; }
+[data-theme="dark"] .sky-cloud { opacity: .34; }
+.sky-cirrus { opacity: .32; transition: opacity .8s ease; }
+.sky-cirrus use { fill: color-mix(in srgb, var(--sun) 55%, var(--cloud)); }
+[data-theme="dark"] .sky-cirrus { opacity: .2; }
+.sun { fill: url(#sunDisc); }
+.sun-disc-hot { stop-color: color-mix(in srgb, var(--sun) 55%, #fff); }
+.sun-disc-edge { stop-color: var(--sun); }
+.ray-start { stop-color: var(--sun); stop-opacity: .5; }
+.ray-end { stop-color: var(--sun); stop-opacity: 0; }
+.sun-rays { opacity: .6; animation: rays-breathe 14s ease-in-out infinite alternate; transition: opacity .8s ease; }
+[data-theme="dark"] .sun-rays { opacity: .1; }
+.sea-haze { fill: var(--horizon); opacity: .45; }
+[data-theme="dark"] .sea-haze { opacity: .28; }
+@keyframes rays-breathe { from { filter: brightness(.85); } to { filter: brightness(1.1); } }
+/* REDUCED-MOTION-OFF: uncomment to hold the rays still when motion is reduced.
+@media (prefers-reduced-motion: reduce) { .sun-rays { animation: none; } }
+*/
+.cloud-drift { animation: drift 34s ease-in-out infinite alternate; }
+.cloud-drift-slow { animation: drift-small 46s ease-in-out infinite alternate; }
 
 .birds {
   fill: none;
