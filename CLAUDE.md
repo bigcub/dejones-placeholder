@@ -71,6 +71,10 @@ A note that is published but still being refined carries a `note-draft` tag abov
 its title, and "· Draft" after its category in the notes list and on the
 homepage shelf. Remove all three when the note is final.
 
+A note with no content yet, whose notes are still being gathered, carries the
+same tag reading "Collating", and "· Collating" in the same two places. Change
+all three to Draft once writing starts.
+
 `example/` is an unlisted reference note with sample text. It shows the
 reading layout at full length and the inline-drawing pattern below. Leave it
 out of the notes list, and keep invented text out of David's real notes.
