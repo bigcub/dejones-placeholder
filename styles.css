@@ -724,26 +724,58 @@ button:focus-visible {
 }
 */
 /* A roe buck shares the fox's 38s cycle. He walks in from the left once the
-   fox has gone, grazes, looks up as the fox is due, and bounds away over the
-   rise just before it trots through. Three leg poses swap on the same clock. */
-.deer-route { opacity: 0; animation: deer-route 38s linear infinite; }
+   fox has gone, grazes and chews, looks up and flares his white rump as the
+   fox is due, and bounds away over the rise just before it trots through.
+   --deer-walk scales the four-beat walk to nothing while he stands; the bound
+   is a sequence of takeoff, tuck and landing poses on the same 38s clock. */
+@property --deer-walk { syntax: "<number>"; inherits: true; initial-value: 0; }
+.deer-route { opacity: 0; animation: deer-route 38s linear infinite, deer-walk 38s linear infinite; }
 .deer-coat { fill: url(#deerCoat); }
-.deer-belly { fill: #d2a57a; opacity: .8; }
-.deer-rump { fill: #f2e8d6; }
+.deer-belly { fill: #d8b08a; opacity: .75; }
+.deer-rump { fill: #f4ecdd; }
+.deer-throat, .deer-cream { fill: #efe3cf; }
 .deer-leg-near { fill: #8a5738; }
+.deer-leg-near.deer-upper { fill: url(#deerCoat); }
 .deer-leg-far { fill: #6c432d; }
 .deer-hoof, .deer-muzzle, .deer-eye { fill: #2a221f; }
-.deer-ear { fill: #9a5f3b; }
-.deer-inner-ear { fill: #5a3a2c; }
-.deer-antler { fill: none; stroke: #d8c7a2; stroke-width: 1.6; stroke-linecap: round; }
-.deer-head { transform-box: view-box; transform-origin: 56px 8px; animation: deer-head 38s ease-in-out infinite; }
-.deer-hind { transform-origin: 12px 16px; }
-.deer-front { transform-origin: 53px 16px; }
-.deer-stride { transform-box: view-box; animation: deer-stride .55s ease-in-out infinite alternate; }
-.deer-stride.reverse { animation-direction: alternate-reverse; }
-.deer-legs-walk { animation: deer-legs-walk 38s linear infinite; }
-.deer-legs-stand { animation: deer-legs-stand 38s linear infinite; }
-.deer-legs-bound { animation: deer-legs-bound 38s linear infinite; }
+.deer-glint { fill: #fff6e6; }
+.deer-ear { fill: #a2663f; }
+.deer-ear-far { fill: #7a4a31; }
+.deer-inner-ear { fill: #eadbc4; }
+.deer-antler { fill: none; stroke: #dccaa4; stroke-width: 1.6; stroke-linecap: round; }
+.deer-antler-base { fill: none; stroke: #7a5a3c; stroke-width: 2.2; stroke-linecap: round; }
+.deer-pitch, .deer-bob, .deer-neck, .deer-nod, .deer-head, .deer-blink, .deer-ear-flick, .deer-rump,
+.deer-pose, .deer-limb, .deer-shin-pose, .deer-shin { transform-box: view-box; }
+.deer-pitch { transform-origin: 34px 14px; animation: deer-pitch 38s linear infinite; }
+.deer-bob { animation: deer-bob .5s ease-in-out infinite alternate; }
+.deer-neck { transform-origin: 54px 4px; animation: deer-neck 38s ease-in-out infinite; }
+.deer-nod { transform-origin: 54px 4px; animation: deer-nod .5s ease-in-out infinite alternate; }
+.deer-head { transform-origin: 64px -28px; animation: deer-head 38s ease-in-out infinite; }
+.deer-blink { transform-origin: 70.6px -29px; animation: deer-blink 38s linear infinite; }
+.deer-ear-flick { transform-origin: 68px -33px; animation: deer-ear-flick 38s linear infinite; }
+.deer-rump { transform-origin: 6px 12px; animation: deer-rump 38s ease-out infinite; }
+/* The walk is a four-beat gait: near hind, near fore, far hind, far fore. */
+.deer-limb { animation: deer-limb 1s infinite; }
+.deer-shin { animation: deer-knee 1s infinite; }
+.deer-hind .deer-shin { animation-name: deer-hock; }
+.deer-ph-1, .deer-ph-1 .deer-shin { animation-delay: -.75s; }
+.deer-ph-2, .deer-ph-2 .deer-shin { animation-delay: -.5s; }
+.deer-ph-3, .deer-ph-3 .deer-shin { animation-delay: -.25s; }
+.deer-hind { transform-origin: 11px 12px; }
+.deer-hind .deer-shin-pose, .deer-hind .deer-shin { transform-origin: 10.6px 35px; }
+.deer-fore { transform-origin: 53.5px 12px; }
+.deer-fore .deer-shin-pose, .deer-fore .deer-shin { transform-origin: 53.5px 32px; }
+.deer-pose.deer-fore { animation: deer-bound-fore 38s linear infinite; }
+.deer-pose.deer-hind { animation: deer-bound-hind 38s linear infinite; }
+.deer-fore .deer-shin-pose { animation: deer-bound-knee 38s linear infinite; }
+.deer-hind .deer-shin-pose { animation: deer-bound-hock 38s linear infinite; }
+.deer-far .deer-pose, .deer-far .deer-shin-pose { animation-delay: .06s; }
+/* REDUCED-MOTION-OFF: uncomment to hold the deer's limbs, head and rump still.
+@media (prefers-reduced-motion: reduce) {
+  .deer-pitch, .deer-bob, .deer-neck, .deer-nod, .deer-head, .deer-blink, .deer-ear-flick, .deer-rump,
+  .deer-pose, .deer-limb, .deer-shin-pose, .deer-shin { animation: none; }
+}
+*/
 @keyframes deer-route {
   0%, 10% { opacity: 1; transform: translate(170px, 590px) scale(.9); }
   11.5% { transform: translate(215px, 566px) scale(.9); }
@@ -752,23 +784,147 @@ button:focus-visible {
   16% { transform: translate(358px, 584px) scale(.88); }
   17% { opacity: 1; transform: translate(390px, 568px) scale(.86); }
   18.5% { opacity: 0; transform: translate(425px, 576px) scale(.84); }
-  19%, 81% { opacity: 0; transform: translate(-90px, 592px) scale(.9); }
-  82% { opacity: 1; transform: translate(-70px, 592px) scale(.9); }
-  90%, 100% { opacity: 1; transform: translate(170px, 590px) scale(.9); }
+  19%, 76.9% { opacity: 0; transform: translate(-110px, 592px) scale(.9); }
+  77% { opacity: 1; transform: translate(-110px, 592px) scale(.9); }
+  89% { transform: translate(160px, 590px) scale(.9); }
+  90.5%, 100% { opacity: 1; transform: translate(170px, 590px) scale(.9); }
+}
+@keyframes deer-walk {
+  0%, 76.9% { --deer-walk: 0; }
+  77%, 88.6% { --deer-walk: 1; }
+  90.4%, 100% { --deer-walk: 0; }
+}
+@keyframes deer-bob {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(var(--deer-walk) * -1.2px)); }
+}
+@keyframes deer-nod {
+  from { transform: rotate(calc(var(--deer-walk) * -2deg)); }
+  to { transform: rotate(calc(var(--deer-walk) * 3deg)); }
+}
+@keyframes deer-limb {
+  0% { transform: rotate(calc(var(--deer-walk) * -27deg)); animation-timing-function: linear; }
+  65% { transform: rotate(calc(var(--deer-walk) * 27deg)); animation-timing-function: ease-in-out; }
+  100% { transform: rotate(calc(var(--deer-walk) * -27deg)); }
+}
+@keyframes deer-knee {
+  0%, 65% { transform: rotate(0deg); }
+  84% { transform: rotate(calc(var(--deer-walk) * 72deg)); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes deer-hock {
+  0%, 65% { transform: rotate(0deg); }
+  82% { transform: rotate(calc(var(--deer-walk) * 42deg)); }
+  100% { transform: rotate(0deg); }
+}
+/* Neck, head and face on the 38s clock: graze, chew, graze, alarm, bound. */
+@keyframes deer-neck {
+  0%, 5% { transform: rotate(108deg); }
+  6.5%, 9.6% { transform: rotate(-6deg); }
+  10.6%, 18.5% { transform: rotate(4deg); }
+  19%, 91.4% { transform: rotate(0deg); }
+  92.8%, 95% { transform: rotate(108deg); }
+  96.4%, 98% { transform: rotate(30deg); }
+  99.4%, 100% { transform: rotate(108deg); }
 }
 @keyframes deer-head {
-  0%, 5% { transform: rotate(112deg); }
-  6.5%, 10% { transform: rotate(0deg); }
-  11%, 81% { transform: rotate(-6deg); }
-  82%, 90% { transform: rotate(14deg); }
-  92.5%, 95% { transform: rotate(112deg); }
-  96.5%, 98% { transform: rotate(28deg); }
-  99.5%, 100% { transform: rotate(112deg); }
+  0% { transform: rotate(24deg); }
+  1% { transform: rotate(17deg); }
+  1.8% { transform: rotate(26deg); }
+  2.7% { transform: rotate(18deg); }
+  3.6% { transform: rotate(25deg); }
+  5% { transform: rotate(22deg); }
+  6.5%, 9.6% { transform: rotate(-8deg); }
+  10.6%, 91.4% { transform: rotate(0deg); }
+  92.8% { transform: rotate(24deg); }
+  93.6% { transform: rotate(17deg); }
+  94.3% { transform: rotate(26deg); }
+  95% { transform: rotate(22deg); }
+  96.4% { transform: rotate(-12deg); }
+  97% { transform: rotate(-9deg); }
+  97.5% { transform: rotate(-12deg); }
+  98% { transform: rotate(-9deg); }
+  99.4%, 100% { transform: rotate(24deg); }
 }
-@keyframes deer-stride { from { transform: rotate(-14deg); } to { transform: rotate(14deg); } }
-@keyframes deer-legs-walk { 0%, 80.9% { opacity: 0; } 81%, 89.9% { opacity: 1; } 90%, 100% { opacity: 0; } }
-@keyframes deer-legs-stand { 0%, 9.9% { opacity: 1; } 10%, 89.9% { opacity: 0; } 90%, 100% { opacity: 1; } }
-@keyframes deer-legs-bound { 0%, 9.9% { opacity: 0; } 10%, 18.5% { opacity: 1; } 18.6%, 100% { opacity: 0; } }
+@keyframes deer-blink {
+  0%, 7.2%, 7.9%, 91.2%, 91.9%, 97.1%, 97.8%, 100% { transform: scaleY(1); }
+  7.5%, 91.5%, 97.4% { transform: scaleY(.1); }
+}
+@keyframes deer-ear-flick {
+  0%, 3%, 3.9%, 6.6%, 7.4%, 96.7%, 97.5%, 100% { transform: rotate(0deg); }
+  3.3%, 97% { transform: rotate(-18deg); }
+  3.6%, 97.2% { transform: rotate(6deg); }
+  6.9% { transform: rotate(-24deg); }
+}
+@keyframes deer-rump {
+  0%, 7.4% { transform: scale(1); }
+  8.4%, 18.5% { transform: scale(1.3); }
+  19%, 100% { transform: scale(1); }
+}
+/* Each bound: push off with the hinds, tuck the forelegs, reach forward, land
+   on the forelegs and gather the hinds beneath for the next leap. */
+@keyframes deer-pitch {
+  0%, 10% { transform: rotate(0deg); }
+  10.7% { transform: rotate(-10deg); }
+  12.3% { transform: rotate(8deg); }
+  13% { transform: rotate(2deg); }
+  13.7% { transform: rotate(-10deg); }
+  15.3% { transform: rotate(8deg); }
+  16% { transform: rotate(2deg); }
+  16.7% { transform: rotate(-10deg); }
+  18.5% { transform: rotate(4deg); }
+  19%, 100% { transform: rotate(0deg); }
+}
+@keyframes deer-bound-fore {
+  0%, 10% { transform: rotate(0deg); }
+  10.8% { transform: rotate(30deg); }
+  11.6% { transform: rotate(-40deg); }
+  12.7% { transform: rotate(-46deg); }
+  13% { transform: rotate(-10deg); }
+  13.8% { transform: rotate(30deg); }
+  14.6% { transform: rotate(-40deg); }
+  15.7% { transform: rotate(-46deg); }
+  16% { transform: rotate(-10deg); }
+  16.8% { transform: rotate(30deg); }
+  17.6%, 18.5% { transform: rotate(-42deg); }
+  19%, 100% { transform: rotate(0deg); }
+}
+@keyframes deer-bound-knee {
+  0%, 10.2% { transform: rotate(0deg); }
+  10.8% { transform: rotate(105deg); }
+  11.4% { transform: rotate(20deg); }
+  11.7%, 13.2% { transform: rotate(0deg); }
+  13.8% { transform: rotate(105deg); }
+  14.4% { transform: rotate(20deg); }
+  14.7%, 16.2% { transform: rotate(0deg); }
+  16.8% { transform: rotate(105deg); }
+  17.4% { transform: rotate(20deg); }
+  17.7%, 100% { transform: rotate(0deg); }
+}
+@keyframes deer-bound-hind {
+  0%, 10% { transform: rotate(0deg); }
+  10.4% { transform: rotate(-18deg); }
+  10.9% { transform: rotate(46deg); }
+  11.6% { transform: rotate(52deg); }
+  12.5% { transform: rotate(-26deg); }
+  13% { transform: rotate(-30deg); }
+  13.4% { transform: rotate(-18deg); }
+  13.9% { transform: rotate(46deg); }
+  14.6% { transform: rotate(52deg); }
+  15.5% { transform: rotate(-26deg); }
+  16% { transform: rotate(-30deg); }
+  16.4% { transform: rotate(-18deg); }
+  16.9% { transform: rotate(46deg); }
+  17.6%, 18.5% { transform: rotate(52deg); }
+  19%, 100% { transform: rotate(0deg); }
+}
+@keyframes deer-bound-hock {
+  0%, 11.6% { transform: rotate(0deg); }
+  12.1% { transform: rotate(48deg); }
+  12.7%, 14.6% { transform: rotate(0deg); }
+  15.1% { transform: rotate(48deg); }
+  15.7%, 100% { transform: rotate(0deg); }
+}
 
 @keyframes fox-gait {
   0%, 40.5% { --fox-gait: 1; }
