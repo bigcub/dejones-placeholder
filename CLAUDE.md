@@ -132,7 +132,7 @@ pushing to GitHub. Firebase Hosting is configured to publish the repository root
 PATH="/opt/homebrew/bin:$PATH" firebase deploy --only hosting
 ```
 
-Stylesheets are linked with a version query (`styles.css?v=6`,
+Stylesheets are linked with a version query (`styles.css?v=7`,
 `notes.css?v=2`). Bump it on every page when a change to the CSS must reach
 visitors together with new HTML, so a cached stylesheet cannot break the page.
 

@@ -36,7 +36,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=6" />
+    <link rel="stylesheet" href="./styles.css?v=7" />
     <script>
       (() => {
         const savedTheme = localStorage.getItem("theme");
@@ -150,6 +150,20 @@
             <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
               <feGaussianBlur stdDeviation="18" />
             </filter>
+            <!-- Soft gradients rather than blur filters for glows and mists that move:
+                 a moving blur is recomputed every frame, a gradient is not. -->
+            <radialGradient id="featherCloud"><stop stop-color="var(--cloud)" stop-opacity=".94" /><stop offset=".55" stop-color="var(--cloud)" stop-opacity=".6" /><stop offset="1" stop-color="var(--cloud)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherHorizon"><stop stop-color="var(--horizon)" stop-opacity=".6" /><stop offset=".5" stop-color="var(--horizon)" stop-opacity=".32" /><stop offset="1" stop-color="var(--horizon)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherWindow"><stop stop-color="var(--window)" /><stop offset=".45" stop-color="var(--window)" stop-opacity=".75" /><stop offset="1" stop-color="var(--window)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherSunGlow"><stop stop-color="var(--sun-glow)" /><stop offset=".55" stop-color="var(--sun-glow)" stop-opacity=".9" /><stop offset=".72" stop-color="var(--sun-glow)" stop-opacity=".45" /><stop offset="1" stop-color="var(--sun-glow)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherSunPath"><stop stop-color="var(--sun)" stop-opacity=".34" /><stop offset=".5" stop-color="var(--sun)" stop-opacity=".2" /><stop offset="1" stop-color="var(--sun)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherDesertHaze"><stop stop-color="var(--desert-haze)" stop-opacity=".8" /><stop offset=".5" stop-color="var(--desert-haze)" stop-opacity=".45" /><stop offset="1" stop-color="var(--desert-haze)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherSand"><stop stop-color="var(--desert-sand-lit)" stop-opacity=".5" /><stop offset=".5" stop-color="var(--desert-sand-lit)" stop-opacity=".25" /><stop offset="1" stop-color="var(--desert-sand-lit)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherGlowworm"><stop stop-color="#9fe870" /><stop offset=".45" stop-color="#9fe870" stop-opacity=".6" /><stop offset="1" stop-color="#9fe870" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherLampPool"><stop stop-color="var(--window)" stop-opacity=".7" /><stop offset=".5" stop-color="var(--window)" stop-opacity=".38" /><stop offset="1" stop-color="var(--window)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherLamp"><stop stop-color="var(--window)" stop-opacity=".9" /><stop offset=".28" stop-color="var(--window)" stop-opacity=".62" /><stop offset=".6" stop-color="var(--window)" stop-opacity=".22" /><stop offset="1" stop-color="var(--window)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherTarn"><stop stop-color="var(--tarn-haze)" stop-opacity=".8" /><stop offset=".5" stop-color="var(--tarn-haze)" stop-opacity=".45" /><stop offset="1" stop-color="var(--tarn-haze)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherWood"><stop stop-color="var(--wood-mist)" stop-opacity=".93" /><stop offset=".5" stop-color="var(--wood-mist)" stop-opacity=".55" /><stop offset="1" stop-color="var(--wood-mist)" stop-opacity="0" /></radialGradient>
             <filter id="windowGlow" x="-100%" y="-100%" width="300%" height="300%">
               <feGaussianBlur stdDeviation="7" />
             </filter>
@@ -225,7 +239,9 @@
             <clipPath id="meadowMidClip"><use href="#meadowMidHill" /></clipPath>
             <clipPath id="meadowNearClip"><use href="#meadowNearHill" /></clipPath>
             <clipPath id="meadowCrownClip"><use href="#meadowCrown" /></clipPath>
-            <filter id="meadowCrownSoft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6" /></filter>
+            <radialGradient id="featherCrownLit"><stop stop-color="var(--tree-hi)" /><stop offset=".6" stop-color="var(--tree-hi)" stop-opacity=".7" /><stop offset="1" stop-color="var(--tree-hi)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherCrownPocket"><stop stop-color="var(--tree-shadow)" stop-opacity=".7" /><stop offset=".5" stop-color="var(--tree-shadow)" stop-opacity=".38" /><stop offset="1" stop-color="var(--tree-shadow)" stop-opacity="0" /></radialGradient>
+            <radialGradient id="featherFirefly"><stop stop-color="#fff3c4" /><stop offset=".22" stop-color="#f4d67a" /><stop offset=".34" stop-color="#f4d67a" stop-opacity=".5" /><stop offset="1" stop-color="#f4d67a" stop-opacity="0" /></radialGradient>
             <clipPath id="sceneClip">
               <rect width="1600" height="900" />
             </clipPath>
@@ -265,13 +281,13 @@
 
             <g class="sun-wrap parallax" data-depth="0.25" aria-hidden="true">
               <circle class="sun-halo" cx="1276" cy="220" r="240" fill="url(#sunGlow)" />
-              <g class="sun-rays" fill="url(#rayFade)" filter="url(#softGlow)">
+              <g class="sun-rays" fill="url(#rayFade)">
                 <path d="M1276 220 610 900H700Z" />
                 <path d="M1276 220 880 900H944Z" />
                 <path d="M1276 220 1096 900H1146Z" />
                 <path d="M1276 220 1336 900H1404Z" />
               </g>
-              <circle class="sun-corona" cx="1276" cy="220" r="74" filter="url(#softGlow)" />
+              <circle class="sun-corona" cx="1276" cy="220" r="110" />
               <circle class="sun" cx="1276" cy="220" r="58" mask="url(#crescent)" />
             </g>
 
@@ -318,8 +334,8 @@
             </g>
 
             <g class="mist parallax" data-depth="0.14" aria-hidden="true">
-              <ellipse cx="392" cy="548" rx="310" ry="34" filter="url(#softGlow)" />
-              <ellipse cx="1148" cy="562" rx="350" ry="30" filter="url(#softGlow)" />
+              <ellipse cx="392" cy="548" rx="346" ry="70" fill="url(#featherCloud)" />
+              <ellipse cx="1148" cy="562" rx="386" ry="66" fill="url(#featherCloud)" />
             </g>
 
             <g class="hill-middle parallax" data-depth="0.22" aria-hidden="true">
@@ -340,7 +356,7 @@
                 <path class="studio-side" d="m1030 483 35 21v51h-35z" />
                 <path class="studio-roof" d="m881 486 82-49 82 49Z" />
                 <path class="studio-roof-edge" d="m881 486 82-49 82 49" />
-                <rect class="window-glow" x="920" y="499" width="47" height="38" rx="2" filter="url(#windowGlow)" />
+                <ellipse class="window-glow" cx="943.5" cy="518" rx="38" ry="33" fill="url(#featherWindow)" />
                 <rect class="studio-window" x="920" y="499" width="47" height="38" rx="2" />
                 <path class="window-frame" d="M943.5 499v38M920 518h47" />
                 <rect class="studio-door" x="986" y="505" width="23" height="50" rx="1" />
@@ -368,8 +384,8 @@
                 </g>
                 <g clip-path="url(#meadowCrownClip)">
                   <path class="crown-underside" d="M680 404c60 26 180 40 300 2v70H680Z" />
-                  <g class="crown-lit" filter="url(#meadowCrownSoft)"><circle cx="872" cy="318" r="26" /><circle cx="928" cy="352" r="21" /><circle cx="812" cy="298" r="22" /><circle cx="952" cy="392" r="15" /><circle cx="756" cy="320" r="17" /><circle cx="892" cy="386" r="16" /></g>
-                  <g class="crown-pockets" filter="url(#meadowCrownSoft)"><ellipse cx="792" cy="372" rx="15" ry="6" /><ellipse cx="876" cy="398" rx="16" ry="6" /><ellipse cx="730" cy="398" rx="12" ry="5" /></g>
+                  <g class="crown-lit"><circle cx="872" cy="318" r="38" /><circle cx="928" cy="352" r="33" /><circle cx="812" cy="298" r="34" /><circle cx="952" cy="392" r="27" /><circle cx="756" cy="320" r="29" /><circle cx="892" cy="386" r="28" /></g>
+                  <g class="crown-pockets"><ellipse cx="792" cy="372" rx="27" ry="18" /><ellipse cx="876" cy="398" rx="28" ry="18" /><ellipse cx="730" cy="398" rx="24" ry="17" /></g>
                 </g>
             </g>
             </g>
@@ -550,11 +566,11 @@
             </g>
 
             <g class="fireflies" aria-hidden="true">
-              <circle class="firefly firefly-one" cx="498" cy="510" r="3" />
-              <circle class="firefly firefly-two" cx="620" cy="478" r="2.4" />
-              <circle class="firefly firefly-three" cx="1072" cy="533" r="2.7" />
-              <circle class="firefly firefly-four" cx="1168" cy="584" r="2.1" />
-              <circle class="firefly firefly-five" cx="660" cy="574" r="2.2" />
+              <circle class="firefly firefly-one" cx="498" cy="510" r="12" />
+              <circle class="firefly firefly-two" cx="620" cy="478" r="9.6" />
+              <circle class="firefly firefly-three" cx="1072" cy="533" r="10.8" />
+              <circle class="firefly firefly-four" cx="1168" cy="584" r="8.4" />
+              <circle class="firefly firefly-five" cx="660" cy="574" r="8.8" />
             </g>
 
             <g class="wildflowers parallax" data-depth="1.05" aria-hidden="true">
@@ -683,13 +699,13 @@
 
             <g class="sun-wrap parallax" data-depth="0.25" aria-hidden="true">
               <circle class="sun-halo" cx="1276" cy="220" r="240" fill="url(#sunGlow)" />
-              <g class="sun-rays" fill="url(#rayFade)" filter="url(#softGlow)">
+              <g class="sun-rays" fill="url(#rayFade)">
                 <path d="M1276 220 610 900H700Z" />
                 <path d="M1276 220 880 900H944Z" />
                 <path d="M1276 220 1096 900H1146Z" />
                 <path d="M1276 220 1336 900H1404Z" />
               </g>
-              <circle class="sun-corona" cx="1276" cy="220" r="74" filter="url(#softGlow)" />
+              <circle class="sun-corona" cx="1276" cy="220" r="110" />
               <circle class="sun" cx="1276" cy="220" r="58" mask="url(#oceanCrescent)" />
             </g>
 
@@ -742,7 +758,7 @@
             <g class="sea" aria-hidden="true">
               <rect class="sea-base" x="-100" y="560" width="1800" height="340" fill="url(#seaGrad)" />
               <path class="horizon-line" d="M-100 561H1700" />
-              <ellipse class="sea-haze" cx="800" cy="560" rx="900" ry="14" filter="url(#softGlow)" />
+              <ellipse class="sea-haze" cx="800" cy="560" rx="936" ry="50" fill="url(#featherHorizon)" />
 
               <g class="wave-band wave-band-far">
                 <path class="wave wave-far" d="M-200 614C0 602 200 624 400 614S800 602 1000 614s400 12 800 2v294H-200Z" />
@@ -828,7 +844,7 @@
               <g class="water-ripples" fill="none" stroke="var(--sun)" stroke-linecap="round">
                 <path d="M1414 773h83M185 781h151" />
               </g>
-              <ellipse class="water-reflection" cx="1276" cy="663" rx="74" ry="125" fill="url(#waterLight)" filter="url(#softGlow)" />
+              <ellipse class="water-reflection" cx="1276" cy="672" rx="104" ry="146" fill="url(#featherSunPath)" />
               <g class="sea-glint">
                 <ellipse cx="1276" cy="588" rx="26" ry="2.4" />
                 <ellipse cx="1258" cy="610" rx="40" ry="2.8" />
@@ -894,7 +910,7 @@
           <rect y="558" width="1600" height="342" fill="url(#tarnWater)"/>
           <g class="parallax" data-depth=".3"><g class="tarn-mountain-mass" clip-path="url(#tarnLakeClip)" opacity=".28"><use href="#tarnPeaks" transform="translate(0 1120) scale(1 -1)"/></g></g>
           <path d="M0 560h1600" stroke="var(--tarn-haze)" stroke-width="3" opacity=".7"/>
-          <g class="tarn-mist" fill="var(--tarn-haze)" opacity=".27" filter="url(#tarnBlur)"><ellipse cx="740" cy="552" rx="370" ry="15"/><ellipse cx="1100" cy="580" rx="300" ry="12"/></g>
+          <g class="tarn-mist" fill="url(#featherTarn)" opacity=".27"><ellipse cx="740" cy="552" rx="394" ry="39"/><ellipse cx="1100" cy="580" rx="324" ry="36"/></g>
           <g class="tarn-ripples" fill="none" stroke="var(--tarn-haze)" stroke-linecap="round"><path d="M660 600h117m83 18h149m-588 21h154m372 10h205m-520 38h107m-610 15h103m670 26h157m-95 36h223M533 779h180m140 43h94"/></g>
           <g class="parallax" data-depth=".65"><g class="tarn-shore">
           <path d="M-80 632c179-41 348-38 500 9l100 19 80 85-187 36-202 92H-80Z" fill="var(--tarn-bank)"/>
@@ -955,7 +971,7 @@
           <g class="parallax wood-far-trees" data-depth=".28" color="var(--wood-far)">
             <use href="#woodPine" transform="translate(-40 580) scale(0.42)"/><use href="#woodPine" transform="translate(30 596) scale(0.485)"/><use href="#woodPine" transform="translate(100 612) scale(0.55)"/><use href="#woodPine" transform="translate(170 580) scale(0.615)"/><use href="#woodPine" transform="translate(240 596) scale(0.6799999999999999)"/><use href="#woodPine" transform="translate(310 612) scale(0.42)"/><use href="#woodPine" transform="translate(380 580) scale(0.485)"/><use href="#woodPine" transform="translate(450 596) scale(0.55)"/><use href="#woodPine" transform="translate(520 612) scale(0.615)"/><use href="#woodPine" transform="translate(590 580) scale(0.6799999999999999)"/><use href="#woodPine" transform="translate(660 596) scale(0.42)"/><use href="#woodPine" transform="translate(730 612) scale(0.485)"/><use href="#woodPine" transform="translate(800 580) scale(0.55)"/><use href="#woodPine" transform="translate(870 596) scale(0.615)"/><use href="#woodPine" transform="translate(940 612) scale(0.6799999999999999)"/><use href="#woodPine" transform="translate(1010 580) scale(0.42)"/><use href="#woodPine" transform="translate(1080 596) scale(0.485)"/><use href="#woodPine" transform="translate(1150 612) scale(0.55)"/><use href="#woodPine" transform="translate(1220 580) scale(0.615)"/><use href="#woodPine" transform="translate(1290 596) scale(0.6799999999999999)"/><use href="#woodPine" transform="translate(1360 612) scale(0.42)"/><use href="#woodPine" transform="translate(1430 580) scale(0.485)"/><use href="#woodPine" transform="translate(1500 596) scale(0.55)"/><use href="#woodPine" transform="translate(1570 612) scale(0.615)"/><use href="#woodPine" transform="translate(1640 580) scale(0.6799999999999999)"/>
           </g>
-          <g class="wood-valley-mist" fill="var(--wood-mist)" opacity=".38" filter="url(#woodBlur)"><ellipse cx="590" cy="571" rx="520" ry="29"/><ellipse cx="1150" cy="603" rx="410" ry="25"/></g>
+          <g class="wood-valley-mist" fill="url(#featherWood)" opacity=".38"><ellipse cx="590" cy="571" rx="552" ry="61"/><ellipse cx="1150" cy="603" rx="442" ry="57"/></g>
           <g class="parallax" data-depth=".48" color="var(--wood-mid)"><use href="#woodPine" transform="translate(20 677) scale(0.75)"/><use href="#woodPine" transform="translate(120 689) scale(0.87)"/><use href="#woodPine" transform="translate(230 701) scale(0.99)"/><use href="#woodPine" transform="translate(330 677) scale(1.1099999999999999)"/><use href="#woodPine" transform="translate(440 689) scale(0.75)"/><use href="#woodPine" transform="translate(535 701) scale(0.87)"/><use href="#woodPine" transform="translate(1050 677) scale(0.99)"/><use href="#woodPine" transform="translate(1160 689) scale(1.1099999999999999)"/><use href="#woodPine" transform="translate(1270 701) scale(0.75)"/><use href="#woodPine" transform="translate(1380 677) scale(0.87)"/><use href="#woodPine" transform="translate(1500 689) scale(0.99)"/><use href="#woodPine" transform="translate(1620 701) scale(1.1099999999999999)"/></g>
           <path d="M-60 744c330-156 548-64 752-91 346-47 546-76 968 44v240H-60Z" fill="url(#woodFloor)"/>
           <path d="M744 683c-62 33-160 74-143 119s89 76 68 128h160c2-56-108-77-99-126s59-83 40-121Z" fill="var(--wood-path)" opacity=".38"/>
@@ -1068,7 +1084,7 @@
             <g class="desert-glints" stroke="var(--desert-sun)" stroke-width="1.6" stroke-linecap="round"><path d="M902 522h36M884 529h22M922 529h34M896 537h48M912 545h26"/></g>
           </g>
 
-          <g class="desert-haze" fill="var(--desert-haze)" opacity=".4" filter="url(#desertBlur)" aria-hidden="true"><ellipse cx="420" cy="556" rx="420" ry="18"/><ellipse cx="1180" cy="552" rx="460" ry="16"/></g>
+          <g class="desert-haze" fill="url(#featherDesertHaze)" opacity=".4" aria-hidden="true"><ellipse cx="420" cy="556" rx="448" ry="46"/><ellipse cx="1180" cy="552" rx="488" ry="44"/></g>
 
           <g class="parallax" data-depth=".2" aria-hidden="true">
             <use href="#desertFarBody" fill="var(--desert-far-sand)"/>
@@ -1082,7 +1098,7 @@
             <g fill="none" stroke="var(--desert-far-shade)" stroke-width="1.6" stroke-linecap="round" opacity=".7">
               <use href="#desertTuft" transform="translate(186 552) scale(.32)"/><use href="#desertTuft" transform="translate(230 556) scale(.26)"/><use href="#desertTuft" transform="translate(1066 546) scale(.3)"/><use href="#desertTuft" transform="translate(1110 550) scale(.24)"/>
             </g>
-            <ellipse class="desert-spindrift drift-far" cx="1500" cy="542" rx="42" ry="4" fill="var(--desert-sand-lit)" filter="url(#desertSoft)"/>
+            <ellipse class="desert-spindrift drift-far" cx="1500" cy="542" rx="50" ry="12" fill="url(#featherSand)"/>
           </g>
 
           <g class="parallax" data-depth=".3" aria-hidden="true">
@@ -1160,8 +1176,8 @@
               <g fill="none" stroke="var(--desert-grass)" stroke-width="2.4" stroke-linecap="round">
                 <use href="#desertTuft" transform="translate(186 616) scale(.8)"/><use href="#desertTuft" transform="translate(236 620) scale(.55)"/><use href="#desertTuft" transform="translate(810 532) scale(.55)"/><use href="#desertTuft" transform="translate(646 534) scale(.45)"/><use href="#desertTuft" transform="translate(1246 594) scale(.7)"/><use href="#desertTuft" transform="translate(1296 598) scale(.5)"/><use href="#desertTuft" transform="translate(1450 620) scale(.6)"/>
               </g>
-              <g class="glow-worms"><g class="glow-worm"><circle cx="818" cy="536" r="7" filter="url(#desertSoft)"/><circle cx="818" cy="536" r="2"/></g></g>
-              <ellipse class="desert-spindrift drift-mid" cx="1240" cy="584" rx="46" ry="5" fill="var(--desert-sand-lit)" filter="url(#desertSoft)"/>
+              <g class="glow-worms"><g class="glow-worm"><circle cx="818" cy="536" r="15"/><circle cx="818" cy="536" r="2"/></g></g>
+              <ellipse class="desert-spindrift drift-mid" cx="1240" cy="584" rx="54" ry="13" fill="url(#featherSand)"/>
             </g>
           </g>
 
@@ -1180,7 +1196,7 @@
             <g fill="none" stroke="var(--desert-grass)" stroke-width="2.6" stroke-linecap="round">
               <use href="#desertTuft" transform="translate(350 704) scale(.9)"/><use href="#desertTuft" transform="translate(1228 712) scale(.8)"/><use href="#desertTuft" transform="translate(1280 716) scale(.6)"/>
             </g>
-            <g class="glow-worms"><g class="glow-worm"><circle cx="344" cy="709" r="7" filter="url(#desertSoft)"/><circle cx="344" cy="709" r="2"/></g><g class="glow-worm"><circle cx="366" cy="715" r="7" filter="url(#desertSoft)"/><circle cx="366" cy="715" r="2"/></g><g class="glow-worm"><circle cx="1238" cy="718" r="7" filter="url(#desertSoft)"/><circle cx="1238" cy="718" r="2"/></g></g>
+            <g class="glow-worms"><g class="glow-worm"><circle cx="344" cy="709" r="15"/><circle cx="344" cy="709" r="2"/></g><g class="glow-worm"><circle cx="366" cy="715" r="15"/><circle cx="366" cy="715" r="2"/></g><g class="glow-worm"><circle cx="1238" cy="718" r="15"/><circle cx="1238" cy="718" r="2"/></g></g>
           </g>
 
           <g class="parallax" data-depth="1.15" aria-hidden="true">
@@ -1191,7 +1207,7 @@
               <path d="M1400 832q-4-54-34-92m44 92q6-60 36-96m-24 98q22-36 54-52m-68 50q-12-40-40-60"/>
               <path d="M760 842q-2-34-18-58m26 58q6-38 24-60m-16 60q14-22 34-30"/>
             </g>
-            <g class="glow-worms"><g class="glow-worm"><circle cx="164" cy="848" r="7" filter="url(#desertSoft)"/><circle cx="164" cy="848" r="2"/></g><g class="glow-worm"><circle cx="1414" cy="834" r="7" filter="url(#desertSoft)"/><circle cx="1414" cy="834" r="2"/></g><g class="glow-worm"><circle cx="774" cy="846" r="7" filter="url(#desertSoft)"/><circle cx="774" cy="846" r="2"/></g></g>
+            <g class="glow-worms"><g class="glow-worm"><circle cx="164" cy="848" r="15"/><circle cx="164" cy="848" r="2"/></g><g class="glow-worm"><circle cx="1414" cy="834" r="15"/><circle cx="1414" cy="834" r="2"/></g><g class="glow-worm"><circle cx="774" cy="846" r="15"/><circle cx="774" cy="846" r="2"/></g></g>
           </g>
           <rect class="paper-grain" width="1600" height="900" filter="url(#grain)"/>
         </svg>
@@ -1307,7 +1323,7 @@
                   </g></g>
                 </g>
                 <path class="canal-sun-glitter" d="M520 626h70M527 640h56M531 654h48M536 670h38M540 688h30M544 708h22M548 730h14"/>
-                <ellipse class="canal-lamp-pool" cx="760" cy="770" rx="130" ry="14" filter="url(#canalGlow)"/>
+                <ellipse class="canal-lamp-pool" cx="760" cy="770" rx="158" ry="42"/>
                 <g class="canal-ripples">
                   <path d="M40 640h120M260 652h90M520 636h70M700 660h140M980 646h110M1240 658h150M1480 640h90M120 690h160M420 700h120M660 720h90M900 700h160M1180 716h120M1420 696h140M60 740h110M320 752h150M600 766h120M860 748h140M1120 762h100M1360 744h160"/>
                 </g>
@@ -1344,7 +1360,7 @@
                 <path class="nb-pots" d="M150-46c2-6 8-6 10 0M166-46c1-4 6-5 8 0" />
                 <circle class="nb-lamp" cx="284" cy="-14" r="2.2" />
               </g>
-                  <circle class="nb-headlamp" cx="288" cy="-12" r="10" filter="url(#canalSoft)"/>
+                  <circle class="nb-headlamp" cx="288" cy="-12" r="18"/>
                 </g>
               </g>
             </g>
@@ -1357,7 +1373,7 @@
               <path class="canal-bollard" d="M318 812H342V796C342 790 318 790 318 796Z"/>
               <path class="canal-bollard" d="M314 796H346V790H314Z"/>
               <g class="canal-lamp">
-                <circle class="canal-lamp-glow" cx="760" cy="676" r="46" filter="url(#canalGlow)"/>
+                <circle class="canal-lamp-glow" cx="760" cy="676" r="74"/>
                 <path class="canal-lamp-post" d="M760 846V690"/>
                 <path class="canal-lamp-base" d="M750 848H770L766 826H754Z"/>
                 <path class="canal-lamp-glass" d="M748 690H772L768 668H752Z"/>
