@@ -201,6 +201,25 @@
             </mask>
             <g id="meadowBloom"><g class="bloom-petals"><circle cx="0" cy="-3.4" r="2.6" /><circle cx="3.2" cy="-1" r="2.6" /><circle cx="2" cy="2.8" r="2.6" /><circle cx="-2" cy="2.8" r="2.6" /><circle cx="-3.2" cy="-1" r="2.6" /></g><circle class="bloom-eye" r="1.6" /></g>
             <filter id="meadowSoft" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="2.4" /></filter>
+            <!-- Soft, sunlit clouds shared by the meadow and coast skies. -->
+            <linearGradient id="cloudLight" x1="1" y1="0" x2=".25" y2="1">
+              <stop class="cloud-lit" />
+              <stop offset=".45" class="cloud-body" />
+              <stop offset="1" class="cloud-shade" />
+            </linearGradient>
+            <filter id="cloudSoft" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="3.2" /></filter>
+            <filter id="streakSoft" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="4" /></filter>
+            <radialGradient id="sunDisc" cx=".4" cy=".38" r=".75">
+              <stop class="sun-disc-hot" />
+              <stop offset="1" class="sun-disc-edge" />
+            </radialGradient>
+            <linearGradient id="rayFade" gradientUnits="userSpaceOnUse" x1="1276" y1="220" x2="1040" y2="760">
+              <stop class="ray-start" />
+              <stop offset="1" class="ray-end" />
+            </linearGradient>
+            <path id="cumulusA" d="M-160 0C-162-16-146-28-124-26-118-46-90-58-66-48-54-74-14-82 8-62 22-84 64-84 78-58 96-70 128-62 134-40 154-40 166-24 162-10 160-2 150 0 140 0Z" />
+            <path id="cumulusB" d="M-100 0C-102-12-90-22-72-20-64-38-36-44-20-32-8-52 26-52 36-32 54-38 78-28 80-14 96-12 102-2 92 0Z" />
+            <path id="cloudStreak" d="M-220 0c60-10 180-12 300-6 40 2 60 6 20 9-110 6-240 6-310 1-24-2-20-3-10-4Z" />
             <clipPath id="meadowFarthestClip"><use href="#meadowFarthest" /></clipPath>
             <clipPath id="meadowFarClip"><use href="#meadowFarHill" /></clipPath>
             <clipPath id="meadowMidClip"><use href="#meadowMidHill" /></clipPath>
@@ -246,14 +265,38 @@
 
             <g class="sun-wrap parallax" data-depth="0.25" aria-hidden="true">
               <circle class="sun-halo" cx="1276" cy="220" r="240" fill="url(#sunGlow)" />
+              <g class="sun-rays" fill="url(#rayFade)" filter="url(#softGlow)">
+                <path d="M1276 220 610 900H700Z" />
+                <path d="M1276 220 880 900H944Z" />
+                <path d="M1276 220 1096 900H1146Z" />
+                <path d="M1276 220 1336 900H1404Z" />
+              </g>
+              <circle class="sun-corona" cx="1276" cy="220" r="74" filter="url(#softGlow)" />
               <circle class="sun" cx="1276" cy="220" r="58" mask="url(#crescent)" />
             </g>
 
-            <g class="cloud cloud-one parallax" data-depth="0.18" filter="url(#meadowSoft)" aria-hidden="true">
-              <path d="M148 242c42-23 98-20 134 5 22-15 59-14 78 5 22-4 50 5 64 22H116c5-14 16-25 32-32Z" />
+            <g class="sky-cirrus parallax" data-depth="0.1" aria-hidden="true">
+              <g class="cloud-drift-slow" filter="url(#streakSoft)">
+                <use href="#cloudStreak" transform="translate(660 150) scale(0.9)" />
+                <use href="#cloudStreak" transform="translate(1330 296) scale(0.7)" />
+                <use href="#cloudStreak" transform="translate(120 176) scale(0.6)" />
+              </g>
             </g>
-            <g class="cloud cloud-two parallax" data-depth="0.12" filter="url(#meadowSoft)" aria-hidden="true">
-              <path d="M918 316c32-18 74-15 101 3 17-11 44-10 59 4 17-2 36 5 47 18H893c4-10 12-19 25-25Z" />
+            <g class="parallax" data-depth="0.18" aria-hidden="true">
+              <g class="sky-cloud cloud-drift" filter="url(#cloudSoft)">
+                <use href="#cumulusB" class="cloud-rim" transform="translate(433 272) scale(0.78)" />
+                <use href="#cumulusB" transform="translate(430 276) scale(0.78)" />
+                <use href="#cumulusA" class="cloud-rim" transform="translate(253 266)" />
+                <use href="#cumulusA" transform="translate(250 270)" />
+                <use href="#cloudStreak" class="cloud-base" transform="translate(290 272) scale(1.1)" />
+              </g>
+            </g>
+            <g class="parallax" data-depth="0.12" aria-hidden="true">
+              <g class="sky-cloud cloud-drift-slow" filter="url(#cloudSoft)">
+                <use href="#cumulusB" class="cloud-rim" transform="translate(1003 340) scale(1.1)" />
+                <use href="#cumulusB" transform="translate(1000 344) scale(1.1)" />
+                <use href="#cloudStreak" class="cloud-base" transform="translate(1040 346) scale(0.9)" />
+              </g>
             </g>
 
             <g class="birds parallax" data-depth="0.35" aria-hidden="true">
@@ -607,14 +650,38 @@
 
             <g class="sun-wrap parallax" data-depth="0.25" aria-hidden="true">
               <circle class="sun-halo" cx="1276" cy="220" r="240" fill="url(#sunGlow)" />
+              <g class="sun-rays" fill="url(#rayFade)" filter="url(#softGlow)">
+                <path d="M1276 220 610 900H700Z" />
+                <path d="M1276 220 880 900H944Z" />
+                <path d="M1276 220 1096 900H1146Z" />
+                <path d="M1276 220 1336 900H1404Z" />
+              </g>
+              <circle class="sun-corona" cx="1276" cy="220" r="74" filter="url(#softGlow)" />
               <circle class="sun" cx="1276" cy="220" r="58" mask="url(#oceanCrescent)" />
             </g>
 
-            <g class="cloud cloud-one parallax" data-depth="0.18" aria-hidden="true">
-              <path d="M300 218c42-23 98-20 134 5 22-15 59-14 78 5 22-4 50 5 64 22h-308c5-14 16-25 32-32Z" />
+            <g class="sky-cirrus parallax" data-depth="0.1" aria-hidden="true">
+              <g class="cloud-drift-slow" filter="url(#streakSoft)">
+                <use href="#cloudStreak" transform="translate(800 140) scale(0.9)" />
+                <use href="#cloudStreak" transform="translate(1330 300) scale(0.7)" />
+                <use href="#cloudStreak" transform="translate(140 330) scale(0.65)" />
+              </g>
             </g>
-            <g class="cloud cloud-two parallax" data-depth="0.12" aria-hidden="true">
-              <path d="M986 330c32-18 74-15 101 3 17-11 44-10 59 4 17-2 36 5 47 18h-232c4-10 12-19 25-25Z" />
+            <g class="parallax" data-depth="0.18" aria-hidden="true">
+              <g class="sky-cloud cloud-drift" filter="url(#cloudSoft)">
+                <use href="#cumulusB" class="cloud-rim" transform="translate(283 248) scale(0.75)" />
+                <use href="#cumulusB" transform="translate(280 252) scale(0.75)" />
+                <use href="#cumulusA" class="cloud-rim" transform="translate(453 242)" />
+                <use href="#cumulusA" transform="translate(450 246)" />
+                <use href="#cloudStreak" class="cloud-base" transform="translate(400 248) scale(1.1)" />
+              </g>
+            </g>
+            <g class="parallax" data-depth="0.12" aria-hidden="true">
+              <g class="sky-cloud cloud-drift-slow" filter="url(#cloudSoft)">
+                <use href="#cumulusB" class="cloud-rim" transform="translate(1083 352) scale(1.1)" />
+                <use href="#cumulusB" transform="translate(1080 356) scale(1.1)" />
+                <use href="#cloudStreak" class="cloud-base" transform="translate(1120 358) scale(0.9)" />
+              </g>
             </g>
 
             <g class="birds parallax" data-depth="0.35" aria-hidden="true">
@@ -642,6 +709,7 @@
             <g class="sea" aria-hidden="true">
               <rect class="sea-base" x="-100" y="560" width="1800" height="340" fill="url(#seaGrad)" />
               <path class="horizon-line" d="M-100 561H1700" />
+              <ellipse class="sea-haze" cx="800" cy="560" rx="900" ry="14" filter="url(#softGlow)" />
 
               <g class="wave-band wave-band-far">
                 <path class="wave wave-far" d="M-200 614C0 602 200 624 400 614S800 602 1000 614s400 12 800 2v294H-200Z" />
