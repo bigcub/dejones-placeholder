@@ -18,8 +18,10 @@ static site rather than a framework application.
   notes index's page shell and list styles, with each project's domain as its
   label. A project without an address yet is listed without a link.
 - `about/index.html` is the About page, in the note layout, with a drawing of a
-  window sill holding a candle and a potted plant. It is a focused still life
-  with no location, deliberately not a scene or an element borrowed from one.
+  window sill holding a candle and a potted plant, between two small wall
+  shelves of books that carry the drawing towards the margins. It is a focused
+  still life with no location, deliberately not a scene or an element borrowed
+  from one.
   The light follows the theme: the sun is in the window by day, and at night
   the moon is out and the candle is lit. The text is David's own; limit edits to
   grammar and cohesion.

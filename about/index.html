@@ -84,7 +84,7 @@
     </header>
     <div class="note-prose">
       <figure class="note-figure">
-        <svg viewBox="90 20 540 205" role="img" aria-label="A candle and a potted plant on a window sill, with the sun in the window by day, and the moon outside and the candle lit at night">
+        <svg viewBox="90 20 540 205" role="img" aria-label="A candle and a potted plant on a window sill between two small bookshelves, with the sun in the window by day, and the moon outside and the candle lit at night">
           <defs>
             <linearGradient id="sillSky" x2="0" y2="1"><stop class="sill-sky-top"/><stop class="sill-sky-bottom" offset="1"/></linearGradient>
             <radialGradient id="sillDayGlow"><stop stop-color="var(--sun-glow)" stop-opacity=".45"/><stop offset="1" stop-color="var(--sun-glow)" stop-opacity="0"/></radialGradient>
@@ -93,6 +93,17 @@
             <filter id="sillSoft" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="6"/></filter>
           </defs>
           <ellipse class="sill-day" cx="370" cy="100" rx="170" ry="115" fill="url(#sillDayGlow)"/>
+          <g class="sill-shelves">
+            <ellipse cx="181" cy="160" rx="84" ry="3" fill="var(--reading-ink)" opacity=".06"/>
+            <ellipse cx="539" cy="126" rx="84" ry="3" fill="var(--reading-ink)" opacity=".06"/>
+            <rect fill="var(--roof)" x="112" y="116" width="8" height="30" rx=".8"/><rect fill="var(--flower)" x="120" y="121" width="7" height="25" rx=".8"/><rect fill="var(--field-b)" x="127" y="113" width="9" height="33" rx=".8"/><rect fill="var(--studio-side)" x="136" y="118" width="6" height="28" rx=".8"/><rect fill="var(--boat-hull)" x="142" y="115" width="8" height="31" rx=".8"/><rect class="sill-candle" x="150" y="122" width="7" height="24" rx=".8"/><rect fill="var(--roof)" x="157" y="117" width="9" height="29" rx=".8"/>
+            <rect x="168" y="118" width="8" height="29" rx=".8" transform="rotate(14 172 146)" fill="var(--tree-hi)"/>
+            <rect x="472" y="105" width="42" height="7" rx=".8" fill="var(--roof)"/><rect x="475" y="99" width="37" height="6" rx=".8" fill="var(--flower)"/><rect x="470" y="93" width="40" height="6" rx=".8" fill="var(--field-b)"/>
+            <rect fill="var(--field-b)" x="532" y="83" width="8" height="29" rx=".8"/><rect fill="var(--roof)" x="540" y="79" width="7" height="33" rx=".8"/><rect fill="var(--flower)" x="547" y="86" width="9" height="26" rx=".8"/><rect fill="var(--studio-side)" x="556" y="81" width="6" height="31" rx=".8"/><rect fill="var(--boat-hull)" x="562" y="85" width="8" height="27" rx=".8"/>
+            <path d="M104 146h154v5H104Z" fill="var(--studio)"/><path d="M104 151h154v3H104Z" fill="var(--studio-side)"/>
+            <path d="M462 112h154v5H462Z" fill="var(--studio)"/><path d="M462 117h154v3H462Z" fill="var(--studio-side)"/>
+            <path d="M118 154h7l-7 9Z M237 154h7v9Z M476 120h7l-7 9Z M595 120h7v9Z" fill="var(--studio-side)"/>
+          </g>
           <rect x="290" y="36" width="140" height="154" rx="3" fill="var(--studio)"/>
           <rect x="300" y="46" width="120" height="134" fill="url(#sillSky)"/>
           <g clip-path="url(#sillGlass)">
