@@ -42,6 +42,14 @@ reduced motion as requirements: retain semantic labels, keyboard focus styles,
 and the `prefers-reduced-motion` behaviour. Check narrow mobile layouts as well as
 desktop layouts.
 
+Keep the scenes light to run, especially on phones. Only the scene on show
+animates: a rule in `styles.css` pauses every animation in the hidden scenes.
+Avoid `feGaussianBlur` and CSS `filter` on anything that moves, or that sits
+under something that moves, because the blur is then recomputed every frame.
+Draw soft glows, mists and hazes as shapes filled with a feathered radial
+gradient instead, and let a slow drift over a blurred shape use `steps()`
+timing so that it repaints a few times a second rather than every frame.
+
 For now the reduced-motion rules are turned off at David's request, so the
 animations play on his phone, which has reduced motion switched on. Each one is
 commented out and marked `REDUCED-MOTION-OFF` in `styles.css` and `script.js`.
