@@ -18,11 +18,11 @@ static site rather than a framework application.
   notes index's page shell and list styles, with each project's domain as its
   label. A project without an address yet is listed without a link.
 - `about/index.html` is the About page, in the note layout, with a drawing of a
-  window sill holding a candle and a potted plant. It is a focused still life
+  wide casement window, spanning the column, whose sill holds a candle and a
+  potted plant. It is a focused still life
   with no location, deliberately not a scene or an element borrowed from one.
   The light follows the theme: the sun is in the window by day, and at night
-  the moon is out and the candle is lit. The sill is a shelf that runs to the
-  margins and fades into the page. The text is David's own; limit edits to
+  the moon is out and the candle is lit. The text is David's own; limit edits to
   grammar and cohesion.
 - `favicon.svg` is the site icon.
 - `firebase.json` configures Firebase Hosting. The root-relative static assets

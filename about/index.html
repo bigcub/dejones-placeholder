@@ -84,59 +84,58 @@
     </header>
     <div class="note-prose">
       <figure class="note-figure">
-        <svg viewBox="90 20 540 205" role="img" aria-label="A candle and a potted plant on a window sill, with the sun in the window by day, and the moon outside and the candle lit at night">
+        <svg viewBox="40 8 640 214" role="img" aria-label="A candle and a potted plant on the sill of a wide casement window, with the sun in the window by day, and the moon outside and the candle lit at night">
           <defs>
             <linearGradient id="sillSky" x2="0" y2="1"><stop class="sill-sky-top"/><stop class="sill-sky-bottom" offset="1"/></linearGradient>
-            <radialGradient id="sillDayGlow"><stop stop-color="var(--sun-glow)" stop-opacity=".45"/><stop offset="1" stop-color="var(--sun-glow)" stop-opacity="0"/></radialGradient>
+            <radialGradient id="sillDayGlow"><stop stop-color="var(--sun-glow)" stop-opacity=".4"/><stop offset="1" stop-color="var(--sun-glow)" stop-opacity="0"/></radialGradient>
             <radialGradient id="sillCandleGlow"><stop stop-color="var(--window)" stop-opacity=".6"/><stop offset="1" stop-color="var(--window)" stop-opacity="0"/></radialGradient>
-            <clipPath id="sillGlass"><rect x="300" y="46" width="120" height="134"/></clipPath>
-            <linearGradient id="sillFadeX"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".22" stop-color="#fff"/><stop offset=".78" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-            <mask id="sillFade" maskUnits="userSpaceOnUse" x="90" y="20" width="540" height="205"><rect x="90" y="20" width="540" height="205" fill="url(#sillFadeX)"/></mask>
-            <linearGradient id="sillShade" x2="0" y2="1"><stop stop-color="var(--reading-ink)" stop-opacity=".12"/><stop offset="1" stop-color="var(--reading-ink)" stop-opacity="0"/></linearGradient>
+            <clipPath id="sillGlass"><rect x="70" y="30" width="580" height="150"/></clipPath>
             <filter id="sillSoft" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="6"/></filter>
           </defs>
-          <ellipse class="sill-day" cx="370" cy="100" rx="170" ry="115" fill="url(#sillDayGlow)"/>
-          <rect x="290" y="36" width="140" height="154" rx="3" fill="var(--studio)"/>
-          <rect x="300" y="46" width="120" height="134" fill="url(#sillSky)"/>
+          <ellipse class="sill-day" cx="440" cy="104" rx="300" ry="118" fill="url(#sillDayGlow)"/>
+          <rect x="58" y="18" width="604" height="172" rx="3" fill="var(--studio)"/>
+          <rect x="70" y="30" width="580" height="150" fill="url(#sillSky)"/>
           <g clip-path="url(#sillGlass)">
             <g class="sill-day">
-              <circle cx="393" cy="80" r="30" fill="var(--sun-glow)" opacity=".7" filter="url(#sillSoft)"/>
-              <circle cx="393" cy="80" r="15" fill="var(--sun)"/>
+              <circle cx="552" cy="118" r="30" fill="var(--sun-glow)" opacity=".7" filter="url(#sillSoft)"/>
+              <circle cx="552" cy="118" r="15" fill="var(--sun)"/>
             </g>
             <g class="sill-night" fill="var(--sun)">
-              <path d="M341 63A15 15 0 1 0 352 88 12 12 0 1 1 341 63Z"/>
-              <circle cx="312" cy="96" r="1.2"/><circle cx="378" cy="60" r="1.4"/><circle cx="404" cy="84" r="1.1"/><circle cx="392" cy="128" r="1.3"/><circle cx="320" cy="140" r="1"/>
+              <path d="M156 99A15 15 0 1 0 167 124 12 12 0 1 1 156 99Z"/>
+              <circle cx="96" cy="140" r="1.1"/><circle cx="212" cy="96" r="1.3"/><circle cx="238" cy="150" r="1"/><circle cx="300" cy="104" r="1.4"/><circle cx="392" cy="128" r="1.1"/><circle cx="420" cy="92" r="1.2"/><circle cx="512" cy="146" r="1"/><circle cx="540" cy="100" r="1.3"/><circle cx="618" cy="126" r="1.2"/><circle cx="140" cy="50" r="1"/><circle cx="350" cy="52" r="1.2"/><circle cx="590" cy="48" r="1"/>
             </g>
           </g>
-          <path d="M360 46v134M300 113h120" stroke="var(--studio)" stroke-width="6"/>
-          <path d="M300 46h120v134H300Z" fill="none" stroke="var(--studio-side)" stroke-width="2" opacity=".6"/>
-          <g mask="url(#sillFade)">
-            <rect x="90" y="208" width="540" height="12" fill="url(#sillShade)"/>
-            <rect x="90" y="190" width="540" height="8" fill="var(--studio)"/>
-            <rect x="90" y="198" width="540" height="10" fill="var(--studio-side)"/>
+          <path d="M263.3 30v150M456.7 30v150M70 74h580" stroke="var(--studio)" stroke-width="7"/>
+          <path d="M70 30h580v150H70Z" fill="none" stroke="var(--studio-side)" stroke-width="2" opacity=".6"/>
+          <ellipse cx="360" cy="215" rx="316" ry="4" fill="var(--reading-ink)" opacity=".08"/>
+          <path d="M50 190h620l8 8H42Z" fill="var(--studio)"/>
+          <path class="sill-day" d="M72 190h576l5 5H77Z" fill="var(--sun)" opacity=".5"/>
+          <rect x="42" y="198" width="636" height="10" fill="var(--studio-side)"/>
+          <g transform="translate(-50 0)">
+            <circle class="sill-night" cx="326" cy="140" r="70" fill="url(#sillCandleGlow)"/>
+            <ellipse cx="326" cy="190" rx="16" ry="3.5" fill="var(--roof)"/>
+            <rect class="sill-candle" x="319" y="150" width="14" height="40" rx="2"/>
+            <path d="M326 150v-6" stroke="var(--roof)" stroke-width="1.6" stroke-linecap="round"/>
+            <g transform="translate(326 145)"><g class="sill-night"><g class="sill-flame">
+              <path d="M0 0C-6-4-7-12 0-22 7-12 6-4 0 0Z" fill="var(--window)"/>
+              <path d="M0-1C-3-3-3-8 0-12 3-8 3-3 0-1Z" fill="var(--sun)"/>
+            </g></g></g>
           </g>
-          <path class="sill-day" d="M304 190h112l5 5H309Z" fill="var(--sun)" opacity=".55"/>
-          <circle class="sill-night" cx="326" cy="140" r="70" fill="url(#sillCandleGlow)"/>
-          <ellipse cx="326" cy="190" rx="16" ry="3.5" fill="var(--roof)"/>
-          <rect class="sill-candle" x="319" y="150" width="14" height="40" rx="2"/>
-          <path d="M326 150v-6" stroke="var(--roof)" stroke-width="1.6" stroke-linecap="round"/>
-          <g transform="translate(326 145)"><g class="sill-night"><g class="sill-flame">
-            <path d="M0 0C-6-4-7-12 0-22 7-12 6-4 0 0Z" fill="var(--window)"/>
-            <path d="M0-1C-3-3-3-8 0-12 3-8 3-3 0-1Z" fill="var(--sun)"/>
-          </g></g></g>
-          <g transform="translate(394 166)">
-            <g class="sill-leaves">
-              <path d="M0 0C4-12 14-20 26-22 24-10 14-2 0 0Z" transform="rotate(-25)"/>
-              <path d="M0 0C4-12 14-20 26-22 24-10 14-2 0 0Z" transform="rotate(40) scale(.85)"/>
-              <path d="M0 0C4-12 14-20 26-22 24-10 14-2 0 0Z" transform="scale(-1 1) rotate(-35) scale(.95)"/>
+          <g transform="translate(40 0)">
+            <g transform="translate(394 166)">
+              <g class="sill-leaves">
+                <path d="M0 0C4-12 14-20 26-22 24-10 14-2 0 0Z" transform="rotate(-25)"/>
+                <path d="M0 0C4-12 14-20 26-22 24-10 14-2 0 0Z" transform="rotate(40) scale(.85)"/>
+                <path d="M0 0C4-12 14-20 26-22 24-10 14-2 0 0Z" transform="scale(-1 1) rotate(-35) scale(.95)"/>
+              </g>
+              <g class="sill-leaves sill-leaves-back">
+                <path d="M0 0C4-12 14-20 26-22 24-10 14-2 0 0Z" transform="rotate(-70) scale(.9)"/>
+                <path d="M0 0C4-12 14-20 26-22 24-10 14-2 0 0Z" transform="scale(-1 1) rotate(20) scale(.8)"/>
+              </g>
             </g>
-            <g class="sill-leaves sill-leaves-back">
-              <path d="M0 0C4-12 14-20 26-22 24-10 14-2 0 0Z" transform="rotate(-70) scale(.9)"/>
-              <path d="M0 0C4-12 14-20 26-22 24-10 14-2 0 0Z" transform="scale(-1 1) rotate(20) scale(.8)"/>
-            </g>
+            <path d="M381 166h26l-4 24h-18Z" fill="var(--flower)"/>
+            <rect x="379" y="163" width="30" height="5" rx="1.5" fill="var(--flower)"/>
           </g>
-          <path d="M381 166h26l-4 24h-18Z" fill="var(--flower)"/>
-          <rect x="379" y="163" width="30" height="5" rx="1.5" fill="var(--flower)"/>
         </svg>
       </figure>
       <p>The primary aim of this site is to bring clarity to my own thinking after more than fifteen years designing and building software products for the gaming industry. I'm consolidating my fragmented notes from over the years and, starting with some very raw drafts, refining them into what I hope will become useful evergreen articles. Should they prove illuminating to anyone who comes across them, then all the better.</p>
