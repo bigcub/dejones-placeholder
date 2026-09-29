@@ -671,37 +671,58 @@ button:focus-visible {
 .fence-post-lit { stroke: color-mix(in srgb, var(--path-a) 45%, var(--fence)); stroke-width: 1.6; opacity: .7; }
 .fence-rail { stroke-width: 3.6; }
 
+/* The fox trots along the path on the scene's 38s clock. --fox-gait eases
+   from 1 to 0 as it stops mid-meadow, so the stride, bob and knee lift all
+   settle together while it sniffs the ground, looks up, blinks, flicks an ear
+   and swishes its brush, then build again as it trots on. */
+@property --fox-gait { syntax: "<number>"; inherits: true; initial-value: 1; }
 .fox-route {
-  animation: fox-cross 38s linear infinite;
+  animation: fox-cross 38s linear infinite, fox-gait 38s linear infinite;
   opacity: 0;
-}
-
-.fox {
-  animation: fox-step 0.72s ease-in-out infinite alternate;
 }
 
 .fox-body, .fox-head, .fox-tail { fill: url(#foxCoat); }
 .fox-cream { fill: #f5dfb6; }
+.fox-belly { fill: #f5dfb6; opacity: .45; }
 .fox-rust { fill: #b76236; }
-.fox-haunch { fill: #dc8c4b; opacity: .55; }
-.fox-ear { fill: #a35132; }
-.fox-inner-ear { fill: #492e2c; }
+.fox-haunch { fill: #dc8c4b; opacity: .5; }
+.fox-ear { fill: #b0552f; }
+.fox-ear-far { fill: #6a3324; }
+.fox-inner-ear { fill: #f1dcc0; }
 .fox-leg-far { fill: #88432f; }
-.fox-sock, .fox-eye, .fox-nose { fill: #392d2d; }
-.fox-leg {
-  transform-box: view-box;
-  transform-origin: 40px 25px;
-  animation: fox-stride .72s ease-in-out infinite alternate;
-}
-.fox-leg-hind, .fox-leg-front-far { animation-direction: alternate-reverse; }
-/* Each leg swings from its own hip or shoulder. */
-.fox-leg-hind, .fox-leg-back { transform-origin: 16px 20px; }
-.fox-leg-front, .fox-leg-front-far { transform-origin: 62px 20px; }
+.fox-rust.fox-thigh { fill: url(#foxCoat); }
+.fox-stocking { fill: url(#foxStocking); }
+.fox-far-shade { opacity: .82; }
+.fox-dark { fill: #2b2322; }
+.fox-eye { fill: #e3a13c; }
+.fox-eye-line { fill: none; stroke: #2b2322; stroke-width: .8; stroke-linecap: round; opacity: .45; }
+.fox-mouth { fill: none; stroke: #2b2322; stroke-width: .6; stroke-linecap: round; opacity: .35; }
+.fox-tail-line { fill: none; stroke: #7e3822; stroke-width: 1.4; stroke-linecap: round; opacity: .35; }
+.fox-bob, .fox-limb, .fox-shin, .fox-neck, .fox-head-look, .fox-ear-flick, .fox-blink, .fox-tail-swish, .fox-tail-sway { transform-box: view-box; }
+.fox-bob { transform-origin: 44px 20px; animation: fox-bob .4s ease-in-out infinite alternate; }
+/* A trot: diagonal legs move together. Each foot plants and sweeps back at
+   the pace of the ground, then the knee or hock folds as it swings through. */
+.fox-limb { animation: fox-limb .8s infinite; }
+.fox-shin { animation: fox-shin .8s infinite; }
+.fox-pair-b, .fox-pair-b .fox-shin { animation-delay: -.4s; }
+.fox-hind { transform-origin: 17px 16px; }
+.fox-hind .fox-shin { transform-origin: 19px 37px; animation-name: fox-hock; }
+.fox-fore { transform-origin: 62px 17px; }
+.fox-fore .fox-shin { transform-origin: 62px 36px; }
+.fox-neck { transform-origin: 64px 12px; animation: fox-neck 38s ease-in-out infinite; }
+.fox-head-look { transform-origin: 78px 0; animation: fox-head-look 38s ease-in-out infinite; }
+.fox-ear-flick { transform-origin: 86px -11px; animation: fox-ear-flick 38s linear infinite; }
+.fox-blink { transform-origin: 91px -6.4px; animation: fox-blink 38s linear infinite; }
+.fox-tail-swish { transform-origin: 12px 16px; animation: fox-tail-swish 38s ease-in-out infinite; }
 .fox-tail-sway {
-  transform-box: view-box;
-  transform-origin: 12px 18px;
-  animation: fox-tail-sway 1.44s ease-in-out infinite alternate;
+  transform-origin: 12px 16px;
+  animation: fox-tail-sway 1.6s ease-in-out infinite alternate;
 }
+/* REDUCED-MOTION-OFF: uncomment to hold the fox's limbs, head and tail still.
+@media (prefers-reduced-motion: reduce) {
+  .fox-bob, .fox-limb, .fox-shin, .fox-neck, .fox-head-look, .fox-ear-flick, .fox-blink, .fox-tail-swish, .fox-tail-sway { animation: none; }
+}
+*/
 /* A roe buck shares the fox's 38s cycle. He walks in from the left once the
    fox has gone, grazes, looks up as the fox is due, and bounds away over the
    rise just before it trots through. Three leg poses swap on the same clock. */
@@ -749,9 +770,62 @@ button:focus-visible {
 @keyframes deer-legs-stand { 0%, 9.9% { opacity: 1; } 10%, 89.9% { opacity: 0; } 90%, 100% { opacity: 1; } }
 @keyframes deer-legs-bound { 0%, 9.9% { opacity: 0; } 10%, 18.5% { opacity: 1; } 18.6%, 100% { opacity: 0; } }
 
-@keyframes fox-stride {
-  from { transform: rotate(-10deg); }
-  to { transform: rotate(10deg); }
+@keyframes fox-gait {
+  0%, 40.5% { --fox-gait: 1; }
+  43%, 48.4% { --fox-gait: 0; }
+  50.6%, 100% { --fox-gait: 1; }
+}
+@keyframes fox-bob {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(var(--fox-gait) * -2.2px)) rotate(calc(var(--fox-gait) * -.6deg)); }
+}
+@keyframes fox-limb {
+  0% { transform: rotate(calc(var(--fox-gait) * -30deg)); animation-timing-function: linear; }
+  58% { transform: rotate(calc(var(--fox-gait) * 26deg)); animation-timing-function: ease-in-out; }
+  100% { transform: rotate(calc(var(--fox-gait) * -30deg)); }
+}
+@keyframes fox-shin {
+  0%, 58% { transform: rotate(0deg); }
+  80% { transform: rotate(calc(var(--fox-gait) * 62deg)); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes fox-hock {
+  0%, 58% { transform: rotate(0deg); }
+  78% { transform: rotate(calc(var(--fox-gait) * 40deg)); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes fox-neck {
+  0%, 42.6% { transform: rotate(0deg); }
+  44.2%, 46.1% { transform: rotate(30deg); }
+  47.2%, 48.6% { transform: rotate(-5deg); }
+  50.2%, 100% { transform: rotate(0deg); }
+}
+@keyframes fox-head-look {
+  0%, 42.6% { transform: rotate(0deg); }
+  44.2% { transform: rotate(30deg); }
+  44.9% { transform: rotate(25deg); }
+  45.5% { transform: rotate(32deg); }
+  46.1% { transform: rotate(26deg); }
+  47.2%, 48.6% { transform: rotate(-6deg); }
+  50.2%, 100% { transform: rotate(0deg); }
+}
+@keyframes fox-ear-flick {
+  0%, 47.5% { transform: rotate(0deg); }
+  47.8% { transform: rotate(-16deg); }
+  48.1% { transform: rotate(2deg); }
+  48.4% { transform: rotate(-11deg); }
+  48.8%, 100% { transform: rotate(0deg); }
+}
+@keyframes fox-blink {
+  0%, 25%, 25.8%, 47.9%, 48.7%, 100% { transform: scaleY(1); }
+  25.4%, 48.3% { transform: scaleY(.1); }
+}
+@keyframes fox-tail-swish {
+  0%, 45.8% { transform: rotate(0deg); }
+  46.6% { transform: rotate(-12deg); }
+  47.3% { transform: rotate(5deg); }
+  48% { transform: rotate(-8deg); }
+  49%, 100% { transform: rotate(0deg); }
 }
 @keyframes fox-tail-sway {
   from { transform: rotate(-4deg); }
@@ -1292,17 +1366,15 @@ button:focus-visible {
   12% {
     opacity: 1;
   }
-  43% {
-    opacity: 1;
-    transform: translate(720px, 690px);
+  40.5% {
+    transform: translate(700px, 689px);
   }
-  46% {
-    opacity: 1;
-    transform: translate(748px, 690px) rotate(-3deg);
+  43%,
+  48.4% {
+    transform: translate(728px, 690px);
   }
-  49% {
-    opacity: 1;
-    transform: translate(770px, 690px);
+  50.6% {
+    transform: translate(762px, 690px);
   }
   78% {
     opacity: 1;
@@ -1311,15 +1383,6 @@ button:focus-visible {
   100% {
     opacity: 0;
     transform: translate(1710px, 676px);
-  }
-}
-
-@keyframes fox-step {
-  from {
-    transform: translateY(0) rotate(0);
-  }
-  to {
-    transform: translateY(-3px) rotate(-1deg);
   }
 }
 
