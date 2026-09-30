@@ -500,7 +500,7 @@ button:focus-visible {
 
 /* The meadow and coast skies: soft cloud banks lit from the sun's side and
    shaded beneath, thin high streaks, and a corona around the sun and moon. */
-.sun-corona { fill: var(--sun-glow); opacity: .55; transition: opacity .8s ease; }
+.sun-corona { fill: url(#featherSunGlow); opacity: .55; transition: opacity .8s ease; }
 [data-theme="dark"] .sun-corona { opacity: .3; }
 .cloud-lit { stop-color: var(--sun); }
 .cloud-body { stop-color: var(--cloud); }
@@ -519,16 +519,12 @@ button:focus-visible {
 .sun-disc-edge { stop-color: var(--sun); }
 .ray-start { stop-color: var(--sun); stop-opacity: .5; }
 .ray-end { stop-color: var(--sun); stop-opacity: 0; }
-.sun-rays { opacity: .6; animation: rays-breathe 14s ease-in-out infinite alternate; transition: opacity .8s ease; }
+.sun-rays { opacity: .6; transition: opacity .8s ease; }
 [data-theme="dark"] .sun-rays { opacity: .1; }
-.sea-haze { fill: var(--horizon); opacity: .45; }
-[data-theme="dark"] .sea-haze { opacity: .28; }
-@keyframes rays-breathe { from { filter: brightness(.85); } to { filter: brightness(1.1); } }
-/* REDUCED-MOTION-OFF: uncomment to hold the rays still when motion is reduced.
-@media (prefers-reduced-motion: reduce) { .sun-rays { animation: none; } }
-*/
-.cloud-drift { animation: drift 34s ease-in-out infinite alternate; }
-.cloud-drift-slow { animation: drift-small 46s ease-in-out infinite alternate; }
+.sea-haze { opacity: .75; }
+[data-theme="dark"] .sea-haze { opacity: .47; }
+.cloud-drift { animation: drift 34s steps(120) infinite alternate; }
+.cloud-drift-slow { animation: drift-small 46s steps(150) infinite alternate; }
 
 .birds {
   fill: none;
@@ -546,7 +542,6 @@ button:focus-visible {
 }
 
 .mist {
-  fill: var(--cloud);
   opacity: 0.3;
 }
 
@@ -589,8 +584,7 @@ button:focus-visible {
   stroke-width: 4;
 }
 
-.studio-window,
-.window-glow {
+.studio-window {
   fill: var(--window);
 }
 
@@ -1052,8 +1046,7 @@ button:focus-visible {
 }
 
 .firefly {
-  fill: #f4d67a;
-  filter: drop-shadow(0 0 5px #f4d67a);
+  fill: url(#featherFirefly);
   opacity: 0;
 }
 
@@ -1189,8 +1182,8 @@ button:focus-visible {
 .meadow-contours { fill: none; stroke: var(--field-d); stroke-width: 1.3; stroke-linecap: round; stroke-dasharray: 38 12; opacity: .13; }
 .meadow-contours.near { stroke: color-mix(in srgb, var(--field-a) 60%, var(--field-d)); stroke-width: 1.6; opacity: .16; }
 .crown-underside { fill: var(--tree-shadow); opacity: .42; }
-.crown-lit { fill: var(--tree-hi); opacity: .5; }
-.crown-pockets { fill: var(--tree-shadow); opacity: .4; }
+.crown-lit { fill: url(#featherCrownLit); opacity: .5; }
+.crown-pockets { fill: url(#featherCrownPocket); opacity: .4; }
 .path-lit { fill: none; stroke: var(--sun); stroke-width: 2.4; stroke-linecap: round; opacity: .38; }
 .path-shade { fill: none; stroke: var(--field-d); stroke-width: 4; stroke-linecap: round; opacity: .14; }
 
@@ -1442,6 +1435,18 @@ button:focus-visible {
 [data-theme="dark"] .paper-grain {
   mix-blend-mode: soft-light;
   opacity: 0.22;
+}
+
+/* Only the scene on show animates. The hidden scenes are paused, so their
+   animations cost nothing, and each resumes where it left off when shown. */
+:root:not([data-scene="meadow"]) .scene-meadow, :root:not([data-scene="meadow"]) .scene-meadow *,
+:root:not([data-scene="ocean"]) .scene-ocean, :root:not([data-scene="ocean"]) .scene-ocean *,
+:root:not([data-scene="tarn"]) .scene-tarn, :root:not([data-scene="tarn"]) .scene-tarn *,
+:root:not([data-scene="forest"]) .scene-forest, :root:not([data-scene="forest"]) .scene-forest *,
+:root:not([data-scene="desert"]) .scene-desert, :root:not([data-scene="desert"]) .scene-desert *,
+:root:not([data-scene="canal"]) .scene-canal, :root:not([data-scene="canal"]) .scene-canal *,
+:root:not([data-scene="winter"]) .scene-winter, :root:not([data-scene="winter"]) .scene-winter * {
+  animation-play-state: paused !important;
 }
 
 .parallax {
@@ -2358,8 +2363,8 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 .desert-cloud { opacity: .55; transition: opacity .8s ease; }
 .desert-cloud.faint { opacity: .3; }
 [data-theme="dark"] .desert-cloud { opacity: .22; }
-.cloud-a { animation: drift 40s ease-in-out infinite alternate; }
-.cloud-b { animation: drift-small 52s ease-in-out infinite alternate; }
+.cloud-a { animation: drift 40s steps(130) infinite alternate; }
+.cloud-b { animation: drift-small 52s steps(160) infinite alternate; }
 
 /* The Bristol Channel shows between the far dunes, glinting under the sun. */
 .desert-glints { opacity: .5; animation: shimmer 6s ease-in-out infinite; }
@@ -2376,7 +2381,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 
 /* Glow-worms glow and fade at the foot of the marram grass after dark. */
 .glow-worm { opacity: 0; fill: #c9f5a0; transition: opacity .8s ease; }
-.glow-worm circle:first-child { fill: #9fe870; opacity: .55; }
+.glow-worm circle:first-child { fill: url(#featherGlowworm); opacity: .55; }
 [data-theme="dark"] .glow-worm { opacity: .9; animation: glow-worm 7s ease-in-out infinite; }
 [data-theme="dark"] .glow-worm:nth-child(2) { animation-duration: 8.6s; animation-delay: -2.4s; }
 [data-theme="dark"] .glow-worm:nth-child(3) { animation-duration: 6.2s; animation-delay: -4.7s; }
@@ -2517,16 +2522,16 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 .nb-brass { fill: none; stroke: #d5a84a; stroke-width: 4; }
 .nb-pots { fill: #5f8a55; }
 .nb-lamp { fill: var(--nb-cream); }
-.nb-headlamp { fill: var(--window); opacity: 0; transition: opacity .8s ease; }
+.nb-headlamp { fill: url(#featherLamp); opacity: 0; transition: opacity .8s ease; }
 [data-theme="dark"] .nb-headlamp { opacity: .7; }
 .canal-rope { fill: none; stroke: #c9b58f; stroke-width: 1.4; }
 .canal-smoke path { fill: none; stroke: color-mix(in srgb, var(--canal-stone) 60%, transparent); stroke-width: 5; stroke-linecap: round; opacity: .5; animation: smoke 5s ease-in-out infinite alternate; }
 
 /* The water mirrors the quay in soft, shimmering bands. */
-.canal-reflection { opacity: .34; filter: url(#canalReflect); animation: canal-shimmer 7s ease-in-out infinite alternate; }
+.canal-reflection { opacity: .34; filter: url(#canalReflect); animation: canal-shimmer 7s steps(16) infinite alternate; }
 @keyframes canal-shimmer { from { transform: translateX(-2px); } to { transform: translateX(2px); } }
 .canal-ripples { fill: none; stroke: var(--canal-sky-low); stroke-width: 1.4; stroke-linecap: round; opacity: .35; animation: wave-drift 12s ease-in-out infinite alternate; }
-.canal-lamp-pool { fill: var(--window); opacity: 0; transition: opacity .8s ease; }
+.canal-lamp-pool { fill: url(#featherLampPool); opacity: 0; transition: opacity .8s ease; }
 /* Lit windows and the low sun break into shimmering streaks on the water. */
 .canal-window-streaks { fill: none; stroke: #f5edc9; stroke-width: 1.8; stroke-linecap: round; opacity: 0; transition: opacity .8s ease; }
 [data-theme="dark"] .canal-window-streaks { opacity: .26; animation: canal-streaks 4.8s ease-in-out infinite alternate; }
@@ -2536,7 +2541,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 /* By night the crescent moon is mirrored in the canal, sliced by ripples. */
 .canal-moon-reflection { opacity: 0; transition: opacity .8s ease; }
 [data-theme="dark"] .canal-moon-reflection { opacity: .42; }
-.canal-moon-waver { animation: canal-moon-waver 5s ease-in-out infinite alternate; }
+.canal-moon-waver { animation: canal-moon-waver 5s steps(16) infinite alternate; }
 @keyframes canal-moon-waver { from { transform: translateX(-2px); } to { transform: translateX(2px); } }
 [data-theme="dark"] .canal-lamp-pool { opacity: .3; }
 
@@ -2559,7 +2564,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 .canal-lamp-base { fill: var(--canal-iron); }
 .canal-lamp-glass { fill: #f3e3c0; opacity: .85; transition: fill .8s ease; }
 [data-theme="dark"] .canal-lamp-glass { fill: var(--window); opacity: 1; }
-.canal-lamp-glow { fill: var(--window); opacity: 0; transition: opacity .8s ease; }
+.canal-lamp-glow { fill: url(#featherLamp); opacity: 0; transition: opacity .8s ease; }
 [data-theme="dark"] .canal-lamp-glow { opacity: .55; }
 .canal-bollard { fill: var(--canal-iron); }
 .canal-pebbles { fill: none; stroke: color-mix(in srgb, var(--canal-stone) 70%, var(--canal-verge)); stroke-width: 2.5; stroke-linecap: round; opacity: .5; }
