@@ -45,7 +45,7 @@
           : "light";
         document.documentElement.dataset.theme = savedTheme || preferredTheme;
         const savedScene = localStorage.getItem("scene");
-        document.documentElement.dataset.scene = ["meadow", "ocean", "tarn", "forest", "desert", "canal", "winter"].includes(savedScene) ? savedScene : "forest";
+        document.documentElement.dataset.scene = ["meadow", "ocean", "forest", "desert", "canal", "winter"].includes(savedScene) ? savedScene : "forest";
       })();
     </script>
   </head>
