@@ -82,6 +82,9 @@ copy of an existing note page, and is then added to the list in
 featured, to the shelf on the homepage. Then refresh its search and sharing
 metadata and its shared image, as described under Search and sharing.
 
+Each note's category, shown above its title in the notes list and on the
+homepage shelf, is either "Product practice" or "Gaming systems".
+
 A note that is published but still being refined carries a `note-draft` tag above
 its title, and "· Draft" after its category in the notes list and on the
 homepage shelf. Remove all three when the note is final.
