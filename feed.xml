@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB">
+  <title>Notes by David Jones</title>
+  <subtitle>Product Thinking, Product Practice</subtitle>
+  <link href="https://dejones.io/feed.xml" rel="self"/>
+  <link href="https://dejones.io/notes/"/>
+  <id>https://dejones.io/notes/</id>
+  <updated>2026-10-04T19:58:06Z</updated>
+  <author><name>David Jones</name><uri>https://dejones.io/</uri></author>
+  <icon>https://dejones.io/favicon.svg</icon>
+  <entry>
+    <title>Practical product strategy</title>
+    <link href="https://dejones.io/practical-product-strategy/"/>
+    <id>https://dejones.io/practical-product-strategy/</id>
+    <published>2026-09-20T17:40:18Z</published>
+    <updated>2026-10-04T19:58:06Z</updated>
+    <summary>What a product strategy actually is, and a simple three-tier model for writing one down: Strategic Priorities, Product Initiatives and the Product Roadmap.</summary>
+    <category term="Product practice"/>
+  </entry>
+  <entry>
+    <title>Barriers to adoption in B2B</title>
+    <link href="https://dejones.io/barriers-to-adoption/"/>
+    <id>https://dejones.io/barriers-to-adoption/</id>
+    <published>2026-09-20T17:40:18Z</published>
+    <updated>2026-10-04T19:58:06Z</updated>
+    <summary>Why customers and their users resist complex B2B systems, and how to find and plan for the barriers before a rollout.</summary>
+    <category term="Product practice"/>
+  </entry>
+  <entry>
+    <title>Land-based casino systems primer</title>
+    <link href="https://dejones.io/land-based-casino-systems/"/>
+    <id>https://dejones.io/land-based-casino-systems/</id>
+    <published>2026-09-20T17:40:18Z</published>
+    <updated>2026-10-04T19:58:06Z</updated>
+    <summary>A tour of the systems behind a land-based casino floor, and why they are so much harder to get right than igaming.</summary>
+    <category term="Product practice"/>
+  </entry>
+  <entry>
+    <title>Why omnichannel gaming disappoints</title>
+    <link href="https://dejones.io/omnichannel-multichannel/"/>
+    <id>https://dejones.io/omnichannel-multichannel/</id>
+    <published>2026-09-20T17:40:18Z</published>
+    <updated>2026-10-04T19:58:06Z</updated>
+    <summary>Why omnichannel between land-based and online gaming so often disappoints, and where the two channels really meet.</summary>
+    <category term="Product practice"/>
+  </entry>
+  <entry>
+    <title>Carriers of value in a casino</title>
+    <link href="https://dejones.io/carriers-of-value/"/>
+    <id>https://dejones.io/carriers-of-value/</id>
+    <published>2026-10-04T19:58:06Z</published>
+    <updated>2026-10-04T19:58:06Z</updated>
+    <summary>A reference to every form that carries value in a casino, from cash and chips to tickets, CPVs and markers.</summary>
+    <category term="Reference"/>
+  </entry>
+</feed>

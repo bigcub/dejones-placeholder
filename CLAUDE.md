@@ -32,7 +32,9 @@ static site rather than a framework application.
 - `firebase.json` configures Firebase Hosting. The root-relative static assets
   also work when the repository is served by GitHub Pages.
 
-There is no build step, package manager, or automated test suite.
+There is no build step, package manager, or automated test suite. `tools/`
+holds two small scripts that regenerate search and sharing metadata; the
+site itself runs without them.
 
 ## Product and design intent
 
@@ -77,7 +79,8 @@ Keep the index and the notes identical in these respects, so that moving between
 them does not shift the layout. There is no templating, so a new note starts as a
 copy of an existing note page, and is then added to the list in
 `notes/index.html`, to the slug list in `articles.html`, and, if it should be
-featured, to the shelf on the homepage.
+featured, to the shelf on the homepage. Then refresh its search and sharing
+metadata and its shared image, as described under Search and sharing.
 
 A note that is published but still being refined carries a `note-draft` tag above
 its title, and "· Draft" after its category in the notes list and on the
@@ -109,6 +112,33 @@ theme and inherits the scene's animation. Then:
   `--reading-muted`, which reads in both themes.
 - Fade the edges into the page with a mask rather than drawing a box.
 - Check both themes, a phone width, and reduced motion.
+
+## Search and sharing
+
+Every page carries a generated block between `<!-- meta -->` and
+`<!-- /meta -->` before `</head>`: the canonical address, robots, Open Graph
+and Twitter tags, and JSON-LD (Person and WebSite on the homepage, BlogPosting
+on notes, Blog on the notes page, ProfilePage on About, with breadcrumbs). The
+header is an h-card, each note an h-entry, and the notes page an h-feed.
+`sitemap.xml`, `robots.txt` and the Atom feed `feed.xml` are generated too.
+Don't edit any of these by hand. After adding a note or changing a page's
+title or description, run both, with the local server running:
+
+```sh
+python3 tools/update-meta.py
+./tools/render-social.sh
+```
+
+The first rewrites the tags, sitemap and feed from the pages themselves. It
+keeps each page's published and modified dates in its block, and moves the
+modified date only when the page's words change. The second renders the
+1200 × 630 shared images into `og/` from `tools/social-card.html`, which takes
+a page's title, description and first drawing, and the homepage's from the
+landscape itself; it also renders `apple-touch-icon.png`.
+
+Projects and the example note are live but kept out of search (`HIDDEN` in
+the script); the 404 page and the old `notes/<slug>/` redirects carry their own
+noindex.
 
 ## Analytics
 

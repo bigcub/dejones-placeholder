@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<title>Social card: home</title>
+<!-- The homepage's shared image: the landscape itself, in the light theme,
+     with the notes panel and scene controls set aside. tools/render-social.sh
+     saves it to og/home.png. -->
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  iframe { display: block; width: 1200px; height: 630px; border: 0; }
+</style>
+</head>
+<body>
+<iframe src="/" title="Homepage"></iframe>
+<script>
+  try { localStorage.setItem("theme", "light"); localStorage.setItem("scene", "forest"); } catch {}
+  const frame = document.querySelector("iframe");
+  frame.addEventListener("load", () => {
+    const doc = frame.contentDocument;
+    const style = doc.createElement("style");
+    style.textContent = ".article-shelf, .scene-actions, .scene-caption { display: none !important; } *, *::before, *::after { animation-play-state: paused !important; transition: none !important; }";
+    doc.head.append(style);
+  });
+</script>
+</body>
+</html>

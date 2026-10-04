@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Google Analytics (GA4). Loads only on the live domain, so local development stays out of the reports. -->
@@ -17,21 +17,50 @@
 </script>
 
 <title>Land-based casino systems primer — David Jones</title>
-<meta name="description" content="A tour of the systems behind a land-based casino floor, and why they are so much harder to get right than igaming."><meta name="robots" content="noindex"><meta name="theme-color" content="#f5f1e8">
+<meta name="description" content="A tour of the systems behind a land-based casino floor, and why they are so much harder to get right than igaming."><meta name="theme-color" content="#f5f1e8">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css?v=7"><link rel="stylesheet" href="/notes.css?v=3">
 <script>document.documentElement.dataset.theme = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");const savedScene = localStorage.getItem("scene");document.documentElement.dataset.scene = ["meadow", "ocean", "forest", "desert", "canal", "winter"].includes(savedScene) ? savedScene : "forest";</script>
+<!-- meta -->
+<!-- published: 2026-09-20T17:40:18Z -->
+<!-- modified: 2026-10-04T19:58:06Z -->
+<!-- content: 58eb66a1112b -->
+<link rel="canonical" href="https://dejones.io/land-based-casino-systems/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="David Jones">
+<link rel="alternate" type="application/atom+xml" title="Notes by David Jones" href="/feed.xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:site_name" content="David Jones">
+<meta property="og:locale" content="en_GB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Land-based casino systems primer">
+<meta property="og:description" content="A tour of the systems behind a land-based casino floor, and why they are so much harder to get right than igaming.">
+<meta property="og:url" content="https://dejones.io/land-based-casino-systems/">
+<meta property="og:image" content="https://dejones.io/og/land-based-casino-systems.jpg">
+<meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Land-based casino systems primer, by David Jones">
+<meta property="article:published_time" content="2026-09-20T17:40:18Z">
+<meta property="article:modified_time" content="2026-10-04T19:58:06Z">
+<meta property="article:author" content="https://dejones.io/about/">
+<meta property="article:section" content="Product practice">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Land-based casino systems primer">
+<meta name="twitter:description" content="A tour of the systems behind a land-based casino floor, and why they are so much harder to get right than igaming.">
+<meta name="twitter:image" content="https://dejones.io/og/land-based-casino-systems.jpg">
+<meta name="twitter:image:alt" content="Land-based casino systems primer, by David Jones">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://dejones.io/land-based-casino-systems/#article","headline":"Land-based casino systems primer","description":"A tour of the systems behind a land-based casino floor, and why they are so much harder to get right than igaming.","url":"https://dejones.io/land-based-casino-systems/","mainEntityOfPage":"https://dejones.io/land-based-casino-systems/","image":{"@type":"ImageObject","url":"https://dejones.io/og/land-based-casino-systems.jpg","width":1200,"height":630},"datePublished":"2026-09-20T17:40:18Z","dateModified":"2026-10-04T19:58:06Z","author":{"@id":"https://dejones.io/#person"},"publisher":{"@id":"https://dejones.io/#person"},"isPartOf":{"@id":"https://dejones.io/notes/#blog"},"inLanguage":"en-GB","articleSection":"Product practice","creativeWorkStatus":"Draft"},{"@type":"Person","@id":"https://dejones.io/#person","name":"David Jones","url":"https://dejones.io/","description":"Designs and builds software products for the gaming industry.","homeLocation":{"@type":"Place","name":"Manchester, United Kingdom"},"sameAs":["https://www.linkedin.com/in/dejones/"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dejones.io/"},{"@type":"ListItem","position":2,"name":"Notes","item":"https://dejones.io/notes/"},{"@type":"ListItem","position":3,"name":"Land-based casino systems primer","item":"https://dejones.io/land-based-casino-systems/"}]}]}</script>
+<!-- /meta -->
 </head>
 <body class="notes-page">
 <a class="skip-link" href="#content">Skip to content</a>
       <header class="site-header">
-        <a class="identity" href="/" aria-label="David Jones, home">
+        <a class="identity h-card" href="/" aria-label="David Jones, home">
           <span class="monogram" aria-hidden="true">DJ</span>
           <span class="identity-copy">
-            <strong>David Jones</strong>
-            <small>Product Thinking, Product Practice · Manchester, UK</small>
+            <strong class="p-name">David Jones</strong>
+            <small class="p-note">Product Thinking, Product Practice · Manchester, UK</small>
           </span>
         </a>
 
@@ -42,7 +71,7 @@
             class="linkedin-link"
             href="https://www.linkedin.com/in/dejones/"
             target="_blank"
-            rel="noopener"
+            rel="noopener me"
             aria-label="David Jones on LinkedIn"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -79,12 +108,13 @@
 <div class="notes-landscape" aria-hidden="true"><svg viewBox="0 0 1600 100" preserveAspectRatio="none"><path d="M0 60Q220 0 480 65T1000 40T1600 55V100H0Z" fill="var(--wood-far)"/><path d="M0 85Q300 20 650 85T1300 65T1600 80V100H0Z" fill="var(--wood-pine)"/><path d="m95 100 22-76 22 76m8 0 17-54 17 54m1220 0 24-82 24 82m-77 0 19-60 19 60" fill="var(--wood-deep)"/></svg></div>
 <main class="note-reader" id="content">
   <a class="all-notes" href="/notes/">← All notes</a>
-  <article>
+  <article class="h-entry">
     <header class="note-title">
+      <p class="note-entry" hidden><a class="u-url" href="https://dejones.io/land-based-casino-systems/">https://dejones.io/land-based-casino-systems/</a> <time class="dt-published" datetime="2026-09-20T17:40:18Z">2026-09-20</time> <time class="dt-updated" datetime="2026-10-04T19:58:06Z">2026-10-04</time> <a class="p-author h-card" href="https://dejones.io/">David Jones</a></p>
       <p class="note-draft">Draft</p>
-      <h1>Land-based casino systems primer</h1>
+      <h1 class="p-name">Land-based casino systems primer</h1>
     </header>
-    <div class="note-prose">
+    <div class="note-prose e-content">
       <p>Land-based gaming is an extremely rich and varied domain, and it presents unique challenges for a system designer.</p>
       <p>There are parallels with igaming, but land-based is significantly more complex, with a large number of business processes, a great deal of hardware, dated protocols, imperfect data capture, and the human factor. This primer is a tour of the systems behind a casino floor: what each one does, how they fit together, and why the data they produce is harder to trust than it looks.</p>
       <h2>Bricks and mortar</h2>
