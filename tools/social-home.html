@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex">
 <title>Social card: home</title>
-<!-- The homepage's shared image: the landscape itself, in the light theme,
-     with the notes panel and scene controls set aside. tools/render-social.sh
-     saves it to og/home.png. -->
+<!-- The homepage's shared image: the default scene, the casino, late at
+     night, with the notes panel and scene controls set aside.
+     tools/render-social.sh saves it to og/home.jpg. -->
 <style>
   html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
   iframe { display: block; width: 1200px; height: 630px; border: 0; }
@@ -15,7 +15,7 @@
 <body>
 <iframe src="/" title="Homepage"></iframe>
 <script>
-  try { localStorage.setItem("theme", "light"); localStorage.setItem("scene", "forest"); } catch {}
+  try { localStorage.setItem("theme", "dark"); localStorage.setItem("scene", "casino"); } catch {}
   const frame = document.querySelector("iframe");
   frame.addEventListener("load", () => {
     const doc = frame.contentDocument;

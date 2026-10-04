@@ -200,7 +200,7 @@ def update_page(page, all_notes):
 
     image_name = "home" if page["kind"] == "home" else page["slug"]
     image_url = f"{SITE}/og/{image_name}.jpg"
-    image_alt = f"{title}, by {NAME}" if page["kind"] != "home" else f"{NAME}: a lookout tower among pine trees at dusk"
+    image_alt = f"{title}, by {NAME}" if page["kind"] != "home" else f"{NAME}: a roulette table beneath a chandelier in a Mayfair gaming room"
     image = {"@type": "ImageObject", "url": image_url, "width": 1200, "height": 630}
     og_type = "article" if page["kind"] == "note" else ("profile" if page["kind"] == "about" else "website")
 

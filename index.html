@@ -29,7 +29,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=9" />
+    <link rel="stylesheet" href="./styles.css?v=12" />
     <script>
       (() => {
         const savedTheme = localStorage.getItem("theme");
@@ -38,7 +38,7 @@
           : "light";
         document.documentElement.dataset.theme = savedTheme || preferredTheme;
         const savedScene = localStorage.getItem("scene");
-        document.documentElement.dataset.scene = ["meadow", "ocean", "forest", "desert", "canal", "casino"].includes(savedScene) ? savedScene : "forest";
+        document.documentElement.dataset.scene = ["meadow", "ocean", "forest", "desert", "canal", "casino"].includes(savedScene) ? savedScene : "casino";
       })();
     </script>
 <!-- meta -->
@@ -58,12 +58,12 @@
 <meta property="og:url" content="https://dejones.io/">
 <meta property="og:image" content="https://dejones.io/og/home.jpg">
 <meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="David Jones: a lookout tower among pine trees at dusk">
+<meta property="og:image:alt" content="David Jones: a roulette table beneath a chandelier in a Mayfair gaming room">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="David Jones — Product Thinking, Product Practice">
 <meta name="twitter:description" content="Notes on product thinking and practice from David Jones, drawing on more than fifteen years designing and building software for the gaming industry. Based in Manchester, UK.">
 <meta name="twitter:image" content="https://dejones.io/og/home.jpg">
-<meta name="twitter:image:alt" content="David Jones: a lookout tower among pine trees at dusk">
+<meta name="twitter:image:alt" content="David Jones: a roulette table beneath a chandelier in a Mayfair gaming room">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://dejones.io/#person","name":"David Jones","url":"https://dejones.io/","description":"Designs and builds software products for the gaming industry.","homeLocation":{"@type":"Place","name":"Manchester, United Kingdom"},"sameAs":["https://www.linkedin.com/in/dejones/"]},{"@type":"WebSite","@id":"https://dejones.io/#website","url":"https://dejones.io/","name":"David Jones","description":"Product Thinking, Product Practice","inLanguage":"en-GB","publisher":{"@id":"https://dejones.io/#person"}},{"@type":"WebPage","@id":"https://dejones.io/#webpage","url":"https://dejones.io/","name":"David Jones — Product Thinking, Product Practice","description":"Notes on product thinking and practice from David Jones, drawing on more than fifteen years designing and building software for the gaming industry. Based in Manchester, UK.","isPartOf":{"@id":"https://dejones.io/#website"},"about":{"@id":"https://dejones.io/#person"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://dejones.io/og/home.jpg","width":1200,"height":630},"inLanguage":"en-GB"}]}</script>
 <!-- /meta -->
 </head>
@@ -1480,6 +1480,7 @@
             <g class="parallax" data-depth=".8" aria-hidden="true"><g transform="translate(460 0)"><path class="casino-brass" d="M-22 868-12 812M22 868 12 812M-16 846H16"/><ellipse class="casino-velvet-dark" cx="0" cy="812" rx="34" ry="10"/><path class="casino-velvet" d="M-30 812V762Q-30 738 0 738Q30 738 30 762V812Q0 820-30 812Z"/><path class="casino-piping" d="M-24 806V764Q-24 746 0 746Q24 746 24 764V806"/><path class="casino-velvet-dark" d="M-30 800Q0 808 30 800V812Q0 820-30 812Z" opacity=".6"/></g><g transform="translate(630 0)"><path class="casino-brass" d="M-22 868-12 812M22 868 12 812M-16 846H16"/><ellipse class="casino-velvet-dark" cx="0" cy="812" rx="34" ry="10"/><path class="casino-velvet" d="M-30 812V762Q-30 738 0 738Q30 738 30 762V812Q0 820-30 812Z"/><path class="casino-piping" d="M-24 806V764Q-24 746 0 746Q24 746 24 764V806"/><path class="casino-velvet-dark" d="M-30 800Q0 808 30 800V812Q0 820-30 812Z" opacity=".6"/></g><g transform="translate(800 0)"><path class="casino-brass" d="M-22 868-12 812M22 868 12 812M-16 846H16"/><ellipse class="casino-velvet-dark" cx="0" cy="812" rx="34" ry="10"/><path class="casino-velvet" d="M-30 812V762Q-30 738 0 738Q30 738 30 762V812Q0 820-30 812Z"/><path class="casino-piping" d="M-24 806V764Q-24 746 0 746Q24 746 24 764V806"/><path class="casino-velvet-dark" d="M-30 800Q0 808 30 800V812Q0 820-30 812Z" opacity=".6"/></g></g>
             <g class="parallax" data-depth="1.1" aria-hidden="true"><g class="casino-rope-line">
               <path class="casino-rope" d="M-60 800Q10 836 70 792M1120 792Q1225 842 1330 792Q1435 842 1540 792Q1610 822 1680 800"/>
+              <path class="casino-rope-sheen" transform="translate(0 -2.5)" d="M-60 800Q10 836 70 792M1120 792Q1225 842 1330 792Q1435 842 1540 792Q1610 822 1680 800"/>
               <ellipse class="casino-shadow" cx="70" cy="884" rx="30" ry="6"/><ellipse class="casino-brass-fill" cx="70" cy="878" rx="22" ry="6"/><path class="casino-brass-post" d="M70 876V796"/><circle class="casino-brass-fill" cx="70" cy="790" r="8"/><ellipse class="casino-shadow" cx="1120" cy="884" rx="30" ry="6"/><ellipse class="casino-brass-fill" cx="1120" cy="878" rx="22" ry="6"/><path class="casino-brass-post" d="M1120 876V796"/><circle class="casino-brass-fill" cx="1120" cy="790" r="8"/><ellipse class="casino-shadow" cx="1330" cy="884" rx="30" ry="6"/><ellipse class="casino-brass-fill" cx="1330" cy="878" rx="22" ry="6"/><path class="casino-brass-post" d="M1330 876V796"/><circle class="casino-brass-fill" cx="1330" cy="790" r="8"/><ellipse class="casino-shadow" cx="1540" cy="884" rx="30" ry="6"/><ellipse class="casino-brass-fill" cx="1540" cy="878" rx="22" ry="6"/><path class="casino-brass-post" d="M1540 876V796"/><circle class="casino-brass-fill" cx="1540" cy="790" r="8"/>
             </g></g>
           </g>

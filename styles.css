@@ -2595,7 +2595,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
   --cz-red: #b3352f; --cz-black: #26211f; --cz-zero: #3b9364;
   --cz-slot: #4a3550; --cz-slot-deck: #2f2234; --cz-screen-0: #f5ecd6; --cz-screen-1: #efe6d2; --cz-screen-2: #f3e9d9; --cz-screen-glow: #ffd98a;
   --cz-candle-b: #d77b5b; --cz-candle-c: #6aa39a;
-  --cz-velvet: #8b2a35; --cz-velvet-dark: #5e1a24;
+  --cz-velvet: #8b2a35; --cz-velvet-dark: #5e1a24; --cz-rope: #43264f; --cz-rope-sheen: #8a6a9a;
   --cz-chip-a: #c4473a; --cz-chip-b: #2e6e8e; --cz-chip-c: #e9dfc8; --cz-chip-d: #2a2524;
 }
 [data-theme="dark"] {
@@ -2609,7 +2609,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
   --cz-red: #c23a31; --cz-black: #151112; --cz-zero: #2d8b57;
   --cz-slot: #1d1428; --cz-slot-deck: #120b19; --cz-screen-0: #f7c86a; --cz-screen-1: #73d3c4; --cz-screen-2: #f08fae; --cz-screen-glow: #ff9fc4;
   --cz-candle-b: #ff7a5c; --cz-candle-c: #66e0cf;
-  --cz-velvet: #6c1828; --cz-velvet-dark: #430d18;
+  --cz-velvet: #6c1828; --cz-velvet-dark: #430d18; --cz-rope: #55356a; --cz-rope-sheen: #9c7cb4;
   --cz-chip-a: #c94a3c; --cz-chip-b: #3478a0; --cz-chip-c: #e4d6b4; --cz-chip-d: #1c1819;
 }
 .scene-casino, .casino-icon { visibility: hidden; opacity: 0; }
@@ -2733,7 +2733,10 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 .casino-brass { fill: none; stroke: var(--cz-gold); stroke-width: 4; stroke-linecap: round; }
 .casino-brass-fill { fill: var(--cz-gold); }
 .casino-brass-post { fill: none; stroke: var(--cz-gold); stroke-width: 6; stroke-linecap: round; }
-.casino-rope { fill: none; stroke: var(--cz-velvet); stroke-width: 7; stroke-linecap: round; }
+/* The rope is a dark purple velvet, to match the slot cabinets, so it stands
+   clear of the red carpet without drawing the eye. */
+.casino-rope { fill: none; stroke: var(--cz-rope); stroke-width: 7; stroke-linecap: round; }
+.casino-rope-sheen { fill: none; stroke: var(--cz-rope-sheen); stroke-width: 1.4; stroke-linecap: round; opacity: .5; }
 
 /* Hold the wheel, the ball and the lights still. */
 /* REDUCED-MOTION-OFF: turned off for now. Uncomment this block to restore it.
