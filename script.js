@@ -108,6 +108,5 @@ const articleShelf = document.querySelector("#article-shelf");
 articlesToggle?.addEventListener("click", () => {
   articleShelf.hidden = !articleShelf.hidden;
   articlesToggle.setAttribute("aria-expanded", String(!articleShelf.hidden));
-  articlesToggle.querySelector("span").textContent = articleShelf.hidden ? "Show notes" : "Hide notes";
   root.dataset.articlesHidden = String(articleShelf.hidden);
 });

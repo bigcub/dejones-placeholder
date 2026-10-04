@@ -177,8 +177,8 @@ pushing to GitHub. Firebase Hosting is configured to publish the repository root
 PATH="/opt/homebrew/bin:$PATH" firebase deploy --only hosting
 ```
 
-Stylesheets and the script are linked with a version query (`styles.css?v=14`,
-`notes.css?v=3`, `script.js?v=3`). Bump it on every page when a change to the CSS or script must reach
+Stylesheets and the script are linked with a version query (`styles.css?v=15`,
+`notes.css?v=3`, `script.js?v=4`). Bump it on every page when a change to the CSS or script must reach
 visitors together with new HTML, so a cached file cannot break the page.
 
 Do not commit Firebase caches, debug logs, or local machine files. Do not put

@@ -2149,6 +2149,13 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 }
 .pill-button:hover { background: rgba(18,32,38,.7); }
 .pill-button:focus-visible { outline: 2px solid #fff3df; outline-offset: 4px; }
+/* The notes toggle holds both its labels in one cell and shows one, so the
+   button keeps the width of the longer label and the scene button beside it
+   never shifts. The hidden label is left out of the button's name. */
+.articles-toggle .pill-label { display: inline-grid; }
+.articles-toggle .pill-label > span { grid-area: 1 / 1; }
+.articles-toggle .pill-label-show, [data-articles-hidden="true"] .articles-toggle .pill-label-hide { visibility: hidden; }
+[data-articles-hidden="true"] .articles-toggle .pill-label-show { visibility: visible; }
 @media (max-width: 700px) {
   .scene-actions { left: 16px; bottom: 16px; }
   /* Two labelled pills will not fit beside the coordinate on a phone, so the
