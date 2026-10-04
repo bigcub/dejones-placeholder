@@ -2698,6 +2698,20 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 [data-theme="dark"] .casino-slot-glow { opacity: .85; }
 [data-theme="dark"] .casino-slots > g:nth-child(4) .casino-candle, [data-theme="dark"] .casino-slots > g:nth-child(1) .casino-candle { animation: casino-blink 1.4s steps(1) infinite; }
 @keyframes casino-blink { 50% { opacity: .2; } }
+/* Two machines spin: the reels start together and stop one after another,
+   left to right, then rest. Each strip repeats every four symbols, so a spin
+   of five repeats ends exactly where it began and the loop never jumps. */
+.casino-sym-red { fill: var(--cz-red); }
+.casino-sym-teal { fill: var(--cz-candle-c); }
+.casino-sym-bar { fill: var(--cz-slot-deck); }
+.casino-sym-seven { fill: none; stroke: var(--cz-red); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.casino-reel { animation: casino-reel-0 7s infinite; }
+.casino-reel.r1 { animation-name: casino-reel-1; }
+.casino-reel.r2 { animation-name: casino-reel-2; }
+.casino-spinner.late .casino-reel { animation-delay: -3.6s; }
+@keyframes casino-reel-0 { 0% { transform: translateY(-320px); animation-timing-function: cubic-bezier(.35, .1, .3, 1.06); } 20%, 100% { transform: translateY(0); } }
+@keyframes casino-reel-1 { 0% { transform: translateY(-320px); animation-timing-function: cubic-bezier(.35, .1, .3, 1.06); } 27%, 100% { transform: translateY(0); } }
+@keyframes casino-reel-2 { 0% { transform: translateY(-320px); animation-timing-function: cubic-bezier(.35, .1, .3, 1.06); } 34%, 100% { transform: translateY(0); } }
 
 /* The roulette table: the wheel turns, and the ball runs the other way. */
 .casino-pool, .casino-pool-table { opacity: .15; transition: opacity .8s ease; }
@@ -2741,7 +2755,7 @@ html:has(.articles-page) { overflow: auto; background: var(--page); }
 /* Hold the wheel, the ball and the lights still. */
 /* REDUCED-MOTION-OFF: turned off for now. Uncomment this block to restore it.
 @media (prefers-reduced-motion: reduce) {
-  .casino-wheel, .casino-ball-orbit, .casino-ball-spin, .casino-shine, .casino-crystal, .casino-glints path, .casino-slot-reels, .casino-candle { animation: none !important; }
+  .casino-wheel, .casino-ball-orbit, .casino-ball-spin, .casino-shine, .casino-crystal, .casino-glints path, .casino-slot-reels, .casino-reel, .casino-candle { animation: none !important; }
 }
 */
 
