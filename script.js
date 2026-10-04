@@ -28,7 +28,7 @@ themeToggle?.addEventListener("click", () => {
 });
 
 function updateSceneButton() {
-  const nextScene = { meadow: "coast", ocean: "Kielder Forest", forest: "Merthyr Mawr", desert: "Manchester canal", canal: "Braemar", winter: "meadow" }[root.dataset.scene];
+  const nextScene = { meadow: "coast", ocean: "Kielder Forest", forest: "Merthyr Mawr", desert: "Manchester canal", canal: "Mayfair casino", casino: "meadow" }[root.dataset.scene];
   // The pill carries its own visible label, so name the destination in the
   // tooltip rather than overriding what the button says.
   if (sceneNext) sceneNext.title = `Switch to the ${nextScene} scene`;
@@ -44,14 +44,15 @@ function updateSceneButton() {
     forest: "A timber lookout among the pines of Kielder Forest",
     desert: "A small observatory among the Merthyr Mawr dunes",
     canal: "A narrowboat moored on a Manchester canal at dusk",
-    winter: "A snowbound cabin below the Cairngorms near Braemar",
+    casino: "A roulette table beneath a chandelier in a Mayfair gaming room",
   };
   landscape?.setAttribute("aria-label", descriptions[root.dataset.scene]);
 }
 
 function cycleScene(step = 1) {
   // The tarn scene is switched off for now; its drawing and styles remain.
-  const scenes = ["meadow", "ocean", "forest", "desert", "canal", "winter"];
+  // The winter scene is archived in docs/winter-scene.html.
+  const scenes = ["meadow", "ocean", "forest", "desert", "canal", "casino"];
   const index = scenes.indexOf(root.dataset.scene);
   root.dataset.scene = scenes[(index + step + scenes.length) % scenes.length];
   localStorage.setItem("scene", root.dataset.scene);
