@@ -16,7 +16,10 @@ static site rather than a framework application.
   these reading pages.
 - `projects/index.html` lists David's tools and experiments. It uses the
   notes index's page shell and list styles, with each project's domain as its
-  label. A project without an address yet is listed without a link.
+  label. A project without an address yet is listed without a link. The page
+  is live, but its header link is hidden on every page until David has a
+  stronger portfolio; add `<a href="/projects/">Projects</a>` back between
+  Notes and About when he asks.
 - `about/index.html` is the About page, in the note layout, with a drawing of a
   window sill holding a candle and a potted plant, between two small wall
   shelves of books that carry the drawing towards the margins. It is a focused
@@ -58,7 +61,8 @@ for new animation and comment them out with the same marker.
 
 ## Header
 
-Every page shares one header. Places (Notes, Projects, About) are text links in
+Every page shares one header. Places (Notes and About; Projects is hidden for
+now) are text links in
 `.site-nav`, with `aria-current` marking the current section; a note marks Notes.
 The round buttons are kept for LinkedIn and the scene and theme controls, so add
 new sections as words rather than more circles. On phones the section links take

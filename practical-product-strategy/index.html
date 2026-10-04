@@ -21,7 +21,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=7"><link rel="stylesheet" href="/notes.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=7"><link rel="stylesheet" href="/notes.css?v=3">
 <script>document.documentElement.dataset.theme = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");const savedScene = localStorage.getItem("scene");document.documentElement.dataset.scene = ["meadow", "ocean", "forest", "desert", "canal", "winter"].includes(savedScene) ? savedScene : "forest";</script>
 </head>
 <body class="notes-page">
@@ -35,7 +35,7 @@
           </span>
         </a>
 
-        <nav class="site-nav" aria-label="Main navigation"><a href="/notes/" aria-current="true">Notes</a><a href="/projects/">Projects</a><a href="/about/">About</a></nav>
+        <nav class="site-nav" aria-label="Main navigation"><a href="/notes/" aria-current="true">Notes</a><a href="/about/">About</a></nav>
 
         <div class="header-actions">
           <a
@@ -91,31 +91,13 @@
       <p>Any model of product strategy has to be useful and easy to understand. Otherwise the organisation will reject it, alternative models will emerge organically, and your plans will disintegrate. But there is a lot of junk in product literature, and it’s easy to become obsessed with the correct tooling rather than focusing on getting valuable work done.</p>
       <p>I find a three-tier model of Strategic Priorities → Product Initiatives → Product Roadmap a good starting framework for B2B software and systems providers, and it is straightforward to tailor to other types of business.</p>
       <figure class="note-figure">
-        <svg viewBox="0 0 720 220" role="img" aria-label="A path climbs from two waymark posts in the foreground, across wooded hills, towards a flag on a distant summit">
-          <defs>
-            <linearGradient id="tierFadeX"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#fff"/><stop offset=".8" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-            <linearGradient id="tierFadeY" x2="0" y2="1"><stop offset=".72" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-            <mask id="tierFade" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="220"><rect width="720" height="220" fill="url(#tierFadeX)"/></mask>
-            <mask id="tierFadeLow" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="220"><rect width="720" height="220" fill="url(#tierFadeY)"/></mask>
-            <radialGradient id="tierWash"><stop stop-color="var(--wood-horizon)" stop-opacity=".4"/><stop offset="1" stop-color="var(--wood-horizon)" stop-opacity="0"/></radialGradient>
-          </defs>
-          <ellipse cx="440" cy="100" rx="270" ry="100" fill="url(#tierWash)"/>
-          <g mask="url(#tierFade)"><g mask="url(#tierFadeLow)">
-            <path d="M170 176 290 104Q318 88 338 96L420 50Q466 18 506 46L610 118 720 172Z" fill="var(--wood-far)"/>
-            <path d="M466 34Q482 72 526 98L610 118 720 172H600Q560 120 466 34Z" fill="var(--wood-mid)" opacity=".28"/>
-            <path d="M440 150C452 128 436 104 450 82 460 66 458 48 464 38" fill="none" stroke="var(--wood-deep)" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round" opacity=".7"/>
-            <path d="M0 168Q170 118 340 140T720 132V220H0Z" fill="var(--wood-mid)"/>
-            <path d="M60 158l12-42 12 42ZM86 156l10-34 10 34ZM110 153l9-30 9 30ZM588 150l11-38 11 38ZM612 148l9-30 9 30ZM634 147l10-34 10 34Z" fill="var(--wood-deep)"/>
-            <path d="M330 192C356 184 320 170 360 162 392 156 420 157 440 150" fill="none" stroke="var(--wood-path)" stroke-width="3.5" stroke-linecap="round" opacity=".85"/>
-            <path d="M0 200Q190 166 400 192T720 186V220H0Z" fill="var(--wood-pine)"/>
-            <path d="M236 222C256 206 300 200 330 192" fill="none" stroke="var(--wood-path)" stroke-width="5" stroke-linecap="round"/>
-            <g fill="none" stroke="var(--wood-path)" stroke-width="2.5" stroke-linecap="round"><path d="M262 210v-15M306 200v-15"/></g>
-            <g fill="var(--flower)"><circle cx="262" cy="193" r="2.8"/><circle cx="306" cy="183" r="2.8"/></g>
-          </g></g>
-          <path d="M464 34V14" fill="none" stroke="var(--wood-deep)" stroke-width="2" stroke-linecap="round"/>
-          <path class="boat-pennant" d="M464 14l16 5-16 5Z"/>
+        <svg viewBox="0 0 720 200" role="img" aria-label="Two strategic priorities at the top, each with two product initiatives beneath, and each initiative with two roadmap items beneath that. One path, from a priority through an initiative to two roadmap items, is highlighted">
+          <text x="24" y="45" fill="var(--reading-muted)" font-family="DM Sans, sans-serif" font-size="13" letter-spacing="1.4">PRIORITIES</text><text x="24" y="115" fill="var(--reading-muted)" font-family="DM Sans, sans-serif" font-size="13" letter-spacing="1.4">INITIATIVES</text><text x="24" y="185" fill="var(--reading-muted)" font-family="DM Sans, sans-serif" font-size="13" letter-spacing="1.4">ROADMAP</text>
+          <path d="M300 57V75M240 75H360M240 75V96M360 75V96M500 57V75M460 75H560M460 75V96M560 75V96M240 124V145M212 145H270M212 145V169M270 145V169M360 124V145M328 145H386M328 145V169M386 145V169M460 124V145M444 145H502M444 145V169M502 145V169M560 124V145M560 145H618M560 145V169M618 145V169" fill="none" stroke="var(--reading-muted)" stroke-width="1.4" opacity=".5"/>
+          <path class="deal-flow" d="M300 57V75H360V96M360 124V145H328V169M360 145H386V169" fill="none" stroke="var(--flower)" stroke-width="2" stroke-dasharray="4 8" stroke-linecap="round"/>
+          <rect x="244" y="23" width="112" height="34" rx="5" fill="var(--sea-c)" stroke="var(--flower)" stroke-width="2.5"/><path d="M253 38H342M253 45H319" stroke="var(--boat-sail)" stroke-width="2" stroke-linecap="round" opacity=".55"/><rect x="444" y="23" width="112" height="34" rx="5" fill="var(--sea-c)"/><path d="M453 38H542M453 45H519" stroke="var(--boat-sail)" stroke-width="2" stroke-linecap="round" opacity=".55"/><rect x="198" y="96" width="84" height="28" rx="5" fill="var(--sea-b)"/><path d="M207 108H268M207 115H254" stroke="var(--boat-sail)" stroke-width="2" stroke-linecap="round" opacity=".55"/><rect x="318" y="96" width="84" height="28" rx="5" fill="var(--sea-b)" stroke="var(--flower)" stroke-width="2.5"/><path d="M327 108H388M327 115H374" stroke="var(--boat-sail)" stroke-width="2" stroke-linecap="round" opacity=".55"/><rect x="418" y="96" width="84" height="28" rx="5" fill="var(--sea-b)"/><path d="M427 108H488M427 115H474" stroke="var(--boat-sail)" stroke-width="2" stroke-linecap="round" opacity=".55"/><rect x="518" y="96" width="84" height="28" rx="5" fill="var(--sea-b)"/><path d="M527 108H588M527 115H574" stroke="var(--boat-sail)" stroke-width="2" stroke-linecap="round" opacity=".55"/><rect x="189" y="169" width="46" height="22" rx="5" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".45"/><rect x="247" y="169" width="46" height="22" rx="5" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".45"/><rect x="305" y="169" width="46" height="22" rx="5" fill="var(--boat-sail)" stroke="var(--flower)" stroke-width="2.5"/><rect x="363" y="169" width="46" height="22" rx="5" fill="var(--boat-sail)" stroke="var(--flower)" stroke-width="2.5"/><rect x="421" y="169" width="46" height="22" rx="5" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".45"/><rect x="479" y="169" width="46" height="22" rx="5" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".45"/><rect x="537" y="169" width="46" height="22" rx="5" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".45"/><rect x="595" y="169" width="46" height="22" rx="5" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".45"/>
         </svg>
-        <figcaption>Priorities are the peaks you steer by, initiatives the routes towards them, and the roadmap the next stretch of path.</figcaption>
+        <figcaption>Priorities, initiatives and roadmap</figcaption>
       </figure>
       <h3>1. Strategic Priorities</h3>
       <p>The organisation must begin with some sense of purpose beyond winning and retaining business, with plainly stated business objectives. It also needs a sense of identity: the markets, customers and channels for which it will optimise itself.</p>
@@ -125,40 +107,15 @@
       <p>Initiatives are the body of the strategy. They can be considered as responses to opportunities (commercial, new technology, innovation) and as responses to threats and weaknesses (competitive, industry, regulatory, technical).</p>
       <p>Initiatives must stand up to scrutiny in the context of the Strategic Priorities. An otherwise solid initiative should be rejected if it doesn’t align, unless you wish to adapt your strategy. But beware: speculative product development can soon become the tail that wags the dog. The strategy is there to steer you away from the things you’ve chosen to sacrifice, as well as towards those in which you’ve chosen to invest.</p>
       <figure class="note-figure">
-        <svg viewBox="0 0 720 190" role="img" aria-label="A small sailing boat following a channel marked by buoys on either side">
-          <defs>
-            <linearGradient id="chanFadeX"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#fff"/><stop offset=".8" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-            <mask id="chanFade" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="190"><rect width="720" height="190" fill="url(#chanFadeX)"/></mask>
-            <radialGradient id="chanWash"><stop stop-color="var(--sea-a)" stop-opacity=".32"/><stop offset="1" stop-color="var(--sea-a)" stop-opacity="0"/></radialGradient>
-            <linearGradient id="chanWater" x2="0" y2="1"><stop stop-color="var(--sea-a)" stop-opacity=".55"/><stop offset="1" stop-color="var(--sea-a)" stop-opacity="0"/></linearGradient>
-          </defs>
-          <ellipse cx="360" cy="110" rx="260" ry="92" fill="url(#chanWash)"/>
-          <g mask="url(#chanFade)">
-            <rect y="136" width="720" height="54" fill="url(#chanWater)"/>
-            <path d="M0 136H720" stroke="var(--sea-b)" stroke-width="1" opacity=".35"/>
-            <g class="note-figure-waves" fill="none" stroke="var(--sea-c)" stroke-width="1.4" stroke-linecap="round" opacity=".35">
-              <path d="M70 150c14-4 28-4 42 0M200 180c18-5 36-5 54 0M500 146c16-4 32-4 48 0M600 176c20-5 40-5 60 0M110 170c16-4 32-4 48 0M420 182c14-4 28-4 42 0"/>
-            </g>
-            <path d="M300 160C230 162 150 158 30 150" fill="none" stroke="var(--reading-muted)" stroke-width="1.4" stroke-dasharray="2 7" stroke-linecap="round" opacity=".55"/>
-            <path d="M418 158c18 3 40 4 64 2M422 165c22 3 48 3 76 0" fill="none" stroke="var(--reading-muted)" stroke-width="1.3" stroke-linecap="round" opacity=".4"/>
-          </g>
-          <g class="buoy"><path class="buoy-pole" d="M110 127v-10" style="stroke-width:2"/><circle class="buoy-ball" cx="110" cy="132" r="6"/><path class="buoy-stripe" d="M104.5 130h11" style="stroke-width:2"/></g>
-          <g class="buoy" style="animation-delay:2.1s"><path class="buoy-pole" d="M240 129v-10" style="stroke-width:2"/><circle class="buoy-ball" cx="240" cy="134" r="6"/><path class="buoy-stripe" d="M234.5 132h11" style="stroke-width:2"/></g>
-          <g class="buoy" style="animation-delay:1.3s"><path class="buoy-pole" d="M490 128v-10" style="stroke-width:2"/><circle class="buoy-ball" cx="490" cy="133" r="6"/><path class="buoy-stripe" d="M484.5 131h11" style="stroke-width:2"/></g>
-          <g class="buoy" style="animation-delay:.3s"><path class="buoy-pole" d="M620 126v-10" style="stroke-width:2"/><circle class="buoy-ball" cx="620" cy="131" r="6"/><path class="buoy-stripe" d="M614.5 129h11" style="stroke-width:2"/></g>
-          <ellipse class="boat-reflection" cx="360" cy="172" rx="54" ry="5"/>
-          <g transform="translate(-400 -500)"><g class="boat">
-            <path class="boat-sail" d="M766 560c22 18 32 48 34 86h-34Z"/>
-            <path class="boat-sail boat-jib" d="M754 566c-20 20-28 46-30 78h30Z"/>
-            <path class="boat-mast" d="M760 652V556"/>
-            <path class="boat-boom" d="M764 648h38"/>
-            <path class="boat-pennant" d="M760 556l-14 4 14 5Z"/>
-            <path class="boat-hull" d="M706 652h108c-12 24-94 24-108 0Z"/>
-          </g></g>
-          <g class="buoy" style="animation-delay:1.7s"><path class="buoy-pole" d="M180 164v-16"/><circle class="buoy-ball" cx="180" cy="172" r="10"/><path class="buoy-stripe" d="M171 169h18"/></g>
-          <g class="buoy"><path class="buoy-pole" d="M560 162v-16"/><circle class="buoy-ball" cx="560" cy="170" r="10"/><path class="buoy-stripe" d="M551 167h18"/></g>
+        <svg viewBox="0 0 720 200" role="img" aria-label="Two columns of initiatives. Under Invest, solid cards that align with the priorities. Under Set aside, faded outlines of those that do not. New candidates arrive in the middle and drop into one column or the other">
+          <text x="220" y="34" text-anchor="middle" fill="var(--reading-muted)" font-family="DM Sans, sans-serif" font-size="13" letter-spacing="1.4">INVEST</text><text x="500" y="34" text-anchor="middle" fill="var(--reading-muted)" font-family="DM Sans, sans-serif" font-size="13" letter-spacing="1.4">SET ASIDE</text>
+          <path d="M360 26V186" stroke="var(--reading-rule)" stroke-width="1.4"/>
+          <rect x="172" y="86" width="96" height="28" rx="5" fill="var(--sea-b)"/><path d="M181 98H254M181 105H236" stroke="var(--boat-sail)" stroke-width="2" stroke-linecap="round" opacity=".55"/><rect x="172" y="120" width="96" height="28" rx="5" fill="var(--sea-b)"/><path d="M181 132H254M181 139H236" stroke="var(--boat-sail)" stroke-width="2" stroke-linecap="round" opacity=".55"/><rect x="172" y="154" width="96" height="28" rx="5" fill="var(--sea-b)"/><path d="M181 166H254M181 173H236" stroke="var(--boat-sail)" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+          <rect x="452" y="86" width="96" height="28" rx="5" fill="none" stroke="var(--reading-muted)" stroke-width="1.4" stroke-dasharray="4 4" opacity=".7"/><path d="M461 98H534M461 105H516" stroke="var(--reading-muted)" stroke-width="2" stroke-linecap="round" opacity=".4"/><rect x="452" y="120" width="96" height="28" rx="5" fill="none" stroke="var(--reading-muted)" stroke-width="1.4" stroke-dasharray="4 4" opacity=".7"/><path d="M461 132H534M461 139H516" stroke="var(--reading-muted)" stroke-width="2" stroke-linecap="round" opacity=".4"/><rect x="452" y="154" width="96" height="28" rx="5" fill="none" stroke="var(--reading-muted)" stroke-width="1.4" stroke-dasharray="4 4" opacity=".7"/><path d="M461 166H534M461 173H516" stroke="var(--reading-muted)" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+          <g transform="translate(360 64)"><g class="sort-invest"><rect x="-48" y="-14" width="96" height="28" rx="5" fill="var(--sea-b)"/><path d="M-39 -2H34M-39 5H16" stroke="var(--boat-sail)" stroke-width="2" stroke-linecap="round" opacity=".55"/></g></g>
+          <g transform="translate(360 64)"><g class="sort-aside"><rect x="-48" y="-14" width="96" height="28" rx="5" fill="var(--sea-a)" stroke="var(--reading-muted)" stroke-width="1.4" stroke-dasharray="4 4"/><path d="M-39-2H34M-39 5H16" stroke="var(--reading-muted)" stroke-width="2" stroke-linecap="round" opacity=".5"/></g></g>
         </svg>
-        <figcaption>Markers on both sides: a strategy shows where not to go as clearly as where to go.</figcaption>
+        <figcaption>Chosen, and set aside</figcaption>
       </figure>
       <p>Each initiative needs a written justification (why we’re doing it) and an objective (what it should accomplish). Initiatives vary in size, with most taking anywhere from 3 to 24 months.</p>
       <p>An example aligned with our ‘Protect players’ priority would be ‘Enable players to easily understand their gaming activity over time’.</p>

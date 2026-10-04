@@ -17,11 +17,11 @@
 </script>
 
 <title>Land-based casino systems primer — David Jones</title>
-<meta name="description" content="Currently drafting."><meta name="robots" content="noindex"><meta name="theme-color" content="#f5f1e8">
+<meta name="description" content="A tour of the systems behind a land-based casino floor, and why they are so much harder to get right than igaming."><meta name="robots" content="noindex"><meta name="theme-color" content="#f5f1e8">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=7"><link rel="stylesheet" href="/notes.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=7"><link rel="stylesheet" href="/notes.css?v=3">
 <script>document.documentElement.dataset.theme = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");const savedScene = localStorage.getItem("scene");document.documentElement.dataset.scene = ["meadow", "ocean", "forest", "desert", "canal", "winter"].includes(savedScene) ? savedScene : "forest";</script>
 </head>
 <body class="notes-page">
@@ -35,7 +35,7 @@
           </span>
         </a>
 
-        <nav class="site-nav" aria-label="Main navigation"><a href="/notes/" aria-current="true">Notes</a><a href="/projects/">Projects</a><a href="/about/">About</a></nav>
+        <nav class="site-nav" aria-label="Main navigation"><a href="/notes/" aria-current="true">Notes</a><a href="/about/">About</a></nav>
 
         <div class="header-actions">
           <a
@@ -81,11 +81,218 @@
   <a class="all-notes" href="/notes/">← All notes</a>
   <article>
     <header class="note-title">
-      <p class="note-draft">Collating</p>
+      <p class="note-draft">Draft</p>
       <h1>Land-based casino systems primer</h1>
     </header>
     <div class="note-prose">
-      <p>Currently drafting.</p>
+      <p>Land-based gaming is an extremely rich and varied domain, and it presents unique challenges for a system designer.</p>
+      <p>There are parallels with igaming, but land-based is significantly more complex, with a large number of business processes, a great deal of hardware, dated protocols, imperfect data capture, and the human factor. This primer is a tour of the systems behind a casino floor: what each one does, how they fit together, and why the data they produce is harder to trust than it looks.</p>
+      <h2>Bricks and mortar</h2>
+      <p>An online casino is, at heart, a website and a database. Every player has a verified account before they place a bet, every bet is a digital transaction, and every transaction is recorded the moment it happens.</p>
+      <p>A land-based casino is a building. It may hold a handful of tables and slot machines or several hundred, along with a cage full of cash, and perhaps kiosks, bars, restaurants or a hotel, with staff working in shifts. In many casinos, players can walk in, play and leave without the casino ever knowing who they are. Much of what happens on the floor is recorded by machines speaking protocols designed decades ago, or by staff keeping track of a busy table.</p>
+      <p>Each part of the building has its own system, and often its own vendor. Making them work together is most of the job.</p>
+      <h2>The currency of the casino</h2>
+      <p>Casino games operate in the currency of the casino: usually physical chips on table games such as blackjack and roulette, and digital credits on slot machines. Players acquire chips and credits from a number of funding sources, including cash, barcoded tickets (TITO, ‘ticket in, ticket out’) and digital ‘cashless’ wallets, or more exotic forms such as plaques and credit markers. The exact mix varies by operator and jurisdiction.</p>
+      <p>The currency is continually converted between forms as players buy in and cash out: cash to credits, credits to a ticket, cash to chips, chips to the wallet, the wallet to credits. Management systems must accurately track every one of these transactions, and the balances and liabilities they create, while meeting certification requirements and technical standards. A ticket printed by a slot machine is money the casino owes until it is redeemed or expires, and so are the chips in a player’s pocket.</p>
+      <figure class="note-figure">
+        <svg viewBox="0 0 720 210" role="img" aria-label="A loop joins banknotes, a stack of chips, a membership card, a slot machine and a printed ticket, with a light travelling round it">
+          <ellipse cx="360" cy="104" rx="250" ry="62" fill="none" stroke="var(--reading-muted)" stroke-width="1.4" stroke-dasharray="2 7" stroke-linecap="round" opacity=".55"/>
+          <ellipse class="currency-flow" cx="360" cy="104" rx="250" ry="62" pathLength="100" fill="none" stroke="var(--flower)" stroke-width="3" stroke-dasharray="4 96" stroke-linecap="round"/>
+          <g transform="translate(110 104)">
+            <rect x="-26" y="-15" width="52" height="30" rx="3" fill="var(--field-c)" transform="rotate(-9) translate(-4 -5)"/>
+            <rect x="-26" y="-15" width="52" height="30" rx="3" fill="var(--field-b)"/>
+            <rect x="-21" y="-10" width="42" height="20" rx="2" fill="none" stroke="var(--field-a)" stroke-width="1.2" opacity=".8"/>
+            <circle r="6" fill="var(--field-a)" opacity=".75"/>
+          </g>
+          <g transform="translate(283 40)">
+            <g fill="var(--flower)"><path d="M-16 10v5a16 6 0 0 0 32 0v-5Z"/><ellipse cy="10" rx="16" ry="6"/><path d="M-16 3v5a16 6 0 0 0 32 0v-5Z"/><ellipse cy="3" rx="16" ry="6"/><path d="M-16-4v5a16 6 0 0 0 32 0v-5Z"/><ellipse cy="-4" rx="16" ry="6"/></g>
+            <g fill="none" stroke="var(--boat-sail)" stroke-width="1.6" stroke-linecap="round"><path d="M-10 4.5v3M0 5v3.5M10 4.5v3M-10 11.5v3M0 12v3.5M10 11.5v3M-10 18.5v3M0 19v3.5M10 18.5v3"/><ellipse cy="-4" rx="9" ry="3.3" stroke-width="1.2"/></g>
+          </g>
+          <g transform="translate(570 66) rotate(-6)">
+            <rect x="-23" y="-15" width="46" height="30" rx="4" fill="var(--window)" stroke="var(--boat-hull)" stroke-opacity=".35"/>
+            <rect x="-19.5" y="-4" width="3" height="8" rx="1.5" fill="var(--paper)"/>
+            <path d="M6-10l2.4 4.9 5.4.8-3.9 3.8.9 5.4L6 2.4.8 4.9l1-5.4-3.9-3.8 5.4-.8Z" fill="var(--boat-hull)" opacity=".8"/>
+            <path d="M-10 8H17M-10-9H-2" stroke="var(--boat-hull)" stroke-width="1.6" stroke-linecap="round" opacity=".45"/>
+          </g>
+          <g transform="translate(562 142)">
+            <rect x="-19" y="-30" width="38" height="50" rx="6" fill="var(--boat-hull)"/>
+            <rect x="-13" y="-21" width="26" height="15" rx="2" fill="var(--boat-sail)"/>
+            <g fill="var(--flower)"><circle cx="-7" cy="-13.5" r="2.4"/><circle cy="-13.5" r="2.4"/><circle cx="7" cy="-13.5" r="2.4"/></g>
+            <rect x="-9" y="2" width="18" height="3" rx="1.5" fill="var(--roof)"/>
+            <path d="M19-8h7v-14" fill="none" stroke="var(--roof)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle class="slot-lamp" cx="26" cy="-24" r="3.5" fill="var(--flower)"/>
+            <rect x="-22" y="18" width="44" height="7" rx="2" fill="var(--roof)"/>
+          </g>
+          <g transform="translate(283 166) rotate(5)">
+            <rect x="-25" y="-12" width="50" height="24" rx="2" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-width="1" stroke-opacity=".45"/>
+            <path d="M-18-6v12M-15-6v12M-11-6v12M-9-6v12M-5-6v12M-2-6v12M2-6v12M4-6v12M8-6v12M11-6v12" fill="none" stroke="var(--roof)" stroke-width="1.4"/>
+            <path d="M15-6v4M15 2v4" fill="none" stroke="var(--roof)" stroke-width="1.4" opacity=".5"/>
+          </g>
+        </svg>
+        <figcaption>Cash, chips, wallet, credits and tickets</figcaption>
+      </figure>
+      <h3>Cash is king</h3>
+      <p>Many casinos still offer cash gaming. Players drop their banknotes on the table layout, feed them into the bill acceptors in slot machines and kiosks, or hand them to cashiers.</p>
+      <p>With cash comes the very real likelihood of money laundering, the operational overhead of handling and counting it, and the difficulty of tracking a player’s cash activity. Cashless wallets, usually accessed with a player membership card (magstripe, RFID and so on), can mitigate all three, but they have not been adopted universally.</p>
+      <p>For players, cash is the most frictionless form of payment, and casinos are reluctant to take it off the gaming floor. They fear it will drive away big players and materially weaken their bottom line, or worse.</p>
+      <h3>Payments</h3>
+      <p>Around the cash sit the other ways in: debit cards at the cage and kiosks, cash machines on the premises, and transfers into a cashless wallet. Each brings its own rules. Cards bring PCI compliance, and many jurisdictions restrict how cards may be used for gambling; in Great Britain, credit cards have been banned for gambling since 2020. Every payment provider is another integration, and another place where a transaction can fail halfway through.</p>
+      <h2>The systems</h2>
+      <p>To run a casino, an operator needs systems to manage its players, slot machines, table games, cage and loyalty programme, and to monitor all of it for compliance. Together these are typically known as a casino management system (CMS). A CMS may come mainly from one supplier, or be many systems from different suppliers integrated together, usually badly.</p>
+      <p>Either way, the boundaries blur. Player tracking, for example, lives partly in the slot system, partly in the table system and partly in loyalty.</p>
+      <h3>Player Account Management (PAM)</h3>
+      <p>The term PAM has grown in popularity in recent years, and is seen in both land-based and igaming. A PAM solution manages the creation and maintenance of the player’s profile, handles KYC and risk checks, provides views on player insights and activity, and sometimes bundles the digital wallet. In land-based, it is also where the membership card is issued, and so where anonymous play can become attributable play.</p>
+      <h3>Slots</h3>
+      <p>The slot management system collects meters and events from every machine on the floor: money in, money out, games played, door openings, faults and jackpots. It usually handles TITO, and often bonusing and progressive jackpots as well.</p>
+      <p>Machines report through an interface board fitted inside the cabinet, most commonly speaking SAS, a decades-old serial protocol. Its intended successor, G2S, has been available for years, but adoption remains slow. Much of what these protocols report is cumulative meters, from which activity has to be inferred by difference, and each manufacturer implements them a little differently.</p>
+      <h3>Tables</h3>
+      <p>Table games are run by people. Dealers run the games, and supervisors in the pit oversee a group of tables, keep track of chip inventory, and approve fills (chips brought to the table from the cage) and credits (chips returned to it). A table’s result is worked out from the cash in its drop box, its opening and closing chip inventory, and the fills and credits in between.</p>
+      <p>Rating a player at a table is largely manual. A supervisor records the player’s average bet and time played on a tablet, rather than every bet, and the system estimates the rest from the game’s typical pace, such as hands or spins per hour. Some VIP rooms track every bet, which their small number of players and dedicated staff make possible. RFID chips and electronic tables can capture play automatically, but they remain the exception.</p>
+      <figure class="note-figure">
+        <svg viewBox="0 0 720 220" role="img" aria-label="A blackjack table with chips on the betting spots. One player's stack rises and falls, while the supervisor's tablet beside the table records a single average bet of £50">
+          <path d="M110 60H610A250 140 0 0 1 110 60Z" fill="var(--boat-hull)"/>
+          <path d="M128 62H592A232 124 0 0 1 128 62Z" fill="var(--field-c)"/>
+          <path d="M210 62A150 70 0 0 0 510 62" fill="none" stroke="var(--boat-sail)" stroke-width="1" opacity=".35"/>
+          <rect x="296" y="62" width="128" height="22" rx="3" fill="var(--roof)"/>
+          <rect x="304" y="66" width="10" height="14" rx="2" fill="var(--boat-sail)"/><rect x="318" y="66" width="10" height="14" rx="2" fill="var(--flower)"/><rect x="332" y="66" width="10" height="14" rx="2" fill="var(--flower)"/><rect x="346" y="66" width="10" height="14" rx="2" fill="var(--sea-c)"/><rect x="360" y="66" width="10" height="14" rx="2" fill="var(--sea-c)"/><rect x="374" y="66" width="10" height="14" rx="2" fill="var(--roof)"/><rect x="388" y="66" width="10" height="14" rx="2" fill="var(--roof)"/><rect x="402" y="66" width="10" height="14" rx="2" fill="var(--window)"/>
+          <g>
+            <ellipse cx="208.4" cy="106.5" rx="17" ry="7.5" fill="none" stroke="var(--boat-sail)" stroke-width="1.2" opacity=".55"/>
+            <ellipse cx="272.5" cy="137.6" rx="17" ry="7.5" fill="none" stroke="var(--boat-sail)" stroke-width="1.2" opacity=".55"/>
+            <ellipse cx="360.0" cy="149.0" rx="17" ry="7.5" fill="none" stroke="var(--boat-sail)" stroke-width="1.2" opacity=".55"/>
+            <ellipse cx="447.5" cy="137.6" rx="17" ry="7.5" fill="none" stroke="var(--boat-sail)" stroke-width="1.2" opacity=".55"/>
+            <ellipse cx="511.6" cy="106.5" rx="17" ry="7.5" fill="none" stroke="var(--boat-sail)" stroke-width="1.2" opacity=".55"/>
+            <g transform="translate(208.4 126.5)"><rect x="-10" y="-6" width="11" height="15" rx="1.5" transform="rotate(-8)" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".4"/><rect x="-2" y="-6" width="11" height="15" rx="1.5" transform="rotate(6)" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".4"/></g>
+            <g transform="translate(272.5 157.6)"><rect x="-10" y="-6" width="11" height="15" rx="1.5" transform="rotate(-8)" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".4"/><rect x="-2" y="-6" width="11" height="15" rx="1.5" transform="rotate(6)" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".4"/></g>
+            <g transform="translate(360.0 169.0)"><rect x="-10" y="-6" width="11" height="15" rx="1.5" transform="rotate(-8)" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".4"/><rect x="-2" y="-6" width="11" height="15" rx="1.5" transform="rotate(6)" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".4"/></g>
+            <g transform="translate(447.5 157.6)"><rect x="-10" y="-6" width="11" height="15" rx="1.5" transform="rotate(-8)" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".4"/><rect x="-2" y="-6" width="11" height="15" rx="1.5" transform="rotate(6)" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".4"/></g>
+            <g transform="translate(511.6 126.5)"><rect x="-10" y="-6" width="11" height="15" rx="1.5" transform="rotate(-8)" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".4"/><rect x="-2" y="-6" width="11" height="15" rx="1.5" transform="rotate(6)" fill="var(--boat-sail)" stroke="var(--reading-muted)" stroke-opacity=".4"/></g>
+            <g class="" fill="var(--sea-c)"><path d="M197.44555433772322 106.5v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="208.44555433772322" cy="106.5" rx="11" ry="4.5"/><path d="M197.44555433772322 102.5v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="208.44555433772322" cy="102.5" rx="11" ry="4.5"/><ellipse cx="208.44555433772322" cy="102.5" rx="6.5" ry="2.4" fill="none" stroke="var(--boat-sail)" stroke-width="1.1" opacity=".8"/></g>
+            <g class="" fill="var(--flower)"><path d="M261.5 137.6121593216773v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="272.5" cy="137.6121593216773" rx="11" ry="4.5"/><path d="M261.5 133.6121593216773v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="272.5" cy="133.6121593216773" rx="11" ry="4.5"/><path d="M261.5 129.6121593216773v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="272.5" cy="129.6121593216773" rx="11" ry="4.5"/><ellipse cx="272.5" cy="129.6121593216773" rx="6.5" ry="2.4" fill="none" stroke="var(--boat-sail)" stroke-width="1.1" opacity=".8"/></g>
+            <g class="bet-low" fill="var(--flower)"><path d="M349.0 149.0v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="360.0" cy="149.0" rx="11" ry="4.5"/><path d="M349.0 145.0v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="360.0" cy="145.0" rx="11" ry="4.5"/><ellipse cx="360.0" cy="145.0" rx="6.5" ry="2.4" fill="none" stroke="var(--boat-sail)" stroke-width="1.1" opacity=".8"/></g>
+            <g class="bet-high" fill="var(--roof)"><path d="M349.0 149.0v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="360.0" cy="149.0" rx="11" ry="4.5"/><path d="M349.0 145.0v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="360.0" cy="145.0" rx="11" ry="4.5"/><path d="M349.0 141.0v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="360.0" cy="141.0" rx="11" ry="4.5"/><path d="M349.0 137.0v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="360.0" cy="137.0" rx="11" ry="4.5"/><path d="M349.0 133.0v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="360.0" cy="133.0" rx="11" ry="4.5"/><path d="M349.0 129.0v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="360.0" cy="129.0" rx="11" ry="4.5"/><path d="M349.0 125.0v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="360.0" cy="125.0" rx="11" ry="4.5"/><path d="M349.0 121.0v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="360.0" cy="121.0" rx="11" ry="4.5"/><ellipse cx="360.0" cy="121.0" rx="6.5" ry="2.4" fill="none" stroke="var(--boat-sail)" stroke-width="1.1" opacity=".8"/></g>
+            <g class="" fill="var(--sea-c)"><path d="M436.5 137.61215932167727v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="447.5" cy="137.61215932167727" rx="11" ry="4.5"/><path d="M436.5 133.61215932167727v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="447.5" cy="133.61215932167727" rx="11" ry="4.5"/><path d="M436.5 129.61215932167727v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="447.5" cy="129.61215932167727" rx="11" ry="4.5"/><path d="M436.5 125.61215932167727v3a11 4.5 0 0 0 22 0v-3Z"/><ellipse cx="447.5" cy="125.61215932167727" rx="11" ry="4.5"/><ellipse cx="447.5" cy="125.61215932167727" rx="6.5" ry="2.4" fill="none" stroke="var(--boat-sail)" stroke-width="1.1" opacity=".8"/></g>
+          </g>
+          <g transform="translate(640 148) rotate(6)">
+            <rect x="-40" y="-52" width="80" height="104" rx="9" fill="var(--roof)"/>
+            <rect x="-33" y="-44" width="66" height="86" rx="3" fill="var(--boat-sail)"/>
+            <rect x="-33" y="-44" width="66" height="12" rx="3" fill="var(--sea-c)"/>
+            <path d="M-25-22H10M-25 24H25M-25 33H4" stroke="var(--reading-muted)" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+            <text x="0" y="8" text-anchor="middle" fill="var(--roof)" font-family="DM Sans, sans-serif" font-weight="500" font-size="18">£50</text>
+            <circle cy="47" r="2" fill="var(--boat-sail)" opacity=".5"/>
+          </g>
+        </svg>
+        <figcaption>Rating play at the table</figcaption>
+      </figure>
+      <h3>Cage</h3>
+      <p>The cage is the casino’s bank. Cashiers exchange cash for chips and redeem chips and tickets for cash, and the cage manages front money deposits, cheque cashing and credit markers. Behind it, the count room empties and counts the drop from every table and bill acceptor. The cage must balance at every shift change, and many of the casino’s regulatory records are made here.</p>
+      <h3>Loyalty</h3>
+      <p>Loyalty turns play into points, tiers and comps: complimentary food, drink, rooms and free play. Comps are usually calculated from theoretical win, what the casino expects to win from a player given their bets, time played and the house edge, rather than what they actually lost. Loyalty is also the main reason players identify themselves at all, which makes it as important to data capture as it is to marketing.</p>
+      <h3>Player tracking</h3>
+      <p>Player tracking is less a system than a capability spread across the others: the card reader and display on each slot machine, the ratings taken at the tables, and the cage transactions linked to a player’s account. Together they build the picture of a player’s activity on which loyalty, marketing and monitoring all depend.</p>
+      <aside class="note-chain" aria-label="One player’s evening traced through the systems">
+        <p class="note-chain-heading">One evening, end to end</p>
+        <ol>
+          <li><span class="note-chain-tier">PAM</span>A player registers at reception, shows ID and is issued a membership card</li>
+          <li><span class="note-chain-tier">Tables</span>They buy in at roulette with £2,000 in cash, and the supervisor rates them at about £50 a spin for 90 minutes</li>
+          <li><span class="note-chain-tier">Slots</span>They insert their card at a slot machine, play for an hour and cash out to a TITO ticket</li>
+          <li><span class="note-chain-tier">Cage</span>They redeem the ticket and their remaining chips for cash</li>
+          <li><span class="note-chain-tier">Loyalty</span>Their points pay for dinner in the restaurant, through the point-of-sale integration</li>
+          <li><span class="note-chain-tier">Monitoring</span>Their cash in and cash out are added up across the table, the cage and their account</li>
+        </ol>
+      </aside>
+      <h2>Monitoring</h2>
+      <p>Casinos have a duty to watch their players, for two main reasons.</p>
+      <p>The first is anti-money laundering. Cash makes a casino an attractive place to launder money: buy in with cash, play a little, and cash out with a cheque or a ticket and a plausible story. Operators must know their customers, check the source of funds above certain thresholds, and report suspicious activity. Some jurisdictions set hard reporting thresholds, such as the US requirement to report a player’s cash transactions above $10,000 in a gaming day, which means adding up their cash across tables, machines and the cage.</p>
+      <p>The second is safer gaming. Operators are expected to spot signs of harm, such as long sessions, rising losses and chasing, and to intervene, usually with a conversation on the floor.</p>
+      <p>Both depend on knowing who is playing and what they have done. That is where land-based falls short.</p>
+      <h2>Imperfect data</h2>
+      <p>Online, data quality is close to perfect by default. Land-based, every source has its gaps.</p>
+      <figure class="note-figure">
+        <svg viewBox="0 0 720 210" role="img" aria-label="A bank of five slot machines. Two have a membership card in the reader, two are played without one, and one has a dark screen and a flashing light on top, calling for service">
+          <defs>
+            <linearGradient id="bankFadeX"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".15" stop-color="#fff"/><stop offset=".85" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <mask id="bankFade" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="210"><rect width="720" height="210" fill="url(#bankFadeX)"/></mask>
+            <pattern id="bankCarpet" width="24" height="16" patternUnits="userSpaceOnUse"><path d="M12 1 22 8 12 15 2 8Z" fill="none" stroke="var(--flower)" stroke-width="1.2"/><circle cx="12" cy="8" r="1.6" fill="var(--window)"/></pattern>
+            <linearGradient id="bankCarpetFade" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <mask id="bankCarpetMask" maskUnits="userSpaceOnUse" x="0" y="176" width="720" height="34"><rect y="176" width="720" height="34" fill="url(#bankCarpetFade)"/></mask>
+          </defs>
+          <g mask="url(#bankFade)">
+            <rect y="176" width="720" height="34" fill="url(#bankCarpet)" mask="url(#bankCarpetMask)"/>
+            <path d="M0 176H720" stroke="var(--reading-muted)" stroke-width="1" opacity=".4"/>
+          </g>
+          <g transform="translate(150 176)">
+            <path d="M0-112v-12" stroke="var(--roof)" stroke-width="2.5"/>
+            <rect class="slot-candle" x="-5" y="-138" width="10" height="15" rx="3"/>
+            <path d="M-32 0V-94Q-32-112 0-112Q32-112 32-94V0Z" fill="var(--boat-hull)" stroke="var(--reading-muted)" stroke-opacity=".3"/>
+            <rect x="-24" y="-74" width="48" height="44" rx="3" fill="var(--boat-sail)"/>
+            <path d="M-24-63H24M-24-41H24" stroke="var(--reading-muted)" stroke-opacity="0.25"/>
+            <g class="slot-reels" style="animation-delay:-0.9s" fill="var(--flower)"><circle cx="-12" cy="-52" r="3.6"/><circle cy="-52" r="3.6"/><circle cx="12" cy="-52" r="3.6"/></g>
+            <path d="M-32-24H32V-14H-32Z" fill="var(--roof)"/>
+            <g fill="var(--window)" opacity=".8"><rect x="-26" y="-21" width="8" height="4" rx="1"/><rect x="-15" y="-21" width="8" height="4" rx="1"/><rect x="-4" y="-21" width="8" height="4" rx="1"/></g>
+            <rect x="20" y="-22" width="10" height="5" rx="1" fill="var(--sea-d)"/><circle cx="25" cy="-28" r="1.8" fill="var(--field-b)"/>
+            <rect x="28" y="-26" width="18" height="12" rx="2" fill="var(--window)" stroke="var(--boat-hull)" stroke-opacity=".35"/><path d="M42-21.5l1 2 2.2.3-1.6 1.5.4 2.2-2-1-2 1 .4-2.2-1.6-1.5 2.2-.3Z" fill="var(--boat-hull)" opacity=".8"/>
+          </g>
+          <g transform="translate(255 176)">
+            <path d="M0-112v-12" stroke="var(--roof)" stroke-width="2.5"/>
+            <rect class="slot-candle" x="-5" y="-138" width="10" height="15" rx="3"/>
+            <path d="M-32 0V-94Q-32-112 0-112Q32-112 32-94V0Z" fill="var(--boat-hull)" stroke="var(--reading-muted)" stroke-opacity=".3"/>
+            <rect x="-24" y="-74" width="48" height="44" rx="3" fill="var(--boat-sail)"/>
+            <path d="M-24-63H24M-24-41H24" stroke="var(--reading-muted)" stroke-opacity="0.25"/>
+            <g class="slot-reels" style="animation-delay:-1.8s" fill="var(--flower)"><circle cx="-12" cy="-52" r="3.6"/><circle cy="-52" r="3.6"/><circle cx="12" cy="-52" r="3.6"/></g>
+            <path d="M-32-24H32V-14H-32Z" fill="var(--roof)"/>
+            <g fill="var(--window)" opacity=".8"><rect x="-26" y="-21" width="8" height="4" rx="1"/><rect x="-15" y="-21" width="8" height="4" rx="1"/><rect x="-4" y="-21" width="8" height="4" rx="1"/></g>
+            <rect x="20" y="-22" width="10" height="5" rx="1" fill="var(--sea-d)"/><circle cx="25" cy="-28" r="1.8" fill="var(--reading-muted)"/>
+            
+          </g>
+          <g transform="translate(360 176)">
+            <path d="M0-112v-12" stroke="var(--roof)" stroke-width="2.5"/>
+            <rect class="slot-candle" x="-5" y="-138" width="10" height="15" rx="3"/>
+            <path d="M-32 0V-94Q-32-112 0-112Q32-112 32-94V0Z" fill="var(--boat-hull)" stroke="var(--reading-muted)" stroke-opacity=".3"/>
+            <rect x="-24" y="-74" width="48" height="44" rx="3" fill="var(--boat-sail)"/>
+            <path d="M-24-63H24M-24-41H24" stroke="var(--reading-muted)" stroke-opacity="0.25"/>
+            <g class="slot-reels" style="animation-delay:-2.7s" fill="var(--flower)"><circle cx="-12" cy="-52" r="3.6"/><circle cy="-52" r="3.6"/><circle cx="12" cy="-52" r="3.6"/></g>
+            <path d="M-32-24H32V-14H-32Z" fill="var(--roof)"/>
+            <g fill="var(--window)" opacity=".8"><rect x="-26" y="-21" width="8" height="4" rx="1"/><rect x="-15" y="-21" width="8" height="4" rx="1"/><rect x="-4" y="-21" width="8" height="4" rx="1"/></g>
+            <rect x="20" y="-22" width="10" height="5" rx="1" fill="var(--sea-d)"/><circle cx="25" cy="-28" r="1.8" fill="var(--field-b)"/>
+            <rect x="28" y="-26" width="18" height="12" rx="2" fill="var(--window)" stroke="var(--boat-hull)" stroke-opacity=".35"/><path d="M42-21.5l1 2 2.2.3-1.6 1.5.4 2.2-2-1-2 1 .4-2.2-1.6-1.5 2.2-.3Z" fill="var(--boat-hull)" opacity=".8"/>
+          </g>
+          <g transform="translate(465 176)">
+            <path d="M0-112v-12" stroke="var(--roof)" stroke-width="2.5"/>
+            <rect class="slot-candle slot-candle-alert" x="-5" y="-138" width="10" height="15" rx="3"/>
+            <path d="M-32 0V-94Q-32-112 0-112Q32-112 32-94V0Z" fill="var(--boat-hull)" stroke="var(--reading-muted)" stroke-opacity=".3"/>
+            <rect x="-24" y="-74" width="48" height="44" rx="3" fill="var(--roof)"/>
+            <path d="M-24-63H24M-24-41H24" stroke="var(--reading-muted)" stroke-opacity="0"/>
+            <path d="M0-62v10M0-46v.5" fill="none" stroke="var(--window)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M-32-24H32V-14H-32Z" fill="var(--roof)"/>
+            <g fill="var(--window)" opacity=".8"><rect x="-26" y="-21" width="8" height="4" rx="1"/><rect x="-15" y="-21" width="8" height="4" rx="1"/><rect x="-4" y="-21" width="8" height="4" rx="1"/></g>
+            <rect x="20" y="-22" width="10" height="5" rx="1" fill="var(--sea-d)"/><circle cx="25" cy="-28" r="1.8" fill="var(--reading-muted)"/>
+            
+          </g>
+          <g transform="translate(570 176)">
+            <path d="M0-112v-12" stroke="var(--roof)" stroke-width="2.5"/>
+            <rect class="slot-candle" x="-5" y="-138" width="10" height="15" rx="3"/>
+            <path d="M-32 0V-94Q-32-112 0-112Q32-112 32-94V0Z" fill="var(--boat-hull)" stroke="var(--reading-muted)" stroke-opacity=".3"/>
+            <rect x="-24" y="-74" width="48" height="44" rx="3" fill="var(--boat-sail)"/>
+            <path d="M-24-63H24M-24-41H24" stroke="var(--reading-muted)" stroke-opacity="0.25"/>
+            <g class="slot-reels" style="animation-delay:-3.6s" fill="var(--flower)"><circle cx="-12" cy="-52" r="3.6"/><circle cy="-52" r="3.6"/><circle cx="12" cy="-52" r="3.6"/></g>
+            <path d="M-32-24H32V-14H-32Z" fill="var(--roof)"/>
+            <g fill="var(--window)" opacity=".8"><rect x="-26" y="-21" width="8" height="4" rx="1"/><rect x="-15" y="-21" width="8" height="4" rx="1"/><rect x="-4" y="-21" width="8" height="4" rx="1"/></g>
+            <rect x="20" y="-22" width="10" height="5" rx="1" fill="var(--sea-d)"/><circle cx="25" cy="-28" r="1.8" fill="var(--reading-muted)"/>
+            
+          </g>
+        </svg>
+        <figcaption>Carded, anonymous and out of service</figcaption>
+      </figure>
+      <p><strong>Anonymous play.</strong> Even where players must register on entry, their play is often not linked to them. Many play without a card, insert it for some sessions and not others, or share one with a partner. Play that cannot be linked to a player is invisible to loyalty, AML and safer gaming alike.</p>
+      <p><strong>Table ratings are estimates.</strong> A supervisor watching several tables records an average bet and a time played, often after the fact, and the system works out the rest from a typical number of hands per hour. A player who bets £25 a hand for an hour and then £500 for ten minutes may be rated anywhere between the two. Players move between tables, and between tables and slots, faster than anyone can write it down.</p>
+      <p><strong>Machines make mistakes.</strong> Interface boards lose communication, meters are reset after a RAM clear, tickets fail to print, and bill acceptors jam. Each leaves a gap or an inconsistency that someone in slot operations has to reconcile, sometimes days later.</p>
+      <p><strong>The human factor.</strong> Staff are busy, shifts change mid-session, and the manual adjustment that settles a dispute rarely records why it was made.</p>
+      <p>None of this is a reason not to monitor. But most land-based figures should be treated as estimates with a margin of error rather than as facts, and reports, alerts and models designed accordingly.</p>
+      <h2>Integrations</h2>
+      <p>Beyond the gaming systems sits a long list of integrations: the hotel’s property management system, point of sale in the bars and restaurants, CRM and marketing tools, surveillance, finance, payment providers, third-party jackpot and bonusing systems and, in some jurisdictions, a regulator’s central monitoring system that receives data from every machine. Each runs on its own clock, with its own idea of who the player is, and few were built with the others in mind.</p>
+      <h2>Putting it together</h2>
+      <p>Compared with igaming, everything in land-based is slower, more physical and less certain. Money changes form several times in an evening, a player can be known in one system and anonymous in the next, and the data arrives late, incomplete or wrong.</p>
+      <p>For a system designer, a few things follow. Model the currency of the casino properly from the start, because every other system depends on it. Expect gaps and corrections, and treat reconciliation as a feature rather than an afterthought. Remember that floor staff are users too, working quickly on a busy floor. And give players a good reason to identify themselves, because better data starts there.</p>
     </div>
   </article>
 </main>

@@ -88,3 +88,91 @@ html:has(.notes-page), body.notes-page { overflow: auto; background: var(--paper
   .sill-flame { animation: none; }
 }
 */
+/* The casino primer's drawings: a light travels round the currency loop, a
+   lamp blinks on its slot machine, in the bank of machines one calls for
+   service while the others play, and a player's bet at the table rises and
+   falls. */
+.currency-flow { animation: currency-flow 14s linear infinite; }
+@keyframes currency-flow { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+.slot-lamp { animation: twinkle 2.4s ease-in-out infinite; }
+.slot-candle { fill: var(--window); }
+.slot-candle-alert { fill: var(--flower); animation: slot-candle-alert 1.2s steps(1) infinite; }
+@keyframes slot-candle-alert { 50% { opacity: .25; } }
+.slot-reels { animation: twinkle 3.2s ease-in-out infinite; }
+.bet-high { animation: bet-swing 7s steps(1) infinite; }
+.bet-low { animation: bet-swing-low 7s steps(1) infinite; }
+@keyframes bet-swing { 0%, 55% { opacity: 0; } 56%, 100% { opacity: 1; } }
+@keyframes bet-swing-low { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
+/* Hold the drawings still, with the smaller bet on the table. */
+/* REDUCED-MOTION-OFF: turned off for now. Uncomment this block to restore it.
+@media (prefers-reduced-motion: reduce) {
+  .currency-flow, .slot-lamp, .slot-candle-alert, .slot-reels, .bet-high, .bet-low { animation: none; }
+  .bet-high { opacity: 0; }
+}
+*/
+/* Barriers to adoption: the deal runs between sales and management, a light
+   travels round the adoption cycle, and a caret blinks in a repurposed field. */
+.deal-flow { animation: deal-flow 1.8s linear infinite; }
+@keyframes deal-flow { to { stroke-dashoffset: -24; } }
+.cycle-flow { animation: currency-flow 14s linear infinite; }
+.form-caret { animation: slot-candle-alert 1.1s steps(1) infinite; }
+/* Hold the drawings still. */
+/* REDUCED-MOTION-OFF: turned off for now. Uncomment this block to restore it.
+@media (prefers-reduced-motion: reduce) {
+  .deal-flow, .cycle-flow, .form-caret { animation: none; }
+}
+*/
+/* A table that pairs the concepts of two channels. */
+.note-pairs { margin: 30px 0 34px; padding: 18px 24px 8px; border-radius: 10px; background: color-mix(in srgb, var(--reading-ink) 4.5%, transparent); }
+.note-pairs table { width: 100%; border-collapse: collapse; font: .92rem/1.45 "DM Sans",sans-serif; }
+.note-pairs th { padding: 0 0 10px; text-align: left; font-size: .64rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--reading-muted); }
+.note-pairs thead th { width: 50%; }
+.note-pairs td { padding: 9px 0; border-top: 1px solid var(--reading-rule); vertical-align: top; }
+.note-pairs td + td, .note-pairs th + th { padding-left: 20px; }
+.pair-empty { color: var(--reading-muted); }
+@media (max-width: 700px) {
+  .note-pairs { padding: 14px 16px 6px; }
+  .note-pairs table { font-size: .86rem; }
+  .note-pairs td + td, .note-pairs th + th { padding-left: 12px; }
+}
+/* Omnichannel: the dashes run between two profiles of the same player, and
+   the outlined parts of the land-based data model fade in and out. */
+.profile-query { animation: twinkle 3s ease-in-out infinite; }
+.model-gap { animation: twinkle 4s ease-in-out infinite; }
+.model-gap:nth-of-type(2n) { animation-delay: -1.6s; }
+/* Hold the drawings still. */
+/* REDUCED-MOTION-OFF: turned off for now. Uncomment this block to restore it.
+@media (prefers-reduced-motion: reduce) {
+  .profile-query, .model-gap { animation: none; }
+}
+*/
+/* A reference entry: a small drawing beside a name, a description and a
+   few facts. The summary table shares the paired table's styles. */
+.note-summary thead th { width: auto; }
+.note-summary td + td, .note-summary th + th { padding-left: 14px; }
+.value-entry { display: grid; grid-template-columns: 140px 1fr; gap: 26px; align-items: start; padding: 26px 0; border-top: 1px solid var(--reading-rule); }
+.value-entry + .value-entry { margin-top: 0; }
+.value-art { display: block; width: 100%; height: auto; margin-top: 4px; }
+.note-prose .value-entry h3 { margin: 0 0 8px; }
+.note-prose .value-entry p { margin: 0 0 14px; }
+.value-facts { display: grid; gap: 4px; margin: 0; font: .82rem/1.45 "DM Sans",sans-serif; }
+.value-facts div { display: grid; grid-template-columns: 104px 1fr; gap: 10px; }
+.value-facts dt { color: var(--reading-muted); font-size: .66rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; padding-top: 2px; }
+.value-facts dd { margin: 0; }
+@media (max-width: 700px) {
+  .value-entry { grid-template-columns: 84px 1fr; gap: 16px; padding: 22px 0; }
+  .value-facts div { grid-template-columns: 1fr; gap: 0; }
+  .note-summary td + td, .note-summary th + th { padding-left: 8px; }
+}
+/* Practical product strategy: the example's path is lit through the tiers,
+   and new initiatives drop into the invest or set-aside column in turn. */
+.sort-invest, .sort-aside { opacity: 0; animation: sort-invest 9s ease-in-out infinite; }
+.sort-aside { animation-name: sort-aside; animation-delay: 4.5s; }
+@keyframes sort-invest { 0% { opacity: 0; transform: translate(0, -10px); } 10%, 30% { opacity: 1; transform: translate(0, 0); } 48% { opacity: 1; transform: translate(-140px, 70px); } 56%, 100% { opacity: 0; transform: translate(-140px, 70px); } }
+@keyframes sort-aside { 0% { opacity: 0; transform: translate(0, -10px); } 10%, 30% { opacity: 1; transform: translate(0, 0); } 48% { opacity: .7; transform: translate(140px, 70px); } 56%, 100% { opacity: 0; transform: translate(140px, 70px); } }
+/* Hold the drawings still, with no card in motion. */
+/* REDUCED-MOTION-OFF: turned off for now. Uncomment this block to restore it.
+@media (prefers-reduced-motion: reduce) {
+  .sort-invest, .sort-aside { animation: none; }
+}
+*/

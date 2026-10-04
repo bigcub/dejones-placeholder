@@ -1,0 +1,68 @@
+<!-- The two landscape drawings first used in the Practical product strategy
+     note, kept for reuse. They rely on the scene colour variables and the
+     .buoy, .boat and .note-figure-waves classes in styles.css and notes.css,
+     so paste them into a page that loads both stylesheets. -->
+      <figure class="note-figure">
+        <svg viewBox="0 0 720 220" role="img" aria-label="A path climbs from two waymark posts in the foreground, across wooded hills, towards a flag on a distant summit">
+          <defs>
+            <linearGradient id="tierFadeX"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#fff"/><stop offset=".8" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <linearGradient id="tierFadeY" x2="0" y2="1"><stop offset=".72" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <mask id="tierFade" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="220"><rect width="720" height="220" fill="url(#tierFadeX)"/></mask>
+            <mask id="tierFadeLow" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="220"><rect width="720" height="220" fill="url(#tierFadeY)"/></mask>
+            <radialGradient id="tierWash"><stop stop-color="var(--wood-horizon)" stop-opacity=".4"/><stop offset="1" stop-color="var(--wood-horizon)" stop-opacity="0"/></radialGradient>
+          </defs>
+          <ellipse cx="440" cy="100" rx="270" ry="100" fill="url(#tierWash)"/>
+          <g mask="url(#tierFade)"><g mask="url(#tierFadeLow)">
+            <path d="M170 176 290 104Q318 88 338 96L420 50Q466 18 506 46L610 118 720 172Z" fill="var(--wood-far)"/>
+            <path d="M466 34Q482 72 526 98L610 118 720 172H600Q560 120 466 34Z" fill="var(--wood-mid)" opacity=".28"/>
+            <path d="M440 150C452 128 436 104 450 82 460 66 458 48 464 38" fill="none" stroke="var(--wood-deep)" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round" opacity=".7"/>
+            <path d="M0 168Q170 118 340 140T720 132V220H0Z" fill="var(--wood-mid)"/>
+            <path d="M60 158l12-42 12 42ZM86 156l10-34 10 34ZM110 153l9-30 9 30ZM588 150l11-38 11 38ZM612 148l9-30 9 30ZM634 147l10-34 10 34Z" fill="var(--wood-deep)"/>
+            <path d="M330 192C356 184 320 170 360 162 392 156 420 157 440 150" fill="none" stroke="var(--wood-path)" stroke-width="3.5" stroke-linecap="round" opacity=".85"/>
+            <path d="M0 200Q190 166 400 192T720 186V220H0Z" fill="var(--wood-pine)"/>
+            <path d="M236 222C256 206 300 200 330 192" fill="none" stroke="var(--wood-path)" stroke-width="5" stroke-linecap="round"/>
+            <g fill="none" stroke="var(--wood-path)" stroke-width="2.5" stroke-linecap="round"><path d="M262 210v-15M306 200v-15"/></g>
+            <g fill="var(--flower)"><circle cx="262" cy="193" r="2.8"/><circle cx="306" cy="183" r="2.8"/></g>
+          </g></g>
+          <path d="M464 34V14" fill="none" stroke="var(--wood-deep)" stroke-width="2" stroke-linecap="round"/>
+          <path class="boat-pennant" d="M464 14l16 5-16 5Z"/>
+        </svg>
+        <figcaption>Priorities are the peaks you steer by, initiatives the routes towards them, and the roadmap the next stretch of path.</figcaption>
+      </figure>
+
+      <figure class="note-figure">
+        <svg viewBox="0 0 720 190" role="img" aria-label="A small sailing boat following a channel marked by buoys on either side">
+          <defs>
+            <linearGradient id="chanFadeX"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#fff"/><stop offset=".8" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <mask id="chanFade" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="190"><rect width="720" height="190" fill="url(#chanFadeX)"/></mask>
+            <radialGradient id="chanWash"><stop stop-color="var(--sea-a)" stop-opacity=".32"/><stop offset="1" stop-color="var(--sea-a)" stop-opacity="0"/></radialGradient>
+            <linearGradient id="chanWater" x2="0" y2="1"><stop stop-color="var(--sea-a)" stop-opacity=".55"/><stop offset="1" stop-color="var(--sea-a)" stop-opacity="0"/></linearGradient>
+          </defs>
+          <ellipse cx="360" cy="110" rx="260" ry="92" fill="url(#chanWash)"/>
+          <g mask="url(#chanFade)">
+            <rect y="136" width="720" height="54" fill="url(#chanWater)"/>
+            <path d="M0 136H720" stroke="var(--sea-b)" stroke-width="1" opacity=".35"/>
+            <g class="note-figure-waves" fill="none" stroke="var(--sea-c)" stroke-width="1.4" stroke-linecap="round" opacity=".35">
+              <path d="M70 150c14-4 28-4 42 0M200 180c18-5 36-5 54 0M500 146c16-4 32-4 48 0M600 176c20-5 40-5 60 0M110 170c16-4 32-4 48 0M420 182c14-4 28-4 42 0"/>
+            </g>
+            <path d="M300 160C230 162 150 158 30 150" fill="none" stroke="var(--reading-muted)" stroke-width="1.4" stroke-dasharray="2 7" stroke-linecap="round" opacity=".55"/>
+            <path d="M418 158c18 3 40 4 64 2M422 165c22 3 48 3 76 0" fill="none" stroke="var(--reading-muted)" stroke-width="1.3" stroke-linecap="round" opacity=".4"/>
+          </g>
+          <g class="buoy"><path class="buoy-pole" d="M110 127v-10" style="stroke-width:2"/><circle class="buoy-ball" cx="110" cy="132" r="6"/><path class="buoy-stripe" d="M104.5 130h11" style="stroke-width:2"/></g>
+          <g class="buoy" style="animation-delay:2.1s"><path class="buoy-pole" d="M240 129v-10" style="stroke-width:2"/><circle class="buoy-ball" cx="240" cy="134" r="6"/><path class="buoy-stripe" d="M234.5 132h11" style="stroke-width:2"/></g>
+          <g class="buoy" style="animation-delay:1.3s"><path class="buoy-pole" d="M490 128v-10" style="stroke-width:2"/><circle class="buoy-ball" cx="490" cy="133" r="6"/><path class="buoy-stripe" d="M484.5 131h11" style="stroke-width:2"/></g>
+          <g class="buoy" style="animation-delay:.3s"><path class="buoy-pole" d="M620 126v-10" style="stroke-width:2"/><circle class="buoy-ball" cx="620" cy="131" r="6"/><path class="buoy-stripe" d="M614.5 129h11" style="stroke-width:2"/></g>
+          <ellipse class="boat-reflection" cx="360" cy="172" rx="54" ry="5"/>
+          <g transform="translate(-400 -500)"><g class="boat">
+            <path class="boat-sail" d="M766 560c22 18 32 48 34 86h-34Z"/>
+            <path class="boat-sail boat-jib" d="M754 566c-20 20-28 46-30 78h30Z"/>
+            <path class="boat-mast" d="M760 652V556"/>
+            <path class="boat-boom" d="M764 648h38"/>
+            <path class="boat-pennant" d="M760 556l-14 4 14 5Z"/>
+            <path class="boat-hull" d="M706 652h108c-12 24-94 24-108 0Z"/>
+          </g></g>
+          <g class="buoy" style="animation-delay:1.7s"><path class="buoy-pole" d="M180 164v-16"/><circle class="buoy-ball" cx="180" cy="172" r="10"/><path class="buoy-stripe" d="M171 169h18"/></g>
+          <g class="buoy"><path class="buoy-pole" d="M560 162v-16"/><circle class="buoy-ball" cx="560" cy="170" r="10"/><path class="buoy-stripe" d="M551 167h18"/></g>
+        </svg>
+        <figcaption>Markers on both sides: a strategy shows where not to go as clearly as where to go.</figcaption>
+      </figure>
